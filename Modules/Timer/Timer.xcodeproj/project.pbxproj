@@ -87,6 +87,7 @@
 		CC5D320F24659308005A1837 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5D320E24659308005A1837 /* Arc.swift */; };
 		CC8172342475B433004F1152 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8172332475B433004F1152 /* String+Extensions.swift */; };
 		CC8172372476A397004F1152 /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8172362476A397004F1152 /* StringExtensionsTests.swift */; };
+		CC8172392476E110004F1152 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8172382476E110004F1152 /* Constants.swift */; };
 		CCD8DDAC2449EE9F00AC9932 /* RunningTimeEntryReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD8DDAB2449EE9F00AC9932 /* RunningTimeEntryReducerTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +197,7 @@
 		CC5D320E24659308005A1837 /* Arc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		CC8172332475B433004F1152 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		CC8172362476A397004F1152 /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
+		CC8172382476E110004F1152 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CCD8DDAB2449EE9F00AC9932 /* RunningTimeEntryReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryReducerTests.swift; sourceTree = "<group>"; };
 		D1A6B75657C3B9CF1F0B3ED1 /* Pods_Timer_TimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer_TimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB24E55169F474422BCBE49 /* Pods-Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer.release.xcconfig"; path = "Target Support Files/Pods-Timer/Pods-Timer.release.xcconfig"; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				8C008FD12409407B000A0C32 /* StartEditReducer.swift */,
 				AC8239FF245874BB0078574D /* StartEditSelector.swift */,
 				34C93C072453387300024F06 /* DateTimePickMode.swift */,
+				CC8172382476E110004F1152 /* Constants.swift */,
 			);
 			path = StartEdit;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				CC03C27E2448AE1C0071FA55 /* ProjectSelector.swift in Sources */,
 				8CB54533240E7DA100154473 /* TimeEntriesLogViewController.swift in Sources */,
 				8C008FD22409407B000A0C32 /* StartEditReducer.swift in Sources */,
+				CC8172392476E110004F1152 /* Constants.swift in Sources */,
 				ACAA58282433A7ED003FDECA /* RunningTimeEntryAction.swift in Sources */,
 				8C25178D2403C27200BAD4B5 /* TimeEntriesLogReducer.swift in Sources */,
 				AC42284C245720E700DD8AB3 /* Wheel.swift in Sources */,

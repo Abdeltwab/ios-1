@@ -104,12 +104,12 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
             
         case .projectButtonTapped, .addProjectChipTapped:
             guard let editableTimeEntry = state.editableTimeEntry else { return [] }
-            state.editableTimeEntry?.description = appendCharacter("@", toString: editableTimeEntry.description)
+            state.editableTimeEntry?.description = appendCharacter(String(projectToken), toString: editableTimeEntry.description)
             return []
             
         case .tagButtonTapped, .addTagChipTapped:
             guard let editableTimeEntry = state.editableTimeEntry else { return [] }
-            state.editableTimeEntry?.description = appendCharacter("#", toString: editableTimeEntry.description)
+            state.editableTimeEntry?.description = appendCharacter(String(tagToken), toString: editableTimeEntry.description)
             return []
             
         case let .tagCreated(tag):
@@ -202,24 +202,36 @@ extension EditableTimeEntry {
             tagIds = timeEntry.tagIds
             taskId = timeEntry.taskId
             billable = timeEntry.billable
+ 
         case .projectSuggestion(let project):
             projectId = project.id
             workspaceId = project.workspaceId
+            removeQueryFromDescription(projectToken, cursorPosition)
 
-            let (optionalToken, currentQuery) = description.findTokenAndQueryMatchesForAutocomplete("@", cursorPosition)
-            guard let token = optionalToken else { return }
-            let delimiter = "\(String(token))\(currentQuery)"
-            guard let rangeToReplace = description.range(of: delimiter) else { return }
-            let newDescription = description.replacingCharacters(in: rangeToReplace, with: "")
-            description = newDescription
-        case .taskSuggestion:
-            fatalError()
-        case .tagSuggestion:
-            fatalError()
+        case .taskSuggestion(let task, let project):
+            taskId = task.id
+            projectId = project.id
+            workspaceId = project.workspaceId
+            removeQueryFromDescription(projectToken, cursorPosition)
+            
+        case .tagSuggestion(let tag):
+            guard tag.workspaceId == workspaceId else { return }
+            tagIds.append(tag.id)
+            removeQueryFromDescription(tagToken, cursorPosition)
+            
         case .createProjectSuggestion:
             fatalError()
         case .createTagSuggestion:
             fatalError()
         }
+    }
+    
+    mutating func removeQueryFromDescription(_ token: Character, _ cursorPosition: Int) {
+        let (optionalToken, currentQuery) = description.findTokenAndQueryMatchesForAutocomplete(token, cursorPosition)
+        guard let token = optionalToken else { return }
+        let delimiter = "\(String(token))\(currentQuery)"
+        guard let rangeToReplace = description.range(of: delimiter) else { return }
+        let newDescription = description.replacingCharacters(in: rangeToReplace, with: "")
+        description = newDescription
     }
 }

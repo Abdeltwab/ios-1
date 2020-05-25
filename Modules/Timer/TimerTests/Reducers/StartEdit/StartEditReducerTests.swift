@@ -428,6 +428,81 @@ class StartEditReducerTests: XCTestCase {
         })
     }
 
+    func test_autocompleteSuggestionTapped_withATaskSuggestion() {
+
+        let timeEntry = TimeEntry.with(description: "old description @proj", billable: false)
+        let project = Project.with(id: 11, name: "Project", workspaceId: 10)
+        let task = Task.with(id: 12, name: "Project", projectId: 11, workspaceId: 10)
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: EditableTimeEntry.fromSingle(timeEntry),
+            autocompleteSuggestions: [],
+            dateTimePickMode: .end,
+            cursorPosition: 19
+        )
+
+        let suggestion = AutocompleteSuggestion.taskSuggestion(task: task, project: project)
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .autocompleteSuggestionTapped(suggestion)) {
+                $0.editableTimeEntry?.description = "old description "
+                $0.editableTimeEntry?.taskId = task.id
+                $0.editableTimeEntry?.projectId = project.id
+                $0.editableTimeEntry?.workspaceId = project.workspaceId
+        })
+    }
+
+    func test_autocompleteSuggestionTapped_withATagSuggestionInAValidWorkspace() {
+
+        let timeEntry = TimeEntry.with(description: "old description #tag", billable: false, workspaceId: 2)
+        let tag = Tag(id: 11, name: "Project", workspaceId: 2)
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: EditableTimeEntry.fromSingle(timeEntry),
+            autocompleteSuggestions: [],
+            dateTimePickMode: .end,
+            cursorPosition: 19
+        )
+
+        let suggestion = AutocompleteSuggestion.tagSuggestion(tag: tag)
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .autocompleteSuggestionTapped(suggestion)) {
+                $0.editableTimeEntry?.description = "old description "
+                $0.editableTimeEntry?.tagIds.append(tag.id)
+        })
+    }
+
+    func test_autocompleteSuggestionTapped_withATagSuggestionInAInvalidWorkspace() {
+
+        let timeEntry = TimeEntry.with(description: "old description #tag", billable: false)
+        let tag = Tag(id: 11, name: "Project", workspaceId: 10)
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: EditableTimeEntry.fromSingle(timeEntry),
+            autocompleteSuggestions: [],
+            dateTimePickMode: .end,
+            cursorPosition: 19
+        )
+
+        let suggestion = AutocompleteSuggestion.tagSuggestion(tag: tag)
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .autocompleteSuggestionTapped(suggestion)))
+    }
+
     func testAutocompleteSuggestionsUpdatedUpdatesState() {
         let entities = TimeLogEntities()
         let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
