@@ -16,10 +16,8 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
             if state.editableTimeEntry != nil {
                 state.cursorPosition = position
                 state.editableTimeEntry!.description = description
-
-                return updateAutocompleteSuggestionsEffect(description, position, state.entities, repository)
+                return updateAutocompleteSuggestionsEffect(description, position, state.entities)
             }
-            
             return []
 
         case .closeButtonTapped, .dialogDismissed:

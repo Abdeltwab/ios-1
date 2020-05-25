@@ -7,23 +7,22 @@ import Repository
 func updateAutocompleteSuggestionsEffect(
     _ query: String,
     _ cursorPosition: Int,
-    _ entities: TimeLogEntities,
-    _ repository: TimeLogRepository
+    _ entities: TimeLogEntities
 ) -> [Effect<StartEditAction>] {
     if query.isEmpty {
         return [Single.just(StartEditAction.autocompleteSuggestionsUpdated([])).toEffect()]
     }
-    
+
     let (token, actualQuery) = query.findTokenAndQueryMatchesForAutocomplete(["@", "#"], cursorPosition)
-    
+
     let suggestions: [AutocompleteSuggestion] = {
         switch token {
-        case "@": return fetchProjectSuggestions(for: actualQuery)
-        case "#": return fetchTagSuggestions(for: actualQuery)
+        case "@": return fetchProjectSuggestions(for: actualQuery, in: entities)
+        case "#": return fetchTagSuggestions(for: actualQuery, in: entities)
         default: return fetchTimeEntrySuggestions(for: actualQuery, in: entities)
         }
     }()
-        
+
     return [
         Single.just(suggestions)
             .map(StartEditAction.autocompleteSuggestionsUpdated)
@@ -31,11 +30,27 @@ func updateAutocompleteSuggestionsEffect(
     ]
 }
 
-func fetchProjectSuggestions(for query: String) -> [AutocompleteSuggestion] {
-    return []
+func fetchProjectSuggestions(for query: String, in entities: TimeLogEntities) -> [AutocompleteSuggestion] {
+    func clientNameMatches(_ word: String, _ project: Project) -> Bool {
+        guard let client = entities.getClient(project.clientId) else { return false }
+        return client.name.contains(word)
+    }
+
+    let words = query.split(separator: " ").map { String($0) }
+
+    var suggestions = words.reduce(Array(entities.projects.values)) { projects, word in
+        return projects.filter { project in
+            return project.name.contains(word)
+                || clientNameMatches(word, project)
+        }
+    }.sorted(by: { leftHand, rightHand in
+        leftHand.name > rightHand.name
+    }).map(AutocompleteSuggestion.projectSuggestion)
+    suggestions.insert(AutocompleteSuggestion.createProjectSuggestion(name: query), at: 0)
+    return suggestions
 }
 
-func fetchTagSuggestions(for query: String) -> [AutocompleteSuggestion] {
+func fetchTagSuggestions(for query: String, in entities: TimeLogEntities) -> [AutocompleteSuggestion] {
     return []
 }
 
@@ -59,7 +74,7 @@ func fetchTimeEntrySuggestions(for query: String, in entities: TimeLogEntities) 
         guard let task = entities.getTask(timeEntry.taskId) else { return false }
         return task.name.contains(word)
     }
-    
+
     let words = query.split(separator: " ").map { String($0) }
 
     return words.reduce(Array(entities.timeEntries.values)) { timeEntries, word in

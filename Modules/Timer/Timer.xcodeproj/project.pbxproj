@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		341A0280247268EB00EB25AF /* Project+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A027F247268EB00EB25AF /* Project+Extensions.swift */; };
 		341A028424726AF200EB25AF /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A028324726AF200EB25AF /* Task+Extensions.swift */; };
+		341A028624728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A028524728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift */; };
+		341A028824728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A028724728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift */; };
 		3430C36C24213CEB009CF454 /* OtherServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430C36B24213CEB009CF454 /* OtherServices.framework */; };
 		346B6A5B246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */; };
-		346B6A5E246EB87700A76A1E /* StartEditReducerTests+Autocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5D246EB87700A76A1E /* StartEditReducerTests+Autocomplete.swift */; };
+		346B6A5E246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */; };
 		34C93C082453387300024F06 /* DateTimePickMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C93C072453387300024F06 /* DateTimePickMode.swift */; };
 		3F08D7D72EA783CBBD146B1F /* Pods_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB2199F93BBF3239F419242 /* Pods_Timer.framework */; };
 		510BD5B824363CF80028C445 /* StartEditReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BD5B724363CF80028C445 /* StartEditReducerTests.swift */; };
@@ -103,10 +105,12 @@
 		1DB2199F93BBF3239F419242 /* Pods_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		341A027F247268EB00EB25AF /* Project+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+Extensions.swift"; sourceTree = "<group>"; };
 		341A028324726AF200EB25AF /* Task+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extensions.swift"; sourceTree = "<group>"; };
+		341A028524728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteProjects.swift"; sourceTree = "<group>"; };
+		341A028724728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteEntities.swift"; sourceTree = "<group>"; };
 		3430C365241A8FE4009CF454 /* Time.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Time.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3430C36B24213CEB009CF454 /* OtherServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OtherServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAutocompleteSuggestionsEffect.swift; sourceTree = "<group>"; };
-		346B6A5D246EB87700A76A1E /* StartEditReducerTests+Autocomplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+Autocomplete.swift"; sourceTree = "<group>"; };
+		346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteTimeEntries.swift"; sourceTree = "<group>"; };
 		34C93C072453387300024F06 /* DateTimePickMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickMode.swift; sourceTree = "<group>"; };
 		510BD5B724363CF80028C445 /* StartEditReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditReducerTests.swift; sourceTree = "<group>"; };
 		51FF7C3B2429120500CC2002 /* EditableTimeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableTimeEntry.swift; sourceTree = "<group>"; };
@@ -249,7 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				510BD5B724363CF80028C445 /* StartEditReducerTests.swift */,
-				346B6A5D246EB87700A76A1E /* StartEditReducerTests+Autocomplete.swift */,
+				346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */,
+				341A028524728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift */,
 			);
 			path = StartEdit;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				8C2130D02424F9EE000FC72C /* TimeEntry+Extensions.swift */,
 				341A027F247268EB00EB25AF /* Project+Extensions.swift */,
 				341A028324726AF200EB25AF /* Task+Extensions.swift */,
+				341A028724728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift */,
 			);
 			path = TestUtils;
 			sourceTree = "<group>";
@@ -794,13 +800,15 @@
 			files = (
 				CC8172372476A397004F1152 /* StringExtensionsTests.swift in Sources */,
 				B417E98D244F78D0004D251F /* ProjectReducerTests.swift in Sources */,
-				346B6A5E246EB87700A76A1E /* StartEditReducerTests+Autocomplete.swift in Sources */,
+				346B6A5E246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift in Sources */,
 				CCD8DDAC2449EE9F00AC9932 /* RunningTimeEntryReducerTests.swift in Sources */,
+				341A028624728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift in Sources */,
 				341A0280247268EB00EB25AF /* Project+Extensions.swift in Sources */,
 				8C2130CA2424F5DE000FC72C /* MockTimeLogRepository.swift in Sources */,
 				8C2130C42424F46D000FC72C /* TimeEntriesLogReducerTests.swift in Sources */,
 				341A028424726AF200EB25AF /* Task+Extensions.swift in Sources */,
 				8C2130D12424F9EE000FC72C /* TimeEntry+Extensions.swift in Sources */,
+				341A028824728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift in Sources */,
 				8C2130CF2424F64F000FC72C /* ReducerAssert.swift in Sources */,
 				8C4EDC5B2429F8B200C03E14 /* TimeEntriesSelectorTests.swift in Sources */,
 				510BD5B824363CF80028C445 /* StartEditReducerTests.swift in Sources */,
