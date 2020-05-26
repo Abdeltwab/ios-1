@@ -5,9 +5,10 @@ import RxSwift
 import Repository
 
 func updateAutocompleteSuggestionsEffect(
-    _ query: String,
-    _ cursorPosition: Int,
-    _ entities: TimeLogEntities
+    for query: String,
+    at cursorPosition: Int,
+    in entities: TimeLogEntities,
+    of workspaceId: Int64
 ) -> [Effect<StartEditAction>] {
     if query.isEmpty {
         return [Single.just(StartEditAction.autocompleteSuggestionsUpdated([])).toEffect()]
@@ -18,7 +19,7 @@ func updateAutocompleteSuggestionsEffect(
     let suggestions: [AutocompleteSuggestion] = {
         switch token {
         case projectToken: return fetchProjectSuggestions(for: actualQuery, in: entities)
-        case tagToken: return fetchTagSuggestions(for: actualQuery, in: entities)
+        case tagToken: return fetchTagSuggestions(for: actualQuery, in: entities, of: workspaceId)
         default: return fetchTimeEntrySuggestions(for: actualQuery, in: entities)
         }
     }()
@@ -50,8 +51,26 @@ func fetchProjectSuggestions(for query: String, in entities: TimeLogEntities) ->
     return suggestions
 }
 
-func fetchTagSuggestions(for query: String, in entities: TimeLogEntities) -> [AutocompleteSuggestion] {
-    return []
+func fetchTagSuggestions(for query: String, in entities: TimeLogEntities, of workspaceId: Int64) -> [AutocompleteSuggestion] {
+    let words = query.split(separator: " ").map { String($0) }
+    
+    let tagsInCurrentWorkspace = entities.tags.values.filter { $0.workspaceId == workspaceId }
+    
+    let matchingTags = words.reduce(tagsInCurrentWorkspace) { tags, word in
+        return tags.filter { tag in
+            return tag.name.contains(word)
+        }
+    }.sorted(by: { leftHand, rightHand in
+        leftHand.name > rightHand.name
+    })
+    
+    var suggestions: [AutocompleteSuggestion] = []
+    if !matchingTags.contains(where: { $0.name == query }) {
+        suggestions.insert(AutocompleteSuggestion.createTagSuggestion(name: query), at: 0)
+    }
+    suggestions.append(contentsOf: matchingTags.map(AutocompleteSuggestion.tagSuggestion))
+    
+    return suggestions
 }
 
 func fetchTimeEntrySuggestions(for query: String, in entities: TimeLogEntities) -> [AutocompleteSuggestion] {

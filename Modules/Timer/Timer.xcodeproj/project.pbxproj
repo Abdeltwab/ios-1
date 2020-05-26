@@ -14,6 +14,7 @@
 		3430C36C24213CEB009CF454 /* OtherServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430C36B24213CEB009CF454 /* OtherServices.framework */; };
 		346B6A5B246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */; };
 		346B6A5E246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */; };
+		349ED3E9247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349ED3E8247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift */; };
 		34C93C082453387300024F06 /* DateTimePickMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C93C072453387300024F06 /* DateTimePickMode.swift */; };
 		3F08D7D72EA783CBBD146B1F /* Pods_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB2199F93BBF3239F419242 /* Pods_Timer.framework */; };
 		510BD5B824363CF80028C445 /* StartEditReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BD5B724363CF80028C445 /* StartEditReducerTests.swift */; };
@@ -112,6 +113,7 @@
 		3430C36B24213CEB009CF454 /* OtherServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OtherServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAutocompleteSuggestionsEffect.swift; sourceTree = "<group>"; };
 		346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteTimeEntries.swift"; sourceTree = "<group>"; };
+		349ED3E8247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteTags.swift"; sourceTree = "<group>"; };
 		34C93C072453387300024F06 /* DateTimePickMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickMode.swift; sourceTree = "<group>"; };
 		510BD5B724363CF80028C445 /* StartEditReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditReducerTests.swift; sourceTree = "<group>"; };
 		51FF7C3B2429120500CC2002 /* EditableTimeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableTimeEntry.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				510BD5B724363CF80028C445 /* StartEditReducerTests.swift */,
 				346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */,
 				341A028524728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift */,
+				349ED3E8247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift */,
 			);
 			path = StartEdit;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				CC8172372476A397004F1152 /* StringExtensionsTests.swift in Sources */,
 				B417E98D244F78D0004D251F /* ProjectReducerTests.swift in Sources */,
 				346B6A5E246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift in Sources */,
+				349ED3E9247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift in Sources */,
 				CCD8DDAC2449EE9F00AC9932 /* RunningTimeEntryReducerTests.swift in Sources */,
 				341A028624728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift in Sources */,
 				341A0280247268EB00EB25AF /* Project+Extensions.swift in Sources */,

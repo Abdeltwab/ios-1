@@ -13,10 +13,14 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
         switch action {
             
         case let .descriptionEntered(description, position):
-            if state.editableTimeEntry != nil {
+            if let editableTimeEntry = state.editableTimeEntry {
                 state.cursorPosition = position
                 state.editableTimeEntry!.description = description
-                return updateAutocompleteSuggestionsEffect(description, position, state.entities)
+                return updateAutocompleteSuggestionsEffect(
+                    for: description,
+                    at: position,
+                    in: state.entities,
+                    of: editableTimeEntry.workspaceId)
             }
             return []
 
