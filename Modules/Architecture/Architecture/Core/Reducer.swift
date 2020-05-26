@@ -34,6 +34,18 @@ public struct Reducer<StateType, ActionType> {
     ) -> Reducer<StateType, GlobalAction> {
         return self.pullback(state: \StateType.self, action: action)
     }
+
+    /// Enhances a reducer with some other reducer.
+    public func decorate<ReducerState, ReducerAction>(
+        with reducer: Reducer<ReducerState, ReducerAction>,
+        state: WritableKeyPath<StateType, ReducerState>,
+        action: WritableKeyPath<ActionType, ReducerAction?>
+    ) -> Reducer {
+        combine(
+            self,
+            reducer.pullback(state: state, action: action)
+        )
+    }
 }
 
 public func combine<State, Action>(

@@ -48,29 +48,20 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
                 return []
             }
             
-            if let duration = editableTimeEntry.duration {
+            if editableTimeEntry.duration != nil {
                 let mode = state.dateTimePickMode
                 state.dateTimePickMode = mode == .stop ? .none : .stop
                 return []
-            } else {
-                let maxDuration = TimeInterval.maximumTimeEntryDuration
-                let duration = time.now().timeIntervalSince(startTime)
-                if duration > 0 && duration <= maxDuration {
-                    editableTimeEntry.duration = duration
-                    state.editableTimeEntry = editableTimeEntry
-                }
-                return []
             }
 
-        case let .timeEntryStarted(startedTimeEntry, stoppedTimeEntry):
-            timeEntryStarted(&state, startedTimeEntry, stoppedTimeEntry)
+            let maxDuration = TimeInterval.maximumTimeEntryDuration
+            let duration = time.now().timeIntervalSince(startTime)
+            if duration > 0 && duration <= maxDuration {
+                editableTimeEntry.duration = duration
+                state.editableTimeEntry = editableTimeEntry
+            }
             return []
 
-        case let .timeEntryUpdated(timeEntry):
-            state.entities.timeEntries[timeEntry.id] = timeEntry
-            state.editableTimeEntry = nil
-            return []
-            
         case let .autocompleteSuggestionTapped(suggestion):
             guard state.editableTimeEntry != nil else { fatalError() }
 
@@ -139,32 +130,27 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
                 state.editableTimeEntry!.duration = duration
             }
             return []
+
         case let .setError(error):
             fatalError(error.description)
+
+        case .timeEntries(.timeEntryStarted), .timeEntries(.timeEntryUpdated):
+            state.editableTimeEntry = nil
+            return []
+
+        case .timeEntries:
+            return []
         }
     }
-}
-
-func timeEntryStarted(_ state: inout StartEditState, _ startedTimeEntry: TimeEntry, _ stoppedTimeEntry: TimeEntry?) {
-    state.editableTimeEntry = nil
-    state.entities.timeEntries[startedTimeEntry.id] = startedTimeEntry
-    if let stoppedTimeEntry = stoppedTimeEntry {
-        state.entities.timeEntries[stoppedTimeEntry.id] = stoppedTimeEntry
-    }
-}
-
-func startTimeEntry(_ timeEntry: StartTimeEntryDto, repository: TimeLogRepository) -> Effect<StartEditAction> {
-    return repository
-        .startTimeEntry(timeEntry)
-        .toEffect(map: StartEditAction.timeEntryStarted ,
-                  catch: { error in StartEditAction.setError(error.toErrorType()) })
 }
 
 func doneButtonTapped(_ state: StartEditState, _ repository: TimeLogRepository) -> [Effect<StartEditAction>] {
     let editableTimeEntry = state.editableTimeEntry!
     let shouldStartNewTimeEntry = editableTimeEntry.ids.isEmpty
     if shouldStartNewTimeEntry {
-        return [startTimeEntry(editableTimeEntry.toStartTimeEntryDto(), repository: repository)]
+        return [
+            Effect.from(action: .timeEntries(.startTimeEntry(editableTimeEntry.toStartTimeEntryDto())))
+        ]
     }
 
     let updatedTimeEnries = editableTimeEntry.ids

@@ -4,12 +4,18 @@ import Repository
 import OtherServices
 
 public func createTimerReducer(repository: Repository, time: Time, schedulerProvider: SchedulerProvider) -> Reducer<TimerState, TimerAction> {
+
+    let timeEntriesCoreReducer = createTimeEntriesReducer(time: time, repository: repository)
+
     return combine(
         createTimeEntriesLogReducer(repository: repository, time: time, schedulerProvider: schedulerProvider)
+            .decorate(with: timeEntriesCoreReducer, state: \.entities.timeEntries, action: \.timeEntries)
             .pullback(state: \.timeLogState, action: \.timeLog),
         createStartEditReducer(repository: repository, time: time)
+            .decorate(with: timeEntriesCoreReducer, state: \.entities.timeEntries, action: \.timeEntries)
             .pullback(state: \.startEditState, action: \.startEdit),
         createRunningTimeEntryReducer(repository: repository, time: time)
+            .decorate(with: timeEntriesCoreReducer, state: \.entities.timeEntries, action: \.timeEntries)
             .pullback(state: \.runningTimeEntryState, action: \.runningTimeEntry),
         createProjectReducer(repository: repository)
             .pullback(state: \.projectState, action: \.project)

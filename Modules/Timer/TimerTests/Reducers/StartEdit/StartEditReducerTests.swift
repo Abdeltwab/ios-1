@@ -114,10 +114,7 @@ class StartEditReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, .doneButtonTapped),
-            Step(.receive, .timeEntryStarted(startedTimeEntry: expectedStartedEntry, stoppedTimeEntry: nil)) {
-                $0.editableTimeEntry = nil
-                $0.entities.timeEntries[expectedStartedEntry.id] = expectedStartedEntry
-            }
+            Step(.receive, .timeEntries(.startTimeEntry(expectedStartedEntry.toStartTimeEntryDto())))
         )
     }
 
@@ -158,11 +155,9 @@ class StartEditReducerTests: XCTestCase {
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, StartEditAction.doneButtonTapped),
-            Step(.receive, StartEditAction.timeEntryStarted(startedTimeEntry: expectedStartedEntry, stoppedTimeEntry: runningTimeEntry)) {
-                $0.editableTimeEntry = nil
-                $0.entities.timeEntries[expectedStartedEntry.id] = expectedStartedEntry
-        })
+            Step(.send, .doneButtonTapped),
+            Step(.receive, .timeEntries(.startTimeEntry(expectedStartedEntry.toStartTimeEntryDto())))
+        )
     }
 
     func testEnteringDescriptionAndThenPressingDone() {
@@ -199,10 +194,7 @@ class StartEditReducerTests: XCTestCase {
             descriptionEnteredStep(for: "hello"),
             Step(.receive, StartEditAction.autocompleteSuggestionsUpdated([])),
             Step(.send, StartEditAction.doneButtonTapped),
-            Step(.receive, StartEditAction.timeEntryStarted(startedTimeEntry: expectedStartedEntry, stoppedTimeEntry: nil)) {
-                $0.editableTimeEntry = nil
-                $0.entities.timeEntries[expectedStartedEntry.id] = expectedStartedEntry
-            }
+            Step(.receive, .timeEntries(.startTimeEntry(expectedStartedEntry.toStartTimeEntryDto())))
         )
     }
 

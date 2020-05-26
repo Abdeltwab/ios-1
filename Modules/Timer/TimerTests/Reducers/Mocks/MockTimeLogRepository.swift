@@ -17,6 +17,9 @@ class MockTimeLogRepository: TimeLogRepository {
     var projects = [Project]()
     var tasks = [Task]()
     var tags = [Tag]()
+
+    var deleteCalled: Bool = false
+    var startCalled: Bool = false
     
     init(time: Time) {
         self.time = time
@@ -47,6 +50,9 @@ class MockTimeLogRepository: TimeLogRepository {
     }
     
     func startTimeEntry(_ timeEntry: StartTimeEntryDto) -> Single<(started: TimeEntry, stopped: TimeEntry?)> {
+
+        startCalled = true
+
         let startedTimeEntry = TimeEntry(
             id: newTimeEntryId,
             description: timeEntry.description,
@@ -55,6 +61,7 @@ class MockTimeLogRepository: TimeLogRepository {
             billable: false,
             workspaceId: timeEntry.workspaceId,
             tagIds: [])
+
         return Single.just((startedTimeEntry, stoppedTimeEntry))
     }
 
@@ -63,6 +70,7 @@ class MockTimeLogRepository: TimeLogRepository {
     }
 
     func deleteTimeEntry(timeEntryId: Int64) -> Single<Void> {
+        deleteCalled = true
         return Single.just(())
     }
 

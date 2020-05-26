@@ -17,7 +17,7 @@ func createTimeEntriesLogReducer(
 
         case let .continueButtonTapped(timeEntryId):
             return [
-                continueTimeEntry(repository, time: time, timeEntry: state.entities.timeEntries[timeEntryId]!)
+                Effect.from(action: .timeEntries(.continueTimeEntry(timeEntryId)))
             ]
 
         case let .timeEntrySwiped(direction, timeEntryId):
@@ -25,7 +25,9 @@ func createTimeEntriesLogReducer(
             case .left:
                 return deleteWithUndo(timeEntryIds: [timeEntryId], state: &state, repository: repository, schedulerProvider: schedulerProvider)
             case .right:
-                return [continueTimeEntry(repository, time: time, timeEntry: state.entities.timeEntries[timeEntryId]!)]
+                return [
+                    Effect.from(action: .timeEntries(.continueTimeEntry(timeEntryId)))
+                ]
             }
 
         case let .timeEntryTapped(timeEntryId):
@@ -52,20 +54,10 @@ func createTimeEntriesLogReducer(
             case .left:
                 return deleteWithUndo(timeEntryIds: Set(timeEntryIds), state: &state, repository: repository, schedulerProvider: schedulerProvider)
             case .right:
-                return [continueTimeEntry(repository, time: time, timeEntry: state.entities.timeEntries[timeEntryIds.first!]!)]
+                return [
+                    Effect.from(action: .timeEntries(.continueTimeEntry(timeEntryIds.first!)))
+                ]
             }
-
-        case let .timeEntryDeleted(timeEntryId):
-            state.entities.timeEntries[timeEntryId] = nil
-            return []
-
-        case let .timeEntryStarted(startedTimeEntry, stoppedTimeEntry):
-            if let stoppedTimeEntry = stoppedTimeEntry {
-                state.entities.timeEntries[stoppedTimeEntry.id] = stoppedTimeEntry
-            }
-            state.entities.timeEntries[startedTimeEntry.id] = startedTimeEntry
-
-            return []
 
         case let .setError(error):
             fatalError(error.description)
@@ -79,11 +71,14 @@ func createTimeEntriesLogReducer(
 
             state.entriesPendingDeletion.removeAll()
             return timeEntryIdsToDelete.sorted().map {
-                deleteTimeEntry(repository, timeEntryId: $0)
+                Effect.from(action: .timeEntries(.deleteTimeEntry($0)))
             }
             
         case .undoButtonTapped:
             state.entriesPendingDeletion.removeAll()
+            return []
+            
+        case .timeEntries:
             return []
         }
     }
@@ -102,28 +97,12 @@ private func deleteWithUndo(
     } else {
         let teIdsToDeleteImmediately = state.entriesPendingDeletion
         state.entriesPendingDeletion = timeEntryIdsSet
-        var actions = teIdsToDeleteImmediately.map {
-            deleteTimeEntry(repository, timeEntryId: $0)
+        var actions: [Effect<TimeEntriesLogAction>] = teIdsToDeleteImmediately.map {
+            .from(action: .timeEntries(.deleteTimeEntry($0)))
         }
         actions.append(waitForUndoEffect(timeEntryIdsSet, schedulerProvider: schedulerProvider))
         return actions
     }
-}
-
-private func deleteTimeEntry(_ repository: TimeLogRepository, timeEntryId: Int64) -> Effect<TimeEntriesLogAction> {
-    repository.deleteTimeEntry(timeEntryId: timeEntryId)
-        .toEffect(
-            map: { TimeEntriesLogAction.timeEntryDeleted(timeEntryId) },
-            catch: { TimeEntriesLogAction.setError($0.toErrorType())}
-    )
-}
-
-private func continueTimeEntry(_ repository: TimeLogRepository, time: Time, timeEntry: TimeEntry) -> Effect<TimeEntriesLogAction> {
-    return repository.startTimeEntry(timeEntry.toStartTimeEntryDto())
-        .toEffect(
-            map: { TimeEntriesLogAction.timeEntryStarted($0, $1) },
-            catch: { TimeEntriesLogAction.setError($0.toErrorType())}
-    )
 }
 
 private func waitForUndoEffect(_ entriesToDelete: Set<Int64>, schedulerProvider: SchedulerProvider) -> Effect<TimeEntriesLogAction> {

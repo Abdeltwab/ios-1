@@ -41,3 +41,11 @@ public struct TimeLogEntities: Equatable {
         return tags[id]
     }
 }
+
+extension Dictionary where Dictionary.Key == Int64, Dictionary.Value == TimeEntry {
+    public var runningTimeEntry: TimeEntry? {
+        values.first(where: { timeEntry -> Bool in
+            timeEntry.duration == nil
+        })
+    }
+}

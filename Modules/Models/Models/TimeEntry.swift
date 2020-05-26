@@ -34,7 +34,7 @@ public struct TimeEntry: Entity, Equatable {
 
 extension TimeEntry: Codable {
     
-    private var createdWith: String { "AppleWatchApp" }
+    private var createdWith: String { "Aurora" }
     
     private var encodedDuration: Int64 {
         guard let duration = duration, duration >= 0 else { return Int64(-start.timeIntervalSince1970) }
@@ -65,6 +65,20 @@ extension TimeEntry: Codable {
         case taskId = "task_id"
         case tagIds = "tag_ids"
         case createdWith = "created_with"
+    }
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+
+        id = try values.decode(Int64.self, forKey: .id)
+        description = try values.decode(String.self, forKey: .description)
+        start = try values.decode(Date.self, forKey: .start)
+        duration = try values.decode(TimeInterval?.self, forKey: .duration)
+        billable = try values.decode(Bool.self, forKey: .billable)
+        workspaceId = try values.decode(Int64.self, forKey: .workspaceId)
+        projectId = try values.decode(Int64?.self, forKey: .projectId)
+        taskId = try values.decode(Int64?.self, forKey: .taskId)
+        tagIds = try values.decode([Int64]?.self, forKey: .tagIds) ?? []
     }
     
     public func encode(to encoder: Encoder) throws {

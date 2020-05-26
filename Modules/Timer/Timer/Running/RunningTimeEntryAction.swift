@@ -5,8 +5,21 @@ public enum RunningTimeEntryAction: Equatable {
     case cardTapped
     case stopButtonTapped
     case startButtonTapped
-    case timeEntryStarted(started: TimeEntry, stopped: TimeEntry?)
     case setError(ErrorType)
+    case timeEntries(TimeEntriesAction)
+}
+
+extension RunningTimeEntryAction {
+    var timeEntries: TimeEntriesAction? {
+        get {
+            guard case let .timeEntries(value) = self else { return nil }
+            return value
+        }
+        set {
+            guard case .timeEntries = self, let newValue = newValue else { return }
+            self = .timeEntries(newValue)
+        }
+    }
 }
 
 extension RunningTimeEntryAction: CustomDebugStringConvertible {
@@ -22,14 +35,11 @@ extension RunningTimeEntryAction: CustomDebugStringConvertible {
         case .startButtonTapped:
             return "StartButtonTapped"
 
-        case .timeEntryStarted(started: let startedTE, stopped: let stoppedTE):
-            if let stoppedTE = stoppedTE {
-                return "TimeEntryStarted \(startedTE) \(stoppedTE)"
-            }
-            return "TimeEntryStarted \(startedTE)"
-
         case let .setError(error):
             return "SetError: \(error)"
+
+        case let .timeEntries(action):
+            return action.debugDescription
         }
     }
 }

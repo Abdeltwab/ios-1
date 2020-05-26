@@ -10,7 +10,6 @@ import Models
 
 public typealias TimeEntriesLogStore = Store<TimeEntriesLogState, TimeEntriesLogAction>
 
-// swiftlint:disable function_body_length
 public class TimeEntriesLogViewController: UIViewController, Storyboarded {
     
     public static var storyboardName = "Timer"
@@ -30,7 +29,8 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
         self.title = "Toggl"
         tableView.rowHeight = 72
     }
-    
+
+    // swiftlint:disable function_body_length
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
                 

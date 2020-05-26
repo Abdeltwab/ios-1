@@ -9,8 +9,6 @@ public enum StartEditAction: Equatable {
     case doneButtonTapped
     case startButtonTapped
     case stopButtonTapped
-    case timeEntryStarted(startedTimeEntry: TimeEntry, stoppedTimeEntry: TimeEntry?)
-    case timeEntryUpdated(TimeEntry)
     
     case autocompleteSuggestionTapped(AutocompleteSuggestion)
     
@@ -30,6 +28,21 @@ public enum StartEditAction: Equatable {
 
     case setError(ErrorType)
     case autocompleteSuggestionsUpdated([AutocompleteSuggestion])
+
+    case timeEntries(TimeEntriesAction)
+}
+
+extension StartEditAction {
+    var timeEntries: TimeEntriesAction? {
+        get {
+            guard case let .timeEntries(value) = self else { return nil }
+            return value
+        }
+        set {
+            guard case .timeEntries = self, let newValue = newValue else { return }
+            self = .timeEntries(newValue)
+        }
+    }
 }
 
 extension StartEditAction: CustomDebugStringConvertible {
@@ -54,12 +67,6 @@ extension StartEditAction: CustomDebugStringConvertible {
 
         case .stopButtonTapped:
             return "StopButtonTapped"
-
-        case let .timeEntryStarted(startedTimeEntry, stoppedTimeEntry):
-            return "TimeEntryStarted: \(startedTimeEntry.description) stopped: \(stoppedTimeEntry?.description ?? "nil")"
-            
-        case let .timeEntryUpdated(timeEntry):
-            return "TimeEntryUpdated: \(timeEntry.description)"
             
         case let .autocompleteSuggestionTapped(suggestion):
             return "AutocompleteSuggestionTapped \(suggestion)"
@@ -105,6 +112,9 @@ extension StartEditAction: CustomDebugStringConvertible {
 
         case let .durationInputted(duration):
             return ".durationInputted \(duration)"
+
+        case let .timeEntries(action):
+            return action.debugDescription
         }
     }
 }

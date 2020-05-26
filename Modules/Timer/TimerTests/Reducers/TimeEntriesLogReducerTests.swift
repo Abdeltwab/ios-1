@@ -7,7 +7,6 @@ import RxTest
 @testable import Timer
 
 // swiftlint:disable type_body_length
-// swiftlint:disable file_length
 class TimeEntriesLogReducerTests: XCTestCase {
 
     var now = Date(timeIntervalSince1970: 987654321)
@@ -28,11 +27,6 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         let timeEntries = createTimeEntries(now)
 
-        var expectedNewTimeEntry = timeEntries[0]!
-        expectedNewTimeEntry.id = mockRepository.newTimeEntryId
-        expectedNewTimeEntry.start = now
-        expectedNewTimeEntry.duration = nil
-
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
         let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
@@ -42,9 +36,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, .continueButtonTapped(0)),
-            Step(.receive, .timeEntryStarted(expectedNewTimeEntry, nil)) {
-                $0.entities.timeEntries[expectedNewTimeEntry.id] = expectedNewTimeEntry
-            }
+            Step(.receive, .timeEntries(.continueTimeEntry(timeEntries[0]!.id)))
         )
     }
 
@@ -52,16 +44,6 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         let timeEntries = createTimeEntries(now)
 
-        var expectedNewTimeEntry = timeEntries[0]!
-        expectedNewTimeEntry.id = mockRepository.newTimeEntryId
-        expectedNewTimeEntry.start = now
-        expectedNewTimeEntry.duration = nil
-
-        var expectedStoppedTimeEntry = timeEntries[1]!
-        expectedStoppedTimeEntry.duration = 100
-
-        mockRepository.stoppedTimeEntry = expectedStoppedTimeEntry
-
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
         let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
@@ -71,10 +53,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, .continueButtonTapped(0)),
-            Step(.receive, .timeEntryStarted(expectedNewTimeEntry, expectedStoppedTimeEntry)) {
-                $0.entities.timeEntries[expectedNewTimeEntry.id] = expectedNewTimeEntry
-                $0.entities.timeEntries[expectedStoppedTimeEntry.id] = expectedStoppedTimeEntry
-            }
+            Step(.receive, .timeEntries(.continueTimeEntry(0)))
         )
     }
 
@@ -99,9 +78,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             Step(.receive, .commitDeletion([swipedTimeEntryId])) {
                 $0.entriesPendingDeletion.removeAll()
             },
-            Step(.receive, .timeEntryDeleted(swipedTimeEntryId)) {
-                $0.entities.timeEntries[swipedTimeEntryId] = nil
-            }
+            Step(.receive, .timeEntries(.deleteTimeEntry(swipedTimeEntryId)))
         )
     }
 
@@ -124,13 +101,10 @@ class TimeEntriesLogReducerTests: XCTestCase {
             Step(.send, .timeEntrySwiped(.left, swipedTimeEntryId)) {
                 $0.entriesPendingDeletion = [swipedTimeEntryId]
             },
-            Step(.receive, [.timeEntryDeleted(waitingToBeDeletedId), .commitDeletion([swipedTimeEntryId])]) {
-                $0.entities.timeEntries[waitingToBeDeletedId] = nil
+            Step(.receive, [.timeEntries(.deleteTimeEntry(waitingToBeDeletedId)), .commitDeletion([swipedTimeEntryId])]) {
                 $0.entriesPendingDeletion.removeAll()
             },
-            Step(.receive, .timeEntryDeleted(swipedTimeEntryId)) {
-                $0.entities.timeEntries[swipedTimeEntryId] = nil
-            }
+            Step(.receive, .timeEntries(.deleteTimeEntry(swipedTimeEntryId)))
         )
     }
 
@@ -155,10 +129,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             Step(.receive, .commitDeletion(swipedTimeEntryIds)) {
                 $0.entriesPendingDeletion.removeAll()
             },
-            Step(.receive, [.timeEntryDeleted(1), .timeEntryDeleted(0)]) {
-                $0.entities.timeEntries[0] = nil
-                $0.entities.timeEntries[1] = nil
-            }
+            Step(.receive, [.timeEntries(.deleteTimeEntry(1)), .timeEntries(.deleteTimeEntry(0))])
         )
     }
 
@@ -181,14 +152,10 @@ class TimeEntriesLogReducerTests: XCTestCase {
             Step(.send, .timeEntryGroupSwiped(.left, Array(swipedTimeEntryIds))) {
                 $0.entriesPendingDeletion = swipedTimeEntryIds
             },
-            Step(.receive, [.timeEntryDeleted(waitingToBeDeletedId), .commitDeletion(swipedTimeEntryIds)]) {
-                $0.entities.timeEntries[waitingToBeDeletedId] = nil
+            Step(.receive, [.timeEntries(.deleteTimeEntry(waitingToBeDeletedId)), .commitDeletion(swipedTimeEntryIds)]) {
                 $0.entriesPendingDeletion.removeAll()
             },
-            Step(.receive, [.timeEntryDeleted(0), .timeEntryDeleted(1)]) {
-                $0.entities.timeEntries[0] = nil
-                $0.entities.timeEntries[1] = nil
-            }
+            Step(.receive, [.timeEntries(.deleteTimeEntry(0)), .timeEntries(.deleteTimeEntry(1))])
         )
     }
 
@@ -198,11 +165,6 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         let timeEntries = createTimeEntries(now)
 
-        var expectedNewTimeEntry = timeEntries[0]!
-        expectedNewTimeEntry.id = mockRepository.newTimeEntryId
-        expectedNewTimeEntry.start = now
-        expectedNewTimeEntry.duration = nil
-
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
         let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
@@ -212,9 +174,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, .timeEntrySwiped(.right, swipedTimeEntryId)),
-            Step(.receive, .timeEntryStarted(expectedNewTimeEntry, nil)) {
-                $0.entities.timeEntries[expectedNewTimeEntry.id] = expectedNewTimeEntry
-            }
+            Step(.receive, .timeEntries(.continueTimeEntry(swipedTimeEntryId)))
         )
     }
 
@@ -224,16 +184,6 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         let timeEntries = createTimeEntries(now)
 
-        var expectedNewTimeEntry = timeEntries[0]!
-        expectedNewTimeEntry.id = mockRepository.newTimeEntryId
-        expectedNewTimeEntry.start = now
-        expectedNewTimeEntry.duration = nil
-
-        var expectedStoppedTimeEntry = timeEntries[1]!
-        expectedStoppedTimeEntry.duration = 100
-
-        mockRepository.stoppedTimeEntry = expectedStoppedTimeEntry
-
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
         let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
@@ -243,10 +193,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, .timeEntrySwiped(.right, swipedTimeEntryId)),
-            Step(.receive, .timeEntryStarted(expectedNewTimeEntry, expectedStoppedTimeEntry)) {
-                $0.entities.timeEntries[expectedNewTimeEntry.id] = expectedNewTimeEntry
-                $0.entities.timeEntries[expectedStoppedTimeEntry.id] = expectedStoppedTimeEntry
-            }
+            Step(.receive, .timeEntries(.continueTimeEntry(swipedTimeEntryId)))
         )
     }
 
@@ -345,10 +292,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             steps: Step(.send, .commitDeletion(entriesToBeDeleted)) {
                 $0.entriesPendingDeletion = []
             },
-            Step(.receive, [.timeEntryDeleted(0), .timeEntryDeleted(1)]) { (state) in
-                state.entities.timeEntries[0] = nil
-                state.entities.timeEntries[1] = nil
-            }
+            Step(.receive, [.timeEntries(.deleteTimeEntry(0)), .timeEntries(.deleteTimeEntry(1))])
         )
     }
 
@@ -368,9 +312,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             steps: Step(.send, .commitDeletion(entriesToBeDeleted)) {
                 $0.entriesPendingDeletion = []
             },
-            Step(.receive, .timeEntryDeleted(0)) { (state) in
-                state.entities.timeEntries[0] = nil
-            }
+            Step(.receive, [.timeEntries(.deleteTimeEntry(0))])
         )
     }
 

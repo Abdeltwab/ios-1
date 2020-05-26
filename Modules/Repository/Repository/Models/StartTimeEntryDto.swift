@@ -1,7 +1,7 @@
 import Foundation
 import Models
 
-public struct StartTimeEntryDto {
+public struct StartTimeEntryDto: Equatable {
     public let workspaceId: Int64
     public let description: String
     public let tagIds: [Int64]

@@ -20,6 +20,7 @@ public protocol TimeLogRepository {
 
 public class Repository {
     // These mock the DB
+    private var timeEntries = [TimeEntry]()
     private var workspaces = [Workspace]()
     private var clients = [Client]()
     private var projects = [Project]()
@@ -45,7 +46,7 @@ extension Repository: TimeLogRepository {
             return api.loadWorkspaces()
                 .do(onSuccess: { self.workspaces = $0 })
         }
-        
+
         return Single.just(workspaces)
     }
     
@@ -60,6 +61,12 @@ extension Repository: TimeLogRepository {
     
     public func getTimeEntries() -> Single<[TimeEntry]> {
         database.timeEntries.rx.getAll()
+//        if timeEntries.isEmpty {
+//            return api.loadEntries()
+//                .do(onSuccess: { self.timeEntries = $0 })
+//        }
+//
+//        return Single.just(timeEntries)
     }
     
     public func getProjects() -> Single<[Project]> {

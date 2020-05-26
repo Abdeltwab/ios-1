@@ -82,9 +82,8 @@ class RunningTimeEntryReducerTests: XCTestCase {
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, .stopButtonTapped) {
-                $0.entities.timeEntries[1]!.duration = 200
-            }
+            Step(.send, .stopButtonTapped),
+            Step(.receive, .timeEntries(.stopRunningTimeEntry))
         )
     }
 
@@ -131,10 +130,8 @@ class RunningTimeEntryReducerTests: XCTestCase {
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, RunningTimeEntryAction.startButtonTapped),
-            Step(.receive, RunningTimeEntryAction.timeEntryStarted(started: expectedStartedEntry, stopped: nil)) {
-                $0.entities.timeEntries[expectedStartedEntry.id] = expectedStartedEntry
-            }
+            Step(.send, .startButtonTapped),
+            Step(.receive, .timeEntries(.startTimeEntry(expectedStartedEntry.toStartTimeEntryDto())))
         )
     }
 }
