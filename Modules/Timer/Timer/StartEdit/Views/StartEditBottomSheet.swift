@@ -30,6 +30,8 @@ class StartEditBottomSheet<ContainedView: UIViewController>: UIViewController, U
     private let containedViewController: ContainedView
     private let overlay = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
 
+    private var isDragging = false
+
     private var disposeBag = DisposeBag()
 
     var state: BottomSheetState = .hidden {
@@ -182,13 +184,15 @@ class StartEditBottomSheet<ContainedView: UIViewController>: UIViewController, U
         let velocity = recognizer.velocity(in: view).y
         
         switch recognizer.state {
+        case .began:
+            isDragging = true
+
         case .changed:
             topConstraint.constant += translation
-            if translation > 0 {
-                self.containedViewController.loseFocus()
-            }
+            containedViewController.loseFocus()
 
         case .ended, .cancelled:
+            isDragging = false
             let finalPosition = self.topConstraint.constant + translation + velocity * 0.1
             if finalPosition < fullScreenConstant + partialViewConstant / 2 {
                 state = .full
@@ -219,7 +223,7 @@ class StartEditBottomSheet<ContainedView: UIViewController>: UIViewController, U
     }
 
     private func keyboardWillChange(intersectionHeight: CGFloat) {
-        if state == .partial {
+        if state == .partial && !isDragging {
             topConstraint.constant = partialViewConstant - intersectionHeight
         }
 
@@ -236,6 +240,10 @@ class StartEditBottomSheet<ContainedView: UIViewController>: UIViewController, U
             let gesture = gestureRecognizer as? UIPanGestureRecognizer
             else {
                 return false
+        }
+
+        if state == .full && !isDragging {
+            containedViewController.loseFocus()
         }
         let direction = gesture.velocity(in: view).y
 
