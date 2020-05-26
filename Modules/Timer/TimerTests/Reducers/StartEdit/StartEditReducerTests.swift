@@ -264,14 +264,49 @@ class StartEditReducerTests: XCTestCase {
             cursorPosition: 0
         )
 
-        let expectedPickerMode = DateTimePickMode.end
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .stopButtonTapped) { $0.dateTimePickMode = .stop }
+        )
+    }
+
+    func test_dateTimePicked_when_pickerMode_is_none() {
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace),
+            autocompleteSuggestions: [],
+            dateTimePickMode: .none, cursorPosition: 0
+        )
+
+        let picked = Date(timeIntervalSinceReferenceDate: 100)
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, .stopButtonTapped),
-            Step(.receive, .pickerTapped(expectedPickerMode)) { $0.dateTimePickMode = .end }
+            Step(.send, .dateTimePicked(picked)) { _ in }
+        )
+    }
+
+    func test_dateTimePicked_whenEditableTimeEntry_is_nil() {
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: nil,
+            autocompleteSuggestions: [],
+            dateTimePickMode: .start, cursorPosition: 0
+        )
+
+        let picked = Date(timeIntervalSinceReferenceDate: 100)
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .dateTimePicked(picked)) { _ in }
         )
     }
 
@@ -305,7 +340,7 @@ class StartEditReducerTests: XCTestCase {
             entities: TimeLogEntities(),
             editableTimeEntry: timeEntry,
             autocompleteSuggestions: [],
-            dateTimePickMode: .end, cursorPosition: 0
+            dateTimePickMode: .stop, cursorPosition: 0
         )
 
         assertReducerFlow(
@@ -322,7 +357,7 @@ class StartEditReducerTests: XCTestCase {
             entities: TimeLogEntities(),
             editableTimeEntry: EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace),
             autocompleteSuggestions: [],
-            dateTimePickMode: .end, cursorPosition: 0
+            dateTimePickMode: .stop, cursorPosition: 0
         )
 
         let end = Date(timeIntervalSinceReferenceDate: 200)
@@ -335,7 +370,7 @@ class StartEditReducerTests: XCTestCase {
         )
     }
 
-    func testPickerTapped() {
+    func test_startButtonTapped_twice() {
         let state = StartEditState(
             user: Loadable.loaded(mockUser),
             entities: TimeLogEntities(),
@@ -348,9 +383,52 @@ class StartEditReducerTests: XCTestCase {
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, .pickerTapped(.start)) { $0.dateTimePickMode = .start },
-            Step(.send, .pickerTapped(.end)) { $0.dateTimePickMode = .end },
-            Step(.send, .pickerTapped(.none)) { $0.dateTimePickMode = .none }
+            Step(.send, .startButtonTapped) { $0.dateTimePickMode = .start },
+            Step(.send, .startButtonTapped) { $0.dateTimePickMode = .none }
+        )
+    }
+
+    func test_stopButtonTapped_twice_when_duration_is_not_nil() {
+        var editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+        editableTimeEntry.start = now
+        editableTimeEntry.duration = 100
+
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: editableTimeEntry,
+            autocompleteSuggestions: [],
+            dateTimePickMode: .none, cursorPosition: 0
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .stopButtonTapped) { $0.dateTimePickMode = .stop },
+            Step(.send, .stopButtonTapped) { $0.dateTimePickMode = .none }
+        )
+    }
+
+    func test_startButtonTapped_andThen_stopButtonTapped() {
+        var editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+        editableTimeEntry.start = now
+        editableTimeEntry.duration = 100
+
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: editableTimeEntry,
+            autocompleteSuggestions: [],
+            dateTimePickMode: .none, cursorPosition: 0
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .startButtonTapped) { $0.dateTimePickMode = .start },
+            Step(.send, .stopButtonTapped) { $0.dateTimePickMode = .stop }
         )
     }
 
@@ -360,7 +438,7 @@ class StartEditReducerTests: XCTestCase {
             entities: TimeLogEntities(),
             editableTimeEntry: EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace),
             autocompleteSuggestions: [],
-            dateTimePickMode: .end, cursorPosition: 0
+            dateTimePickMode: .stop, cursorPosition: 0
         )
 
         assertReducerFlow(
@@ -383,7 +461,7 @@ class StartEditReducerTests: XCTestCase {
             entities: TimeLogEntities(),
             editableTimeEntry: EditableTimeEntry.fromSingle(oldTimeEntry),
             autocompleteSuggestions: [],
-            dateTimePickMode: .end, cursorPosition: 0
+            dateTimePickMode: .stop, cursorPosition: 0
         )
 
         let suggestion = AutocompleteSuggestion.timeEntrySuggestion(timeEntry: newTimeEntry)
@@ -411,7 +489,7 @@ class StartEditReducerTests: XCTestCase {
             entities: TimeLogEntities(),
             editableTimeEntry: EditableTimeEntry.fromSingle(timeEntry),
             autocompleteSuggestions: [],
-            dateTimePickMode: .end,
+            dateTimePickMode: .stop,
             cursorPosition: 19
         )
 
@@ -438,7 +516,7 @@ class StartEditReducerTests: XCTestCase {
             entities: TimeLogEntities(),
             editableTimeEntry: EditableTimeEntry.fromSingle(timeEntry),
             autocompleteSuggestions: [],
-            dateTimePickMode: .end,
+            dateTimePickMode: .stop,
             cursorPosition: 19
         )
 
@@ -465,7 +543,7 @@ class StartEditReducerTests: XCTestCase {
             entities: TimeLogEntities(),
             editableTimeEntry: EditableTimeEntry.fromSingle(timeEntry),
             autocompleteSuggestions: [],
-            dateTimePickMode: .end,
+            dateTimePickMode: .stop,
             cursorPosition: 19
         )
 
@@ -490,7 +568,7 @@ class StartEditReducerTests: XCTestCase {
             entities: TimeLogEntities(),
             editableTimeEntry: EditableTimeEntry.fromSingle(timeEntry),
             autocompleteSuggestions: [],
-            dateTimePickMode: .end,
+            dateTimePickMode: .stop,
             cursorPosition: 19
         )
 

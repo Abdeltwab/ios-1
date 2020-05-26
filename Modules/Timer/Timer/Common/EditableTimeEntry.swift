@@ -91,3 +91,23 @@ extension EditableTimeEntry {
         return self.ids.count > 1
     }
 }
+
+extension EditableTimeEntry {
+    var stop: Date? {
+        guard let start = start, let duration = duration else { return nil }
+        return start + duration
+    }
+
+    var minStart: Date? {
+        guard let stop = stop else { return nil }
+        return stop - .maxTimeEntryDuration
+    }
+
+    var maxStart: Date? { return stop }
+
+    var minStop: Date? { return start }
+
+    var maxStop: Date? {
+        guard let start = start else { return nil }
+        return start + .maxTimeEntryDuration }
+}

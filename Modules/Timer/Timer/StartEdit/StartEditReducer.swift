@@ -31,6 +31,11 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
         case .doneButtonTapped:
             return doneButtonTapped(state, repository)
 
+        case .startButtonTapped:
+            let mode = state.dateTimePickMode
+            state.dateTimePickMode = mode == .start ? .none : .start
+            return []
+
         case .stopButtonTapped:
             guard var editableTimeEntry = state.editableTimeEntry else {
                 fatalError("Trying to stop time entry when not editing a time entry")
@@ -43,7 +48,11 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
                 return []
             }
             
-            if editableTimeEntry.duration == nil {
+            if let duration = editableTimeEntry.duration {
+                let mode = state.dateTimePickMode
+                state.dateTimePickMode = mode == .stop ? .none : .stop
+                return []
+            } else {
                 let maxDuration = TimeInterval.maximumTimeEntryDuration
                 let duration = time.now().timeIntervalSince(startTime)
                 if duration > 0 && duration <= maxDuration {
@@ -52,8 +61,6 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
                 }
                 return []
             }
-            
-            return [Single.just(StartEditAction.pickerTapped(.end)).toEffect()]
 
         case let .timeEntryStarted(startedTimeEntry, stoppedTimeEntry):
             timeEntryStarted(&state, startedTimeEntry, stoppedTimeEntry)
@@ -71,11 +78,9 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
             return []
             
         case let .dateTimePicked(date):
+            guard state.editableTimeEntry != nil else { return [] }
+            guard state.dateTimePickMode != .none else { return [] }
             dateTimePicked(&state, date: date)
-            return []
-
-        case let .pickerTapped(mode):
-            state.dateTimePickMode = mode
             return []
 
         case .dateTimePickingCancelled:
@@ -179,7 +184,7 @@ func dateTimePicked(_ state: inout StartEditState, date: Date) {
     }
     if state.dateTimePickMode == .start {
         state.editableTimeEntry!.start = date
-    } else if state.dateTimePickMode == .end && state.editableTimeEntry!.start != nil {
+    } else if state.dateTimePickMode == .stop && state.editableTimeEntry!.start != nil {
         state.editableTimeEntry!.duration = date.timeIntervalSince(state.editableTimeEntry!.start!)
     }
 }

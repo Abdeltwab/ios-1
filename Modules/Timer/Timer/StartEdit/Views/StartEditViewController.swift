@@ -16,6 +16,9 @@ public class StartEditViewController: UIViewController, Storyboarded, BottomShee
     public static var storyboardBundle = Assets.bundle
 
     private let billableTooltipDuration: TimeInterval = 2
+    private let datePickerHeight: CGFloat = 197
+    private let editDurationWithoutDatePickerHeight: CGFloat = 442
+    private let editDurationWithDatePickerHeight: CGFloat = 637
 
     var scrollView: UIScrollView?
     var smallStateHeight: CGFloat { headerHeight + cells[0].height }
@@ -27,11 +30,16 @@ public class StartEditViewController: UIViewController, Storyboarded, BottomShee
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var durationView: UIView!
+    @IBOutlet weak var startDateContainer: UIView!
+    @IBOutlet weak var stopDateContainer: UIView!
     @IBOutlet weak var startDateButton: UIButton!
-    @IBOutlet weak var endDateButton: UIButton!
+    @IBOutlet weak var stopDateButton: UIButton!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var datePickerContainerHeight: NSLayoutConstraint!
     @IBOutlet weak var wheelForegroundView: WheelForegroundView!
     @IBOutlet weak var wheelDurationView: DurationTextField!
     @IBOutlet weak var wheelDurationLabelTextField: DurationTextField!
+    @IBOutlet weak var editDurationView: UIView!
 
     @IBOutlet var startEditInputAccessoryView: StartEditInputAccessoryView!
 
@@ -67,6 +75,10 @@ public class StartEditViewController: UIViewController, Storyboarded, BottomShee
 
         tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: 200, height: headerHeight)
         tableView.separatorStyle = .none
+
+        let cancelDatePickerGesture = UITapGestureRecognizer(target: self, action: #selector(cancelDatePicker))
+        cancelDatePickerGesture.delegate = self
+        tableView.addGestureRecognizer(cancelDatePickerGesture)
 
         dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, StartEditCellType>>(
             configureCell: { _, tableView, indexPath, item in
@@ -116,12 +128,23 @@ public class StartEditViewController: UIViewController, Storyboarded, BottomShee
             .disposed(by: disposeBag)
 
         startDateButton.rx.tap
-            .mapTo(StartEditAction.pickerTapped(.start))
+            .mapTo(StartEditAction.startButtonTapped)
             .subscribe(onNext: store.dispatch)
             .disposed(by: disposeBag)
 
-        endDateButton.rx.tap
+        stopDateButton.rx.tap
             .mapTo(StartEditAction.stopButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        Driver.combineLatest(
+            store.select({ $0.dateTimePickMode }),
+            store.select({ $0.editableTimeEntry }))
+            .drive(onNext: { self.setDatePickerVisiblity(mode: $0, editableTimeEntry: $1) })
+            .disposed(by: disposeBag)
+
+        datePicker.rx.date
+            .mapTo({ StartEditAction.dateTimePicked($0) })
             .subscribe(onNext: store.dispatch)
             .disposed(by: disposeBag)
 
@@ -216,6 +239,33 @@ public class StartEditViewController: UIViewController, Storyboarded, BottomShee
         wheelDurationLabelTextField.setFormattedDuration(formattedDuration)
     }
 
+    private func setDatePickerVisiblity(mode: DateTimePickMode, editableTimeEntry: EditableTimeEntry?) {
+        let animator = UIViewPropertyAnimator(duration: 0.225, curve: .easeInOut) {
+            self.datePickerContainerHeight.constant = mode == .none ? 0 : self.datePickerHeight
+            self.editDurationView.frame.size.height = mode == .none ? self.editDurationWithoutDatePickerHeight : self.editDurationWithDatePickerHeight
+        }
+        animator.startAnimation()
+
+        guard let editableTimeEntry = editableTimeEntry else { return }
+        switch mode {
+        case .start:
+            guard let start = editableTimeEntry.start else { break }
+            datePicker.date = start
+            datePicker.minimumDate = editableTimeEntry.minStart
+            datePicker.maximumDate = editableTimeEntry.maxStart
+        case .stop:
+            guard let stop = editableTimeEntry.stop else { break }
+            datePicker.date = stop
+            datePicker.minimumDate = editableTimeEntry.minStop
+            datePicker.maximumDate = editableTimeEntry.maxStop
+        case .none: break
+        }
+    }
+
+    @objc private func cancelDatePicker() {
+        store.dispatch(.dateTimePickingCancelled)
+    }
+
     deinit {
         timer?.invalidate()
     }
@@ -227,4 +277,13 @@ extension StartEditViewController: UITableViewDelegate {
         return dataSource.sectionModels[0].items[indexPath.row].height
     }
 }
- 
+
+extension StartEditViewController: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        guard let view = touch.view else { return true }
+        if view.isDescendant(of: startDateContainer) || view.isDescendant(of: stopDateContainer) {
+            return false
+        }
+        return true
+    }
+}

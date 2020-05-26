@@ -7,6 +7,7 @@ public enum StartEditAction: Equatable {
     case closeButtonTapped
     case dialogDismissed
     case doneButtonTapped
+    case startButtonTapped
     case stopButtonTapped
     case timeEntryStarted(startedTimeEntry: TimeEntry, stoppedTimeEntry: TimeEntry?)
     case timeEntryUpdated(TimeEntry)
@@ -14,7 +15,6 @@ public enum StartEditAction: Equatable {
     case autocompleteSuggestionTapped(AutocompleteSuggestion)
     
     case dateTimePicked(Date)
-    case pickerTapped(DateTimePickMode)
     case dateTimePickingCancelled
     case wheelStartTimeChanged(Date)
     case wheelDurationChanged(TimeInterval)
@@ -48,9 +48,12 @@ extension StartEditAction: CustomDebugStringConvertible {
 
         case .doneButtonTapped:
             return "DoneButtonTapped"
-            
+
+        case .startButtonTapped:
+            return "StartButtonTapped"
+
         case .stopButtonTapped:
-            return "DoneButtonTapped"
+            return "StopButtonTapped"
 
         case let .timeEntryStarted(startedTimeEntry, stoppedTimeEntry):
             return "TimeEntryStarted: \(startedTimeEntry.description) stopped: \(stoppedTimeEntry?.description ?? "nil")"
@@ -63,9 +66,6 @@ extension StartEditAction: CustomDebugStringConvertible {
             
         case let .dateTimePicked(date):
             return "dateTimePicked \(date)"
-
-        case let .pickerTapped(mode):
-            return "pickerTapped \(mode)"
 
         case .dateTimePickingCancelled:
             return "DateTimePickingCancelled"
