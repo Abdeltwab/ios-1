@@ -168,7 +168,9 @@ public class StartEditViewController: UIViewController, Storyboarded, BottomShee
             .disposed(by: disposeBag)
 
         startEditInputAccessoryView.acceptButton.rx.tap
-            .subscribe(onNext: { UIImpactFeedbackGenerator(style: .light).impactOccurred() })
+            .do(onNext: { UIImpactFeedbackGenerator(style: .light).impactOccurred() })
+            .mapTo(StartEditAction.doneButtonTapped)
+            .subscribe(onNext: store.dispatch)
             .disposed(by: disposeBag)
     }
 
