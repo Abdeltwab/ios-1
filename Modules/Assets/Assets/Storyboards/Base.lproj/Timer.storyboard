@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -173,7 +173,7 @@
                                             </constraints>
                                         </view>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="I'm working on..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ars-hi-U6Y">
-                                            <rect key="frame" x="15" y="70" width="384" height="22"/>
+                                            <rect key="frame" x="15" y="71" width="384" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <userDefinedRuntimeAttributes>
@@ -394,61 +394,82 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKT-FU-pFl">
-                            <rect key="frame" x="0.0" y="22" width="42" height="50"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kca-7H-pWP" userLabel="BackgroundView">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b9u-Cr-q8r">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKT-FU-pFl">
+                                    <rect key="frame" x="0.0" y="0.0" width="42" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="42" id="CKf-Jy-bwv"/>
+                                        <constraint firstAttribute="height" constant="50" id="RlB-dU-tAG"/>
+                                    </constraints>
+                                    <state key="normal" image="icProjects"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vft-Sf-18G">
+                                    <rect key="frame" x="42" y="0.0" width="42" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="LJM-bc-a0m"/>
+                                        <constraint firstAttribute="width" constant="42" id="tFA-cH-i6r"/>
+                                    </constraints>
+                                    <state key="normal" image="icTags"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMg-uw-Q0a">
+                                    <rect key="frame" x="84" y="0.0" width="42" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="RsX-1F-sSR"/>
+                                        <constraint firstAttribute="width" constant="42" id="frB-qP-Dxe"/>
+                                    </constraints>
+                                    <state key="normal" image="icDatetime"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiT-PF-Oe5">
+                                    <rect key="frame" x="126" y="0.0" width="42" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="42" id="8QR-EK-5hN"/>
+                                        <constraint firstAttribute="height" constant="50" id="Lug-ER-WO4"/>
+                                    </constraints>
+                                    <state key="normal" image="icBillable"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDd-0h-7OZ">
+                                    <rect key="frame" x="372" y="0.0" width="42" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="42" id="XYM-K4-aze"/>
+                                        <constraint firstAttribute="height" constant="50" id="xm4-vB-pfK"/>
+                                    </constraints>
+                                    <state key="normal" image="icDone"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="42" id="CKf-Jy-bwv"/>
-                                <constraint firstAttribute="height" constant="50" id="RlB-dU-tAG"/>
+                                <constraint firstItem="zKT-FU-pFl" firstAttribute="leading" secondItem="b9u-Cr-q8r" secondAttribute="leading" id="0fc-FS-2qz"/>
+                                <constraint firstAttribute="height" constant="50" id="BCk-dx-iH3"/>
+                                <constraint firstItem="Vft-Sf-18G" firstAttribute="leading" secondItem="zKT-FU-pFl" secondAttribute="trailing" id="BiU-J9-Uya"/>
+                                <constraint firstItem="Vft-Sf-18G" firstAttribute="top" secondItem="b9u-Cr-q8r" secondAttribute="top" id="EfQ-wG-A3s"/>
+                                <constraint firstItem="XiT-PF-Oe5" firstAttribute="leading" secondItem="NMg-uw-Q0a" secondAttribute="trailing" id="Fd1-B2-LoY"/>
+                                <constraint firstItem="IDd-0h-7OZ" firstAttribute="top" secondItem="b9u-Cr-q8r" secondAttribute="top" id="IWv-Xj-PCi"/>
+                                <constraint firstItem="NMg-uw-Q0a" firstAttribute="top" secondItem="b9u-Cr-q8r" secondAttribute="top" id="UeU-he-5vG"/>
+                                <constraint firstItem="NMg-uw-Q0a" firstAttribute="leading" secondItem="Vft-Sf-18G" secondAttribute="trailing" id="dkU-4T-XbW"/>
+                                <constraint firstItem="XiT-PF-Oe5" firstAttribute="top" secondItem="b9u-Cr-q8r" secondAttribute="top" id="j6q-Vw-In0"/>
+                                <constraint firstItem="zKT-FU-pFl" firstAttribute="top" secondItem="b9u-Cr-q8r" secondAttribute="top" id="oFP-5b-8a9"/>
+                                <constraint firstAttribute="trailing" secondItem="IDd-0h-7OZ" secondAttribute="trailing" id="yE6-1y-ege"/>
                             </constraints>
-                            <state key="normal" image="icProjects"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vft-Sf-18G">
-                            <rect key="frame" x="42" y="22" width="42" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="LJM-bc-a0m"/>
-                                <constraint firstAttribute="width" constant="42" id="tFA-cH-i6r"/>
-                            </constraints>
-                            <state key="normal" image="icTags"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMg-uw-Q0a">
-                            <rect key="frame" x="84" y="22" width="42" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="RsX-1F-sSR"/>
-                                <constraint firstAttribute="width" constant="42" id="frB-qP-Dxe"/>
-                            </constraints>
-                            <state key="normal" image="icDatetime"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiT-PF-Oe5">
-                            <rect key="frame" x="126" y="22" width="42" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="42" id="8QR-EK-5hN"/>
-                                <constraint firstAttribute="height" constant="50" id="Lug-ER-WO4"/>
-                            </constraints>
-                            <state key="normal" image="icBillable"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDd-0h-7OZ">
-                            <rect key="frame" x="372" y="22" width="42" height="50"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="42" id="XYM-K4-aze"/>
-                                <constraint firstAttribute="height" constant="50" id="xm4-vB-pfK"/>
-                            </constraints>
-                            <state key="normal" image="icDone"/>
-                        </button>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="XiT-PF-Oe5" firstAttribute="centerY" secondItem="WEE-fe-ELW" secondAttribute="centerY" id="Ge5-F4-qIQ"/>
-                        <constraint firstItem="Vft-Sf-18G" firstAttribute="leading" secondItem="zKT-FU-pFl" secondAttribute="trailing" id="MSS-jA-YRo"/>
-                        <constraint firstItem="XiT-PF-Oe5" firstAttribute="leading" secondItem="NMg-uw-Q0a" secondAttribute="trailing" id="MdF-5D-fVO"/>
-                        <constraint firstItem="NMg-uw-Q0a" firstAttribute="leading" secondItem="Vft-Sf-18G" secondAttribute="trailing" id="NnH-Y7-Q87"/>
-                        <constraint firstItem="zKT-FU-pFl" firstAttribute="leading" secondItem="WEE-fe-ELW" secondAttribute="leading" id="Znj-c5-AWR"/>
-                        <constraint firstItem="NMg-uw-Q0a" firstAttribute="centerY" secondItem="WEE-fe-ELW" secondAttribute="centerY" id="cMM-d9-Fru"/>
-                        <constraint firstItem="IDd-0h-7OZ" firstAttribute="centerY" secondItem="WEE-fe-ELW" secondAttribute="centerY" id="dED-Nq-ON4"/>
-                        <constraint firstItem="WEE-fe-ELW" firstAttribute="trailing" secondItem="IDd-0h-7OZ" secondAttribute="trailing" id="k2U-T9-yiz"/>
-                        <constraint firstItem="Vft-Sf-18G" firstAttribute="centerY" secondItem="WEE-fe-ELW" secondAttribute="centerY" id="kk7-Ty-h1k"/>
-                        <constraint firstItem="zKT-FU-pFl" firstAttribute="centerY" secondItem="WEE-fe-ELW" secondAttribute="centerY" id="nn4-3E-aHD"/>
+                        <constraint firstItem="b9u-Cr-q8r" firstAttribute="bottom" secondItem="szH-br-yHZ" secondAttribute="bottom" id="8wk-Ps-r6W"/>
+                        <constraint firstItem="b9u-Cr-q8r" firstAttribute="trailing" secondItem="m53-j1-8QL" secondAttribute="trailing" id="FYI-IF-Ond"/>
+                        <constraint firstItem="Kca-7H-pWP" firstAttribute="trailing" secondItem="m53-j1-8QL" secondAttribute="trailing" id="IGW-Q9-XzB"/>
+                        <constraint firstItem="Kca-7H-pWP" firstAttribute="top" secondItem="m53-j1-8QL" secondAttribute="top" id="Kch-ll-NWG"/>
+                        <constraint firstItem="Kca-7H-pWP" firstAttribute="leading" secondItem="m53-j1-8QL" secondAttribute="leading" id="OVN-C3-gww"/>
+                        <constraint firstItem="Kca-7H-pWP" firstAttribute="bottom" secondItem="m53-j1-8QL" secondAttribute="bottom" id="Rcu-Ly-xQg"/>
+                        <constraint firstItem="b9u-Cr-q8r" firstAttribute="leading" secondItem="m53-j1-8QL" secondAttribute="leading" id="WbF-rP-bLb"/>
+                        <constraint firstItem="b9u-Cr-q8r" firstAttribute="top" secondItem="m53-j1-8QL" secondAttribute="top" id="iqm-c4-Rcz"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="WEE-fe-ELW"/>
+                    <viewLayoutGuide key="safeArea" id="szH-br-yHZ"/>
                     <connections>
                         <outlet property="acceptButton" destination="IDd-0h-7OZ" id="hDw-SJ-Yx1"/>
                         <outlet property="billableButton" destination="XiT-PF-Oe5" id="30a-Px-Nwj"/>
@@ -511,7 +532,7 @@
                                         <rect key="frame" x="16" y="18.5" width="318" height="35"/>
                                         <subviews>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="I'm working on..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gq-fS-kZU">
-                                                <rect key="frame" x="20" y="5" width="278" height="25.5"/>
+                                                <rect key="frame" x="20" y="5.5" width="278" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>

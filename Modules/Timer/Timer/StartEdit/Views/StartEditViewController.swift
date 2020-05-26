@@ -56,6 +56,7 @@ public class StartEditViewController: UIViewController, Storyboarded, BottomShee
     // swiftlint:disable function_body_length
     public override func viewDidLoad() {
         super.viewDidLoad()
+
         self.scrollView = tableView
         handle.layer.cornerRadius = 2
 
