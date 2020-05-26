@@ -2,6 +2,7 @@ import Foundation
 import Architecture
 import Onboarding
 import Timer
+import Calendar
 import OtherServices
 
 func createAppReducer(environment: AppEnvironment) -> Reducer<AppState, AppAction> {
@@ -13,6 +14,7 @@ func createAppReducer(environment: AppEnvironment) -> Reducer<AppState, AppActio
             time: environment.time,
             schedulerProvider: environment.schedulerProvider
         ).pullback(state: \.timerState, action: \.timer),
+        createCalendarReducer().pullback(state: \.calendarState, action: \.calendar),
         createLoadingReducer(repository: environment.repository).pullback(state: \.loadingState, action: \.load)
     )
 }
@@ -40,13 +42,19 @@ public class AppFeature: BaseFeature<AppState, AppAction> {
     }
 
     public override func mainCoordinator(store: Store<AppState, AppAction>) -> Coordinator {
+
+        let mainCoordinator = MainCoordinator(
+            store: store,
+            timerCoordinator: (features[AppRoute.main.rawValue]!.mainCoordinator(store: store) as? TimerCoordinator)!,
+            calendarCoordinator: CalendarCoordinator(store: store.view(
+                state: { $0.calendarState },
+                action: { AppAction.calendar($0) }
+            ))
+        )
         return AppCoordinator(
             store: store,
             onboardingCoordinator: features[AppRoute.onboarding.rawValue]!.mainCoordinator(store: store),
-            tabBarCoordinator: MainCoordinator(
-                store: store,
-                timerCoordinator: (features[AppRoute.main.rawValue]!.mainCoordinator(store: store) as? TimerCoordinator)!
-            )
+            tabBarCoordinator: mainCoordinator
         )
     }
 }

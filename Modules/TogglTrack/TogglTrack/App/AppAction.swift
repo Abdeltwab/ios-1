@@ -1,6 +1,7 @@
 import Foundation
 import Onboarding
 import Timer
+import Calendar
 import Models
 import Analytics
 
@@ -12,6 +13,7 @@ public enum AppAction: Equatable {
     
     case onboarding(OnboardingAction)
     case timer(TimerAction)
+    case calendar(CalendarAction)
     case startEdit(StartEditAction)
 }
 
@@ -60,6 +62,17 @@ extension AppAction {
             self = .startEdit(newValue)
         }
     }
+
+    var calendar: CalendarAction? {
+        get {
+            guard case let .calendar(value) = self else { return nil }
+            return value
+        }
+        set {
+            guard case .calendar = self, let newValue = newValue else { return }
+            self = .calendar(newValue)
+        }
+    }
 }
 
 extension AppAction: CustomDebugStringConvertible {
@@ -75,6 +88,8 @@ extension AppAction: CustomDebugStringConvertible {
         case let .onboarding(action):
             return action.debugDescription
         case let .timer(action):
+            return action.debugDescription
+        case let .calendar(action):
             return action.debugDescription
         case let .startEdit(action):
             return action.debugDescription

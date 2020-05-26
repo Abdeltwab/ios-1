@@ -21,7 +21,7 @@ func createGlobalReducer() -> Reducer<AppState, AppAction> {
                 ][section]
             return []
             
-        case .load, .onboarding, .timer, .startEdit:
+        case .load, .onboarding, .timer, .startEdit, .calendar:
             return []
         }
     }

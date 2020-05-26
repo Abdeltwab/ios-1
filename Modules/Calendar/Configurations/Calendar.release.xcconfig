@@ -1,0 +1,2 @@
+#include "Calendar-Shared.xcconfig"
+#include? "../../Pods/Target Support Files/Pods-Calendar/Pods-Calendar.release.xcconfig"

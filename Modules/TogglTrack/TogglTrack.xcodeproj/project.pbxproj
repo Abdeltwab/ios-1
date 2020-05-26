@@ -33,6 +33,7 @@
 		8CB545BF2410FFA500154473 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB545BC2410FFA500154473 /* AppState.swift */; };
 		8CB545C52410FFF500154473 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB545C42410FFF500154473 /* AppAction.swift */; };
 		8CB545D024113B4600154473 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB545CF24113B4600154473 /* AppFeature.swift */; };
+		8CFDB38B247CDD2700952533 /* Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFDB38A247CDD2700952533 /* Calendar.framework */; };
 		B4B4F0A72436313200DFBF2E /* UIUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B4F0A62436313200DFBF2E /* UIUtils.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		8CB545BC2410FFA500154473 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		8CB545C42410FFF500154473 /* AppAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
 		8CB545CF24113B4600154473 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
+		8CFDB38A247CDD2700952533 /* Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B4F0A62436313200DFBF2E /* UIUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D254C466CC84E88FB7BF840B /* libPods-TogglTrack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TogglTrack.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF812E5FB6DBE7F05896418 /* Pods-TogglTrack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TogglTrack.debug.xcconfig"; path = "Target Support Files/Pods-TogglTrack/Pods-TogglTrack.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				8C38E2452419058700C9E053 /* API.framework in Frameworks */,
 				8C2EBA192451D99000A86FC3 /* Database.framework in Frameworks */,
 				8C38E2502419058E00C9E053 /* Timer.framework in Frameworks */,
+				8CFDB38B247CDD2700952533 /* Calendar.framework in Frameworks */,
 				8C38E24E2419058C00C9E053 /* Repository.framework in Frameworks */,
 				8C38E2522419058F00C9E053 /* Utils.framework in Frameworks */,
 				B4B4F0A72436313200DFBF2E /* UIUtils.framework in Frameworks */,
@@ -188,6 +191,7 @@
 		8C2517F52403C58200BAD4B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8CFDB38A247CDD2700952533 /* Calendar.framework */,
 				8C2EBA182451D99000A86FC3 /* Database.framework */,
 				343E37A9244725C700A65AFD /* Analytics.framework */,
 				B4B4F0A62436313200DFBF2E /* UIUtils.framework */,

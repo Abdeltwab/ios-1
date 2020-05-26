@@ -1,11 +1,3 @@
-//
-//  DatabaseTests.swift
-//  DatabaseTests
-//
-//  Created by Ricardo Sánchez Sotres on 23/04/2020.
-//  Copyright © 2020 Toggl OUT. All rights reserved.
-//
-
 import XCTest
 @testable import Database
 

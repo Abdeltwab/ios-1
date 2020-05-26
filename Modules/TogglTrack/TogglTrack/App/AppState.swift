@@ -3,13 +3,16 @@ import Models
 import Architecture
 import Onboarding
 import Timer
+import Calendar
 import Utils
 
 public struct AppState {
     public var route: RoutePath = AppRoute.start.path
     public var user: Loadable<User> = .nothing
     public var entities: TimeLogEntities =  TimeLogEntities()
-    
+
+    var calendarState: CalendarState = CalendarState()
+
     public var localOnboardingState: LocalOnboardingState = LocalOnboardingState()
     public var localTimerState: LocalTimerState = LocalTimerState()
 }

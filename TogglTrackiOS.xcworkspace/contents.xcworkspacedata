@@ -22,6 +22,9 @@
          <FileRef
             location = "group:Modules/Timer/Timer.xcodeproj">
          </FileRef>
+         <FileRef
+            location = "group:Modules/Calendar/Calendar.xcodeproj">
+         </FileRef>
       </Group>
       <Group
          location = "container:"

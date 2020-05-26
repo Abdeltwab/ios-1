@@ -2,6 +2,7 @@ import UIKit
 import Architecture
 import Assets
 import Timer
+import Calendar
 import RxSwift
 
 public final class MainCoordinator: TabBarCoordinator {
@@ -9,13 +10,16 @@ public final class MainCoordinator: TabBarCoordinator {
     private var disposeBag = DisposeBag()
     
     private let timerCoordinator: TimerCoordinator
+    private let calendarCoordinator: CalendarCoordinator
     
     public init(
         store: Store<AppState, AppAction>,
-        timerCoordinator: TimerCoordinator
+        timerCoordinator: TimerCoordinator,
+        calendarCoordinator: CalendarCoordinator
     ) {
         self.store = store
         self.timerCoordinator = timerCoordinator
+        self.calendarCoordinator = calendarCoordinator
         
         super.init()
         
@@ -36,13 +40,12 @@ public final class MainCoordinator: TabBarCoordinator {
         reports.view.backgroundColor = .orange
         let reportsNav = UINavigationController(rootViewController: reports)
         reportsNav.tabBarItem = UITabBarItem(title: Strings.TabBar.reports, image: Images.TabBar.reports, tag: 1)
-        
-        let calendar = UIViewController()
-        calendar.view.backgroundColor = .yellow
-        let calendarNav = UINavigationController(rootViewController: calendar)
-        calendarNav.tabBarItem = UITabBarItem(title: Strings.TabBar.calendar, image: Images.TabBar.calendar, tag: 2)
 
-        tabBarController.setViewControllers([timer, reportsNav, calendarNav], animated: false)
+        calendarCoordinator.start()
+        let calendar = calendarCoordinator.rootViewController!
+        calendar.tabBarItem = UITabBarItem(title: Strings.TabBar.calendar, image: Images.TabBar.calendar, tag: 2)
+
+        tabBarController.setViewControllers([timer, reportsNav, calendar], animated: false)
     }
     
     public override func newRoute(route: String) -> Coordinator? {

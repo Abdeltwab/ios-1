@@ -1,11 +1,3 @@
-//
-//  AnalyticsTests.swift
-//  AnalyticsTests
-//
-//  Created by Ricardo Sánchez Sotres on 28/04/2020.
-//  Copyright © 2020 Toggl. All rights reserved.
-//
-
 import XCTest
 
 class AnalyticsTests: XCTestCase {
