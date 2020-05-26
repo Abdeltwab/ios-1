@@ -14,7 +14,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
     var mockRepository: MockTimeLogRepository!
     var mockTime: Time!
     var reducer: Reducer<TimeEntriesLogState, TimeEntriesLogAction>!
-    var testScheduler = TestScheduler(initialClock: 0)
+    var testScheduler = TestScheduler(initialClock: 0, simulateProcessingDelay: false)
 
     override func setUp() {
         mockTime = Time(getNow: { return self.now })
@@ -96,7 +96,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             Step(.send, .timeEntrySwiped(.left, swipedTimeEntryId)) {
                 $0.entriesPendingDeletion = [swipedTimeEntryId]
             },
-            Step(.receive, .commitDeletion([swipedTimeEntryId])) {
+            Step(.receiveAfter(5), .commitDeletion([swipedTimeEntryId])) {
                 $0.entriesPendingDeletion.removeAll()
             },
             Step(.receive, .timeEntryDeleted(swipedTimeEntryId)) {
@@ -124,7 +124,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             Step(.send, .timeEntrySwiped(.left, swipedTimeEntryId)) {
                 $0.entriesPendingDeletion = [swipedTimeEntryId]
             },
-            Step(.receive, [.timeEntryDeleted(waitingToBeDeletedId), .commitDeletion([swipedTimeEntryId])]) {
+            Step(.receiveAfter(5), [.timeEntryDeleted(waitingToBeDeletedId), .commitDeletion([swipedTimeEntryId])]) {
                 $0.entities.timeEntries[waitingToBeDeletedId] = nil
                 $0.entriesPendingDeletion.removeAll()
             },
@@ -152,7 +152,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             Step(.send, .timeEntryGroupSwiped(.left, Array(swipedTimeEntryIds))) {
                 $0.entriesPendingDeletion = swipedTimeEntryIds
             },
-            Step(.receive, .commitDeletion(swipedTimeEntryIds)) {
+            Step(.receiveAfter(5), .commitDeletion(swipedTimeEntryIds)) {
                 $0.entriesPendingDeletion.removeAll()
             },
             Step(.receive, [.timeEntryDeleted(1), .timeEntryDeleted(0)]) {
@@ -181,7 +181,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             Step(.send, .timeEntryGroupSwiped(.left, Array(swipedTimeEntryIds))) {
                 $0.entriesPendingDeletion = swipedTimeEntryIds
             },
-            Step(.receive, [.timeEntryDeleted(waitingToBeDeletedId), .commitDeletion(swipedTimeEntryIds)]) {
+            Step(.receiveAfter(5), [.timeEntryDeleted(waitingToBeDeletedId), .commitDeletion(swipedTimeEntryIds)]) {
                 $0.entities.timeEntries[waitingToBeDeletedId] = nil
                 $0.entriesPendingDeletion.removeAll()
             },

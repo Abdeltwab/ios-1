@@ -8,6 +8,7 @@ import RxTest
 enum StepType {
     case send
     case receive
+    case receiveAfter(TestTime)
 }
 
 struct Step<State, Action> {
@@ -41,7 +42,7 @@ struct Step<State, Action> {
         self.init(type, [action], file: file, line: line, update)
     }
 }
-
+// swiftlint:disable function_body_length
 func assertReducerFlow<State: Equatable, Action: Equatable>(
     initialState: State,
     reducer: Reducer<State, Action>,
@@ -85,6 +86,32 @@ func assertReducerFlow<State: Equatable, Action: Equatable>(
             XCTAssert(actions.equalContents(to: step.actions), file: step.file, line: step.line)
             let reducerEffects = actions.flatMap { reducer.reduce(&state, $0) }
             effects.append(contentsOf: reducerEffects)
+
+        case .receiveAfter(let interval):
+            guard !effects.isEmpty else {
+                XCTFail("No pending effects to receive from", file: step.file, line: step.line)
+                break
+            }
+
+            guard let testScheduler = testScheduler else {
+                XCTFail("Test scheduler is not assigned")
+                break
+            }
+
+            let observer = testScheduler.createObserver(Action.self)
+            _ = Observable.from(effects.map({ $0.asSingle().asObservable() }))
+                .merge()
+                .subscribe(observer)
+
+            testScheduler.start()
+
+            let actions = observer.events.compactMap { $0.value.element }
+            let expectedEvents: [Recorded<Event<Action>>] = step.actions.map { .next(interval, $0) } + [.completed(interval)]
+            effects = []
+
+            XCTAssert(observer.events.equalContents(to: expectedEvents), file: step.file, line: step.line)
+            let reducerEffects = actions.flatMap { reducer.reduce(&state, $0) }
+            effects.append(contentsOf: reducerEffects)
         }
         
         step.update(&expected)
@@ -95,3 +122,4 @@ func assertReducerFlow<State: Equatable, Action: Equatable>(
         XCTFail("Assertion failed to handle \(effects.count) pending effect(s)", file: file, line: line)
     }
 }
+// swiftlint:enable function_body_length
