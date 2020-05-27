@@ -38,6 +38,7 @@ project 'Modules/Architecture/Architecture.xcodeproj'
 project 'Modules/Networking/Networking.xcodeproj'
 project 'Modules/Onboarding/Onboarding.xcodeproj'
 project 'Modules/Timer/Timer.xcodeproj'
+project 'Modules/Calendar/Calendar.xcodeproj'
 project 'Modules/Repository/Repository.xcodeproj'
 project 'Modules/UIUtils/UIUtils.xcodeproj'
 project 'Modules/Utils/Utils.xcodeproj'
@@ -76,6 +77,18 @@ target :Timer do
     rxdatasources
 
     target :TimerTests do
+      rxtests
+    end
+end
+
+target :Calendar do
+    use_frameworks!
+    project 'Modules/Calendar/Calendar.xcodeproj'
+    rxswift
+    rxcocoa
+    rxdatasources
+
+    target :CalendarTests do
       rxtests
     end
 end

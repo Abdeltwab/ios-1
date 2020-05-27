@@ -34,10 +34,15 @@ public class AppFeature: BaseFeature<AppState, AppAction> {
                         action: { AppAction.onboarding($0) })
                 },
             AppRoute.main.rawValue: TimerFeature(time: time)
-            .view { $0.view(
-                    state: { $0.timerState },
-                    action: { AppAction.timer($0) })
-            }
+                .view { $0.view(
+                        state: { $0.timerState },
+                        action: { AppAction.timer($0) })
+                },
+            TabBarRoute.calendar.rawValue: CalendarFeature(time: time)
+                .view { $0.view(
+                        state: { $0.calendarState },
+                        action: { AppAction.calendar($0) })
+                }
         ]
     }
 
@@ -46,10 +51,7 @@ public class AppFeature: BaseFeature<AppState, AppAction> {
         let mainCoordinator = MainCoordinator(
             store: store,
             timerCoordinator: (features[AppRoute.main.rawValue]!.mainCoordinator(store: store) as? TimerCoordinator)!,
-            calendarCoordinator: CalendarCoordinator(store: store.view(
-                state: { $0.calendarState },
-                action: { AppAction.calendar($0) }
-            ))
+            calendarCoordinator: (features[TabBarRoute.calendar.rawValue]!.mainCoordinator(store: store) as? CalendarCoordinator)!
         )
         return AppCoordinator(
             store: store,
