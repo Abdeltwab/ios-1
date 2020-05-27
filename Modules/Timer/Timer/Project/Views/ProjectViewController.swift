@@ -61,3 +61,29 @@ public class ProjectViewController: UIViewController, Storyboarded {
             .disposed(by: disposeBag)
     }
 }
+
+extension ProjectViewController: BottomSheetContent {
+    var scrollView: UIScrollView? {
+        return contentScrollView
+    }
+    
+    var smallStateHeight: CGFloat {
+        return 200
+    }
+    
+    var visibility: Driver<Bool> {
+        return store.select({ $0.editableProject != nil })
+    }
+    
+    func loseFocus() {
+        projectNameTextField.resignFirstResponder()
+    }
+    
+    func focus() {
+        projectNameTextField.becomeFirstResponder()
+    }
+    
+    func dispatchDialogDismissed() {
+        store.dispatch(.doneButtonTapped)
+    }
+}

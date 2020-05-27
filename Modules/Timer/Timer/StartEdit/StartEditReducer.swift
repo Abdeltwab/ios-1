@@ -214,8 +214,11 @@ extension EditableTimeEntry {
             tagIds.append(tag.id)
             removeQueryFromDescription(tagToken, cursorPosition)
             
-        case .createProjectSuggestion:
-            fatalError()
+        case .createProjectSuggestion(let projectName):
+            var editableProject = EditableProject.empty(workspaceId: workspaceId)
+            editableProject.name = projectName
+            self.editableProject = editableProject
+
         case .createTagSuggestion:
             fatalError()
         }

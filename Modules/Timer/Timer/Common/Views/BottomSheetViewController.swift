@@ -1,25 +1,10 @@
-import UIKit
-import Utils
-import Assets
-import RxCocoa
+import Foundation
 import RxSwift
+import RxCocoa
+import UIKit
 
-protocol BottomSheetContent: class {
-    var scrollView: UIScrollView? { get }
-    var smallStateHeight: CGFloat { get }
-    func loseFocus()
-    func focus()
-}
-
-enum BottomSheetState {
-    case hidden
-    case partial
-    case full
-}
-
-class StartEditBottomSheet<ContainedView: UIViewController>: UIViewController, UIGestureRecognizerDelegate where ContainedView: BottomSheetContent {
-
-    var store: StartEditStore!
+class BottomSheetViewController<ContainedView: UIViewController>: UIViewController, UIGestureRecognizerDelegate
+    where ContainedView: BottomSheetContent {
     
     private var topConstraint: NSLayoutConstraint!
     private var fullViewHeight: CGFloat = 0
@@ -64,13 +49,13 @@ class StartEditBottomSheet<ContainedView: UIViewController>: UIViewController, U
             .map(keyboardIntersectionHeight(notification:))
             .subscribe(onNext: keyboardWillChange(intersectionHeight:))
             .disposed(by: disposeBag)
-
-        store.select(shouldShowEditView)
-            .drive(onNext: { [weak self] shouldShowEditView in
-                shouldShowEditView ? self?.show() : self?.hide()
+        
+        containedViewController.visibility
+            .drive(onNext: { [weak self] isVisible in
+                isVisible ? self?.show() : self?.hide()
             })
             .disposed(by: disposeBag)
-
+        
         let navigationController = UINavigationController(rootViewController: containedViewController)
         navigationController.navigationBar.isHidden = true
 
@@ -199,7 +184,7 @@ class StartEditBottomSheet<ContainedView: UIViewController>: UIViewController, U
             } else if finalPosition < hiddenViewConstant {
                 state = .partial
             } else {
-                store.dispatch(.dialogDismissed)
+                containedViewController.dispatchDialogDismissed()
             }
 
             layout()

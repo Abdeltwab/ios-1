@@ -23,7 +23,6 @@
 		8C008FC424090C85000A0C32 /* StartEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C008FC324090C85000A0C32 /* StartEditViewController.swift */; };
 		8C008FD024093FF8000A0C32 /* StartEditAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C008FCF24093FF8000A0C32 /* StartEditAction.swift */; };
 		8C008FD22409407B000A0C32 /* StartEditReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C008FD12409407B000A0C32 /* StartEditReducer.swift */; };
-		8C1F53552434804500D9F979 /* StartEditBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1F53542434804500D9F979 /* StartEditBottomSheet.swift */; };
 		8C1F535B243487EC00D9F979 /* StartEditCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1F535A243487EC00D9F979 /* StartEditCellType.swift */; };
 		8C2130C42424F46D000FC72C /* TimeEntriesLogReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130C32424F46D000FC72C /* TimeEntriesLogReducerTests.swift */; };
 		8C2130CA2424F5DE000FC72C /* MockTimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130C92424F5DE000FC72C /* MockTimeLogRepository.swift */; };
@@ -92,6 +91,9 @@
 		CC8172372476A397004F1152 /* StringExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8172362476A397004F1152 /* StringExtensionsTests.swift */; };
 		CC8172392476E110004F1152 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8172382476E110004F1152 /* Constants.swift */; };
 		CCD8DDAC2449EE9F00AC9932 /* RunningTimeEntryReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD8DDAB2449EE9F00AC9932 /* RunningTimeEntryReducerTests.swift */; };
+		CCE39F9F247C3B5E0069D196 /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE39F9E247C3B5E0069D196 /* BottomSheetViewController.swift */; };
+		CCE39FA1247D65010069D196 /* BottomSheetContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE39FA0247D65010069D196 /* BottomSheetContent.swift */; };
+		CCE39FA3247D65250069D196 /* BottomSheetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE39FA2247D65250069D196 /* BottomSheetState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,7 +126,6 @@
 		8C008FC324090C85000A0C32 /* StartEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditViewController.swift; sourceTree = "<group>"; };
 		8C008FCF24093FF8000A0C32 /* StartEditAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditAction.swift; sourceTree = "<group>"; };
 		8C008FD12409407B000A0C32 /* StartEditReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditReducer.swift; sourceTree = "<group>"; };
-		8C1F53542434804500D9F979 /* StartEditBottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartEditBottomSheet.swift; sourceTree = "<group>"; };
 		8C1F535A243487EC00D9F979 /* StartEditCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditCellType.swift; sourceTree = "<group>"; };
 		8C2130C32424F46D000FC72C /* TimeEntriesLogReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesLogReducerTests.swift; sourceTree = "<group>"; };
 		8C2130C92424F5DE000FC72C /* MockTimeLogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimeLogRepository.swift; sourceTree = "<group>"; };
@@ -205,6 +206,9 @@
 		CC8172362476A397004F1152 /* StringExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsTests.swift; sourceTree = "<group>"; };
 		CC8172382476E110004F1152 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CCD8DDAB2449EE9F00AC9932 /* RunningTimeEntryReducerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryReducerTests.swift; sourceTree = "<group>"; };
+		CCE39F9E247C3B5E0069D196 /* BottomSheetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; };
+		CCE39FA0247D65010069D196 /* BottomSheetContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetContent.swift; sourceTree = "<group>"; };
+		CCE39FA2247D65250069D196 /* BottomSheetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetState.swift; sourceTree = "<group>"; };
 		D1A6B75657C3B9CF1F0B3ED1 /* Pods_Timer_TimerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer_TimerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB24E55169F474422BCBE49 /* Pods-Timer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer.release.xcconfig"; path = "Target Support Files/Pods-Timer/Pods-Timer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -452,7 +456,10 @@
 		8C509D392413E31700B6DF30 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CCE39F9E247C3B5E0069D196 /* BottomSheetViewController.swift */,
 				8C2517812403C27200BAD4B5 /* TimerViewController.swift */,
+				CCE39FA0247D65010069D196 /* BottomSheetContent.swift */,
+				CCE39FA2247D65250069D196 /* BottomSheetState.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -461,7 +468,6 @@
 			isa = PBXGroup;
 			children = (
 				8C1F5356243485D000D9F979 /* Cells */,
-				8C1F53542434804500D9F979 /* StartEditBottomSheet.swift */,
 				8C008FC324090C85000A0C32 /* StartEditViewController.swift */,
 				8C1F535A243487EC00D9F979 /* StartEditCellType.swift */,
 				8CE32668243601D500C6C014 /* StartEditInputAccessoryView.swift */,
@@ -756,16 +762,18 @@
 				8C509D0A2412509F00B6DF30 /* TimerFeature.swift in Sources */,
 				CC03C2792448AE1C0071FA55 /* ProjectCoordinator.swift in Sources */,
 				ACAA583024349F02003FDECA /* RunningTimeEntrySelector.swift in Sources */,
-				8C1F53552434804500D9F979 /* StartEditBottomSheet.swift in Sources */,
 				8CB753BE247B9C95001FBB10 /* TimeEntriesCore.swift in Sources */,
 				8C25178A2403C27200BAD4B5 /* TimerViewController.swift in Sources */,
 				AC0131B3246AEF6000C42D39 /* DurationTextFieldInfo.swift in Sources */,
 				AC02D86924696A37007E38F6 /* DurationTextField.swift in Sources */,
 				8C25178C2403C27200BAD4B5 /* TimeEntriesLogAction.swift in Sources */,
+				CCE39F9F247C3B5E0069D196 /* BottomSheetViewController.swift in Sources */,
+				CCE39FA3247D65250069D196 /* BottomSheetState.swift in Sources */,
 				CC03C27D2448AE1C0071FA55 /* ProjectViewController.swift in Sources */,
 				8C509D172412641600B6DF30 /* TimeEntriesLogFeature.swift in Sources */,
 				ACAA58272433A7ED003FDECA /* RunningTimeEntryState.swift in Sources */,
 				CC03C27E2448AE1C0071FA55 /* ProjectSelector.swift in Sources */,
+				CCE39FA1247D65010069D196 /* BottomSheetContent.swift in Sources */,
 				8CB54533240E7DA100154473 /* TimeEntriesLogViewController.swift in Sources */,
 				8C008FD22409407B000A0C32 /* StartEditReducer.swift in Sources */,
 				CC8172392476E110004F1152 /* Constants.swift in Sources */,

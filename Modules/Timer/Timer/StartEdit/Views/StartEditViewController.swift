@@ -10,7 +10,7 @@ import OtherServices
 
 public typealias StartEditStore = Store<StartEditState, StartEditAction>
 
-public class StartEditViewController: UIViewController, Storyboarded, BottomSheetContent {
+public class StartEditViewController: UIViewController, Storyboarded {
 
     public static var storyboardName = "Timer"
     public static var storyboardBundle = Assets.bundle
@@ -275,6 +275,16 @@ extension StartEditViewController: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return dataSource.sectionModels[0].items[indexPath.row].height
+    }
+}
+ 
+extension StartEditViewController: BottomSheetContent {
+    var visibility: Driver<Bool> {
+        return store.select(shouldShowEditView)
+    }
+
+    func dispatchDialogDismissed() {
+        store.dispatch(.dialogDismissed)
     }
 }
 

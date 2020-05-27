@@ -573,6 +573,34 @@ class StartEditReducerTests: XCTestCase {
             Step(.send, .autocompleteSuggestionTapped(suggestion)))
     }
 
+    func test_autocompleteSuggestionTapped_withACreateProjectSuggestion() {
+
+        let workspaceId: Int64 = 10
+        let projectName = "proj"
+        let timeEntry = TimeEntry.with(description: "old description @proj", workspaceId: workspaceId)
+        
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: EditableTimeEntry.fromSingle(timeEntry),
+            autocompleteSuggestions: [],
+            dateTimePickMode: .stop,
+            cursorPosition: 19
+        )
+        
+        let suggestion = AutocompleteSuggestion.createProjectSuggestion(name: projectName)
+        
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .autocompleteSuggestionTapped(suggestion)) {
+                var editableProject = EditableProject.empty(workspaceId: workspaceId)
+                editableProject.name = projectName
+                $0.editableTimeEntry?.editableProject = editableProject
+        })
+    }
+
     func testAutocompleteSuggestionsUpdatedUpdatesState() {
         let entities = TimeLogEntities()
         let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)

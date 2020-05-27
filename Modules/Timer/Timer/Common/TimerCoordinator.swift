@@ -27,10 +27,12 @@ public final class TimerCoordinator: BaseCoordinator {
         timeLogCoordinator.start()
         startEditCoordinator.start()
         runningTimeEntryCoordinator.start()
+        projectCoordinator.start()
         let viewController = TimerViewController()
         viewController.timeLogViewController = timeLogCoordinator.rootViewController
-        viewController.startEditBottomSheet = startEditCoordinator.rootViewController as? StartEditBottomSheet<StartEditViewController>
+        viewController.startEditBottomSheet = startEditCoordinator.rootViewController as? BottomSheetViewController<StartEditViewController>
         viewController.runningTimeEntryViewController = runningTimeEntryCoordinator.rootViewController as? RunningTimeEntryViewController
+        viewController.projectBottomSheet = projectCoordinator.rootViewController as? BottomSheetViewController<ProjectViewController>
         self.rootViewController = viewController
     }
 }

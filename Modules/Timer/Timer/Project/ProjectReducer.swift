@@ -29,6 +29,9 @@ func createProjectReducer(repository: TimeLogRepository) -> Reducer<ProjectState
         case .privateProjectSwitchTapped:
             state.editableProject?.isPrivate.toggle()
             return []
+        case .dialogDismissed:
+            state.editableProject = nil
+            return []
         }
     }
 }

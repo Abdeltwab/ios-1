@@ -10,8 +10,9 @@ typealias TimerStore = Store<TimerState, TimerAction>
 
 class TimerViewController: UIViewController {
     var runningTimeEntryViewController: RunningTimeEntryViewController!
-    var startEditBottomSheet: StartEditBottomSheet<StartEditViewController>!
+    var startEditBottomSheet: BottomSheetViewController<StartEditViewController>!
     var timeLogViewController: UIViewController!
+    var projectBottomSheet: BottomSheetViewController<ProjectViewController>!
 
     private var runningTimeEntryBottomSheet: SimpleBottomSheet!
 
@@ -24,8 +25,9 @@ class TimerViewController: UIViewController {
 
         runningTimeEntryBottomSheet = SimpleBottomSheet(viewController: runningTimeEntryViewController)
         install(runningTimeEntryBottomSheet, customConstraints: true)
-
+        
         install(startEditBottomSheet, customConstraints: true)
+        install(projectBottomSheet, customConstraints: true)
     }
 
     override func viewDidLayoutSubviews() {

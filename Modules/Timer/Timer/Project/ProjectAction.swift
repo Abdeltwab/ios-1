@@ -6,6 +6,7 @@ public enum ProjectAction: Equatable {
     case privateProjectSwitchTapped
     case doneButtonTapped
     case projectCreated(Project)
+    case dialogDismissed
 }
 
 extension ProjectAction: CustomDebugStringConvertible {
@@ -20,6 +21,8 @@ extension ProjectAction: CustomDebugStringConvertible {
             return "DoneButtonTapped"
         case .projectCreated(let project):
             return "ProjectCreated \(project)"
+        case .dialogDismissed:
+            return "DialogDismissed"
         }
     }
 }

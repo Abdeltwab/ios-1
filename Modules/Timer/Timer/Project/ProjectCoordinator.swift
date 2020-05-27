@@ -11,6 +11,8 @@ public final class ProjectCoordinator: BaseCoordinator {
     public override func start() {
         let viewController = ProjectViewController.instantiate()
         viewController.store = store
-        self.rootViewController = viewController
+        
+        let bottomSheet = BottomSheetViewController<ProjectViewController>(viewController: viewController)
+        self.rootViewController = bottomSheet
     }
 }
