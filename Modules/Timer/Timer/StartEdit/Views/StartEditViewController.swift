@@ -169,17 +169,20 @@ public class StartEditViewController: UIViewController, Storyboarded {
 
     public func focus() {
         descriptionTextField.becomeFirstResponder()
+        scrollView?.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
 
     public override var canBecomeFirstResponder: Bool { true }
 
     private func connectAccessoryViewButtons() {
         startEditInputAccessoryView.projectButton.rx.tap
+            .do(onNext: focus)
             .mapTo(StartEditAction.projectButtonTapped)
             .subscribe(onNext: store.dispatch)
             .disposed(by: disposeBag)
         
         startEditInputAccessoryView.tagButton.rx.tap
+            .do(onNext: focus)
             .mapTo(StartEditAction.tagButtonTapped)
             .subscribe(onNext: store.dispatch)
             .disposed(by: disposeBag)
