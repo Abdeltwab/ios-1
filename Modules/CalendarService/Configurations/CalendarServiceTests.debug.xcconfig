@@ -1,0 +1,2 @@
+#include "CalendarServiceTests-Shared.xcconfig"
+#include? "../../Pods/Target Support Files/Pods-CalendarService-CalendarServiceTests/Pods-CalendarService-CalendarServiceTests.debug.xcconfig"

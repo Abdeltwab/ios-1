@@ -38,6 +38,7 @@
 		AC4E25C7247D6CCA004655F6 /* CalendarDayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4E25C0247D6CCA004655F6 /* CalendarDayState.swift */; };
 		AC4E25C8247D6CCA004655F6 /* CalendarDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4E25C1247D6CCA004655F6 /* CalendarDayViewController.swift */; };
 		AC4E25C9247D6CCA004655F6 /* CalendarDaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4E25C2247D6CCA004655F6 /* CalendarDaySelector.swift */; };
+		B45A50D3247FE69B00D730A8 /* CalendarService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45A50D2247FE69B00D730A8 /* CalendarService.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		AC4E25C1247D6CCA004655F6 /* CalendarDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayViewController.swift; sourceTree = "<group>"; };
 		AC4E25C2247D6CCA004655F6 /* CalendarDaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDaySelector.swift; sourceTree = "<group>"; };
 		B245BDA31E4B1D8DDC51B9BC /* Pods-Calendar-CalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar-CalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-Calendar-CalendarTests/Pods-Calendar-CalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B45A50D2247FE69B00D730A8 /* CalendarService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CalendarService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF55096AEEB6FF794B0E44C6 /* Pods-Calendar-CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar-CalendarTests.release.xcconfig"; path = "Target Support Files/Pods-Calendar-CalendarTests/Pods-Calendar-CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CFDB390247CDFFE00952533 /* Architecture.framework in Frameworks */,
+				B45A50D3247FE69B00D730A8 /* CalendarService.framework in Frameworks */,
 				A4959F0D33F1BF0A42CA2FA7 /* Pods_Calendar.framework in Frameworks */,
 				8CE188E6247FD33D00FD81C7 /* Models.framework in Frameworks */,
 				8CE188DE247FC5BB00FD81C7 /* Repository.framework in Frameworks */,
@@ -185,6 +188,7 @@
 		8CFDB38E247CDFFE00952533 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B45A50D2247FE69B00D730A8 /* CalendarService.framework */,
 				8CE188E8247FD34200FD81C7 /* OtherServices.framework */,
 				8CE188E5247FD33D00FD81C7 /* Models.framework */,
 				8CE188E1247FD33800FD81C7 /* Assets.framework */,

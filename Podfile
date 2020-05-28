@@ -44,6 +44,7 @@ project 'Modules/UIUtils/UIUtils.xcodeproj'
 project 'Modules/Utils/Utils.xcodeproj'
 project 'Modules/Database/Database.xcodeproj'
 project 'Modules/OtherServices/OtherServices.xcodeproj'
+project 'Modules/CalendarService/CalendarService.xcodeproj'
 
 target :App do
     project 'App/App.xcodeproj'
@@ -147,6 +148,13 @@ target :OtherServices do
     project 'Modules/OtherServices/OtherServices.xcodeproj'
     rxswift
 end
+
+target :CalendarService do
+  use_frameworks!
+  project 'Modules/CalendarService/CalendarService.xcodeproj'
+  rxswift
+end
+
 
 dynamic_frameworks = []
 # Make all the other frameworks into static frameworks by overriding the static_framework? function to return true
