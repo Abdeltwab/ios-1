@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		51345F1A246E96A300B0127A /* UITextInput+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51345F19246E96A300B0127A /* UITextInput+Extensions.swift */; };
-		51628CCF2472EBD100D22072 /* UITextField+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51628CCE2472EBD100D22072 /* UITextField+Rx.swift */; };
+		8CD01AE2247E83DA00151680 /* UITextView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD01AE1247E83DA00151680 /* UITextView+Rx.swift */; };
 		B4B4F08624362E3000DFBF2E /* UIUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B4F07C24362E3000DFBF2E /* UIUtils.framework */; };
 		B4B4F08B24362E3000DFBF2E /* UIUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B4F08A24362E3000DFBF2E /* UIUtilsTests.swift */; };
 		B4B4F08D24362E3000DFBF2E /* UIUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B4B4F07F24362E3000DFBF2E /* UIUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,7 +44,6 @@
 /* Begin PBXFileReference section */
 		42BE886081D8F0044A47612C /* Pods-UIUtils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIUtils.debug.xcconfig"; path = "Target Support Files/Pods-UIUtils/Pods-UIUtils.debug.xcconfig"; sourceTree = "<group>"; };
 		51345F19246E96A300B0127A /* UITextInput+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextInput+Extensions.swift"; sourceTree = "<group>"; };
-		51628CCE2472EBD100D22072 /* UITextField+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Rx.swift"; sourceTree = "<group>"; };
 		7BD02C2B7580BB89030D5B82 /* Pods-UIUtils.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UIUtils.release.xcconfig"; path = "Target Support Files/Pods-UIUtils/Pods-UIUtils.release.xcconfig"; sourceTree = "<group>"; };
 		8B0E900E7A98F9680A094A64 /* Pods_UIUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UIUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAF7B0A24581CDF006B961D /* UIUtilsTests-Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "UIUtilsTests-Shared.xcconfig"; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		8CAF7B1024581CDF006B961D /* UIUtils.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UIUtils.release.xcconfig; sourceTree = "<group>"; };
 		8CAF7B1124581CDF006B961D /* UIUtilsTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UIUtilsTests.debug.xcconfig; sourceTree = "<group>"; };
 		8CAF7B1224581CDF006B961D /* Project.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.debug.xcconfig; sourceTree = "<group>"; };
+		8CD01AE1247E83DA00151680 /* UITextView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Rx.swift"; sourceTree = "<group>"; };
 		B4B4F07C24362E3000DFBF2E /* UIUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UIUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B4F07F24362E3000DFBF2E /* UIUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIUtils.h; sourceTree = "<group>"; };
 		B4B4F08024362E3000DFBF2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 				B4B4F0AE2436323A00DFBF2E /* Snackbar+StoreExtensions.swift */,
 				B4B4F07F24362E3000DFBF2E /* UIUtils.h */,
 				B4B4F08024362E3000DFBF2E /* Info.plist */,
-				51628CCE2472EBD100D22072 /* UITextField+Rx.swift */,
+				8CD01AE1247E83DA00151680 /* UITextView+Rx.swift */,
 			);
 			path = UIUtils;
 			sourceTree = "<group>";
@@ -303,7 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4B4F0AF2436323A00DFBF2E /* Snackbar+StoreExtensions.swift in Sources */,
-				51628CCF2472EBD100D22072 /* UITextField+Rx.swift in Sources */,
+				8CD01AE2247E83DA00151680 /* UITextView+Rx.swift in Sources */,
 				51345F1A246E96A300B0127A /* UITextInput+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

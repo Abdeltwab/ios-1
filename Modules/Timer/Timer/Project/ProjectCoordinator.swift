@@ -12,7 +12,7 @@ public final class ProjectCoordinator: BaseCoordinator {
         let viewController = ProjectViewController.instantiate()
         viewController.store = store
         
-        let bottomSheet = BottomSheetViewController<ProjectViewController>(viewController: viewController)
+        let bottomSheet = BottomSheetViewController(viewController: viewController)
         self.rootViewController = bottomSheet
     }
 }

@@ -31,7 +31,7 @@ class WheelBackgroundView: UIView {
     }
 
     private func addLayersAndViews() {
-        let wheel = Wheel(center: wheelCenter,
+        let wheel = WheelShape(center: wheelCenter,
                           outerRadius: radius,
                           innerRadius: smallRadius,
                           color: wheelBackgroundColor)

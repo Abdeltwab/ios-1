@@ -143,7 +143,7 @@ public class WheelForegroundView: UIControl {
     private func createSubLayers() {
         layer.sublayers?.forEach({ $0.removeFromSuperlayer() })
 
-        let fullWheel = Wheel(center: layer.bounds.center, outerRadius: radius, innerRadius: smallRadius, color: backgroundColor!.cgColor)
+        let fullWheel = WheelShape(center: layer.bounds.center, outerRadius: radius, innerRadius: smallRadius, color: backgroundColor!.cgColor)
         layer.addSublayer(fullWheel)
         self.fullWheel = fullWheel
 

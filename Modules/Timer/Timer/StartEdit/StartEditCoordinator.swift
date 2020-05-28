@@ -16,7 +16,7 @@ public final class StartEditCoordinator: BaseCoordinator {
         startEditViewController.store = store
         startEditViewController.time = time
 
-        let sheetController = BottomSheetViewController<StartEditViewController>(viewController: startEditViewController)
+        let sheetController = BottomSheetViewController(viewController: startEditViewController)
       
         self.rootViewController = sheetController
     }

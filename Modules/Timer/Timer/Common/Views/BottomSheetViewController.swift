@@ -3,16 +3,17 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-class BottomSheetViewController<ContainedView: UIViewController>: UIViewController, UIGestureRecognizerDelegate
-    where ContainedView: BottomSheetContent {
-    
+class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
+
+    typealias ContainedViewController = UIViewController & BottomSheetContent
+
     private var topConstraint: NSLayoutConstraint!
     private var fullViewHeight: CGFloat = 0
     private var fullScreenConstant: CGFloat = 0
     private var partialViewConstant: CGFloat = 0
     private var hiddenViewConstant: CGFloat = 0
 
-    private let containedViewController: ContainedView
+    private let containedViewController: ContainedViewController
     private let overlay = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
 
     private var isDragging = false
@@ -29,7 +30,7 @@ class BottomSheetViewController<ContainedView: UIViewController>: UIViewControll
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(viewController: ContainedView) {
+    init(viewController: ContainedViewController) {
         containedViewController = viewController
         super.init(nibName: nil, bundle: nil)
     }

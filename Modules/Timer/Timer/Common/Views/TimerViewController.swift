@@ -10,9 +10,9 @@ typealias TimerStore = Store<TimerState, TimerAction>
 
 class TimerViewController: UIViewController {
     var runningTimeEntryViewController: RunningTimeEntryViewController!
-    var startEditBottomSheet: BottomSheetViewController<StartEditViewController>!
+    var startEditBottomSheet: BottomSheetViewController!
     var timeLogViewController: UIViewController!
-    var projectBottomSheet: BottomSheetViewController<ProjectViewController>!
+    var projectBottomSheet: BottomSheetViewController!
 
     private var runningTimeEntryBottomSheet: SimpleBottomSheet!
 

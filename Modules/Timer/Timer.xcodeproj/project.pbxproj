@@ -23,7 +23,6 @@
 		8C008FC424090C85000A0C32 /* StartEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C008FC324090C85000A0C32 /* StartEditViewController.swift */; };
 		8C008FD024093FF8000A0C32 /* StartEditAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C008FCF24093FF8000A0C32 /* StartEditAction.swift */; };
 		8C008FD22409407B000A0C32 /* StartEditReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C008FD12409407B000A0C32 /* StartEditReducer.swift */; };
-		8C1F535B243487EC00D9F979 /* StartEditCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1F535A243487EC00D9F979 /* StartEditCellType.swift */; };
 		8C2130C42424F46D000FC72C /* TimeEntriesLogReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130C32424F46D000FC72C /* TimeEntriesLogReducerTests.swift */; };
 		8C2130CA2424F5DE000FC72C /* MockTimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130C92424F5DE000FC72C /* MockTimeLogRepository.swift */; };
 		8C2130CF2424F64F000FC72C /* ReducerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130CE2424F64F000FC72C /* ReducerAssert.swift */; };
@@ -52,16 +51,17 @@
 		8C509D202412874100B6DF30 /* TimeEntriesSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C509D1F2412874100B6DF30 /* TimeEntriesSelector.swift */; };
 		8C509D232412876A00B6DF30 /* TimeEntryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C509D222412876A00B6DF30 /* TimeEntryViewModel.swift */; };
 		8C509D252412879200B6DF30 /* DayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C509D242412879200B6DF30 /* DayViewModel.swift */; };
+		8C7F6D03247FB4E80026FF9D /* DatePickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7F6D02247FB4E80026FF9D /* DatePickers.swift */; };
+		8C7F6D07247FBC910026FF9D /* Wheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7F6D06247FBC910026FF9D /* Wheel.swift */; };
 		8CB54533240E7DA100154473 /* TimeEntriesLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB54532240E7DA100154473 /* TimeEntriesLogViewController.swift */; };
 		8CB54535240EA67400154473 /* StartEditState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB54534240EA67400154473 /* StartEditState.swift */; };
 		8CB753BE247B9C95001FBB10 /* TimeEntriesCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB753BD247B9C95001FBB10 /* TimeEntriesCore.swift */; };
 		8CB753C0247BCD83001FBB10 /* TimeEntriesReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB753BF247BCD83001FBB10 /* TimeEntriesReducerTests.swift */; };
 		8CE32669243601D500C6C014 /* StartEditInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE32668243601D500C6C014 /* StartEditInputAccessoryView.swift */; };
-		8CE495A62434B3E2008ABE48 /* DummyLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE495A52434B3E2008ABE48 /* DummyLabelCell.swift */; };
 		AC0131B3246AEF6000C42D39 /* DurationTextFieldInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0131B2246AEF6000C42D39 /* DurationTextFieldInfo.swift */; };
 		AC02D86924696A37007E38F6 /* DurationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC02D86824696A37007E38F6 /* DurationTextField.swift */; };
 		AC42284A2456EC5C00DD8AB3 /* WheelBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4228492456EC5C00DD8AB3 /* WheelBackgroundView.swift */; };
-		AC42284C245720E700DD8AB3 /* Wheel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42284B245720E700DD8AB3 /* Wheel.swift */; };
+		AC42284C245720E700DD8AB3 /* WheelShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42284B245720E700DD8AB3 /* WheelShape.swift */; };
 		AC42284F24572F4B00DD8AB3 /* ClockDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42284E24572F4B00DD8AB3 /* ClockDial.swift */; };
 		AC823A01245874BB0078574D /* StartEditSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8239FF245874BB0078574D /* StartEditSelector.swift */; };
 		AC823A05245ADA950078574D /* EditDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC823A04245ADA950078574D /* EditDurationView.swift */; };
@@ -126,7 +126,6 @@
 		8C008FC324090C85000A0C32 /* StartEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditViewController.swift; sourceTree = "<group>"; };
 		8C008FCF24093FF8000A0C32 /* StartEditAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditAction.swift; sourceTree = "<group>"; };
 		8C008FD12409407B000A0C32 /* StartEditReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditReducer.swift; sourceTree = "<group>"; };
-		8C1F535A243487EC00D9F979 /* StartEditCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditCellType.swift; sourceTree = "<group>"; };
 		8C2130C32424F46D000FC72C /* TimeEntriesLogReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesLogReducerTests.swift; sourceTree = "<group>"; };
 		8C2130C92424F5DE000FC72C /* MockTimeLogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimeLogRepository.swift; sourceTree = "<group>"; };
 		8C2130CE2424F64F000FC72C /* ReducerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReducerAssert.swift; sourceTree = "<group>"; };
@@ -159,6 +158,8 @@
 		8C509D1F2412874100B6DF30 /* TimeEntriesSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesSelector.swift; sourceTree = "<group>"; };
 		8C509D222412876A00B6DF30 /* TimeEntryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeEntryViewModel.swift; sourceTree = "<group>"; };
 		8C509D242412879200B6DF30 /* DayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewModel.swift; sourceTree = "<group>"; };
+		8C7F6D02247FB4E80026FF9D /* DatePickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickers.swift; sourceTree = "<group>"; };
+		8C7F6D06247FBC910026FF9D /* Wheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheel.swift; sourceTree = "<group>"; };
 		8CAF7AD124581A41006B961D /* Timer.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Timer.release.xcconfig; sourceTree = "<group>"; };
 		8CAF7AD224581A41006B961D /* Timer.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Timer.debug.xcconfig; sourceTree = "<group>"; };
 		8CAF7AD324581A41006B961D /* Project.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.release.xcconfig; sourceTree = "<group>"; };
@@ -172,11 +173,10 @@
 		8CB753BD247B9C95001FBB10 /* TimeEntriesCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesCore.swift; sourceTree = "<group>"; };
 		8CB753BF247BCD83001FBB10 /* TimeEntriesReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesReducerTests.swift; sourceTree = "<group>"; };
 		8CE32668243601D500C6C014 /* StartEditInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditInputAccessoryView.swift; sourceTree = "<group>"; };
-		8CE495A52434B3E2008ABE48 /* DummyLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyLabelCell.swift; sourceTree = "<group>"; };
 		AC0131B2246AEF6000C42D39 /* DurationTextFieldInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTextFieldInfo.swift; sourceTree = "<group>"; };
 		AC02D86824696A37007E38F6 /* DurationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTextField.swift; sourceTree = "<group>"; };
 		AC4228492456EC5C00DD8AB3 /* WheelBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelBackgroundView.swift; sourceTree = "<group>"; };
-		AC42284B245720E700DD8AB3 /* Wheel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wheel.swift; sourceTree = "<group>"; };
+		AC42284B245720E700DD8AB3 /* WheelShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelShape.swift; sourceTree = "<group>"; };
 		AC42284E24572F4B00DD8AB3 /* ClockDial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockDial.swift; sourceTree = "<group>"; };
 		AC8239FF245874BB0078574D /* StartEditSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditSelector.swift; sourceTree = "<group>"; };
 		AC823A04245ADA950078574D /* EditDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDurationView.swift; sourceTree = "<group>"; };
@@ -278,14 +278,6 @@
 				8C4EDC5A2429F8B200C03E14 /* TimeEntriesSelectorTests.swift */,
 			);
 			path = Selectors;
-			sourceTree = "<group>";
-		};
-		8C1F5356243485D000D9F979 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				8CE495A52434B3E2008ABE48 /* DummyLabelCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		8C2130C22424F44F000FC72C /* Reducers */ = {
@@ -467,15 +459,22 @@
 		8C509D3A2413E31F00B6DF30 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8C1F5356243485D000D9F979 /* Cells */,
-				8C008FC324090C85000A0C32 /* StartEditViewController.swift */,
-				8C1F535A243487EC00D9F979 /* StartEditCellType.swift */,
-				8CE32668243601D500C6C014 /* StartEditInputAccessoryView.swift */,
-				AC823A04245ADA950078574D /* EditDurationView.swift */,
+				8C7F6D01247FB4C80026FF9D /* DatePickers */,
 				AC02D86A24697F1B007E38F6 /* DurationTextField */,
 				AC42284D24572F3A00DD8AB3 /* Wheel */,
+				8C008FC324090C85000A0C32 /* StartEditViewController.swift */,
+				8CE32668243601D500C6C014 /* StartEditInputAccessoryView.swift */,
+				AC823A04245ADA950078574D /* EditDurationView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8C7F6D01247FB4C80026FF9D /* DatePickers */ = {
+			isa = PBXGroup;
+			children = (
+				8C7F6D02247FB4E80026FF9D /* DatePickers.swift */,
+			);
+			path = DatePickers;
 			sourceTree = "<group>";
 		};
 		8CAF7AD024581A41006B961D /* Configurations */ = {
@@ -505,12 +504,13 @@
 		AC42284D24572F3A00DD8AB3 /* Wheel */ = {
 			isa = PBXGroup;
 			children = (
-				AC42284B245720E700DD8AB3 /* Wheel.swift */,
+				AC42284B245720E700DD8AB3 /* WheelShape.swift */,
 				AC42284E24572F4B00DD8AB3 /* ClockDial.swift */,
 				AC4228492456EC5C00DD8AB3 /* WheelBackgroundView.swift */,
 				CC5D320A2464A931005A1837 /* WheelForegroundView.swift */,
 				CC5D320C24657CC5005A1837 /* Cap.swift */,
 				CC5D320E24659308005A1837 /* Arc.swift */,
+				8C7F6D06247FBC910026FF9D /* Wheel.swift */,
 			);
 			path = Wheel;
 			sourceTree = "<group>";
@@ -756,6 +756,7 @@
 				AC42284A2456EC5C00DD8AB3 /* WheelBackgroundView.swift in Sources */,
 				CC03C27B2448AE1C0071FA55 /* ProjectReducer.swift in Sources */,
 				8C25178B2403C27200BAD4B5 /* TimeEntriesLogState.swift in Sources */,
+				8C7F6D07247FBC910026FF9D /* Wheel.swift in Sources */,
 				34C93C082453387300024F06 /* DateTimePickMode.swift in Sources */,
 				ACAA58292433A7ED003FDECA /* RunningTimeEntryFeature.swift in Sources */,
 				AC42284F24572F4B00DD8AB3 /* ClockDial.swift in Sources */,
@@ -779,7 +780,7 @@
 				CC8172392476E110004F1152 /* Constants.swift in Sources */,
 				ACAA58282433A7ED003FDECA /* RunningTimeEntryAction.swift in Sources */,
 				8C25178D2403C27200BAD4B5 /* TimeEntriesLogReducer.swift in Sources */,
-				AC42284C245720E700DD8AB3 /* Wheel.swift in Sources */,
+				AC42284C245720E700DD8AB3 /* WheelShape.swift in Sources */,
 				8C509D112412591E00B6DF30 /* TimeEntriesLogCoordinator.swift in Sources */,
 				8C4EDC57242902FF00C03E14 /* TimeLogCellViewModel.swift in Sources */,
 				8CE32669243601D500C6C014 /* StartEditInputAccessoryView.swift in Sources */,
@@ -788,6 +789,7 @@
 				CC5D320D24657CC5005A1837 /* Cap.swift in Sources */,
 				8C509D252412879200B6DF30 /* DayViewModel.swift in Sources */,
 				ACAA582A2433A7ED003FDECA /* RunningTimeEntryReducer.swift in Sources */,
+				8C7F6D03247FB4E80026FF9D /* DatePickers.swift in Sources */,
 				CC03C27C2448AE1C0071FA55 /* ProjectState.swift in Sources */,
 				CC5D320F24659308005A1837 /* Arc.swift in Sources */,
 				8C008FD024093FF8000A0C32 /* StartEditAction.swift in Sources */,
@@ -797,7 +799,6 @@
 				8CB54535240EA67400154473 /* StartEditState.swift in Sources */,
 				ACAA585D24378106003FDECA /* SimpleBottomSheet.swift in Sources */,
 				ACAA58322434A1EE003FDECA /* RunningTimeEntryViewController.swift in Sources */,
-				8CE495A62434B3E2008ABE48 /* DummyLabelCell.swift in Sources */,
 				8C2517892403C27200BAD4B5 /* TimeEntryCell.swift in Sources */,
 				AC823A01245874BB0078574D /* StartEditSelector.swift in Sources */,
 				CC03C2782448AE1B0071FA55 /* ProjectAction.swift in Sources */,
@@ -812,7 +813,6 @@
 				8C509D1324125AB500B6DF30 /* StartEditCoordinator.swift in Sources */,
 				8C509D192412644300B6DF30 /* StartEditFeature.swift in Sources */,
 				CC03C27A2448AE1C0071FA55 /* ProjectFeature.swift in Sources */,
-				8C1F535B243487EC00D9F979 /* StartEditCellType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

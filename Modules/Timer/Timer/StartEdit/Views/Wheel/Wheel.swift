@@ -1,22 +1,35 @@
 import UIKit
-import Utils
+import Architecture
+import RxSwift
 
-class Wheel: CAShapeLayer {
+class Wheel: UIView {
 
-    init(center: CGPoint, outerRadius: CGFloat, innerRadius: CGFloat, color: CGColor) {
-        super.init()
+    @IBOutlet weak var wheelForegroundView: WheelForegroundView!
+    @IBOutlet weak var wheelDurationView: UIView!
+    @IBOutlet weak var wheelDurationLabelTextField: DurationTextField!
 
-        let discPath = UIBezierPath()
-        discPath.addArc(withCenter: center, radius: outerRadius, startAngle: 0, endAngle: .fullCircle, clockwise: true)
-        let cutOutPath = UIBezierPath()
-        cutOutPath.addArc(withCenter: center, radius: innerRadius, startAngle: 0, endAngle: .fullCircle, clockwise: true)
-        discPath.append(cutOutPath.reversing())
+    private var disposeBag = DisposeBag()
+    private var timer: Timer?
 
-        path = discPath.cgPath
-        fillColor = color
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        wheelDurationView.layer.cornerRadius = 16
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func bindStore(store: StartEditStore) {
+        wheelForegroundView.rx.controlEvent(.valueChanged)
+            .mapTo({ _ in StartEditAction.wheelStartAndDurationChanged(self.wheelForegroundView.startTime, self.wheelForegroundView.duration) })
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        wheelDurationLabelTextField.rx.duration
+            .mapTo({ StartEditAction.wheelDurationChanged($0) })
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+    }
+
+    func setDurationString(_ string: String?) {
+        wheelDurationLabelTextField.setFormattedDuration(string ?? "00:00")
     }
 }
