@@ -3,24 +3,18 @@ import XCTest
 
 class DatabaseTests: XCTestCase {
 
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func run() {
+        super.run()
+        XCTestSuite(forTestCaseClass: ClientDatabaseTests.self).run()
+        XCTestSuite(forTestCaseClass: ProjectDatabaseTests.self).run()
+        XCTestSuite(forTestCaseClass: TagDatabaseTests.self).run()
+        XCTestSuite(forTestCaseClass: TaskDatabaseTests.self).run()
+        XCTestSuite(forTestCaseClass: TimeEntryDatabaseTests.self).run()
+        XCTestSuite(forTestCaseClass: WorkspaceDatabaseTests.self).run()
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    // NOTE: at least one test is needed for the test runner to call `run` in this class
+    func testDummy() {
+        XCTAssert(true)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }

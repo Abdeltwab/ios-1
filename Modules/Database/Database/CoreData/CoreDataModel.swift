@@ -29,8 +29,6 @@ extension CoreDataModel {
             let managedObject = ManagedObject.insert(into: context)
             try model.encode(into: managedObject, context: context)
         }
-
-        try context.save()
     }
 
     static func update(
@@ -47,8 +45,6 @@ extension CoreDataModel {
         for (managedObject, entity) in zip(managedObjects, updatedEntities) {
             try entity.encode(into: managedObject, context: context)
         }
-
-        try context.save()
     }
 
     static func delete(
@@ -61,7 +57,5 @@ extension CoreDataModel {
         for managedObject in managedObjects {
             context.delete(managedObject)
         }
-
-        try context.save()
     }
 }

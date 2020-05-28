@@ -1,1 +1,3 @@
 #include "../../App/Configurations/base/Tests-Base.xcconfig"
+
+OTHER_LDFLAGS = -all_load

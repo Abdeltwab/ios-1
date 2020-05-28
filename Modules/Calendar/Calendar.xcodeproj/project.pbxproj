@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		559FF6CD3B698FCABB15FD01 /* Pods_Calendar_CalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097E62FDCBC7925F4F46B626 /* Pods_Calendar_CalendarTests.framework */; };
+		8CE188DE247FC5BB00FD81C7 /* Repository.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE188DD247FC5BB00FD81C7 /* Repository.framework */; };
+		8CE188E2247FD33800FD81C7 /* Assets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE188E1247FD33800FD81C7 /* Assets.framework */; };
+		8CE188E6247FD33D00FD81C7 /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE188E5247FD33D00FD81C7 /* Models.framework */; };
+		8CE188E9247FD34200FD81C7 /* OtherServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE188E8247FD34200FD81C7 /* OtherServices.framework */; };
 		8CFDB34B247C072600952533 /* Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFDB341247C072600952533 /* Calendar.framework */; };
 		8CFDB350247C072600952533 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFDB34F247C072600952533 /* CalendarTests.swift */; };
 		8CFDB352247C072600952533 /* Calendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 8CFDB344247C072600952533 /* Calendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,6 +55,10 @@
 		097E62FDCBC7925F4F46B626 /* Pods_Calendar_CalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendar_CalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE2579A412815787A21827C /* Pods_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		387803EDA935829A817A2A17 /* Pods-Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.release.xcconfig"; path = "Target Support Files/Pods-Calendar/Pods-Calendar.release.xcconfig"; sourceTree = "<group>"; };
+		8CE188DD247FC5BB00FD81C7 /* Repository.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Repository.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE188E1247FD33800FD81C7 /* Assets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Assets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE188E5247FD33D00FD81C7 /* Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE188E8247FD34200FD81C7 /* OtherServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OtherServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFDB341247C072600952533 /* Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFDB344247C072600952533 /* Calendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Calendar.h; sourceTree = "<group>"; };
 		8CFDB345247C072600952533 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,6 +98,10 @@
 			files = (
 				8CFDB390247CDFFE00952533 /* Architecture.framework in Frameworks */,
 				A4959F0D33F1BF0A42CA2FA7 /* Pods_Calendar.framework in Frameworks */,
+				8CE188E6247FD33D00FD81C7 /* Models.framework in Frameworks */,
+				8CE188DE247FC5BB00FD81C7 /* Repository.framework in Frameworks */,
+				8CE188E2247FD33800FD81C7 /* Assets.framework in Frameworks */,
+				8CE188E9247FD34200FD81C7 /* OtherServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +185,10 @@
 		8CFDB38E247CDFFE00952533 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8CE188E8247FD34200FD81C7 /* OtherServices.framework */,
+				8CE188E5247FD33D00FD81C7 /* Models.framework */,
+				8CE188E1247FD33800FD81C7 /* Assets.framework */,
+				8CE188DD247FC5BB00FD81C7 /* Repository.framework */,
 				8CFDB38F247CDFFE00952533 /* Architecture.framework */,
 				2BE2579A412815787A21827C /* Pods_Calendar.framework */,
 				097E62FDCBC7925F4F46B626 /* Pods_Calendar_CalendarTests.framework */,

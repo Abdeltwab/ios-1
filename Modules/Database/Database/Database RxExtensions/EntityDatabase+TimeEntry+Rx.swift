@@ -5,17 +5,39 @@ import RxSwift
 extension Reactive where Base: EntityDatabaseProtocol, Base.EntityType == TimeEntry {
 
     public func getAllSortedBackground() -> Single<[TimeEntry]> {
-        TimeEntry.rx.get(
-            in: base.stack.backgroundContext,
-            sortDescriptors: [NSSortDescriptor(key: "start", ascending: false)]
-        )
+        return Single.create { single in
+            self.base.stack.persistentContainer.performBackgroundTask { context in
+                do {
+                    let result = try TimeEntry.get(
+                        in: context,
+                        sortDescriptors: [NSSortDescriptor(key: "start", ascending: false)]
+                    )
+                    single(.success(result))
+                } catch {
+                    single(.error(error))
+                }
+            }
+
+            return Disposables.create { }
+        }
     }
 
     public func getAllRunningBackground() -> Single<[TimeEntry]> {
-        TimeEntry.rx.get(
-            in: base.stack.backgroundContext,
-            predicate: NSPredicate(format: "duration == nil"),
-            sortDescriptors: [NSSortDescriptor(key: "start", ascending: false)]
-        )
+        return Single.create { single in
+            self.base.stack.persistentContainer.performBackgroundTask { context in
+                do {
+                    let result = try TimeEntry.get(
+                        in: context,
+                        predicate: NSPredicate(format: "duration == nil"),
+                        sortDescriptors: [NSSortDescriptor(key: "start", ascending: false)]
+                    )
+                    single(.success(result))
+                } catch {
+                    single(.error(error))
+                }
+            }
+
+            return Disposables.create { }
+        }
     }
 }

@@ -15,7 +15,6 @@ open class EntityDatabaseTests<EntityType: CoreDataModel>: XCTestCase where Enti
     internal var database: Database!
     var entityDatabase: EntityDatabase<EntityType> { fatalError("Override in subclass") }
 
-    private let identifier = "com.toggl.aurora.Database"
     private let model = "Database"
 
     lazy var mockContainer: NSPersistentContainer = {
@@ -27,7 +26,6 @@ open class EntityDatabaseTests<EntityType: CoreDataModel>: XCTestCase where Enti
 
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
-        description.shouldAddStoreAsynchronously = false // Make it simpler in test env
         container.persistentStoreDescriptions = [description]
 
         container.loadPersistentStores { _, error in
@@ -140,17 +138,10 @@ open class EntityDatabaseTests<EntityType: CoreDataModel>: XCTestCase where Enti
     }
 
     private func flushData() {
-        let entityNames = [ManagedWorkspace.entityName, ManagedClient.entityName, ManagedProject.entityName,
-                           ManagedTask.entityName, ManagedTag.entityName, ManagedTimeEntry.entityName]
-
-        for entityName in entityNames {
-            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-            let objs = try! mockContainer.viewContext.fetch(fetchRequest)
-            for case let obj as NSManagedObject in objs {
-                mockContainer.viewContext.delete(obj)
-            }
+        let stores = mockContainer.persistentStoreCoordinator.persistentStores
+        for store in stores {
+            try! mockContainer.persistentStoreCoordinator.remove(store)
         }
-        try! mockContainer.viewContext.save()
     }
 
     @discardableResult

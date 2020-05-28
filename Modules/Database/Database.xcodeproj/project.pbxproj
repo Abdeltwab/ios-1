@@ -31,7 +31,6 @@
 		8CCC1C142451E8330065EE4E /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC1BFC2451E8320065EE4E /* ModelExtensions.swift */; };
 		8CCC1C152451E8330065EE4E /* EntityDatabase+TimeEntry+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC1BFD2451E8320065EE4E /* EntityDatabase+TimeEntry+Rx.swift */; };
 		8CCC1C162451E8330065EE4E /* EntityDatabase+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC1BFE2451E8320065EE4E /* EntityDatabase+Rx.swift */; };
-		8CCC1C172451E8330065EE4E /* CoreDataModel+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC1BFF2451E8320065EE4E /* CoreDataModel+Rx.swift */; };
 		8CCC1C182451E8330065EE4E /* EntityDatabase+TimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC1C002451E8320065EE4E /* EntityDatabase+TimeEntry.swift */; };
 		8CCC1C192451E8330065EE4E /* EntityDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC1C012451E8320065EE4E /* EntityDatabase.swift */; };
 		8CCC1C1A2451E8330065EE4E /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCC1C022451E8320065EE4E /* Database.swift */; };
@@ -98,7 +97,6 @@
 		8CCC1BFC2451E8320065EE4E /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
 		8CCC1BFD2451E8320065EE4E /* EntityDatabase+TimeEntry+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EntityDatabase+TimeEntry+Rx.swift"; sourceTree = "<group>"; };
 		8CCC1BFE2451E8320065EE4E /* EntityDatabase+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EntityDatabase+Rx.swift"; sourceTree = "<group>"; };
-		8CCC1BFF2451E8320065EE4E /* CoreDataModel+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CoreDataModel+Rx.swift"; sourceTree = "<group>"; };
 		8CCC1C002451E8320065EE4E /* EntityDatabase+TimeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EntityDatabase+TimeEntry.swift"; sourceTree = "<group>"; };
 		8CCC1C012451E8320065EE4E /* EntityDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityDatabase.swift; sourceTree = "<group>"; };
 		8CCC1C022451E8320065EE4E /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 				8CCC1BFC2451E8320065EE4E /* ModelExtensions.swift */,
 				8CCC1BFD2451E8320065EE4E /* EntityDatabase+TimeEntry+Rx.swift */,
 				8CCC1BFE2451E8320065EE4E /* EntityDatabase+Rx.swift */,
-				8CCC1BFF2451E8320065EE4E /* CoreDataModel+Rx.swift */,
 			);
 			path = "Database RxExtensions";
 			sourceTree = "<group>";
@@ -490,7 +487,6 @@
 				8CCC1C042451E8330065EE4E /* CoreDataModel.swift in Sources */,
 				8CCC1C0A2451E8330065EE4E /* Client+CoreDataModel.swift in Sources */,
 				8CCC1C152451E8330065EE4E /* EntityDatabase+TimeEntry+Rx.swift in Sources */,
-				8CCC1C172451E8330065EE4E /* CoreDataModel+Rx.swift in Sources */,
 				8CCC1C062451E8330065EE4E /* Managed.swift in Sources */,
 				8CCC1C192451E8330065EE4E /* EntityDatabase.swift in Sources */,
 				8CCC1C102451E8330065EE4E /* ManagedProject.swift in Sources */,

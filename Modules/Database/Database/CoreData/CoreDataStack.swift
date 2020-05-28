@@ -3,7 +3,6 @@ import CoreData
 import Assets
 
 public class CoreDataStack {
-    private let identifier = "com.toggl.aurora.Database"
     private let model = "Database"
 
     private let injectedContainer: NSPersistentContainer?
@@ -32,12 +31,6 @@ public class CoreDataStack {
     lazy var backgroundContext: NSManagedObjectContext = {
         persistentContainer.newBackgroundContext()
     }()
-
-    func saveContext() throws {
-        if persistentContainer.viewContext.hasChanges {
-            try persistentContainer.viewContext.save()
-        }
-    }
 
     init(persistentContainer: NSPersistentContainer? = nil) {
         self.injectedContainer = persistentContainer
