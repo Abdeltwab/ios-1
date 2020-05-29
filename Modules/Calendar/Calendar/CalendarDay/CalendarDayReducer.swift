@@ -4,7 +4,9 @@ import Models
 import RxSwift
 import Repository
 import OtherServices
+import Timer
 
+// swiftlint:disable cyclomatic_complexity
 func createCalendarDayReducer() -> Reducer<CalendarDayState, CalendarDayAction> {
     return Reducer {state, action -> [Effect<CalendarDayAction>] in
 
@@ -30,6 +32,16 @@ func createCalendarDayReducer() -> Reducer<CalendarDayState, CalendarDayAction> 
             editableTimeEntry.start = newStart
             state.selectedItem = .left(editableTimeEntry)
             return []
+
+        case .emptyPositionLongPressed(let start):
+            guard state.selectedItem == nil else { return [] }
+            guard case let Loadable.loaded(user) = state.user else { return [] }
+            var editableTimeEntry = EditableTimeEntry.empty(workspaceId: user.defaultWorkspace)
+            editableTimeEntry.start = start
+            editableTimeEntry.duration = defaultTimeEntryDuration
+            state.selectedItem = .left(editableTimeEntry)
+            return []
         }
     }
 }
+// swiftlint:enable cyclomatic_complexity

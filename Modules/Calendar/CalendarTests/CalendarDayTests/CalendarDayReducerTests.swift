@@ -27,6 +27,7 @@ class CalendarDayReducerTests: XCTestCase {
         editableTimeEntry.duration = 10
 
         let state = CalendarDayState(
+            user: .loaded(mockUser),
             selectedDate: now,
             timeEntries: [:],
             calendarEvents: [:],
@@ -51,6 +52,7 @@ class CalendarDayReducerTests: XCTestCase {
     func test_startTimeDraggedAction_whenNoEditableTimeEntryIsNil_shouldDoNothing() {
 
         let state = CalendarDayState(
+            user: .loaded(mockUser),
             selectedDate: now,
             timeEntries: [:],
             calendarEvents: [:],
@@ -72,7 +74,9 @@ class CalendarDayReducerTests: XCTestCase {
         var editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
         editableTimeEntry.start = now.addingTimeInterval(50)
         editableTimeEntry.duration = 10
+
         let state = CalendarDayState(
+            user: .loaded(mockUser),
             selectedDate: now,
             timeEntries: [:],
             calendarEvents: [:],
@@ -96,6 +100,7 @@ class CalendarDayReducerTests: XCTestCase {
     func test_stopTimeDraggedAction_whenNoEditableTimeEntryIsNil_shouldDoNothing() {
 
         let state = CalendarDayState(
+            user: .loaded(mockUser),
             selectedDate: now,
             timeEntries: [:],
             calendarEvents: [:],
@@ -119,6 +124,7 @@ class CalendarDayReducerTests: XCTestCase {
         editableTimeEntry.duration = 10
 
         let state = CalendarDayState(
+            user: .loaded(mockUser),
             selectedDate: now,
             timeEntries: [:],
             calendarEvents: [:],
@@ -142,6 +148,7 @@ class CalendarDayReducerTests: XCTestCase {
     func test_timeEntryDraggedAction_whenNoEditableTimeEntryIsNil_shouldDoNothing() {
 
         let state = CalendarDayState(
+            user: .loaded(mockUser),
             selectedDate: now,
             timeEntries: [:],
             calendarEvents: [:],
@@ -155,6 +162,47 @@ class CalendarDayReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, CalendarDayAction.startTimeDragged(newTime))
+        )
+    }
+
+    func test_emptyPositionLongPressed_setsAnEditableTimeEntry() {
+
+        let state = CalendarDayState(
+            user: .loaded(mockUser),
+            selectedDate: now,
+            timeEntries: [:],
+            calendarEvents: [:],
+            selectedItem: nil
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, CalendarDayAction.emptyPositionLongPressed(now)) {
+                var editableTimeEntry = EditableTimeEntry.empty(workspaceId: 0)
+                editableTimeEntry.start = self.now
+                editableTimeEntry.duration = defaultTimeEntryDuration
+                $0.selectedItem = .left(editableTimeEntry)
+            }
+        )
+    }
+
+    func test_emptyPositionLongPressed_whenselectedItemIsNotNil_shouldDoNothing() {
+
+        let state = CalendarDayState(
+            user: .loaded(mockUser),
+            selectedDate: now,
+            timeEntries: [:],
+            calendarEvents: [:],
+            selectedItem: .left(EditableTimeEntry.empty(workspaceId: 0))
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, CalendarDayAction.emptyPositionLongPressed(now))
         )
     }
 }

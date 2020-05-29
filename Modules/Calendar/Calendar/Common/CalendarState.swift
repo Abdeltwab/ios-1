@@ -5,6 +5,7 @@ import Utils
 import Timer
 
 public struct CalendarState {
+    var user: Loadable<User> = .nothing
     var selectedDate: Date = Date()
     var timeEntries: [Int64: TimeEntry] = [:]
     var calendarEvents: [String: CalendarEvent] = [:]
@@ -25,6 +26,7 @@ extension CalendarState {
     internal var calendarDayState: CalendarDayState {
         get {
             CalendarDayState(
+                user: user,
                 selectedDate: selectedDate,
                 timeEntries: timeEntries,
                 calendarEvents: calendarEvents,
@@ -32,6 +34,7 @@ extension CalendarState {
             )
         }
         set {
+            user = newValue.user
             selectedDate = newValue.selectedDate
             timeEntries = newValue.timeEntries
             calendarEvents = newValue.calendarEvents

@@ -48,6 +48,7 @@
 		ACBA12352480010C007F939D /* CalendarDayReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA12342480010C007F939D /* CalendarDayReducerTests.swift */; };
 		ACBA56FB247FEDC500692C57 /* ArchitectureTestSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBA56FA247FEDC500692C57 /* ArchitectureTestSupport.framework */; };
 		B45A50D3247FE69B00D730A8 /* CalendarService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45A50D2247FE69B00D730A8 /* CalendarService.framework */; };
+		B444280124803DE300BAA3EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B444280024803DE300BAA3EE /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		B43AA871247EE4B1005867CE /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43AA876247F0617005867CE /* CalendarDaySelectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDaySelectorTests.swift; sourceTree = "<group>"; };
 		B45A50D2247FE69B00D730A8 /* CalendarService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CalendarService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B444280024803DE300BAA3EE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BF55096AEEB6FF794B0E44C6 /* Pods-Calendar-CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar-CalendarTests.release.xcconfig"; path = "Target Support Files/Pods-Calendar-CalendarTests/Pods-Calendar-CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,6 +238,7 @@
 				8CFDB384247C127300952533 /* CalendarState.swift */,
 				8CFDB388247CDBEA00952533 /* CalendarCoordinator.swift */,
 				B43AA864247EACB1005867CE /* CalendarItem.swift */,
+				B444280024803DE300BAA3EE /* Constants.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				AC4E25C7247D6CCA004655F6 /* CalendarDayState.swift in Sources */,
 				B43AA865247EACB1005867CE /* CalendarItem.swift in Sources */,
 				AC4E25C6247D6CCA004655F6 /* CalendarDayReducer.swift in Sources */,
+				B444280124803DE300BAA3EE /* Constants.swift in Sources */,
 				8CFDB387247C127F00952533 /* CalendarAction.swift in Sources */,
 				8CFDB389247CDBEA00952533 /* CalendarCoordinator.swift in Sources */,
 			);

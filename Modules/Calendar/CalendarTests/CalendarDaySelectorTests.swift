@@ -18,6 +18,7 @@ class CalendarDaySelectorTests: XCTestCase {
         let timeEntries = (expectedTimeEntries + notExpectedTimeEntries).reduce(into: [Int64: TimeEntry](), { $0[$1.id] = $1 })
 
         let state = CalendarDayState(
+            user: .nothing,
             selectedDate: now,
             timeEntries: timeEntries,
             calendarEvents: [:]
@@ -41,6 +42,7 @@ class CalendarDaySelectorTests: XCTestCase {
         let timeEntries = notExpectedTimeEntries.reduce(into: [Int64: TimeEntry](), { $0[$1.id] = $1 })
 
         let state = CalendarDayState(
+            user: .nothing,
             selectedDate: now,
             timeEntries: timeEntries,
             calendarEvents: [:]
@@ -68,6 +70,7 @@ class CalendarDaySelectorTests: XCTestCase {
             .reduce(into: [Int64: TimeEntry](), { $0[$1.id] = $1 })
 
         let state = CalendarDayState(
+            user: .nothing,
             selectedDate: now,
             timeEntries: timeEntries,
             calendarEvents: [:]
