@@ -67,8 +67,8 @@ extension ProjectViewController: BottomSheetContent {
         return contentScrollView
     }
     
-    var smallStateHeight: CGFloat {
-        return 200
+    var smallStateHeight: Driver<CGFloat> {
+        return Driver.just(200)
     }
     
     var visibility: Driver<Bool> {

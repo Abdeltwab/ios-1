@@ -14,11 +14,15 @@ public class StartEditViewController: UIViewController, Storyboarded {
     public static var storyboardName = "Timer"
     public static var storyboardBundle = Assets.bundle
 
-    var smallStateHeight: CGFloat { 200 } // headerHeight + cells[0].height }
+    var smallStateHeightSubject = BehaviorSubject<CGFloat>(value: 0)
+    var smallStateHeight: Driver<CGFloat> {
+        smallStateHeightSubject.asDriver(onErrorJustReturn: 0)
+    }
 
     @IBOutlet weak var handle: UIView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var projectAndTagsView: UIView!
     @IBOutlet weak var datePickers: DatePickers!
     @IBOutlet weak var wheel: Wheel!
     @IBOutlet weak var durationLabel: UILabel!
@@ -66,7 +70,12 @@ public class StartEditViewController: UIViewController, Storyboarded {
             .mapTo(StartEditAction.closeButtonTapped)
             .subscribe(onNext: store.dispatch)
             .disposed(by: disposeBag)
+    }
 
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let minHeight = projectAndTagsView.frame.origin.y + projectAndTagsView.frame.size.height
+        smallStateHeightSubject.onNext(minHeight)
     }
 
     public func loseFocus() {

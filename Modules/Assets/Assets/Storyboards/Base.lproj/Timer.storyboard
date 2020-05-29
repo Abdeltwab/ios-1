@@ -141,16 +141,16 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8sp-Wm-Jjl">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="943"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="949.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UjQ-Mn-gmr" userLabel="Description">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="121.5"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" text="I'm working on..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="u6A-FU-KCW">
-                                                        <rect key="frame" x="15" y="75" width="384" height="30"/>
+                                                        <rect key="frame" x="15" y="75" width="384" height="36.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="id0-QC-Co1"/>
+                                                            <constraint firstAttribute="height" priority="250" constant="30" id="id0-QC-Co1"/>
                                                         </constraints>
                                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -166,7 +166,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvP-0m-wQB" userLabel="ProjectsAndTags">
-                                                <rect key="frame" x="0.0" y="115" width="414" height="52"/>
+                                                <rect key="frame" x="0.0" y="121.5" width="414" height="52"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects &amp; Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEw-OU-ug7">
                                                         <rect key="frame" x="20" y="16" width="119.5" height="20.5"/>
@@ -184,7 +184,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlq-nT-xG1" userLabel="Billable">
-                                                <rect key="frame" x="0.0" y="167" width="414" height="52"/>
+                                                <rect key="frame" x="0.0" y="173.5" width="414" height="52"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Billable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSf-qY-PsJ">
                                                         <rect key="frame" x="21" y="16" width="55" height="20.5"/>
@@ -202,7 +202,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djH-lJ-tRv" userLabel="DatePickers" customClass="DatePickers" customModule="Timer">
-                                                <rect key="frame" x="0.0" y="219" width="414" height="320"/>
+                                                <rect key="frame" x="0.0" y="225.5" width="414" height="320"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="1000" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HWR-bg-0A7">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -273,7 +273,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXs-mJ-YaF" userLabel="Wheel" customClass="Wheel" customModule="Timer">
-                                                <rect key="frame" x="0.0" y="539" width="414" height="404"/>
+                                                <rect key="frame" x="0.0" y="545.5" width="414" height="404"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cfR-zV-Svj" customClass="WheelBackgroundView" customModule="Timer">
                                                         <rect key="frame" x="30" y="25" width="354" height="354"/>
@@ -430,6 +430,7 @@
                         <outlet property="durationLabel" destination="6B0-BH-kxC" id="dfp-c2-Pq1"/>
                         <outlet property="durationView" destination="SbG-qs-ijW" id="fCr-fh-sse"/>
                         <outlet property="handle" destination="eCM-ov-S5k" id="upu-BG-MKJ"/>
+                        <outlet property="projectAndTagsView" destination="MvP-0m-wQB" id="D3l-Xb-bq0"/>
                         <outlet property="startEditInputAccessoryView" destination="m53-j1-8QL" id="cOP-C4-ABP"/>
                         <outlet property="wheel" destination="WXs-mJ-YaF" id="fiM-cx-hXn"/>
                     </connections>

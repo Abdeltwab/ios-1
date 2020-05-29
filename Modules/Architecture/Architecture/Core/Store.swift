@@ -51,16 +51,12 @@ public final class Store<State, Action> {
     }
      
     public func dispatch(_ action: Action) {
-        DispatchQueue.main.async { [weak self] in
-            self?.internalDispatch?([action])
-        }
+        self.internalDispatch?([action])
     }
     
     public func batch(_ actions: [Action]) {
         if actions.isEmpty { return }
-        DispatchQueue.main.async { [weak self] in
-            self?.internalDispatch?(actions)
-        }
+        self.internalDispatch?(actions)
     }
 }
 

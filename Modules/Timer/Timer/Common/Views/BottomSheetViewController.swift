@@ -8,10 +8,13 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
     typealias ContainedViewController = UIViewController & BottomSheetContent
 
     private var topConstraint: NSLayoutConstraint!
-    private var fullViewHeight: CGFloat = 0
+
     private var fullScreenConstant: CGFloat = 0
-    private var partialViewConstant: CGFloat = 0
     private var hiddenViewConstant: CGFloat = 0
+
+    private var minViewHeight: CGFloat = 0
+    private var keyboardHeight: CGFloat = 0
+    private var dragAmount: CGFloat = 0
 
     private let containedViewController: ContainedViewController
     private let overlay = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -93,10 +96,16 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        fullViewHeight = view.bounds.height
         fullScreenConstant = 0
-        partialViewConstant = fullViewHeight - view.safeAreaInsets.top - view.safeAreaInsets.bottom - containedViewController.smallStateHeight
         hiddenViewConstant = view.bounds.height
+
+        containedViewController.smallStateHeight
+            .drive(onNext: { smallStateHeight in
+                self.minViewHeight = smallStateHeight
+                self.layout()
+            })
+            .disposed(by: disposeBag)
+
         layout()
     }
 
@@ -118,13 +127,14 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         switch state {
         case .hidden:
             view.isUserInteractionEnabled = false
-            topConstraint.constant = hiddenViewConstant
+            topConstraint.constant = hiddenViewConstant + dragAmount
         case .partial:
             view.isUserInteractionEnabled = true
-            topConstraint.constant = partialViewConstant
+            let viewHeight = view.frame.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom
+            topConstraint.constant = viewHeight - minViewHeight - keyboardHeight + dragAmount
         case .full:
             view.isUserInteractionEnabled = true
-            topConstraint.constant = fullScreenConstant
+            topConstraint.constant = fullScreenConstant + dragAmount
         }
 
         containedViewController.scrollView?.isScrollEnabled = true
@@ -174,13 +184,15 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
             isDragging = true
 
         case .changed:
-            topConstraint.constant += translation
+            dragAmount += translation
+            layout()
             containedViewController.loseFocus()
 
         case .ended, .cancelled:
             isDragging = false
+            dragAmount = 0
             let finalPosition = self.topConstraint.constant + translation + velocity * 0.1
-            if finalPosition < fullScreenConstant + partialViewConstant / 2 {
+            if finalPosition < fullScreenConstant + view.frame.height / 2 {
                 state = .full
             } else if finalPosition < hiddenViewConstant {
                 state = .partial
@@ -209,13 +221,14 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     private func keyboardWillChange(intersectionHeight: CGFloat) {
-        if state == .partial && !isDragging {
-            topConstraint.constant = partialViewConstant - intersectionHeight
+        let oldKeyboardHeight = keyboardHeight
+        keyboardHeight = intersectionHeight
+
+        if isDragging && oldKeyboardHeight > keyboardHeight {
+            dragAmount -= oldKeyboardHeight
         }
 
-        UIView.animate(withDuration: 0.3) {
-            self.parent?.view.layoutIfNeeded()
-        }
+        layout()
     }
 
     public func gestureRecognizer(
@@ -234,7 +247,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         let direction = gesture.velocity(in: view).y
 
         let yposition = topConstraint.constant
-        if (yposition == fullScreenConstant && scrollView.contentOffset.y == 0 && direction > 0) || (yposition == partialViewConstant) {
+        if (yposition == fullScreenConstant && scrollView.contentOffset.y == 0 && direction > 0) || (state == .partial) {
             scrollView.isScrollEnabled = false
         } else {
             scrollView.isScrollEnabled = true
