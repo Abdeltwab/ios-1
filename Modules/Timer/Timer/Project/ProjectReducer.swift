@@ -38,7 +38,7 @@ func createProjectReducer(repository: TimeLogRepository) -> Reducer<ProjectState
 
 func createProjectEffect(_ state: ProjectState, _ repository: TimeLogRepository) -> Effect<ProjectAction> {
     let editableProject = state.editableProject!
-    let dto = CreateProjectDto(name: editableProject.name, workspaceId: editableProject.workspaceId)
+    let dto = ProjectDTO(name: editableProject.name, workspaceId: editableProject.workspaceId)
     return repository.createProject(dto)
         .map(ProjectAction.projectCreated)
         .toEffect()

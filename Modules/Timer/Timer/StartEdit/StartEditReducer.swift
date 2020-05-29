@@ -63,9 +63,15 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
             return []
 
         case let .autocompleteSuggestionTapped(suggestion):
-            guard state.editableTimeEntry != nil else { fatalError() }
+            guard let editableTimeEntry = state.editableTimeEntry else { fatalError() }
 
             state.editableTimeEntry?.setDetails(from: suggestion, and: state.cursorPosition)
+            
+            if case AutocompleteSuggestion.createTagSuggestion(let name) = suggestion {
+                let tagDto = TagDTO(name: name, workspaceId: editableTimeEntry.workspaceId)
+                return [ create(tag: tagDto, in: repository) ]
+            }
+            
             return []
             
         case let .dateTimePicked(date):
@@ -144,6 +150,14 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
     }
 }
 
+func create(tag: TagDTO, in repository: TimeLogRepository) -> Effect<StartEditAction> {
+    repository.createTag(tag)
+        .toEffect(
+            map: { .tagCreated($0) },
+            catch: { .setError($0.toErrorType()) }
+        )
+}
+
 func doneButtonTapped(_ state: StartEditState, _ repository: TimeLogRepository) -> [Effect<StartEditAction>] {
     let editableTimeEntry = state.editableTimeEntry!
     let shouldStartNewTimeEntry = editableTimeEntry.ids.isEmpty
@@ -220,7 +234,7 @@ extension EditableTimeEntry {
             self.editableProject = editableProject
 
         case .createTagSuggestion:
-            fatalError()
+            removeQueryFromDescription(tagToken, cursorPosition)
         }
     }
     

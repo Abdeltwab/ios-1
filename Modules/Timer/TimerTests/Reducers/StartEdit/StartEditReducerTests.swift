@@ -601,6 +601,38 @@ class StartEditReducerTests: XCTestCase {
         })
     }
 
+    func test_autocompleteSuggestionTapped_withACreateTagSuggestion() {
+
+        let workspaceId: Int64 = 10
+        let tagName = "me tag"
+        let timeEntry = TimeEntry.with(description: "old description #me tag", workspaceId: workspaceId)
+        
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: EditableTimeEntry.fromSingle(timeEntry),
+            autocompleteSuggestions: [],
+            dateTimePickMode: .stop,
+            cursorPosition: 19
+        )
+        
+        let expectedTag = Tag(id: 99999, name: tagName, workspaceId: workspaceId)
+        let suggestion = AutocompleteSuggestion.createTagSuggestion(name: tagName)
+        
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .autocompleteSuggestionTapped(suggestion)) {
+                $0.editableTimeEntry?.description = "old description "
+            },
+            Step(.receive, .tagCreated(expectedTag)) {
+                $0.entities.tags[expectedTag.id] = expectedTag
+                $0.editableTimeEntry?.tagIds.append(expectedTag.id)
+            }
+        )
+    }
+
     func testAutocompleteSuggestionsUpdatedUpdatesState() {
         let entities = TimeLogEntities()
         let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)

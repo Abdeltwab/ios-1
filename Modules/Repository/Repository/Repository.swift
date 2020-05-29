@@ -15,7 +15,8 @@ public protocol TimeLogRepository {
     func startTimeEntry(_ timeEntry: StartTimeEntryDto) -> Single<(started: TimeEntry, stopped: TimeEntry?)>
     func updateTimeEntry(_ timeEntry: TimeEntry) -> Single<Void>
     func deleteTimeEntry(timeEntryId: Int64) -> Single<Void>
-    func createProject(_ project: CreateProjectDto) -> Single<Project>
+    func createProject(_ project: ProjectDTO) -> Single<Project>
+    func createTag(_ project: TagDTO) -> Single<Tag>
 }
 
 public class Repository {
@@ -132,7 +133,7 @@ extension Repository: TimeLogRepository {
         return database.timeEntries.rx.delete(id: timeEntryId)
     }
 
-    public func createProject(_ project: CreateProjectDto) -> Single<Project> {
+    public func createProject(_ project: ProjectDTO) -> Single<Project> {
         do {
             let projects = try database.projects.getAll()
             // NOTE: How we resolve the new id is a temporary hack, it's meant to change once the sync team gets to this.
@@ -146,6 +147,21 @@ extension Repository: TimeLogRepository {
                                      clientId: project.clientId)
             try database.projects.insert(entity: newProject)
             return .just(newProject)
+        } catch {
+            return .error(error)
+        }
+    }
+
+    public func createTag(_ tag: TagDTO) -> Single<Tag> {
+        do {
+            let tags = try database.tags.getAll()
+            // NOTE: How we resolve the new id is a temporary hack, it's meant to change once the sync team gets to this.
+            let newTag = Tag(
+                id: (tags.map({ $0.id }).max() ?? 0) + 1,
+                name: tag.name,
+                workspaceId: tag.workspaceId)
+            try database.tags.insert(entity: newTag)
+            return .just(newTag)
         } catch {
             return .error(error)
         }

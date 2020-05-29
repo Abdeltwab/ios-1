@@ -5,11 +5,13 @@ import RxSwift
 import OtherServices
 
 class MockTimeLogRepository: TimeLogRepository {
+    
     private let time: Time
     
     var stoppedTimeEntry: TimeEntry?
     var newTimeEntryId: Int64 = 999
     var newProjectId: Int64 = 9999
+    var newTagId: Int64 = 99999
     
     var workspaces = [Workspace]()
     var clients = [Client]()
@@ -74,7 +76,7 @@ class MockTimeLogRepository: TimeLogRepository {
         return Single.just(())
     }
 
-    func createProject(_ dto: CreateProjectDto) -> Single<Project> {
+    func createProject(_ dto: ProjectDTO) -> Single<Project> {
         let project = Project(id: newProjectId,
                               name: dto.name,
                               isPrivate: dto.isPrivate,
@@ -84,5 +86,12 @@ class MockTimeLogRepository: TimeLogRepository {
                               workspaceId: dto.workspaceId,
                               clientId: dto.clientId)
         return Single.just(project)
+    }
+    
+    func createTag(_ dto: TagDTO) -> Single<Tag> {
+        let tag = Tag(id: newTagId,
+                      name: dto.name,
+                      workspaceId: dto.workspaceId)
+        return Single.just(tag)
     }
 }

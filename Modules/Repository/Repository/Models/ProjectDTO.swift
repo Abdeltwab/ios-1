@@ -1,7 +1,7 @@
 import Foundation
 import Models
 
-public struct CreateProjectDto {
+public struct ProjectDTO {
     public let name: String
     public let isPrivate: Bool
     public let isActive: Bool
@@ -29,7 +29,7 @@ public struct CreateProjectDto {
 }
 
 extension Project {
-    public func toCreateProjectDto() -> CreateProjectDto {
-        return CreateProjectDto(name: self.name, workspaceId: self.workspaceId)
+    public func toProjectDTO() -> ProjectDTO {
+        return ProjectDTO(name: self.name, workspaceId: self.workspaceId)
     }
 }
