@@ -32,5 +32,32 @@
             </objects>
             <point key="canvasLocation" x="865" y="56"/>
         </scene>
+        <!--Contextual Menu View Controller-->
+        <scene sceneID="c0b-KY-aP1">
+            <objects>
+                <viewController storyboardIdentifier="ContextualMenuViewController" id="VnB-rd-aEk" customClass="ContextualMenuViewController" customModule="Calendar" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4gj-BF-j9g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contextual menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGG-wF-IAd">
+                                <rect key="frame" x="143.5" y="442.5" width="127" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dGG-wF-IAd" firstAttribute="centerY" secondItem="SO1-iY-4w5" secondAttribute="centerY" id="HDc-sa-ZIl"/>
+                            <constraint firstItem="dGG-wF-IAd" firstAttribute="centerX" secondItem="SO1-iY-4w5" secondAttribute="centerX" id="zZQ-rG-Iv4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SO1-iY-4w5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MPn-ce-S8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1620" y="56"/>
+        </scene>
     </scenes>
 </document>

@@ -6,6 +6,7 @@ import Architecture
 class CalendarViewController: UIViewController {
 
     var calendarDayViewController: CalendarDayViewController!
+    var contextualMenuViewController: ContextualMenuViewController!
 
     var store: Store<CalendarState, CalendarAction>!
 

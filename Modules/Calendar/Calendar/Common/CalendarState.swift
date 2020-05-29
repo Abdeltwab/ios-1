@@ -41,4 +41,14 @@ extension CalendarState {
             localCalendarState.selectedItem = newValue.selectedItem
         }
     }
+
+    // swiftlint:disable unused_setter_value
+    internal var contextualMenuState: ContextualMenuState {
+        get {
+            ContextualMenuState(
+            )
+        }
+        set {
+        }
+    }
 }

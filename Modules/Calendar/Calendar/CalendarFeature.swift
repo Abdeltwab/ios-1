@@ -6,6 +6,7 @@ public class CalendarFeature: BaseFeature<CalendarState, CalendarAction> {
 
     private enum Features {
         case calendarDay
+        case contextualMenu
     }
 
     private let time: Time
@@ -19,6 +20,11 @@ public class CalendarFeature: BaseFeature<CalendarState, CalendarAction> {
                    .view { $0.view(
                        state: { $0.calendarDayState },
                        action: { CalendarAction.calendarDay($0) })
+               },
+               .contextualMenu: ContextualMenuFeature()
+                   .view { $0.view(
+                       state: { $0.contextualMenuState },
+                       action: { CalendarAction.contextualMenu($0) })
                }
            ]
     }
@@ -27,7 +33,8 @@ public class CalendarFeature: BaseFeature<CalendarState, CalendarAction> {
     public override func mainCoordinator(store: Store<CalendarState, CalendarAction>) -> Coordinator {
         return CalendarCoordinator(
             store: store,
-            calendarDayCoordinator: features[.calendarDay]!.mainCoordinator(store: store) as! CalendarDayCoordinator
+            calendarDayCoordinator: features[.calendarDay]!.mainCoordinator(store: store) as! CalendarDayCoordinator,
+            contextualMenuCoordinator: features[.contextualMenu]!.mainCoordinator(store: store) as! ContextualMenuCoordinator
         )
     }
     // swiftlint:enable force_cast

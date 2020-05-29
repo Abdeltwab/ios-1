@@ -37,16 +37,22 @@
 		AC4E25C7247D6CCA004655F6 /* CalendarDayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4E25C0247D6CCA004655F6 /* CalendarDayState.swift */; };
 		AC4E25C8247D6CCA004655F6 /* CalendarDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4E25C1247D6CCA004655F6 /* CalendarDayViewController.swift */; };
 		AC4E25C9247D6CCA004655F6 /* CalendarDaySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4E25C2247D6CCA004655F6 /* CalendarDaySelector.swift */; };
+		AC5AA349247FD6C7000EA873 /* Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5AA348247FD6C7000EA873 /* Timer.framework */; };
+		ACBA12352480010C007F939D /* CalendarDayReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA12342480010C007F939D /* CalendarDayReducerTests.swift */; };
+		ACBA123F24814F57007F939D /* ContextualMenuAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA123824814F57007F939D /* ContextualMenuAction.swift */; };
+		ACBA124024814F57007F939D /* ContextualMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA123924814F57007F939D /* ContextualMenuCoordinator.swift */; };
+		ACBA124124814F57007F939D /* ContextualMenuFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA123A24814F57007F939D /* ContextualMenuFeature.swift */; };
+		ACBA124224814F57007F939D /* ContextualMenuReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA123B24814F57007F939D /* ContextualMenuReducer.swift */; };
+		ACBA124324814F57007F939D /* ContextualMenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA123C24814F57007F939D /* ContextualMenuState.swift */; };
+		ACBA124424814F57007F939D /* ContextualMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA123D24814F57007F939D /* ContextualMenuViewController.swift */; };
+		ACBA124524814F57007F939D /* ContextualMenuSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA123E24814F57007F939D /* ContextualMenuSelector.swift */; };
+		ACBA56FB247FEDC500692C57 /* ArchitectureTestSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBA56FA247FEDC500692C57 /* ArchitectureTestSupport.framework */; };
 		B43AA865247EACB1005867CE /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AA864247EACB1005867CE /* CalendarItem.swift */; };
 		B43AA867247EB60B005867CE /* CalendarLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AA866247EB60B005867CE /* CalendarLayoutCalculator.swift */; };
 		B43AA869247EDDD7005867CE /* CalendarLayoutCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AA868247EDDD7005867CE /* CalendarLayoutCalculatorTests.swift */; };
-		B43AA86B247EE49F005867CE /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43AA86A247EE49F005867CE /* Models.framework */; };
 		B43AA86F247EE4A5005867CE /* OtherServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43AA86E247EE4A5005867CE /* OtherServices.framework */; };
 		B43AA872247EE4B1005867CE /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43AA871247EE4B1005867CE /* Utils.framework */; };
 		B43AA877247F0617005867CE /* CalendarDaySelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AA876247F0617005867CE /* CalendarDaySelectorTests.swift */; };
-		AC5AA349247FD6C7000EA873 /* Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC5AA348247FD6C7000EA873 /* Timer.framework */; };
-		ACBA12352480010C007F939D /* CalendarDayReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA12342480010C007F939D /* CalendarDayReducerTests.swift */; };
-		ACBA56FB247FEDC500692C57 /* ArchitectureTestSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBA56FA247FEDC500692C57 /* ArchitectureTestSupport.framework */; };
 		B45A50D3247FE69B00D730A8 /* CalendarService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45A50D2247FE69B00D730A8 /* CalendarService.framework */; };
 		B444280124803DE300BAA3EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B444280024803DE300BAA3EE /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -99,12 +105,18 @@
 		AC4E25C2247D6CCA004655F6 /* CalendarDaySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDaySelector.swift; sourceTree = "<group>"; };
 		AC5AA348247FD6C7000EA873 /* Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACBA12342480010C007F939D /* CalendarDayReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayReducerTests.swift; sourceTree = "<group>"; };
+		ACBA123824814F57007F939D /* ContextualMenuAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuAction.swift; sourceTree = "<group>"; };
+		ACBA123924814F57007F939D /* ContextualMenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuCoordinator.swift; sourceTree = "<group>"; };
+		ACBA123A24814F57007F939D /* ContextualMenuFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuFeature.swift; sourceTree = "<group>"; };
+		ACBA123B24814F57007F939D /* ContextualMenuReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuReducer.swift; sourceTree = "<group>"; };
+		ACBA123C24814F57007F939D /* ContextualMenuState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuState.swift; sourceTree = "<group>"; };
+		ACBA123D24814F57007F939D /* ContextualMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuViewController.swift; sourceTree = "<group>"; };
+		ACBA123E24814F57007F939D /* ContextualMenuSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuSelector.swift; sourceTree = "<group>"; };
 		ACBA56FA247FEDC500692C57 /* ArchitectureTestSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ArchitectureTestSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B245BDA31E4B1D8DDC51B9BC /* Pods-Calendar-CalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar-CalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-Calendar-CalendarTests/Pods-Calendar-CalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B43AA864247EACB1005867CE /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
 		B43AA866247EB60B005867CE /* CalendarLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLayoutCalculator.swift; sourceTree = "<group>"; };
 		B43AA868247EDDD7005867CE /* CalendarLayoutCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLayoutCalculatorTests.swift; sourceTree = "<group>"; };
-		B43AA86A247EE49F005867CE /* Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43AA86E247EE4A5005867CE /* OtherServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OtherServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43AA871247EE4B1005867CE /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43AA876247F0617005867CE /* CalendarDaySelectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDaySelectorTests.swift; sourceTree = "<group>"; };
@@ -153,6 +165,7 @@
 				8CFDB342247C072600952533 /* Products */,
 				8CFDB38E247CDFFE00952533 /* Frameworks */,
 				B9F09D013D26CAF2AE4D3C69 /* Pods */,
+				ACBA123624814637007F939D /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,6 +184,7 @@
 				AC4E25B7247D6A10004655F6 /* CalendarFeature.swift */,
 				AC4E25BA247D6AD1004655F6 /* Common */,
 				AC4E25BB247D6CB7004655F6 /* CalendarDay */,
+				ACBA123724814F39007F939D /* ContextualMenu */,
 				8CFDB344247C072600952533 /* Calendar.h */,
 				8CFDB345247C072600952533 /* Info.plist */,
 			);
@@ -180,7 +194,6 @@
 		8CFDB34E247C072600952533 /* CalendarTests */ = {
 			isa = PBXGroup;
 			children = (
-				8CFDB34F247C072600952533 /* CalendarTests.swift */,
 				B43AA868247EDDD7005867CE /* CalendarLayoutCalculatorTests.swift */,
 				B43AA876247F0617005867CE /* CalendarDaySelectorTests.swift */,
 				ACBA1233248000F0007F939D /* CalendarDayTests */,
@@ -272,6 +285,37 @@
 				ACBA12342480010C007F939D /* CalendarDayReducerTests.swift */,
 			);
 			path = CalendarDayTests;
+			sourceTree = "<group>";
+		};
+		ACBA123624814637007F939D /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				B43AA871247EE4B1005867CE /* Utils.framework */,
+				B43AA86E247EE4A5005867CE /* OtherServices.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		ACBA123724814F39007F939D /* ContextualMenu */ = {
+			isa = PBXGroup;
+			children = (
+				ACBA124624814F75007F939D /* Views */,
+				ACBA123824814F57007F939D /* ContextualMenuAction.swift */,
+				ACBA123924814F57007F939D /* ContextualMenuCoordinator.swift */,
+				ACBA123A24814F57007F939D /* ContextualMenuFeature.swift */,
+				ACBA123B24814F57007F939D /* ContextualMenuReducer.swift */,
+				ACBA123C24814F57007F939D /* ContextualMenuState.swift */,
+				ACBA123E24814F57007F939D /* ContextualMenuSelector.swift */,
+			);
+			path = ContextualMenu;
+			sourceTree = "<group>";
+		};
+		ACBA124624814F75007F939D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ACBA123D24814F57007F939D /* ContextualMenuViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B9F09D013D26CAF2AE4D3C69 /* Pods */ = {
@@ -474,20 +518,27 @@
 			files = (
 				AC4E25B8247D6A10004655F6 /* CalendarFeature.swift in Sources */,
 				AC4E25C8247D6CCA004655F6 /* CalendarDayViewController.swift in Sources */,
+				ACBA124224814F57007F939D /* ContextualMenuReducer.swift in Sources */,
 				AC4E25C3247D6CCA004655F6 /* CalendarDayAction.swift in Sources */,
 				8CFDB383247C126400952533 /* CalendarReducer.swift in Sources */,
 				AC4E25C4247D6CCA004655F6 /* CalendarDayCoordinator.swift in Sources */,
 				B43AA867247EB60B005867CE /* CalendarLayoutCalculator.swift in Sources */,
 				8CFDB385247C127300952533 /* CalendarState.swift in Sources */,
+				ACBA124024814F57007F939D /* ContextualMenuCoordinator.swift in Sources */,
 				AC4E25C9247D6CCA004655F6 /* CalendarDaySelector.swift in Sources */,
+				ACBA124424814F57007F939D /* ContextualMenuViewController.swift in Sources */,
 				AC4E25C5247D6CCA004655F6 /* CalendarDayFeature.swift in Sources */,
+				ACBA124124814F57007F939D /* ContextualMenuFeature.swift in Sources */,
 				8CFDB381247C124100952533 /* CalendarViewController.swift in Sources */,
+				ACBA124524814F57007F939D /* ContextualMenuSelector.swift in Sources */,
+				ACBA124324814F57007F939D /* ContextualMenuState.swift in Sources */,
 				AC4E25C7247D6CCA004655F6 /* CalendarDayState.swift in Sources */,
 				B43AA865247EACB1005867CE /* CalendarItem.swift in Sources */,
 				AC4E25C6247D6CCA004655F6 /* CalendarDayReducer.swift in Sources */,
 				B444280124803DE300BAA3EE /* Constants.swift in Sources */,
 				8CFDB387247C127F00952533 /* CalendarAction.swift in Sources */,
 				8CFDB389247CDBEA00952533 /* CalendarCoordinator.swift in Sources */,
+				ACBA123F24814F57007F939D /* ContextualMenuAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +547,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B43AA877247F0617005867CE /* CalendarDaySelectorTests.swift in Sources */,
-				8CFDB350247C072600952533 /* CalendarTests.swift in Sources */,
 				B43AA869247EDDD7005867CE /* CalendarLayoutCalculatorTests.swift in Sources */,
 				ACBA12352480010C007F939D /* CalendarDayReducerTests.swift in Sources */,
 			);
