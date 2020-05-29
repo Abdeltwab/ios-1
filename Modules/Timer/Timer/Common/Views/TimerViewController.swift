@@ -32,6 +32,7 @@ class TimerViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        timeLogViewController.additionalSafeAreaInsets.bottom = runningTimeEntryBottomSheet.view.frame.height
+        timeLogViewController.additionalSafeAreaInsets.bottom = runningTimeEntryBottomSheet.view.frame.height -
+            runningTimeEntryBottomSheet.view.safeAreaInsets.bottom
     }
 }
