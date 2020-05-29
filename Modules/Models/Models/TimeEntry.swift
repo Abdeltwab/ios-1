@@ -109,3 +109,10 @@ public extension TimeEntry {
         )
     }
 }
+
+public extension TimeEntry {
+    var stop: Date? {
+        guard let duration = duration else { return nil }
+        return start + duration
+    }
+}

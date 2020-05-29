@@ -23,6 +23,9 @@ class CalendarDayReducerTests: XCTestCase {
     func test_startTimeDraggedAction_changesSelectedItemStartTime() {
 
         let state = CalendarDayState(
+            selectedDate: now,
+            timeEntries: [:],
+            calendarEvents: [:],
             selectedItem: .left(EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace))
         )
 
@@ -44,6 +47,9 @@ class CalendarDayReducerTests: XCTestCase {
     func test_startTimeDraggedAction_whenNoEditableTimeEntryIsNil_shouldDoNothing() {
 
         let state = CalendarDayState(
+            selectedDate: now,
+            timeEntries: [:],
+            calendarEvents: [:],
             selectedItem: nil
         )
 

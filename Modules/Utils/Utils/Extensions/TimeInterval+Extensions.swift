@@ -1,5 +1,18 @@
 import Foundation
 
+public extension Int {
+    static var minutesInAnHour: Int { 60 }
+    static var secondsInAMinute: Int { 60 }
+    static var secondsInAnHour: Int { minutesInAnHour * secondsInAMinute }
+    static var secondsInADay: Int { 24 * secondsInAnHour }
+}
+
+public extension TimeInterval {
+    static var secondsInAMinute: TimeInterval { TimeInterval(Int.secondsInAMinute) }
+    static var secondsInAnHour: TimeInterval { TimeInterval(Int.secondsInAnHour) }
+    static var secondsInADay: TimeInterval { TimeInterval(Int.secondsInADay) }
+}
+
 extension TimeInterval {
     
     static var formatter: DateComponentsFormatter {

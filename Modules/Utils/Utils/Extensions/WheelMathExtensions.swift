@@ -4,9 +4,6 @@ import Darwin
 
 public extension Int {
     static var hoursOnTheClock: Int { 12 }
-    static var minutesInAnHour: Int { 60 }
-    static var secondsInAMinute: Int { 60 }
-    static var secondsInAnHour: Int { minutesInAnHour * secondsInAMinute }
 }
 
 public extension CGFloat {

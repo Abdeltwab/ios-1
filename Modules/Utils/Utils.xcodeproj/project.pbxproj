@@ -25,6 +25,7 @@
 		AC0131B5246BC4C300C42D39 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0131B4246BC4C300C42D39 /* String+Extension.swift */; };
 		AC825508247EA92300B0CF72 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC825507247EA92300B0CF72 /* Either.swift */; };
 		ACD3344D245200AB002278FD /* Tooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3344C245200AB002278FD /* Tooltip.swift */; };
+		B43AA875247EF3E4005867CE /* TimeZone+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AA874247EF3E4005867CE /* TimeZone+Extensions.swift */; };
 		B4500B7E246AEB0500BB0A3D /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4500B7D246AEB0500BB0A3D /* CGRect+Extensions.swift */; };
 		B4523FE82450C65D00AB5EA0 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4523FE72450C65D00AB5EA0 /* Collection+Extensions.swift */; };
 		B4654FDA246EE072008BB836 /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4654FD9246EE072008BB836 /* Int+Extensions.swift */; };
@@ -77,6 +78,7 @@
 		AC0131B4246BC4C300C42D39 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		AC825507247EA92300B0CF72 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		ACD3344C245200AB002278FD /* Tooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tooltip.swift; sourceTree = "<group>"; };
+		B43AA874247EF3E4005867CE /* TimeZone+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeZone+Extensions.swift"; sourceTree = "<group>"; };
 		B4500B7D246AEB0500BB0A3D /* CGRect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		B4523FE72450C65D00AB5EA0 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
 		B4654FD9246EE072008BB836 /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				8C4EDC582429034000C03E14 /* TimeInterval+Extensions.swift */,
 				AC0131B4246BC4C300C42D39 /* String+Extension.swift */,
 				B4654FD9246EE072008BB836 /* Int+Extensions.swift */,
+				B43AA874247EF3E4005867CE /* TimeZone+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				B4500B7E246AEB0500BB0A3D /* CGRect+Extensions.swift in Sources */,
 				8C2517A92403C2AC00BAD4B5 /* BehaviorRelay+Extensions.swift in Sources */,
 				B4B4F02C24351BE800DFBF2E /* Snackbar.swift in Sources */,
+				B43AA875247EF3E4005867CE /* TimeZone+Extensions.swift in Sources */,
 				B4BAADE02458528200F9DB8F /* Driver+Extensions.swift in Sources */,
 				B4B4F02E2435222A00DFBF2E /* UIView+ConstraintExtensions.swift in Sources */,
 				AC825508247EA92300B0CF72 /* Either.swift in Sources */,

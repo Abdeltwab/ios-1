@@ -69,3 +69,17 @@ extension Date {
         return encoderDateFormatter.string(from: self).replacingOccurrences(of: "+0000", with: "+00:00")
     }
 }
+
+public extension Date {
+    static func with(
+        _ year: Int,
+        _ month: Int,
+        _ day: Int,
+        _ hour: Int = 0,
+        _ minute: Int = 0,
+        _ seconds: Int = 0,
+        _ timeZone: TimeZone = .current
+    ) -> Date {
+        DateComponents(calendar: .current, timeZone: timeZone, year: year, month: month, day: day, hour: hour, minute: minute, second: seconds).date!
+    }
+}

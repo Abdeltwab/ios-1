@@ -183,6 +183,16 @@
                ReferencedContainer = "container:../Modules/Database/Database.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "8CFDB349247C072600952533"
+               BuildableName = "CalendarTests.xctest"
+               BlueprintName = "CalendarTests"
+               ReferencedContainer = "container:../Modules/Calendar/Calendar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
