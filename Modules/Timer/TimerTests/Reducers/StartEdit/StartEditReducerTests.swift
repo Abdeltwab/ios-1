@@ -18,7 +18,11 @@ class StartEditReducerTests: XCTestCase {
         mockRepository = MockTimeLogRepository(time: mockTime)
         mockUser = User(id: 0, apiToken: "token", defaultWorkspace: 0)
 
-        reducer = createStartEditReducer(repository: mockRepository, time: mockTime)
+        reducer = createStartEditReducer(
+            repository: mockRepository,
+            time: mockTime,
+            randomElementSelector: { $0[0] }
+        )
     }
 
     func testDescriptionEntered() {
@@ -595,10 +599,11 @@ class StartEditReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, .autocompleteSuggestionTapped(suggestion)) {
-                var editableProject = EditableProject.empty(workspaceId: workspaceId)
+                var editableProject = EditableProject.empty(workspaceId: workspaceId, colorSelector: { $0[0] })
                 editableProject.name = projectName
                 $0.editableTimeEntry?.editableProject = editableProject
-        })
+            }
+        )
     }
 
     func test_autocompleteSuggestionTapped_withACreateTagSuggestion() {

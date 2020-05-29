@@ -7,7 +7,11 @@ import OtherServices
 import Utils
 
 // swiftlint:disable cyclomatic_complexity function_body_length
-func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reducer<StartEditState, StartEditAction> {
+func createStartEditReducer(
+    repository: TimeLogRepository,
+    time: Time,
+    randomElementSelector: @escaping RandomElementSelector<String> = { $0.randomElement()! }
+) -> Reducer<StartEditState, StartEditAction> {
     return Reducer {state, action in
         
         switch action {
@@ -65,7 +69,7 @@ func createStartEditReducer(repository: TimeLogRepository, time: Time) -> Reduce
         case let .autocompleteSuggestionTapped(suggestion):
             guard let editableTimeEntry = state.editableTimeEntry else { fatalError() }
 
-            state.editableTimeEntry?.setDetails(from: suggestion, and: state.cursorPosition)
+            state.editableTimeEntry?.setDetails(from: suggestion, and: state.cursorPosition, randomElementSelector)
             
             if case AutocompleteSuggestion.createTagSuggestion(let name) = suggestion {
                 let tagDto = TagDTO(name: name, workspaceId: editableTimeEntry.workspaceId)
@@ -202,7 +206,10 @@ func appendCharacter( _ character: String, toString string: String) -> String {
 }
 
 extension EditableTimeEntry {
-    mutating func setDetails(from suggestion: AutocompleteSuggestion, and cursorPosition: Int) {
+    mutating func setDetails(
+        from suggestion: AutocompleteSuggestion,
+        and cursorPosition: Int,
+        _ randomElementSelector: RandomElementSelector<String>) {
         switch suggestion {
         case .timeEntrySuggestion(let timeEntry):
             workspaceId = timeEntry.workspaceId
@@ -229,7 +236,7 @@ extension EditableTimeEntry {
             removeQueryFromDescription(tagToken, cursorPosition)
             
         case .createProjectSuggestion(let projectName):
-            var editableProject = EditableProject.empty(workspaceId: workspaceId)
+            var editableProject = EditableProject.empty(workspaceId: workspaceId, colorSelector: randomElementSelector)
             editableProject.name = projectName
             self.editableProject = editableProject
 

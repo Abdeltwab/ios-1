@@ -1,4 +1,7 @@
 import Foundation
+import Models
+
+public typealias RandomElementSelector<T> = ([T]) -> T
 
 public struct EditableProject: Equatable {
     public var name: String
@@ -30,12 +33,15 @@ public struct EditableProject: Equatable {
         self.clientId = clientId
     }
     
-    public static func empty(workspaceId: Int64) -> EditableProject {
+    public static func empty(
+        workspaceId: Int64,
+        colorSelector: RandomElementSelector<String> = { $0.randomElement()! }
+    ) -> EditableProject {
         return EditableProject(
             name: "",
             isPrivate: true,
             isActive: true,
-            color: "",
+            color: colorSelector(Project.defaultColors),
             billable: nil,
             workspaceId: workspaceId,
             clientId: nil
