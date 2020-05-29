@@ -1,0 +1,2 @@
+#include "Architecture-Shared.xcconfig"
+#include? "../../Pods/Target Support Files/Pods-Architecture-ArchitectureTestSupport/Pods-Architecture-ArchitectureTestSupport.release.xcconfig"

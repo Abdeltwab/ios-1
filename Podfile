@@ -99,6 +99,10 @@ target :Architecture do
     project 'Modules/Architecture/Architecture.xcodeproj'
     rxswift
     rxcocoa
+
+    target :ArchitectureTestSupport do
+      rxtests
+    end
 end
 
 target :Networking do

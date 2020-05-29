@@ -25,7 +25,6 @@
 		8C008FD22409407B000A0C32 /* StartEditReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C008FD12409407B000A0C32 /* StartEditReducer.swift */; };
 		8C2130C42424F46D000FC72C /* TimeEntriesLogReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130C32424F46D000FC72C /* TimeEntriesLogReducerTests.swift */; };
 		8C2130CA2424F5DE000FC72C /* MockTimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130C92424F5DE000FC72C /* MockTimeLogRepository.swift */; };
-		8C2130CF2424F64F000FC72C /* ReducerAssert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130CE2424F64F000FC72C /* ReducerAssert.swift */; };
 		8C2130D12424F9EE000FC72C /* TimeEntry+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130D02424F9EE000FC72C /* TimeEntry+Extensions.swift */; };
 		8C2516C92403C1B000BAD4B5 /* Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2516BF2403C1B000BAD4B5 /* Timer.framework */; };
 		8C2516D02403C1B000BAD4B5 /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C2516C22403C1B000BAD4B5 /* Timer.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,6 +72,7 @@
 		ACAA583024349F02003FDECA /* RunningTimeEntrySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA582F24349F02003FDECA /* RunningTimeEntrySelector.swift */; };
 		ACAA58322434A1EE003FDECA /* RunningTimeEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA58312434A1EE003FDECA /* RunningTimeEntryViewController.swift */; };
 		ACAA585D24378106003FDECA /* SimpleBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA585C24378106003FDECA /* SimpleBottomSheet.swift */; };
+		ACBA56FE247FEF5A00692C57 /* ArchitectureTestSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBA56FD247FEF5A00692C57 /* ArchitectureTestSupport.framework */; };
 		B417E98D244F78D0004D251F /* ProjectReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B417E98C244F78D0004D251F /* ProjectReducerTests.swift */; };
 		B4B4F0A324362F1400DFBF2E /* UIUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B4F0A224362F1400DFBF2E /* UIUtils.framework */; };
 		B795B8AF1298D91041CBE3A8 /* Pods_Timer_TimerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A6B75657C3B9CF1F0B3ED1 /* Pods_Timer_TimerTests.framework */; };
@@ -128,7 +128,6 @@
 		8C008FD12409407B000A0C32 /* StartEditReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditReducer.swift; sourceTree = "<group>"; };
 		8C2130C32424F46D000FC72C /* TimeEntriesLogReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesLogReducerTests.swift; sourceTree = "<group>"; };
 		8C2130C92424F5DE000FC72C /* MockTimeLogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimeLogRepository.swift; sourceTree = "<group>"; };
-		8C2130CE2424F64F000FC72C /* ReducerAssert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReducerAssert.swift; sourceTree = "<group>"; };
 		8C2130D02424F9EE000FC72C /* TimeEntry+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeEntry+Extensions.swift"; sourceTree = "<group>"; };
 		8C2516BF2403C1B000BAD4B5 /* Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2516C22403C1B000BAD4B5 /* Timer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timer.h; sourceTree = "<group>"; };
@@ -188,6 +187,7 @@
 		ACAA582F24349F02003FDECA /* RunningTimeEntrySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimeEntrySelector.swift; sourceTree = "<group>"; };
 		ACAA58312434A1EE003FDECA /* RunningTimeEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryViewController.swift; sourceTree = "<group>"; };
 		ACAA585C24378106003FDECA /* SimpleBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBottomSheet.swift; sourceTree = "<group>"; };
+		ACBA56FD247FEF5A00692C57 /* ArchitectureTestSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ArchitectureTestSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B417E98C244F78D0004D251F /* ProjectReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReducerTests.swift; sourceTree = "<group>"; };
 		B4B4F0A224362F1400DFBF2E /* UIUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5130F9C5AE2977FBE3C1DD9 /* Pods-Timer-TimerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer-TimerTests.release.xcconfig"; path = "Target Support Files/Pods-Timer-TimerTests/Pods-Timer-TimerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +225,7 @@
 				B4B4F0A324362F1400DFBF2E /* UIUtils.framework in Frameworks */,
 				8C2518AA2403C78600BAD4B5 /* Models.framework in Frameworks */,
 				8C2518A62403C78100BAD4B5 /* Architecture.framework in Frameworks */,
+				ACBA56FE247FEF5A00692C57 /* ArchitectureTestSupport.framework in Frameworks */,
 				3F08D7D72EA783CBBD146B1F /* Pods_Timer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,7 +305,6 @@
 		8C2130CD2424F641000FC72C /* TestUtils */ = {
 			isa = PBXGroup;
 			children = (
-				8C2130CE2424F64F000FC72C /* ReducerAssert.swift */,
 				8C2130D02424F9EE000FC72C /* TimeEntry+Extensions.swift */,
 				341A027F247268EB00EB25AF /* Project+Extensions.swift */,
 				341A028324726AF200EB25AF /* Task+Extensions.swift */,
@@ -364,6 +364,7 @@
 		8C2518A42403C78100BAD4B5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ACBA56FD247FEF5A00692C57 /* ArchitectureTestSupport.framework */,
 				B4B4F0A224362F1400DFBF2E /* UIUtils.framework */,
 				3430C36B24213CEB009CF454 /* OtherServices.framework */,
 				3430C365241A8FE4009CF454 /* Time.framework */,
@@ -833,7 +834,6 @@
 				341A028424726AF200EB25AF /* Task+Extensions.swift in Sources */,
 				8C2130D12424F9EE000FC72C /* TimeEntry+Extensions.swift in Sources */,
 				341A028824728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift in Sources */,
-				8C2130CF2424F64F000FC72C /* ReducerAssert.swift in Sources */,
 				8C4EDC5B2429F8B200C03E14 /* TimeEntriesSelectorTests.swift in Sources */,
 				510BD5B824363CF80028C445 /* StartEditReducerTests.swift in Sources */,
 			);

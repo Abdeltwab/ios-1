@@ -5,19 +5,19 @@ import RxBlocking
 import RxSwift
 import RxTest
 
-enum StepType {
+public enum StepType {
     case send
     case receive
 }
 
-struct Step<State, Action> {
+public struct Step<State, Action> {
     let type: StepType
     let actions: [Action]
     let update: (inout State) -> Void
     let file: StaticString
     let line: UInt
     
-    init(
+    public init(
         _ type: StepType,
         _ actions: [Action],
         file: StaticString = #file,
@@ -31,7 +31,7 @@ struct Step<State, Action> {
         self.line = line
     }
 
-    init(
+    public init(
         _ type: StepType,
         _ action: Action,
         file: StaticString = #file,
@@ -42,7 +42,7 @@ struct Step<State, Action> {
     }
 }
 
-func assertReducerFlow<State: Equatable, Action: Equatable>(
+public func assertReducerFlow<State: Equatable, Action: Equatable>(
     initialState: State,
     reducer: Reducer<State, Action>,
     testScheduler: TestScheduler? = nil,

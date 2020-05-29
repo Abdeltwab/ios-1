@@ -23,6 +23,7 @@
 		8C5A8C97241AA3C2003DC3D0 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5A8C96241AA3C2003DC3D0 /* UIColor+Extensions.swift */; };
 		8CA44A322450446700B3BAC2 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA44A312450446700B3BAC2 /* ArrayExtensions.swift */; };
 		AC0131B5246BC4C300C42D39 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0131B4246BC4C300C42D39 /* String+Extension.swift */; };
+		AC825508247EA92300B0CF72 /* Either.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC825507247EA92300B0CF72 /* Either.swift */; };
 		ACD3344D245200AB002278FD /* Tooltip.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3344C245200AB002278FD /* Tooltip.swift */; };
 		B4500B7E246AEB0500BB0A3D /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4500B7D246AEB0500BB0A3D /* CGRect+Extensions.swift */; };
 		B4523FE82450C65D00AB5EA0 /* Collection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4523FE72450C65D00AB5EA0 /* Collection+Extensions.swift */; };
@@ -74,6 +75,7 @@
 		8CAF7BA52458226C006B961D /* Utils.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Utils.debug.xcconfig; sourceTree = "<group>"; };
 		8CAF7BA62458226C006B961D /* Project.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.debug.xcconfig; sourceTree = "<group>"; };
 		AC0131B4246BC4C300C42D39 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		AC825507247EA92300B0CF72 /* Either.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Either.swift; sourceTree = "<group>"; };
 		ACD3344C245200AB002278FD /* Tooltip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tooltip.swift; sourceTree = "<group>"; };
 		B4500B7D246AEB0500BB0A3D /* CGRect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		B4523FE72450C65D00AB5EA0 /* Collection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extensions.swift"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		8C2517512403C21900BAD4B5 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AC825506247EA8F400B0CF72 /* Either */,
 				8CA44A2E2450445300B3BAC2 /* TestUtils */,
 				3430C395242259A8009CF454 /* Operators */,
 				8C509D262412882C00B6DF30 /* Extensions */,
@@ -227,6 +230,14 @@
 				8CAF7BA12458226C006B961D /* Project.release.xcconfig */,
 			);
 			path = Configurations;
+			sourceTree = "<group>";
+		};
+		AC825506247EA8F400B0CF72 /* Either */ = {
+			isa = PBXGroup;
+			children = (
+				AC825507247EA92300B0CF72 /* Either.swift */,
+			);
+			path = Either;
 			sourceTree = "<group>";
 		};
 		E0BFFDC4FE5972557FE30D58 /* Pods */ = {
@@ -381,6 +392,7 @@
 				B4B4F02C24351BE800DFBF2E /* Snackbar.swift in Sources */,
 				B4BAADE02458528200F9DB8F /* Driver+Extensions.swift in Sources */,
 				B4B4F02E2435222A00DFBF2E /* UIView+ConstraintExtensions.swift in Sources */,
+				AC825508247EA92300B0CF72 /* Either.swift in Sources */,
 				8C2517A52403C2AC00BAD4B5 /* Storyboarded.swift in Sources */,
 				8C509D2A2412888D00B6DF30 /* Array+Extensions.swift in Sources */,
 				3430C397242259BC009CF454 /* Apply.swift in Sources */,

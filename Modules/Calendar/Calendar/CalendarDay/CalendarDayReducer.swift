@@ -6,11 +6,15 @@ import Repository
 import OtherServices
 
 func createCalendarDayReducer() -> Reducer<CalendarDayState, CalendarDayAction> {
-    return Reducer {_, action -> [Effect<CalendarDayAction>] in
+    return Reducer {state, action -> [Effect<CalendarDayAction>] in
 
         switch action {
 
-        case .dummy:
+        case .startTimeDragged(let date):
+            guard case var .left(editableTimeEntry) = state.selectedItem else {
+                return []
+            }
+            editableTimeEntry.start = date
             return []
         }
     }

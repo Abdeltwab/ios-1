@@ -2,7 +2,7 @@ import Foundation
 import Models
 
 public enum CalendarDayAction: Equatable {
-    case dummy
+    case startTimeDragged(Date)
 }
 
 extension CalendarDayAction: CustomDebugStringConvertible {
@@ -10,9 +10,8 @@ extension CalendarDayAction: CustomDebugStringConvertible {
     public var debugDescription: String {
         switch self {
 
-        case .dummy:
-            return "dummy"
-
+        case .startTimeDragged(let date):
+            return "StartTimeDragged: \(date)"
         }
     }
 }

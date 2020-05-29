@@ -11,10 +11,9 @@ public struct AppState {
     public var user: Loadable<User> = .nothing
     public var entities: TimeLogEntities =  TimeLogEntities()
 
-    var calendarState: CalendarState = CalendarState()
-
     public var localOnboardingState: LocalOnboardingState = LocalOnboardingState()
     public var localTimerState: LocalTimerState = LocalTimerState()
+    public var localCalendarState: LocalCalendarState = LocalCalendarState()
 }
 
 // Module specific states
@@ -61,6 +60,18 @@ extension AppState {
             user = newValue.user
             entities = newValue.entities
             localTimerState = newValue.localTimerState
+        }
+    }
+
+    var calendarState: CalendarState {
+        get {
+            CalendarState(
+                localCalendarState: localCalendarState
+            )
+        }
+
+        set {
+            localCalendarState = newValue.localCalendarState
         }
     }
 }

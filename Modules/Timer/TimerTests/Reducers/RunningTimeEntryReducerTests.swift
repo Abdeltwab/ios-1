@@ -1,5 +1,6 @@
 import XCTest
 import Architecture
+import ArchitectureTestSupport
 import Models
 import OtherServices
 import RxBlocking
