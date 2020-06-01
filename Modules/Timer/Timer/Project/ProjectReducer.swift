@@ -5,6 +5,7 @@ import RxSwift
 import Repository
 import OtherServices
 
+// swiftlint:disable cyclomatic_complexity
 func createProjectReducer(repository: TimeLogRepository) -> Reducer<ProjectState, ProjectAction> {
     return Reducer { state, action in
 
@@ -29,8 +30,21 @@ func createProjectReducer(repository: TimeLogRepository) -> Reducer<ProjectState
         case .privateProjectSwitchTapped:
             state.editableProject?.isPrivate.toggle()
             return []
-        case .dialogDismissed:
+        case .dialogDismissed, .closeButtonTapped:
             state.editableProject = nil
+            return []
+        case .workspacePicked(let workspace):
+            guard state.editableProject != nil else { fatalError() }
+            state.editableProject?.workspaceId = workspace.id
+            return []
+        case .clientPicked(let client):
+            guard state.editableProject != nil else { fatalError() }
+            guard client.workspaceId == state.editableProject?.workspaceId else { fatalError() }
+            state.editableProject?.clientId = client.id
+            return []
+        case .colorPicked(let color):
+            guard state.editableProject != nil else { fatalError() }
+            state.editableProject?.color = color
             return []
         }
     }

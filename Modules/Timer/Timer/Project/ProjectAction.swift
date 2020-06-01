@@ -5,8 +5,14 @@ public enum ProjectAction: Equatable {
     case nameEntered(String)
     case privateProjectSwitchTapped
     case doneButtonTapped
-    case projectCreated(Project)
     case dialogDismissed
+    case closeButtonTapped
+    case workspacePicked(Workspace)
+    case clientPicked(Client)
+    case colorPicked(String)
+    
+    case projectCreated(Project)
+    
 }
 
 extension ProjectAction: CustomDebugStringConvertible {
@@ -23,6 +29,14 @@ extension ProjectAction: CustomDebugStringConvertible {
             return "ProjectCreated \(project)"
         case .dialogDismissed:
             return "DialogDismissed"
+        case .closeButtonTapped:
+            return "Close button tapped"
+        case .workspacePicked(let workspace):
+            return "Picked workspace with id \(workspace.id)"
+        case .clientPicked(let client):
+            return "Picked client with id \(client.id)"
+        case .colorPicked(let color):
+            return "Picked color with hex \(color)"
         }
     }
 }

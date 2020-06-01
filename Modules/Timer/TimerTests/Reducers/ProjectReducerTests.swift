@@ -152,4 +152,76 @@ class ProjectReducerTests: XCTestCase {
             }
         )
     }
+
+    func test_workspacePicked_changesWorkspace() {
+        
+        let newWorkspace = Workspace(id: 2, name: "New", admin: true)
+
+        let state = ProjectState(
+            editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
+            projects: [:]
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .workspacePicked(newWorkspace)) {
+                $0.editableProject?.workspaceId = newWorkspace.id
+            }
+        )
+    }
+
+    func test_clientPicked_setsClient() {
+        
+        let client = Client(id: 2, name: "Ze Client", workspaceId: 0)
+
+        let state = ProjectState(
+            editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
+            projects: [:]
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .clientPicked(client)) {
+                $0.editableProject?.clientId = client.id
+            }
+        )
+    }
+
+    func test_colorPicked_setsColor() {
+
+        let state = ProjectState(
+            editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
+            projects: [:]
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .colorPicked("#123123")) {
+                $0.editableProject?.color = "#123123"
+            }
+        )
+    }
+
+    func test_closeButtonTapped_setsEditableProjectToNil() {
+
+        let state = ProjectState(
+            editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
+            projects: [:]
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .closeButtonTapped) {
+                $0.editableProject = nil
+            }
+        )
+    }
 }
