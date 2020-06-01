@@ -6,12 +6,13 @@ import Repository
 import OtherServices
 
 func createContextualMenuReducer() -> Reducer<ContextualMenuState, ContextualMenuAction> {
-    return Reducer {_, _ -> [Effect<ContextualMenuAction>] in
+    return Reducer {state, action -> [Effect<ContextualMenuAction>] in
 
-//        switch action {
-//
-//        case <#value#>:
-//            return []
-//        }
+        switch action {
+            
+        case .closeButtonTapped, .dismissButtonTapped:
+            state.selectedItem = nil
+            return []
+        }
     }
 }
