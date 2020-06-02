@@ -1,16 +1,25 @@
-import Foundation
 import Architecture
+import CalendarService
+import Foundation
 import Models
-import RxSwift
-import Repository
 import OtherServices
+import Repository
+import RxSwift
 import Timer
 
 // swiftlint:disable cyclomatic_complexity
-func createCalendarDayReducer() -> Reducer<CalendarDayState, CalendarDayAction> {
+func createCalendarDayReducer(calendarService: CalendarService) -> Reducer<CalendarDayState, CalendarDayAction> {
     return Reducer {state, action -> [Effect<CalendarDayAction>] in
 
         switch action {
+
+        case .calendarViewAppeared:
+            return [fetchCalendarEventsEffect(calendarService: calendarService, date: state.selectedDate)]
+
+        case .calendarEventsFetched(let events):
+            let keyedEvents = events.reduce(into: [String: CalendarEvent](), { $0[$1.id] = $1 })
+            state.calendarEvents = keyedEvents
+            return []
 
         case .startTimeDragged(let newStart):
             guard case var .left(editableTimeEntry) = state.selectedItem else { return [] }
@@ -45,3 +54,15 @@ func createCalendarDayReducer() -> Reducer<CalendarDayState, CalendarDayAction> 
     }
 }
 // swiftlint:enable cyclomatic_complexity
+
+func fetchCalendarEventsEffect(calendarService: CalendarService, date: Date) -> Effect<CalendarDayAction> {
+    let startDate = date.ignoreTimeComponents()
+    let endDate = date.ignoreTimeComponents().addingTimeInterval(TimeInterval(hours: 24))
+
+    return calendarService
+        .getAvailableCalendars()
+        .map({ calendarService.getCalendarEvents(between: startDate, and: endDate, in: $0) })
+        .flatMap({ $0 })
+        .map({ CalendarDayAction.calendarEventsFetched($0) })
+        .toEffect()
+}

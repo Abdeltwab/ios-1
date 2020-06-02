@@ -1,4 +1,5 @@
 import XCTest
+import CalendarService
 import Architecture
 import ArchitectureTestSupport
 import Models
@@ -12,12 +13,37 @@ class CalendarDayReducerTests: XCTestCase {
     var now = Date(timeIntervalSince1970: 987654321)
     var mockTime: Time!
     var mockUser: User!
+    var mockCalendarEvents: [CalendarEvent]!
     var reducer: Reducer<CalendarDayState, CalendarDayAction>!
 
     override func setUp() {
         mockTime = Time(getNow: { return self.now })
         mockUser = User(id: 0, apiToken: "token", defaultWorkspace: 0)
-        reducer = createCalendarDayReducer()
+        mockCalendarEvents = [
+            CalendarEvent(id: "1", calendarId: "1", description: "Hello there", start: now, stop: now, color: ""),
+            CalendarEvent(id: "2", calendarId: "1", description: "TWSS", start: now, stop: now, color: "")
+        ]
+        reducer = createCalendarDayReducer(calendarService: MockCalendarService(calendarEvents: mockCalendarEvents))
+    }
+
+    func test_calendarViewAppeared_loadsCalendarEvents() {
+        let state = CalendarDayState(
+            user: .nothing,
+            selectedDate: now,
+            timeEntries: [:],
+            calendarEvents: [:],
+            selectedItem: nil
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .calendarViewAppeared),
+            Step(.receive, .calendarEventsFetched(mockCalendarEvents)) { state in
+                state.calendarEvents = self.mockCalendarEvents.reduce(into: [:], { $0[$1.id] = $1 })
+            }
+        )
     }
 
     func test_startTimeDraggedAction_changesSelectedItemStartTimeAndDuration() {

@@ -20,7 +20,7 @@
 		B45A50CA247FE37600D730A8 /* CalendarServiceTests-Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B45A50C2247FE37600D730A8 /* CalendarServiceTests-Shared.xcconfig */; };
 		B45A50CB247FE37600D730A8 /* CalendarServiceTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B45A50C3247FE37600D730A8 /* CalendarServiceTests.debug.xcconfig */; };
 		B45A50CD247FE46E00D730A8 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A50CC247FE46E00D730A8 /* CalendarEvent.swift */; };
-		B45A50CF247FE4B100D730A8 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A50CE247FE4B100D730A8 /* Calendar.swift */; };
+		B45A50CF247FE4B100D730A8 /* CalendarSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A50CE247FE4B100D730A8 /* CalendarSource.swift */; };
 		B45A50D1247FE53C00D730A8 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45A50D0247FE53C00D730A8 /* CalendarService.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +52,7 @@
 		B45A50C2247FE37600D730A8 /* CalendarServiceTests-Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "CalendarServiceTests-Shared.xcconfig"; sourceTree = "<group>"; };
 		B45A50C3247FE37600D730A8 /* CalendarServiceTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = CalendarServiceTests.debug.xcconfig; sourceTree = "<group>"; };
 		B45A50CC247FE46E00D730A8 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
-		B45A50CE247FE4B100D730A8 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		B45A50CE247FE4B100D730A8 /* CalendarSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSource.swift; sourceTree = "<group>"; };
 		B45A50D0247FE53C00D730A8 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		BADDEF699B36286577381525 /* Pods_CalendarService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CalendarService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -121,7 +121,7 @@
 			children = (
 				B45A50A3247FE29200D730A8 /* CalendarService.h */,
 				B45A50A4247FE29200D730A8 /* Info.plist */,
-				B45A50CE247FE4B100D730A8 /* Calendar.swift */,
+				B45A50CE247FE4B100D730A8 /* CalendarSource.swift */,
 				B45A50CC247FE46E00D730A8 /* CalendarEvent.swift */,
 				B45A50D0247FE53C00D730A8 /* CalendarService.swift */,
 			);
@@ -298,7 +298,7 @@
 			files = (
 				B45A50CD247FE46E00D730A8 /* CalendarEvent.swift in Sources */,
 				B45A50D1247FE53C00D730A8 /* CalendarService.swift in Sources */,
-				B45A50CF247FE4B100D730A8 /* Calendar.swift in Sources */,
+				B45A50CF247FE4B100D730A8 /* CalendarSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

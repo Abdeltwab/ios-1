@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Calendar {
+public struct CalendarSource {
     let id: String
     let name: String
     let sourceName: String

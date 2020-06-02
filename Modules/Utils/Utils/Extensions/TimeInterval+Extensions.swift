@@ -11,6 +11,18 @@ public extension TimeInterval {
     static var secondsInAMinute: TimeInterval { TimeInterval(Int.secondsInAMinute) }
     static var secondsInAnHour: TimeInterval { TimeInterval(Int.secondsInAnHour) }
     static var secondsInADay: TimeInterval { TimeInterval(Int.secondsInADay) }
+
+    init(seconds: Int) {
+        self.init(seconds)
+    }
+
+    init(minutes: Int) {
+        self.init(seconds: minutes * .secondsInAMinute)
+    }
+
+    init(hours: Int) {
+        self.init(seconds: hours * .secondsInAnHour)
+    }
 }
 
 extension TimeInterval {
