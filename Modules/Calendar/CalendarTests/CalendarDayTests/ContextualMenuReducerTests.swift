@@ -87,4 +87,20 @@ class ContextualMenuReducerTests: XCTestCase {
             }
         )
     }
+    
+    func test_deleteButtonTapped_withATimeEntrySelected_setsSelectedItemToNil() {
+
+        let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+
+        let state = ContextualMenuState(
+            selectedItem: .left(editableTimeEntry)
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, ContextualMenuAction.deleteButtonTapped) { $0.selectedItem = nil}
+        )
+    }
 }
