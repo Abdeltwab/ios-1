@@ -1,5 +1,6 @@
 import Foundation
 import Models
+import CommonFeatures
 
 public enum RunningTimeEntryAction: Equatable {
     case cardTapped

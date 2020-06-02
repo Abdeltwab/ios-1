@@ -45,11 +45,13 @@ extension CalendarState {
     internal var contextualMenuState: ContextualMenuState {
         get {
             ContextualMenuState(
-                selectedItem: localCalendarState.selectedItem
+                selectedItem: localCalendarState.selectedItem,
+                timeEntries: timeEntries
             )
         }
         set {
             localCalendarState.selectedItem = newValue.selectedItem
+            timeEntries = newValue.timeEntries
         }
     }
 }

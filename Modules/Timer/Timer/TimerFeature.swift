@@ -2,6 +2,7 @@ import Foundation
 import Architecture
 import Repository
 import OtherServices
+import CommonFeatures
 
 public func createTimerReducer(repository: Repository, time: Time, schedulerProvider: SchedulerProvider) -> Reducer<TimerState, TimerAction> {
 

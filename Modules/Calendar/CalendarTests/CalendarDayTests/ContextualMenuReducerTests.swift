@@ -25,7 +25,8 @@ class ContextualMenuReducerTests: XCTestCase {
         let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
 
         let state = ContextualMenuState(
-            selectedItem: .left(editableTimeEntry)
+            selectedItem: .left(editableTimeEntry),
+            timeEntries: [:]
         )
 
         assertReducerFlow(
@@ -41,7 +42,8 @@ class ContextualMenuReducerTests: XCTestCase {
     func test_closeButtonTapped_withACalendarItemSelected_setsSelectedItemToNil() {
         
         let state = ContextualMenuState(
-            selectedItem: .right("calendarItemId")
+            selectedItem: .right("calendarItemId"),
+            timeEntries: [:]
         )
 
         assertReducerFlow(
@@ -59,7 +61,8 @@ class ContextualMenuReducerTests: XCTestCase {
         let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
 
         let state = ContextualMenuState(
-            selectedItem: .left(editableTimeEntry)
+            selectedItem: .left(editableTimeEntry),
+            timeEntries: [:]
         )
 
         assertReducerFlow(
@@ -75,7 +78,8 @@ class ContextualMenuReducerTests: XCTestCase {
     func test_dissmissButtonTapped_withACalendarItemSelected_setsSelectedItemToNil() {
         
         let state = ContextualMenuState(
-            selectedItem: .right("calendarItemId")
+            selectedItem: .right("calendarItemId"),
+            timeEntries: [:]
         )
 
         assertReducerFlow(
@@ -87,20 +91,56 @@ class ContextualMenuReducerTests: XCTestCase {
             }
         )
     }
-    
-    func test_deleteButtonTapped_withATimeEntrySelected_setsSelectedItemToNil() {
 
-        let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+    func test_continueButtonTapped_withATimeEntrySelected_createsANewTimeEntry() {
+
+        let timeEntry = TimeEntry(id: 0,
+                                  description: "Hello, I'm a time entry",
+                                  start: now.addingTimeInterval(-50),
+                                  duration: 10,
+                                  billable: false,
+                                  workspaceId: 0)
+        let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntry)
 
         let state = ContextualMenuState(
-            selectedItem: .left(editableTimeEntry)
+            selectedItem: .left(editableTimeEntry),
+            timeEntries: [0: timeEntry]
         )
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, ContextualMenuAction.deleteButtonTapped) { $0.selectedItem = nil}
+            Step(.send, .continueButtonTapped) {
+                $0.selectedItem = nil
+            },
+            Step(.receive, .timeEntries(.continueTimeEntry(0)))
+        )
+    }
+
+    func test_deleteButtonTapped_withATimeEntrySelected_deletesTheTimeEntry() {
+
+        let timeEntry = TimeEntry(id: 0,
+                                  description: "Hello, I'm a time entry",
+                                  start: now.addingTimeInterval(-50),
+                                  duration: 10,
+                                  billable: false,
+                                  workspaceId: 0)
+        let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntry)
+
+        let state = ContextualMenuState(
+            selectedItem: .left(editableTimeEntry),
+            timeEntries: [0: timeEntry]
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .deleteButtonTapped) {
+                $0.selectedItem = nil
+            },
+            Step(.receive, .timeEntries(.deleteTimeEntry(0)))
         )
     }
 }

@@ -193,6 +193,16 @@
                ReferencedContainer = "container:../Modules/Calendar/Calendar.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B4A67EC824869A4700CC05F1"
+               BuildableName = "CommonFeaturesTests.xctest"
+               BlueprintName = "CommonFeaturesTests"
+               ReferencedContainer = "container:../Modules/CommonFeatures/CommonFeatures.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

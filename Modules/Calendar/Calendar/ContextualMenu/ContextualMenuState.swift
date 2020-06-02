@@ -6,4 +6,5 @@ import Timer
 
 public struct ContextualMenuState: Equatable {
     var selectedItem: Either<EditableTimeEntry, String>?
+    var timeEntries: [Int64: TimeEntry]
 }

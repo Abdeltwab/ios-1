@@ -1,10 +1,27 @@
 import Foundation
 import Models
+import CommonFeatures
 
 public enum ContextualMenuAction: Equatable {
     case closeButtonTapped
     case dismissButtonTapped
     case deleteButtonTapped
+    case continueButtonTapped
+
+    case timeEntries(TimeEntriesAction)
+}
+
+extension ContextualMenuAction {
+    var timeEntries: TimeEntriesAction? {
+        get {
+            guard case let .timeEntries(value) = self else { return nil }
+            return value
+        }
+        set {
+            guard case .timeEntries = self, let newValue = newValue else { return }
+            self = .timeEntries(newValue)
+        }
+    }
 }
 
 extension ContextualMenuAction: CustomDebugStringConvertible {
@@ -14,9 +31,14 @@ extension ContextualMenuAction: CustomDebugStringConvertible {
         case .closeButtonTapped:
             return "CloseButtonTapped"
         case .dismissButtonTapped:
-            return"DismissButtonTapped"
+            return "DismissButtonTapped"
         case .deleteButtonTapped:
-            return"DismissButtonTapped"
+            return "DeleteButtonTapped"
+        case .continueButtonTapped:
+            return "ContinueButtonTapped"
+
+        case .timeEntries(let action):
+            return action.debugDescription
         }
     }
 }

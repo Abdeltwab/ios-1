@@ -3,14 +3,14 @@ import Architecture
 import ArchitectureTestSupport
 import Models
 import OtherServices
-@testable import Timer
+@testable import CommonFeatures
 
 class TimeEntriesReducerTests: XCTestCase {
 
     var now = Date(timeIntervalSince1970: 987654321)
     var mockRepository: MockTimeLogRepository!
     var mockTime: Time!
-    var reducer: Reducer<[Int64: TimeEntry], TimeEntriesAction>!
+    var reducer: Reducer<TimeEntriesState, TimeEntriesAction>!
 
     override func setUp() {
         mockTime = Time(getNow: { return self.now })
@@ -19,7 +19,7 @@ class TimeEntriesReducerTests: XCTestCase {
     }
 
     func testDeletedRunningTimeEntry() {
-        var timeEntries = [Int64: TimeEntry]()
+        var timeEntries = TimeEntriesState()
         timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
         timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
 
