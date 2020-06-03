@@ -92,6 +92,25 @@ class ContextualMenuReducerTests: XCTestCase {
         )
     }
 
+    func test_stopButtonTapped_setsSelectedItemToNilAndEmitsStopRunningTimeEntry() {
+        let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+
+        let state = ContextualMenuState(
+            selectedItem: .left(editableTimeEntry),
+            timeEntries: [Int64: TimeEntry]()
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, ContextualMenuAction.stopButtonTapped) {
+                $0.selectedItem = nil
+            },
+            Step(.receive, ContextualMenuAction.timeEntries(.stopRunningTimeEntry))
+        )
+    }
+
     func test_continueButtonTapped_withATimeEntrySelected_createsANewTimeEntry() {
 
         let timeEntry = TimeEntry(id: 0,

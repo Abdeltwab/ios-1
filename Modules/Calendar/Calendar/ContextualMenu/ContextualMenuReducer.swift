@@ -15,6 +15,10 @@ func createContextualMenuReducer() -> Reducer<ContextualMenuState, ContextualMen
             state.selectedItem = nil
             return []
 
+        case .stopButtonTapped:
+            state.selectedItem = nil
+            return [Effect.from(action: .timeEntries(.stopRunningTimeEntry))]
+
         case .deleteButtonTapped:
             guard case .left(let editableTimeEntry) = state.selectedItem else { fatalError("Only time entries can be continued") }
             guard let timeEntryId = editableTimeEntry.ids.first else { fatalError("Only existing time entries can be continued") }
