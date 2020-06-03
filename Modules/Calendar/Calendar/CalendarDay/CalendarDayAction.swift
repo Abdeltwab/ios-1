@@ -9,6 +9,7 @@ public enum CalendarDayAction: Equatable {
     case stopTimeDragged(Date)
     case timeEntryDragged(Date)
     case emptyPositionLongPressed(Date)
+    case itemTapped(CalendarItem)
 }
 
 extension CalendarDayAction: CustomDebugStringConvertible {
@@ -33,6 +34,9 @@ extension CalendarDayAction: CustomDebugStringConvertible {
 
         case .emptyPositionLongPressed(let date):
             return "EmptyPositionLongPressed: \(date)"
+
+        case .itemTapped:
+            return "ItemTapped"
         }
     }
 }

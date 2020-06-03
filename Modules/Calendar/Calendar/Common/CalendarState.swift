@@ -17,7 +17,7 @@ public struct CalendarState {
 }
 
 public struct LocalCalendarState: Equatable {
-    internal var selectedItem: Either<EditableTimeEntry, String>?
+    internal var selectedItem: Either<EditableTimeEntry, CalendarEvent>?
 
     public init() {}
 }

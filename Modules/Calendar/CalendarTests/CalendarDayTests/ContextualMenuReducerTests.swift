@@ -1,4 +1,5 @@
 import XCTest
+import CalendarService
 import Architecture
 import ArchitectureTestSupport
 import Models
@@ -40,9 +41,11 @@ class ContextualMenuReducerTests: XCTestCase {
     }
     
     func test_closeButtonTapped_withACalendarItemSelected_setsSelectedItemToNil() {
-        
+
+        let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now, color: "")
+
         let state = ContextualMenuState(
-            selectedItem: .right("calendarItemId"),
+            selectedItem: .right(calendarEvent),
             timeEntries: [:]
         )
 
@@ -76,9 +79,11 @@ class ContextualMenuReducerTests: XCTestCase {
     }
     
     func test_dissmissButtonTapped_withACalendarItemSelected_setsSelectedItemToNil() {
-        
+
+        let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now, color: "")
+
         let state = ContextualMenuState(
-            selectedItem: .right("calendarItemId"),
+            selectedItem: .right(calendarEvent),
             timeEntries: [:]
         )
 

@@ -9,5 +9,5 @@ public struct CalendarDayState: Equatable {
     var selectedDate: Date
     var timeEntries: [Int64: TimeEntry]
     var calendarEvents: [String: CalendarEvent]
-    var selectedItem: Either<EditableTimeEntry, String>?
+    var selectedItem: Either<EditableTimeEntry, CalendarEvent>?
 }

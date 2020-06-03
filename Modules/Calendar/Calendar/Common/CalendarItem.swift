@@ -1,7 +1,7 @@
 import Models
 import CalendarService
 
-struct CalendarItem: Equatable {
+public struct CalendarItem: Equatable {
     enum Value: Equatable {
         case timeEntry(TimeEntry)
         case calendarEvent(CalendarEvent)

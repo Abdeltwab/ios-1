@@ -231,4 +231,75 @@ class CalendarDayReducerTests: XCTestCase {
             Step(.send, CalendarDayAction.emptyPositionLongPressed(now))
         )
     }
+
+    func test_itemTapped_withATimeEntry_selectsTimeEntry() {
+
+        let state = CalendarDayState(
+            user: .loaded(mockUser),
+            selectedDate: now,
+            timeEntries: [:],
+            calendarEvents: [:],
+            selectedItem: nil
+        )
+
+        let timeEntry = TimeEntry(id: 1, description: "Potato", start: now, duration: 10, billable: false, workspaceId: 0)
+        let calendarItem = CalendarItem(value: .timeEntry(timeEntry), columnIndex: 0, totalColumns: 1, duration: 10)
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .itemTapped(calendarItem)) {
+                $0.selectedItem = .left(EditableTimeEntry.fromSingle(timeEntry))
+            }
+        )
+    }
+
+    func test_itemTapped_withACalendarEvent_selectsCalendarEvent() {
+
+        let state = CalendarDayState(
+            user: .loaded(mockUser),
+            selectedDate: now,
+            timeEntries: [:],
+            calendarEvents: [:],
+            selectedItem: nil
+        )
+
+        let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now.addingTimeInterval(10), color: "")
+        let calendarItem = CalendarItem(value: .calendarEvent(calendarEvent), columnIndex: 0, totalColumns: 1, duration: 10)
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .itemTapped(calendarItem)) {
+                $0.selectedItem = .right(calendarEvent)
+            }
+        )
+    }
+
+    func test_itemTapped_withAlreadySelectedItem_selectsTheNewItem() {
+
+        let timeEntry = TimeEntry(id: 1, description: "Potato", start: now, duration: 10, billable: false, workspaceId: 0)
+        let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now.addingTimeInterval(10), color: "")
+
+        let state = CalendarDayState(
+            user: .loaded(mockUser),
+            selectedDate: now,
+            timeEntries: [:],
+            calendarEvents: [:],
+            selectedItem: .left(EditableTimeEntry.fromSingle(timeEntry))
+        )
+
+        let calendarItem = CalendarItem(value: .calendarEvent(calendarEvent), columnIndex: 0, totalColumns: 1, duration: 10)
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .itemTapped(calendarItem)) {
+                $0.selectedItem = .right(calendarEvent)
+            }
+        )
+    }
 }

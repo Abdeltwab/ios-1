@@ -8,6 +8,7 @@ import RxSwift
 import Timer
 
 // swiftlint:disable cyclomatic_complexity
+// swiftlint:disable function_body_length
 func createCalendarDayReducer(calendarService: CalendarService) -> Reducer<CalendarDayState, CalendarDayAction> {
     return Reducer {state, action -> [Effect<CalendarDayAction>] in
 
@@ -50,9 +51,19 @@ func createCalendarDayReducer(calendarService: CalendarService) -> Reducer<Calen
             editableTimeEntry.duration = defaultTimeEntryDuration
             state.selectedItem = .left(editableTimeEntry)
             return []
+
+        case .itemTapped(let calendarItem):
+            switch calendarItem.value {
+            case .timeEntry(let timeEntry):
+                state.selectedItem = .left(EditableTimeEntry.fromSingle(timeEntry))
+            case .calendarEvent(let calendarEvent):
+                state.selectedItem = .right(calendarEvent)
+            }
+            return []
         }
     }
 }
+// swiftlint:enable function_body_length
 // swiftlint:enable cyclomatic_complexity
 
 func fetchCalendarEventsEffect(calendarService: CalendarService, date: Date) -> Effect<CalendarDayAction> {

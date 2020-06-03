@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,14 +11,6 @@
 		6ED83C99BFA204BBFA9EC285 /* Pods_CommonFeatures_CommonFeaturesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A694A0C5857A1DD37DBD9A41 /* Pods_CommonFeatures_CommonFeaturesTests.framework */; };
 		B4A67ECA24869A4700CC05F1 /* CommonFeatures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A67EC024869A4600CC05F1 /* CommonFeatures.framework */; };
 		B4A67ED124869A4700CC05F1 /* CommonFeatures.h in Headers */ = {isa = PBXBuildFile; fileRef = B4A67EC324869A4600CC05F1 /* CommonFeatures.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B4A67EE324869A8800CC05F1 /* CommonFeatures.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4A67EDB24869A8800CC05F1 /* CommonFeatures.debug.xcconfig */; };
-		B4A67EE424869A8800CC05F1 /* CommonFeatures-Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4A67EDC24869A8800CC05F1 /* CommonFeatures-Shared.xcconfig */; };
-		B4A67EE524869A8800CC05F1 /* Project.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4A67EDD24869A8800CC05F1 /* Project.debug.xcconfig */; };
-		B4A67EE624869A8800CC05F1 /* Project.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4A67EDE24869A8800CC05F1 /* Project.release.xcconfig */; };
-		B4A67EE724869A8800CC05F1 /* CommonFeaturesTests-Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4A67EDF24869A8800CC05F1 /* CommonFeaturesTests-Shared.xcconfig */; };
-		B4A67EE824869A8800CC05F1 /* CommonFeaturesTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4A67EE024869A8800CC05F1 /* CommonFeaturesTests.debug.xcconfig */; };
-		B4A67EE924869A8800CC05F1 /* CommonFeatures.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4A67EE124869A8800CC05F1 /* CommonFeatures.release.xcconfig */; };
-		B4A67EEA24869A8800CC05F1 /* CommonFeaturesTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4A67EE224869A8800CC05F1 /* CommonFeaturesTests.release.xcconfig */; };
 		B4A67EF324869BAD00CC05F1 /* TimeEntriesAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A67EEC24869BAD00CC05F1 /* TimeEntriesAction.swift */; };
 		B4A67EF624869BAD00CC05F1 /* TimeEntriesReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A67EEF24869BAD00CC05F1 /* TimeEntriesReducer.swift */; };
 		B4A67EF724869BAD00CC05F1 /* TimeEntriesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A67EF024869BAD00CC05F1 /* TimeEntriesState.swift */; };
@@ -310,14 +302,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4A67EE524869A8800CC05F1 /* Project.debug.xcconfig in Resources */,
-				B4A67EE624869A8800CC05F1 /* Project.release.xcconfig in Resources */,
-				B4A67EE324869A8800CC05F1 /* CommonFeatures.debug.xcconfig in Resources */,
-				B4A67EE424869A8800CC05F1 /* CommonFeatures-Shared.xcconfig in Resources */,
-				B4A67EE724869A8800CC05F1 /* CommonFeaturesTests-Shared.xcconfig in Resources */,
-				B4A67EEA24869A8800CC05F1 /* CommonFeaturesTests.release.xcconfig in Resources */,
-				B4A67EE924869A8800CC05F1 /* CommonFeatures.release.xcconfig in Resources */,
-				B4A67EE824869A8800CC05F1 /* CommonFeaturesTests.debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,11 +545,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = CommonFeatures/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.toggl.aurora.CommonFeatures;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -588,11 +567,6 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = CommonFeatures/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.toggl.aurora.CommonFeatures;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -605,7 +579,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4A67EE024869A8800CC05F1 /* CommonFeaturesTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B227VTMZ94;
 				INFOPLIST_FILE = CommonFeaturesTests/Info.plist;
@@ -625,7 +598,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B4A67EE224869A8800CC05F1 /* CommonFeaturesTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B227VTMZ94;
 				INFOPLIST_FILE = CommonFeaturesTests/Info.plist;
