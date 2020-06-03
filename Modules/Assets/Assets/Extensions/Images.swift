@@ -11,4 +11,14 @@ public struct Images {
         
         public static var calendar: UIImage { UIImage(named: "icCalendar", in: Assets.bundle, compatibleWith: nil)! }
     }
+
+    public struct Calendar {
+        public static var calendarSmall: UIImage {
+            UIImage(named: "icCalendarSmall", in: Assets.bundle, compatibleWith: nil)!.withRenderingMode(.alwaysTemplate)
+        }
+        
+        public static var stripesPattern: UIImage {
+            UIImage(named: "icTime", in: Assets.bundle, compatibleWith: nil)!.withRenderingMode(.alwaysTemplate)
+        }
+    }
 }

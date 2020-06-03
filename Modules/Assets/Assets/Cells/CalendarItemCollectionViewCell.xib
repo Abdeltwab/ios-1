@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="NMY-qo-wMt" customClass="CalendarItemCollectionViewCell" customModule="Calendar">
+            <rect key="frame" x="0.0" y="0.0" width="381" height="38"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="381" height="38"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gib-Yp-z1w">
+                        <rect key="frame" x="0.0" y="36" width="381" height="2"/>
+                        <color key="backgroundColor" systemColor="systemBrownColor" red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="gMq-3D-ZHW"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ibS-no-dRo">
+                        <rect key="frame" x="5" y="5" width="371" height="14.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="icCalendarSmall" translatesAutoresizingMaskIntoConstraints="NO" id="BgX-cd-P7f">
+                                <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="Ymf-1Z-GLU"/>
+                                    <constraint firstAttribute="width" constant="14" id="gtf-rt-lUQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weekly meeting" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W12-vb-NlD">
+                                <rect key="frame" x="19" y="0.0" width="352" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqr-kg-a12">
+                        <rect key="frame" x="365" y="-4" width="8" height="8"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="4Dy-Tz-Tvv"/>
+                            <constraint firstAttribute="width" constant="8" id="J8G-OW-TlX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcX-AI-icT">
+                        <rect key="frame" x="8" y="34" width="8" height="8"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="1Yf-AG-IIj"/>
+                            <constraint firstAttribute="height" constant="8" id="1wI-hm-rDm"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="top" secondItem="Iqr-kg-a12" secondAttribute="bottom" constant="-4" id="1aB-fO-UvK"/>
+                <constraint firstItem="ibS-no-dRo" firstAttribute="leading" secondItem="NMY-qo-wMt" secondAttribute="leading" constant="5" id="87v-le-lli"/>
+                <constraint firstAttribute="bottom" secondItem="Gib-Yp-z1w" secondAttribute="bottom" id="CG5-eb-NuM"/>
+                <constraint firstItem="ibS-no-dRo" firstAttribute="top" secondItem="NMY-qo-wMt" secondAttribute="top" constant="5" id="Cbe-gg-MCe"/>
+                <constraint firstAttribute="trailing" secondItem="Gib-Yp-z1w" secondAttribute="trailing" id="F8G-bu-AIu"/>
+                <constraint firstAttribute="bottom" secondItem="rcX-AI-icT" secondAttribute="top" constant="4" id="OFp-4G-D1H"/>
+                <constraint firstAttribute="trailing" secondItem="ibS-no-dRo" secondAttribute="trailing" constant="5" id="TOb-6W-58b"/>
+                <constraint firstAttribute="trailing" secondItem="Iqr-kg-a12" secondAttribute="trailing" constant="8" id="i5Q-kO-CGi"/>
+                <constraint firstItem="Gib-Yp-z1w" firstAttribute="leading" secondItem="NMY-qo-wMt" secondAttribute="leading" id="lr9-yG-TQq"/>
+                <constraint firstItem="rcX-AI-icT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ibS-no-dRo" secondAttribute="bottom" constant="5" id="nWX-fw-Xud"/>
+                <constraint firstItem="rcX-AI-icT" firstAttribute="leading" secondItem="NMY-qo-wMt" secondAttribute="leading" constant="8" id="ncO-GF-EJO"/>
+            </constraints>
+            <size key="customSize" width="381" height="38"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="2"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="bottomDragIndicator" destination="rcX-AI-icT" id="Abi-as-qk8"/>
+                <outlet property="bottomLine" destination="Gib-Yp-z1w" id="DbG-Gz-aXi"/>
+                <outlet property="descriptionLabel" destination="W12-vb-NlD" id="wFM-rr-M2P"/>
+                <outlet property="iconImageView" destination="BgX-cd-P7f" id="jFm-ra-fRi"/>
+                <outlet property="topDragIndicator" destination="Iqr-kg-a12" id="vTY-bQ-lFQ"/>
+            </connections>
+            <point key="canvasLocation" x="-112" y="46"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="icCalendarSmall" width="10" height="11"/>
+    </resources>
+</document>

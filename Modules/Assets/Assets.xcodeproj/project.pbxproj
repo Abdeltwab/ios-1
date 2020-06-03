@@ -22,6 +22,7 @@
 		B42EB0B6246D8ECB0036F707 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42EB0B5246D8ECB0036F707 /* Images.swift */; };
 		B42EB0B9246D90DD0036F707 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B42EB0B8246D90DD0036F707 /* Colors.xcassets */; };
 		B42EB0BB246D921B0036F707 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42EB0BA246D921B0036F707 /* Colors.swift */; };
+		B448913124852DD200D144B4 /* CalendarItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B448913024852DD200D144B4 /* CalendarItemCollectionViewCell.xib */; };
 		CC817231247582BA004F1152 /* XIBLocalizablePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC817230247582BA004F1152 /* XIBLocalizablePlaceholder.swift */; };
 		CCAC4BAF24744D5100F9E3A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCAC4BA524743D8200F9E3A3 /* Localizable.strings */; };
 		CCAC4BB024744D5300F9E3A3 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CCAC4BA324743D8200F9E3A3 /* Localizable.stringsdict */; };
@@ -59,6 +60,7 @@
 		B42EB0B5246D8ECB0036F707 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		B42EB0B8246D90DD0036F707 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B42EB0BA246D921B0036F707 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B448913024852DD200D144B4 /* CalendarItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		CC817230247582BA004F1152 /* XIBLocalizablePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBLocalizablePlaceholder.swift; sourceTree = "<group>"; };
 		CCAC4BA424743D8200F9E3A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CCAC4BA624743D8200F9E3A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				B42EB0B7246D8ED50036F707 /* Extensions */,
 				CCBD699C24742BF800182A15 /* Localization */,
 				8C2517C62403C2EF00BAD4B5 /* Storyboards */,
+				B448912F24852DBC00D144B4 /* Cells */,
 				8C2517B72403C2CA00BAD4B5 /* TextFiles */,
 				B42EB0B3246D8DF20036F707 /* Images.xcassets */,
 				B42EB0B8246D90DD0036F707 /* Colors.xcassets */,
@@ -173,6 +176,14 @@
 				CCBD697A247421BC00182A15 /* Strings.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B448912F24852DBC00D144B4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B448913024852DD200D144B4 /* CalendarItemCollectionViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		CCBD699C24742BF800182A15 /* Localization */ = {
@@ -265,6 +276,7 @@
 				CCAC4BAF24744D5100F9E3A3 /* Localizable.strings in Resources */,
 				8CFDB37F247C0E1F00952533 /* Calendar.storyboard in Resources */,
 				8C2517C32403C2CA00BAD4B5 /* timeentries.txt in Resources */,
+				B448913124852DD200D144B4 /* CalendarItemCollectionViewCell.xib in Resources */,
 				CCBD6991247425A800182A15 /* Project.storyboard in Resources */,
 				8C2517C42403C2CA00BAD4B5 /* tags.txt in Resources */,
 				8C2517C02403C2CA00BAD4B5 /* me.txt in Resources */,

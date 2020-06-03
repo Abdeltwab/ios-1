@@ -41,3 +41,34 @@ extension UIColor {
         UIColor(hex: "F1ACAE")
     ]
 }
+
+public extension UIColor {
+
+    // swiftlint:disable identifier_name
+    // Adjusted relative luminance
+    // math based on https://www.w3.org/WAI/GL/wiki/Relative_luminance
+    var luminance: CGFloat {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+
+        let lowGammaCoeficient: CGFloat = 1 / 12.92
+        let adjustGamma: (CGFloat) -> CGFloat = { channel in
+            return pow((channel + 0.055) / 1.055, 2.4)
+        }
+
+        r = r <= 0.03928 ? r * lowGammaCoeficient : adjustGamma(r)
+        g = g <= 0.03928 ? g * lowGammaCoeficient : adjustGamma(g)
+        b = b <= 0.03928 ? b * lowGammaCoeficient : adjustGamma(b)
+
+        let luma = r * 0.2126 + g * 0.7152 + b * 0.0722
+        return luma
+    }
+    // swiftlint:enable identifier_name
+
+    var foregroundColor: UIColor {
+        self.luminance < 0.5 ? .white : .black
+    }
+}

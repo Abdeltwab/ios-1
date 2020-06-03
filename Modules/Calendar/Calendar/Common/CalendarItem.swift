@@ -14,7 +14,15 @@ public struct CalendarItem: Equatable {
                 return calendarEvent.description
             }
         }
-        
+
+        var color: String {
+            switch self {
+            case .timeEntry:
+                return "#000000"
+            case .calendarEvent(let calendarEvent):
+                return calendarEvent.color
+            }
+        }
         var start: Date {
             switch self {
             case .timeEntry(let timeEntry):
@@ -44,6 +52,7 @@ public struct CalendarItem: Equatable {
     let totalColumns: Int
 
     var description: String { value.description }
+    var color: String { value.color }
     var start: Date { value.start }
     var duration: TimeInterval?
     var stop: Date? {
