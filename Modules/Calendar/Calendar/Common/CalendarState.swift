@@ -9,10 +9,12 @@ public struct CalendarState {
     var selectedDate: Date = Date()
     var timeEntries: [Int64: TimeEntry] = [:]
     var calendarEvents: [String: CalendarEvent] = [:]
+    public var editableTimeEntry: EditableTimeEntry?
     public var localCalendarState: LocalCalendarState
     
-    public init(localCalendarState: LocalCalendarState) {
+    public init(localCalendarState: LocalCalendarState, editableTimeEntry: EditableTimeEntry?) {
         self.localCalendarState = localCalendarState
+        self.editableTimeEntry = editableTimeEntry
     }
 }
 
@@ -46,11 +48,13 @@ extension CalendarState {
         get {
             ContextualMenuState(
                 selectedItem: localCalendarState.selectedItem,
+                editableTimeEntry: editableTimeEntry,
                 timeEntries: timeEntries
             )
         }
         set {
             localCalendarState.selectedItem = newValue.selectedItem
+            editableTimeEntry = newValue.editableTimeEntry
             timeEntries = newValue.timeEntries
         }
     }

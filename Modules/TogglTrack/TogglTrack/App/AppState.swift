@@ -10,6 +10,7 @@ public struct AppState {
     public var route: RoutePath = AppRoute.start.path
     public var user: Loadable<User> = .nothing
     public var entities: TimeLogEntities =  TimeLogEntities()
+    public var editableTimeEntry: EditableTimeEntry?
 
     public var localOnboardingState: LocalOnboardingState = LocalOnboardingState()
     public var localTimerState: LocalTimerState = LocalTimerState()
@@ -52,6 +53,7 @@ extension AppState {
             TimerState(
                 user: user,
                 entities: entities,
+                editableTimeEntry: editableTimeEntry,
                 localTimerState: localTimerState
             )
         }
@@ -59,6 +61,7 @@ extension AppState {
         set {
             user = newValue.user
             entities = newValue.entities
+            editableTimeEntry = newValue.editableTimeEntry
             localTimerState = newValue.localTimerState
         }
     }
@@ -66,12 +69,14 @@ extension AppState {
     var calendarState: CalendarState {
         get {
             CalendarState(
-                localCalendarState: localCalendarState
+                localCalendarState: localCalendarState,
+                editableTimeEntry: editableTimeEntry
             )
         }
 
         set {
             localCalendarState = newValue.localCalendarState
+            editableTimeEntry = newValue.editableTimeEntry
         }
     }
 }

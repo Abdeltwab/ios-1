@@ -37,7 +37,7 @@ extension StartEditAction {
             return .editViewClosed(.close)
         case .doneButtonTapped:
             return .editViewClosed(
-                state.localTimerState.isEditingGroup() ? .groupSave : .save
+                state.timerState.isEditingGroup() ? .groupSave : .save
             )
         default:
             return nil

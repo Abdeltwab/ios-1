@@ -6,6 +6,7 @@ import Repository
 import OtherServices
 import Timer
 
+// swiftlint:disable cyclomatic_complexity
 func createContextualMenuReducer() -> Reducer<ContextualMenuState, ContextualMenuAction> {
     return Reducer {state, action -> [Effect<ContextualMenuAction>] in
 
@@ -13,6 +14,12 @@ func createContextualMenuReducer() -> Reducer<ContextualMenuState, ContextualMen
             
         case .closeButtonTapped, .dismissButtonTapped:
             state.selectedItem = nil
+            return []
+
+        case .editButtonTapped:
+            guard case .left(let editableTimeEntry) = state.selectedItem else { return [] }
+            state.selectedItem = nil
+            state.editableTimeEntry = editableTimeEntry
             return []
 
         case .stopButtonTapped:
@@ -36,3 +43,4 @@ func createContextualMenuReducer() -> Reducer<ContextualMenuState, ContextualMen
         }
     }
 }
+// swiftlint:enable cyclomatic_complexity

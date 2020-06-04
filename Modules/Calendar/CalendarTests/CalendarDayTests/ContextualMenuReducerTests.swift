@@ -167,4 +167,52 @@ class ContextualMenuReducerTests: XCTestCase {
             Step(.receive, .timeEntries(.deleteTimeEntry(0)))
         )
     }
+
+    func test_editButtonTapped_withATimeEntrySelected_setsEditableTimeEntry() {
+
+        let timeEntry = TimeEntry(id: 0,
+                                  description: "Hello, I'm a time entry",
+                                  start: now.addingTimeInterval(-50),
+                                  duration: 10,
+                                  billable: false,
+                                  workspaceId: 0)
+        let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntry)
+
+        let state = ContextualMenuState(
+            selectedItem: .left(editableTimeEntry),
+            timeEntries: [0: timeEntry]
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .editButtonTapped) {
+                $0.selectedItem = nil
+                $0.editableTimeEntry = editableTimeEntry
+            }
+        )
+    }
+
+    func test_editButtonTapped_withNoTimeEntrySelected_doesNothing() {
+
+        let timeEntry = TimeEntry(id: 0,
+                                  description: "Hello, I'm a time entry",
+                                  start: now.addingTimeInterval(-50),
+                                  duration: 10,
+                                  billable: false,
+                                  workspaceId: 0)
+
+        let state = ContextualMenuState(
+            selectedItem: nil,
+            timeEntries: [0: timeEntry]
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .editButtonTapped)
+        )
+    }
 }
