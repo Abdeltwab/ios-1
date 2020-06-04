@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -168,36 +168,38 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MvP-0m-wQB" userLabel="ProjectsAndTags">
                                                 <rect key="frame" x="0.0" y="121.5" width="414" height="52"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Projects &amp; Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEw-OU-ug7">
-                                                        <rect key="frame" x="20" y="16" width="119.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGD-4T-zpN">
+                                                        <rect key="frame" x="125" y="11" width="79" height="30"/>
+                                                        <state key="normal" title="# Add a tag"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TN-I7-OUs">
+                                                        <rect key="frame" x="10" y="11" width="110" height="30"/>
+                                                        <state key="normal" title="@ Add a project"/>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="4TN-I7-OUs" firstAttribute="leading" secondItem="MvP-0m-wQB" secondAttribute="leading" constant="10" id="4RZ-kY-bk3"/>
                                                     <constraint firstAttribute="height" constant="52" id="CGT-WW-F7c"/>
-                                                    <constraint firstItem="MEw-OU-ug7" firstAttribute="centerY" secondItem="MvP-0m-wQB" secondAttribute="centerY" id="VkD-hs-KCj"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MEw-OU-ug7" secondAttribute="trailing" constant="20" id="fbG-3L-axs"/>
-                                                    <constraint firstItem="MEw-OU-ug7" firstAttribute="leading" secondItem="MvP-0m-wQB" secondAttribute="leading" constant="20" id="hOp-T9-3yl"/>
+                                                    <constraint firstItem="4TN-I7-OUs" firstAttribute="centerY" secondItem="MvP-0m-wQB" secondAttribute="centerY" id="DI3-94-aWD"/>
+                                                    <constraint firstItem="kGD-4T-zpN" firstAttribute="leading" secondItem="4TN-I7-OUs" secondAttribute="trailing" constant="5" id="LMs-3D-VN5"/>
+                                                    <constraint firstItem="kGD-4T-zpN" firstAttribute="centerY" secondItem="MvP-0m-wQB" secondAttribute="centerY" id="fMY-w9-21S"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kGD-4T-zpN" secondAttribute="trailing" constant="10" id="fw7-LS-zKu"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlq-nT-xG1" userLabel="Billable">
                                                 <rect key="frame" x="0.0" y="173.5" width="414" height="52"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Billable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSf-qY-PsJ">
-                                                        <rect key="frame" x="21" y="16" width="55" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfI-4Y-5Mg">
+                                                        <rect key="frame" x="10" y="11" width="63" height="30"/>
+                                                        <state key="normal" title="$ Billable"/>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="eSf-qY-PsJ" firstAttribute="leading" secondItem="vlq-nT-xG1" secondAttribute="leading" constant="21" id="2z8-4h-Y7L"/>
-                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eSf-qY-PsJ" secondAttribute="trailing" constant="20" id="FBd-sN-CAw"/>
-                                                    <constraint firstItem="eSf-qY-PsJ" firstAttribute="centerY" secondItem="vlq-nT-xG1" secondAttribute="centerY" id="VAf-Y9-FJs"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bfI-4Y-5Mg" secondAttribute="trailing" constant="10" id="3bo-CM-c1k"/>
+                                                    <constraint firstItem="bfI-4Y-5Mg" firstAttribute="centerY" secondItem="vlq-nT-xG1" secondAttribute="centerY" id="bMp-CD-Kwt"/>
+                                                    <constraint firstItem="bfI-4Y-5Mg" firstAttribute="leading" secondItem="vlq-nT-xG1" secondAttribute="leading" constant="10" id="hqD-qs-xaR"/>
                                                     <constraint firstAttribute="height" constant="52" id="yzV-6J-gGG"/>
                                                 </constraints>
                                             </view>
@@ -423,6 +425,7 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="billableButton" destination="bfI-4Y-5Mg" id="EXd-Mr-Gox"/>
                         <outlet property="closeButton" destination="6f1-o6-T93" id="qf1-Rr-5PW"/>
                         <outlet property="contentScrollView" destination="50S-eW-nLv" id="fFu-P3-bmT"/>
                         <outlet property="datePickers" destination="djH-lJ-tRv" id="3PO-JC-uZ4"/>
@@ -431,7 +434,9 @@
                         <outlet property="durationView" destination="SbG-qs-ijW" id="fCr-fh-sse"/>
                         <outlet property="handle" destination="eCM-ov-S5k" id="upu-BG-MKJ"/>
                         <outlet property="projectAndTagsView" destination="MvP-0m-wQB" id="D3l-Xb-bq0"/>
+                        <outlet property="projectButton" destination="4TN-I7-OUs" id="ebz-uQ-9Se"/>
                         <outlet property="startEditInputAccessoryView" destination="m53-j1-8QL" id="cOP-C4-ABP"/>
+                        <outlet property="tagButton" destination="kGD-4T-zpN" id="uAb-lj-vDf"/>
                         <outlet property="wheel" destination="WXs-mJ-YaF" id="fiM-cx-hXn"/>
                     </connections>
                 </viewController>
@@ -578,7 +583,7 @@
                                         <rect key="frame" x="16" y="18.5" width="318" height="35"/>
                                         <subviews>
                                             <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="I'm working on..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0gq-fS-kZU">
-                                                <rect key="frame" x="20" y="5.5" width="278" height="24"/>
+                                                <rect key="frame" x="20" y="5" width="278" height="25.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>

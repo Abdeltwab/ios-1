@@ -28,7 +28,10 @@ public class StartEditViewController: UIViewController, Storyboarded {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var durationView: UIView!
     @IBOutlet weak var contentScrollView: UIScrollView!
-    
+    @IBOutlet weak var projectButton: UIButton!
+    @IBOutlet weak var tagButton: UIButton!
+    @IBOutlet weak var billableButton: UIButton!
+
     @IBOutlet var startEditInputAccessoryView: StartEditInputAccessoryView!
 
     public override var inputAccessoryView: UIView? { startEditInputAccessoryView }
@@ -38,7 +41,8 @@ public class StartEditViewController: UIViewController, Storyboarded {
 
     private var disposeBag = DisposeBag()
     private var timer: Timer?
-
+    
+    // swiftlint:disable function_body_length
     public override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -64,6 +68,29 @@ public class StartEditViewController: UIViewController, Storyboarded {
             .map { [weak self] _ in (self?.descriptionTextView.text ?? "", self?.descriptionTextView.cursorPosition ?? 0)}
             .map(StartEditAction.descriptionEntered)
             .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        projectButton.rx.tap
+            .mapTo(StartEditAction.projectButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        tagButton.rx.tap
+            .mapTo(StartEditAction.tagButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        billableButton.rx.tap
+            .mapTo(StartEditAction.billableButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        store.select({ $0.editableTimeEntry?.billable ?? false })
+            .drive(onNext: { isBillable in
+                self.billableButton.backgroundColor = isBillable
+                    ? UIColor.gray
+                    : .white
+            })
             .disposed(by: disposeBag)
 
         closeButton.rx.tap
