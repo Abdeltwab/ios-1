@@ -5,7 +5,7 @@ import RxSwift
 import OtherServices
 
 class MockTimeLogRepository: TimeLogRepository {
-    
+
     private let time: Time
     
     var stoppedTimeEntry: TimeEntry?
@@ -65,6 +65,19 @@ class MockTimeLogRepository: TimeLogRepository {
             tagIds: [])
 
         return Single.just((startedTimeEntry, stoppedTimeEntry))
+    }
+
+    func createTimeEntry(_ timeEntry: CreateTimeEntryDto) -> Single<TimeEntry> {
+        let createdTimeEntry = TimeEntry(
+            id: newTimeEntryId,
+            description: timeEntry.description,
+            start: timeEntry.start,
+            duration: timeEntry.duration,
+            billable: false,
+            workspaceId: timeEntry.workspaceId,
+            tagIds: [])
+
+        return Single.just(createdTimeEntry)
     }
 
     func updateTimeEntry(_ timeEntry: TimeEntry) -> Single<Void> {

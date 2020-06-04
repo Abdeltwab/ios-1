@@ -58,6 +58,7 @@
 		B448912E24851F9C00D144B4 /* CalendarItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B448912D24851F9C00D144B4 /* CalendarItemCollectionViewCell.swift */; };
 		B45A50D3247FE69B00D730A8 /* CalendarService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45A50D2247FE69B00D730A8 /* CalendarService.framework */; };
 		B4697F092486CFAB00A1A375 /* MockCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4697F072486CF5E00A1A375 /* MockCalendarService.swift */; };
+		B4A647722488021000A8C434 /* CalendarEvent+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A647712488021000A8C434 /* CalendarEvent+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,7 @@
 		B448912D24851F9C00D144B4 /* CalendarItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B45A50D2247FE69B00D730A8 /* CalendarService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CalendarService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4697F072486CF5E00A1A375 /* MockCalendarService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCalendarService.swift; sourceTree = "<group>"; };
+		B4A647712488021000A8C434 /* CalendarEvent+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarEvent+Extensions.swift"; sourceTree = "<group>"; };
 		BF55096AEEB6FF794B0E44C6 /* Pods-Calendar-CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar-CalendarTests.release.xcconfig"; path = "Target Support Files/Pods-Calendar-CalendarTests/Pods-Calendar-CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -301,7 +303,6 @@
 			children = (
 				B43AA871247EE4B1005867CE /* Utils.framework */,
 				B43AA86E247EE4A5005867CE /* OtherServices.framework */,
-				B488DB0824816249002E7ECF /* MockCalendarService.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -309,6 +310,7 @@
 		ACBA123724814F39007F939D /* ContextualMenu */ = {
 			isa = PBXGroup;
 			children = (
+				B4A647702488020100A8C434 /* Extensions */,
 				ACBA124624814F75007F939D /* Views */,
 				ACBA123824814F57007F939D /* ContextualMenuAction.swift */,
 				ACBA123924814F57007F939D /* ContextualMenuCoordinator.swift */,
@@ -334,6 +336,14 @@
 				B4697F072486CF5E00A1A375 /* MockCalendarService.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		B4A647702488020100A8C434 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B4A647712488021000A8C434 /* CalendarEvent+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B9F09D013D26CAF2AE4D3C69 /* Pods */ = {
@@ -534,6 +544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4A647722488021000A8C434 /* CalendarEvent+Extensions.swift in Sources */,
 				AC4E25B8247D6A10004655F6 /* CalendarFeature.swift in Sources */,
 				AC4E25C8247D6CCA004655F6 /* CalendarDayViewController.swift in Sources */,
 				ACBA124224814F57007F939D /* ContextualMenuReducer.swift in Sources */,

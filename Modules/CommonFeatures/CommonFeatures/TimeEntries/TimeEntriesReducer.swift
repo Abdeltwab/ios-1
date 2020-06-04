@@ -27,6 +27,11 @@ public func createTimeEntriesReducer(time: Time, repository: TimeLogRepository) 
                 startTimeEntryEffect(repository, timeEntry: startTimeEntryDto)
             ]
 
+        case let .createTimeEntry(createTimeEntryDto):
+            return [
+                createTimeEntryEffect(repository, timeEntry: createTimeEntryDto)
+            ]
+
         case .stopRunningTimeEntry:
             guard let runningTimeEntry = timeEntries.runningTimeEntry else { fatalError() }
             var updatedTimeEntry = runningTimeEntry
@@ -51,6 +56,10 @@ public func createTimeEntriesReducer(time: Time, repository: TimeLogRepository) 
 
             return []
 
+        case let .timeEntryCreated(timeEntry):
+            timeEntries[timeEntry.id] = timeEntry
+            return[]
+
         case let .setError(error):
             fatalError(error.description)
         }
@@ -69,6 +78,14 @@ func startTimeEntryEffect(_ repository: TimeLogRepository, timeEntry: StartTimeE
     return repository.startTimeEntry(timeEntry)
         .toEffect(
             map: { .timeEntryStarted(started: $0, stopped: $1) },
+            catch: { error in .setError(error.toErrorType()) }
+        )
+}
+
+func createTimeEntryEffect(_ repository: TimeLogRepository, timeEntry: CreateTimeEntryDto) -> Effect<TimeEntriesAction> {
+    return repository.createTimeEntry(timeEntry)
+        .toEffect(
+            map: { .timeEntryCreated($0) },
             catch: { error in .setError(error.toErrorType()) }
         )
 }

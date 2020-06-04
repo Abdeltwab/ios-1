@@ -13,6 +13,7 @@ public protocol TimeLogRepository {
     func getTasks() -> Single<[Task]>
     func getTags() -> Single<[Tag]>
     func startTimeEntry(_ timeEntry: StartTimeEntryDto) -> Single<(started: TimeEntry, stopped: TimeEntry?)>
+    func createTimeEntry(_ timeEntry: CreateTimeEntryDto) -> Single<TimeEntry>
     func updateTimeEntry(_ timeEntry: TimeEntry) -> Single<Void>
     func deleteTimeEntry(timeEntryId: Int64) -> Single<Void>
     func createProject(_ project: ProjectDTO) -> Single<Project>
@@ -122,6 +123,25 @@ extension Repository: TimeLogRepository {
             return Single.just((started: newTimeEntry, stopped: stoppedTimeEntry))
         } catch let error {
             return Single.error(error)
+        }
+    }
+
+    public func createTimeEntry(_ dto: CreateTimeEntryDto) -> Single<TimeEntry> {
+        do {
+            let timeEntries = try database.timeEntries.getAll()
+            // NOTE: How we resolve the new id is a temporary hack, it's meant to change once the sync team gets to this.
+            let newTimeEntry = TimeEntry(id: (timeEntries.map({ $0.id }).max() ?? 0) + 1,
+                                         description: dto.description,
+                                         start: dto.start,
+                                         duration: dto.duration,
+                                         billable: false,
+                                         workspaceId: dto.workspaceId,
+                                         tagIds: []
+            )
+            try database.timeEntries.insert(entity: newTimeEntry)
+            return .just(newTimeEntry)
+        } catch {
+            return .error(error)
         }
     }
     

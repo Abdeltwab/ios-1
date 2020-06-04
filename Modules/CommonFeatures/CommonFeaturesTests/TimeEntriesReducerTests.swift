@@ -136,6 +136,27 @@ class TimeEntriesReducerTests: XCTestCase {
         assert(mockRepository.startCalled, "Must call start on repository")
     }
 
+    func test_createTimeEntry_createsATimeEntry() {
+
+        var timeEntries = [Int64: TimeEntry]()
+        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
+        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 200)
+
+        let expectedNewTimeEntry = TimeEntry.with(id: mockRepository.newTimeEntryId, start: now, duration: 10)
+
+        assertReducerFlow(
+            initialState: timeEntries,
+            reducer: reducer,
+            steps:
+            Step(.send, .createTimeEntry(expectedNewTimeEntry.toCreateTimeEntryDto())),
+            Step(.receive, .timeEntryCreated(expectedNewTimeEntry)) {
+                $0[expectedNewTimeEntry.id] = expectedNewTimeEntry
+            }
+        )
+
+        assert(mockRepository.createCalled, "Must call create on repository")
+    }
+
     func testStopsRunningTimeEntry() {
         var timeEntries = [Int64: TimeEntry]()
         timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)

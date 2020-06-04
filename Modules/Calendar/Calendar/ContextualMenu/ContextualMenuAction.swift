@@ -9,6 +9,8 @@ public enum ContextualMenuAction: Equatable {
     case stopButtonTapped
     case deleteButtonTapped
     case continueButtonTapped
+    case startFromEventButtonTapped
+    case copyAsTimeEntryButtonTapped
 
     case timeEntries(TimeEntriesAction)
 }
@@ -42,6 +44,11 @@ extension ContextualMenuAction: CustomDebugStringConvertible {
             return "DeleteButtonTapped"
         case .continueButtonTapped:
             return "ContinueButtonTapped"
+        case .startFromEventButtonTapped:
+            return "StartFromEventButtonTapped"
+        case .copyAsTimeEntryButtonTapped:
+            return "CopyAsTimeEntryButtonTapped"
+
         case .timeEntries(let action):
             return action.debugDescription
         }

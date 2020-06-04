@@ -38,6 +38,20 @@ func createContextualMenuReducer() -> Reducer<ContextualMenuState, ContextualMen
             state.selectedItem = nil
             return [Effect.from(action: .timeEntries(.continueTimeEntry(timeEntryId)))]
 
+        case .startFromEventButtonTapped:
+            guard case .right(let calendarEvent) = state.selectedItem else { fatalError("Selected item is not a calendar event") }
+            guard case .loaded(let user) = state.user else { fatalError("Cannot get workspace id from user") }
+            let dto = calendarEvent.toStartTimeEntryDto(workspaceId: user.defaultWorkspace)
+            state.selectedItem = nil
+            return [Effect.from(action: .timeEntries(.startTimeEntry(dto)))]
+
+        case .copyAsTimeEntryButtonTapped:
+            guard case .right(let calendarEvent) = state.selectedItem else { fatalError("Selected item is not a calendar event") }
+            guard case .loaded(let user) = state.user else { fatalError("Cannot get workspace id from user") }
+            let dto = calendarEvent.toCreateTimeEntryDto(workspaceId: user.defaultWorkspace)
+            state.selectedItem = nil
+            return [Effect.from(action: .timeEntries(.createTimeEntry(dto)))]
+
         case .timeEntries:
             return []
         }

@@ -17,6 +17,7 @@
 		8CAEA1BD244F57D6008F9E4D /* OtherServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAEA1BC244F57D6008F9E4D /* OtherServices.framework */; };
 		B42C4E733838B93E08F239C9 /* Pods_Repository.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D57719FB87C24F3EDC78339F /* Pods_Repository.framework */; };
 		B4523FEC2450C93B00AB5EA0 /* ProjectDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4523FEB2450C93B00AB5EA0 /* ProjectDTO.swift */; };
+		B4A647742488034700A8C434 /* CreateTimeEntryDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A647732488034700A8C434 /* CreateTimeEntryDto.swift */; };
 		CC54810E247E8CCE004DE01C /* TagDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC54810D247E8CCE004DE01C /* TagDTO.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		8CAF7B93245821C6006B961D /* Project.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.debug.xcconfig; sourceTree = "<group>"; };
 		AF19B74F87479C1647D502AF /* Pods-Repository.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Repository.debug.xcconfig"; path = "Target Support Files/Pods-Repository/Pods-Repository.debug.xcconfig"; sourceTree = "<group>"; };
 		B4523FEB2450C93B00AB5EA0 /* ProjectDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDTO.swift; sourceTree = "<group>"; };
+		B4A647732488034700A8C434 /* CreateTimeEntryDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimeEntryDto.swift; sourceTree = "<group>"; };
 		CC54810D247E8CCE004DE01C /* TagDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDTO.swift; sourceTree = "<group>"; };
 		D57719FB87C24F3EDC78339F /* Pods_Repository.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Repository.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				51A7DFFD242B9A0B0015B02C /* StartTimeEntryDto.swift */,
+				B4A647732488034700A8C434 /* CreateTimeEntryDto.swift */,
 				B4523FEB2450C93B00AB5EA0 /* ProjectDTO.swift */,
 				CC54810D247E8CCE004DE01C /* TagDTO.swift */,
 			);
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4A647742488034700A8C434 /* CreateTimeEntryDto.swift in Sources */,
 				CC54810E247E8CCE004DE01C /* TagDTO.swift in Sources */,
 				51A7DFFE242B9A0B0015B02C /* StartTimeEntryDto.swift in Sources */,
 				B4523FEC2450C93B00AB5EA0 /* ProjectDTO.swift in Sources */,

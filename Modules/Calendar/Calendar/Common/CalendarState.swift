@@ -47,12 +47,14 @@ extension CalendarState {
     internal var contextualMenuState: ContextualMenuState {
         get {
             ContextualMenuState(
+                user: user,
                 selectedItem: localCalendarState.selectedItem,
                 editableTimeEntry: editableTimeEntry,
                 timeEntries: timeEntries
             )
         }
         set {
+            user = newValue.user
             localCalendarState.selectedItem = newValue.selectedItem
             editableTimeEntry = newValue.editableTimeEntry
             timeEntries = newValue.timeEntries

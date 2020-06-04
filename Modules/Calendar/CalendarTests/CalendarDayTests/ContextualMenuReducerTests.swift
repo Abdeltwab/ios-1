@@ -26,6 +26,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
 
         let state = ContextualMenuState(
+            user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
             timeEntries: [:]
         )
@@ -45,6 +46,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now, color: "")
 
         let state = ContextualMenuState(
+            user: .loaded(mockUser),
             selectedItem: .right(calendarEvent),
             timeEntries: [:]
         )
@@ -64,6 +66,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
 
         let state = ContextualMenuState(
+            user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
             timeEntries: [:]
         )
@@ -83,6 +86,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now, color: "")
 
         let state = ContextualMenuState(
+            user: .loaded(mockUser),
             selectedItem: .right(calendarEvent),
             timeEntries: [:]
         )
@@ -101,6 +105,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
 
         let state = ContextualMenuState(
+            user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
             timeEntries: [Int64: TimeEntry]()
         )
@@ -127,6 +132,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntry)
 
         let state = ContextualMenuState(
+            user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
             timeEntries: [0: timeEntry]
         )
@@ -153,6 +159,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntry)
 
         let state = ContextualMenuState(
+            user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
             timeEntries: [0: timeEntry]
         )
@@ -179,6 +186,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntry)
 
         let state = ContextualMenuState(
+            user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
             timeEntries: [0: timeEntry]
         )
@@ -204,6 +212,7 @@ class ContextualMenuReducerTests: XCTestCase {
                                   workspaceId: 0)
 
         let state = ContextualMenuState(
+            user: .loaded(mockUser),
             selectedItem: nil,
             timeEntries: [0: timeEntry]
         )
@@ -213,6 +222,62 @@ class ContextualMenuReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, .editButtonTapped)
+        )
+    }
+
+    func test_startFromEventButtonTapped_withACalendarEventSelected_startsATimeEntry() {
+
+        let calendarEvent = CalendarEvent(id: "1",
+                                          calendarId: "1",
+                                          description: "I'm a calendar event",
+                                          start: now,
+                                          stop: now.addingTimeInterval(10),
+                                          color: "")
+
+        let expectedDto = calendarEvent.toStartTimeEntryDto(workspaceId: mockUser.defaultWorkspace)
+
+        let state = ContextualMenuState(
+            user: .loaded(mockUser),
+            selectedItem: .right(calendarEvent),
+            timeEntries: [:]
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .startFromEventButtonTapped) {
+                $0.selectedItem = nil
+            },
+            Step(.receive, .timeEntries(.startTimeEntry(expectedDto)))
+        )
+    }
+
+    func test_copyAsTimeEntryButtonTapped_withACalendarEventSelected_createsATimeEntry() {
+
+        let calendarEvent = CalendarEvent(id: "1",
+                                          calendarId: "1",
+                                          description: "I'm a calendar event",
+                                          start: now,
+                                          stop: now.addingTimeInterval(10),
+                                          color: "")
+        
+        let expectedDto = calendarEvent.toCreateTimeEntryDto(workspaceId: mockUser.defaultWorkspace)
+
+        let state = ContextualMenuState(
+            user: .loaded(mockUser),
+            selectedItem: .right(calendarEvent),
+            timeEntries: [:]
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .copyAsTimeEntryButtonTapped) {
+                $0.selectedItem = nil
+            },
+            Step(.receive, .timeEntries(.createTimeEntry(expectedDto)))
         )
     }
 }
