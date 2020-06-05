@@ -1,0 +1,2 @@
+#include "___PROJECTNAME___Tests-Shared.xcconfig"
+#include? "../../Pods/Target Support Files/Pods-___PROJECTNAME___-___PROJECTNAME___Tests/Pods-___PROJECTNAME___-___PROJECTNAME___Tests.debug.xcconfig"

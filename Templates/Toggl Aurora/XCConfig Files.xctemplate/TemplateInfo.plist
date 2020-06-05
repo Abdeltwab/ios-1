@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Kind</key>
+	<string>Xcode.IDEFoundation.TextSubstitutionFileTemplateKind</string>
+	<key>Icon</key>
+	<string>TemplateIcon</string>
+	<key>Description</key>
+	<string>XCConfig files</string>
+	<key>Summary</key>
+	<string>All XCConfig files needed for a new project</string>
+	<key>SortOrder</key>
+	<string>30</string>
+	<key>AllowedTypes</key>
+	<array>
+		<string>public.swift-source</string>
+	</array>
+	<key>DefaultCompletionName</key>
+	<string>Hit &quot;Create&quot;. Project name is autodetected (This value is discarded)</string>
+</dict>
+</plist>
