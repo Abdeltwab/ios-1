@@ -16,7 +16,7 @@ public class CalendarFeature: BaseFeature<CalendarState, CalendarAction> {
         self.time = time
 
         features = [
-               .calendarDay: CalendarDayFeature()
+               .calendarDay: CalendarDayFeature(time: time)
                    .view { $0.view(
                        state: { $0.calendarDayState },
                        action: { CalendarAction.calendarDay($0) })

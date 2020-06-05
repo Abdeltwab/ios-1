@@ -48,6 +48,7 @@
 		ACBA124424814F57007F939D /* ContextualMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA123D24814F57007F939D /* ContextualMenuViewController.swift */; };
 		ACBA124524814F57007F939D /* ContextualMenuSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBA123E24814F57007F939D /* ContextualMenuSelector.swift */; };
 		ACBA56FB247FEDC500692C57 /* ArchitectureTestSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBA56FA247FEDC500692C57 /* ArchitectureTestSupport.framework */; };
+		B438EE3724893E7200B805A2 /* CalendarDayCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B438EE3624893E7200B805A2 /* CalendarDayCollectionViewDataSource.swift */; };
 		B43AA865247EACB1005867CE /* CalendarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AA864247EACB1005867CE /* CalendarItem.swift */; };
 		B43AA867247EB60B005867CE /* CalendarLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AA866247EB60B005867CE /* CalendarLayoutCalculator.swift */; };
 		B43AA869247EDDD7005867CE /* CalendarLayoutCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AA868247EDDD7005867CE /* CalendarLayoutCalculatorTests.swift */; };
@@ -119,6 +120,7 @@
 		ACBA123E24814F57007F939D /* ContextualMenuSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuSelector.swift; sourceTree = "<group>"; };
 		ACBA56FA247FEDC500692C57 /* ArchitectureTestSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ArchitectureTestSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B245BDA31E4B1D8DDC51B9BC /* Pods-Calendar-CalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar-CalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-Calendar-CalendarTests/Pods-Calendar-CalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B438EE3624893E7200B805A2 /* CalendarDayCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		B43AA864247EACB1005867CE /* CalendarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItem.swift; sourceTree = "<group>"; };
 		B43AA866247EB60B005867CE /* CalendarLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLayoutCalculator.swift; sourceTree = "<group>"; };
 		B43AA868247EDDD7005867CE /* CalendarLayoutCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarLayoutCalculatorTests.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			children = (
 				AC4E25C1247D6CCA004655F6 /* CalendarDayViewController.swift */,
 				B448912D24851F9C00D144B4 /* CalendarItemCollectionViewCell.swift */,
+				B438EE3624893E7200B805A2 /* CalendarDayCollectionViewDataSource.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				AC4E25C5247D6CCA004655F6 /* CalendarDayFeature.swift in Sources */,
 				ACBA124124814F57007F939D /* ContextualMenuFeature.swift in Sources */,
 				8CFDB381247C124100952533 /* CalendarViewController.swift in Sources */,
+				B438EE3724893E7200B805A2 /* CalendarDayCollectionViewDataSource.swift in Sources */,
 				ACBA124524814F57007F939D /* ContextualMenuSelector.swift in Sources */,
 				ACBA124324814F57007F939D /* ContextualMenuState.swift in Sources */,
 				AC4E25C7247D6CCA004655F6 /* CalendarDayState.swift in Sources */,

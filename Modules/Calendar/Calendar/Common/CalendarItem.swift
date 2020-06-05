@@ -1,5 +1,6 @@
 import Models
 import CalendarService
+import RxDataSources
 
 public struct CalendarItem: Equatable {
     enum Value: Equatable {
@@ -58,5 +59,17 @@ public struct CalendarItem: Equatable {
     var stop: Date? {
         guard let duration = duration else { return nil }
         return start + duration
+    }
+}
+
+extension CalendarItem: IdentifiableType {
+
+    public typealias Identity = AnyHashable
+
+    public var identity: Identity {
+        switch self.value {
+        case .timeEntry(let timeEntry): return timeEntry.id
+        case .calendarEvent(let calendarEvent): return calendarEvent.id
+        }
     }
 }
