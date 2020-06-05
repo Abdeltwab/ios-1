@@ -37,7 +37,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, .continueButtonTapped(0)),
-            Step(.receive, .timeEntries(.continueTimeEntry(timeEntries[0]!.id)))
+            Step(.receive, .timeEntries(.continueTimeEntry(timeEntries[0].id)))
         )
     }
 
@@ -208,7 +208,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
         entities.timeEntries = timeEntries
         let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
 
-        let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntries[timeEntryTappedId]!)
+        let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntries[id: timeEntryTappedId]!)
 
         assertReducerFlow(
             initialState: state,
@@ -228,8 +228,8 @@ class TimeEntriesLogReducerTests: XCTestCase {
         entities.timeEntries = timeEntries
         let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
 
-        let allIds = entities.timeEntries.values.map({ $0.id })
-        let editableTimeEntry = EditableTimeEntry.fromGroup(ids: allIds, groupSample: timeEntries.values.first!)
+        let allIds = entities.timeEntries.ids
+        let editableTimeEntry = EditableTimeEntry.fromGroup(ids: allIds, groupSample: timeEntries.first!)
 
         assertReducerFlow(
             initialState: state,
@@ -368,11 +368,11 @@ class TimeEntriesLogReducerTests: XCTestCase {
         )
     }
 
-    private func createTimeEntries(_ now: Date) -> [Int64: TimeEntry] {
-        var timeEntries = [Int64: TimeEntry]()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 100)
-        timeEntries[2] = TimeEntry.with(id: 2, start: now.addingTimeInterval(-100), duration: 100)
-        return timeEntries
+    private func createTimeEntries(_ now: Date) -> EntityCollection<TimeEntry> {
+        return EntityCollection<TimeEntry>([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 100),
+            TimeEntry.with(id: 2, start: now.addingTimeInterval(-100), duration: 100)
+        ])
     }
 }

@@ -16,7 +16,7 @@ class ProjectReducerTests: XCTestCase {
         mockTime = Time(getNow: { return self.now })
         mockRepository = MockTimeLogRepository(time: mockTime)
         mockUser = User(id: 0, apiToken: "token", defaultWorkspace: 0)
-        
+
         reducer = createProjectReducer(repository: mockRepository)
     }
 
@@ -24,7 +24,7 @@ class ProjectReducerTests: XCTestCase {
 
         let state = ProjectState(
             editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
-            projects: [:]
+            projects: EntityCollection<Project>([])
         )
 
         let expectedName = "potato"
@@ -43,14 +43,18 @@ class ProjectReducerTests: XCTestCase {
 
         let state = ProjectState(
             editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
-            projects: [1: Project.init(id: 1,
-                                       name: "potato",
-                                       isPrivate: true,
-                                       isActive: true,
-                                       color: "",
-                                       billable: false,
-                                       workspaceId: 0,
-                                       clientId: nil)]
+            projects: EntityCollection<Project>([
+                Project.init(
+                    id: 1,
+                    name: "potato",
+                    isPrivate: true,
+                    isActive: true,
+                    color: "",
+                    billable: false,
+                    workspaceId: 0,
+                    clientId: nil
+                )
+            ])
         )
 
         let expectedName = "potato"
@@ -76,7 +80,7 @@ class ProjectReducerTests: XCTestCase {
     func testTogglePrivateProject() {
         let state = ProjectState(
             editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
-            projects: [:]
+            projects: EntityCollection<Project>([])
         )
 
         assertReducerFlow(
@@ -95,7 +99,7 @@ class ProjectReducerTests: XCTestCase {
     func testDoneButtonPressed() {
         let state = ProjectState(
             editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
-            projects: [:]
+            projects: EntityCollection<Project>([])
         )
 
         let expectedName = "potato"
@@ -119,25 +123,28 @@ class ProjectReducerTests: XCTestCase {
             Step(.send, .doneButtonTapped),
             Step(.receive, .projectCreated(expectedProject)) {
                 $0.editableProject = nil
-                $0.projects = [self.mockRepository.newProjectId: expectedProject]
+                $0.projects = EntityCollection([expectedProject])
             }
         )
     }
 
     func testDoneButtonPressedSetsAnErrorWhenProjectIsDuplicated() {
-        
+
         let expectedName = "potato"
 
         let state = ProjectState(
             editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
-            projects: [1: Project(id: 1,
-                                  name: expectedName,
-                                  isPrivate: true,
-                                  isActive: true,
-                                  color: "",
-                                  billable: false,
-                                  workspaceId: 0,
-                                  clientId: nil)]
+            projects: EntityCollection([
+                Project(id: 1,
+                        name: expectedName,
+                        isPrivate: true,
+                        isActive: true,
+                        color: "",
+                        billable: false,
+                        workspaceId: 0,
+                        clientId: nil
+                )
+            ])
         )
 
         assertReducerFlow(
@@ -154,12 +161,12 @@ class ProjectReducerTests: XCTestCase {
     }
 
     func test_workspacePicked_changesWorkspace() {
-        
+
         let newWorkspace = Workspace(id: 2, name: "New", admin: true)
 
         let state = ProjectState(
             editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
-            projects: [:]
+            projects: EntityCollection<Project>([])
         )
 
         assertReducerFlow(
@@ -173,12 +180,12 @@ class ProjectReducerTests: XCTestCase {
     }
 
     func test_clientPicked_setsClient() {
-        
+
         let client = Client(id: 2, name: "Ze Client", workspaceId: 0)
 
         let state = ProjectState(
             editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
-            projects: [:]
+            projects: EntityCollection<Project>([])
         )
 
         assertReducerFlow(
@@ -195,7 +202,7 @@ class ProjectReducerTests: XCTestCase {
 
         let state = ProjectState(
             editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
-            projects: [:]
+            projects: EntityCollection<Project>([])
         )
 
         assertReducerFlow(
@@ -212,7 +219,7 @@ class ProjectReducerTests: XCTestCase {
 
         let state = ProjectState(
             editableProject: EditableProject.empty(workspaceId: mockUser.defaultWorkspace),
-            projects: [:]
+            projects: EntityCollection<Project>([])
         )
 
         assertReducerFlow(

@@ -24,7 +24,7 @@ func createProjectReducer(repository: TimeLogRepository) -> Reducer<ProjectState
             return [createProjectEffect(state, repository)]
 
         case .projectCreated(let newProject):
-            state.projects[newProject.id] = newProject
+            state.projects.append(newProject)
             state.editableProject = nil
             return []
         case .privateProjectSwitchTapped:
@@ -58,8 +58,8 @@ func createProjectEffect(_ state: ProjectState, _ repository: TimeLogRepository)
         .toEffect()
 }
 
-func isValid(project newProject: EditableProject, existing projects: [Int64: Project]) -> Bool {
-    return projects.values.none { project in
+func isValid(project newProject: EditableProject, existing projects: EntityCollection<Project>) -> Bool {
+    return projects.none { project in
         project.name == newProject.name &&
             project.workspaceId == newProject.workspaceId &&
             project.clientId == newProject.clientId

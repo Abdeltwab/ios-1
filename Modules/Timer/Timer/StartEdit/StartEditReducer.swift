@@ -13,9 +13,9 @@ func createStartEditReducer(
     randomElementSelector: @escaping RandomElementSelector<String> = { $0.randomElement()! }
 ) -> Reducer<StartEditState, StartEditAction> {
     return Reducer {state, action in
-        
+
         switch action {
-            
+
         case let .descriptionEntered(description, position):
             if let editableTimeEntry = state.editableTimeEntry {
                 state.cursorPosition = position
@@ -44,14 +44,14 @@ func createStartEditReducer(
             guard var editableTimeEntry = state.editableTimeEntry else {
                 fatalError("Trying to stop time entry when not editing a time entry")
             }
-            
+
             guard let startTime = editableTimeEntry.start else {
                 editableTimeEntry.start = time.now()
                 editableTimeEntry.duration = 0
                 state.editableTimeEntry = editableTimeEntry
                 return []
             }
-            
+
             if editableTimeEntry.duration != nil {
                 let mode = state.dateTimePickMode
                 state.dateTimePickMode = mode == .stop ? .none : .stop
@@ -70,14 +70,14 @@ func createStartEditReducer(
             guard let editableTimeEntry = state.editableTimeEntry else { fatalError() }
 
             state.editableTimeEntry?.setDetails(from: suggestion, and: state.cursorPosition, randomElementSelector)
-            
+
             if case AutocompleteSuggestion.createTagSuggestion(let name) = suggestion {
                 let tagDto = TagDTO(name: name, workspaceId: editableTimeEntry.workspaceId)
                 return [ create(tag: tagDto, in: repository) ]
             }
-            
+
             return []
-            
+
         case let .dateTimePicked(date):
             guard state.editableTimeEntry != nil else { return [] }
             guard state.dateTimePickMode != .none else { return [] }
@@ -111,19 +111,19 @@ func createStartEditReducer(
         case let .autocompleteSuggestionsUpdated(suggestions):
             state.autocompleteSuggestions = suggestions
             return []
-            
+
         case .projectButtonTapped, .addProjectChipTapped:
             guard let editableTimeEntry = state.editableTimeEntry else { return [] }
             state.editableTimeEntry?.description = appendCharacter(String(projectToken), toString: editableTimeEntry.description)
             return []
-            
+
         case .tagButtonTapped, .addTagChipTapped:
             guard let editableTimeEntry = state.editableTimeEntry else { return [] }
             state.editableTimeEntry?.description = appendCharacter(String(tagToken), toString: editableTimeEntry.description)
             return []
-            
+
         case let .tagCreated(tag):
-            state.entities.tags[tag.id] = tag
+            state.entities.tags.append(tag)
             guard state.editableTimeEntry != nil else { fatalError() }
             state.editableTimeEntry!.tagIds.append(tag.id)
             return []
@@ -218,7 +218,7 @@ extension EditableTimeEntry {
             tagIds = timeEntry.tagIds
             taskId = timeEntry.taskId
             billable = timeEntry.billable
- 
+
         case .projectSuggestion(let project):
             projectId = project.id
             workspaceId = project.workspaceId
@@ -229,12 +229,12 @@ extension EditableTimeEntry {
             projectId = project.id
             workspaceId = project.workspaceId
             removeQueryFromDescription(projectToken, cursorPosition)
-            
+
         case .tagSuggestion(let tag):
             guard tag.workspaceId == workspaceId else { return }
             tagIds.append(tag.id)
             removeQueryFromDescription(tagToken, cursorPosition)
-            
+
         case .createProjectSuggestion(let projectName):
             var editableProject = EditableProject.empty(workspaceId: workspaceId, colorSelector: randomElementSelector)
             editableProject.name = projectName
@@ -244,7 +244,7 @@ extension EditableTimeEntry {
             removeQueryFromDescription(tagToken, cursorPosition)
         }
     }
-    
+
     mutating func removeQueryFromDescription(_ token: Character, _ cursorPosition: Int) {
         let (optionalToken, currentQuery) = description.findTokenAndQueryMatchesForAutocomplete(token, cursorPosition)
         guard let token = optionalToken else { return }

@@ -7,7 +7,7 @@ import Timer
 public struct CalendarState {
     var user: Loadable<User> = .nothing
     var selectedDate: Date = Date()
-    var timeEntries: [Int64: TimeEntry] = [:]
+    var timeEntries = EntityCollection<TimeEntry>([])
     var calendarEvents: [String: CalendarEvent] = [:]
     public var editableTimeEntry: EditableTimeEntry?
     public var localCalendarState: LocalCalendarState

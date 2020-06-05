@@ -136,7 +136,7 @@ class StartEditReducerTests: XCTestCase {
         )
 
         var entities = TimeLogEntities()
-        entities.timeEntries[runningTimeEntry.id] = runningTimeEntry
+        entities.timeEntries.append(runningTimeEntry)
         mockRepository.stoppedTimeEntry = runningTimeEntry
 
         let editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
@@ -633,7 +633,7 @@ class StartEditReducerTests: XCTestCase {
                 $0.editableTimeEntry?.description = "old description "
             },
             Step(.receive, .tagCreated(expectedTag)) {
-                $0.entities.tags[expectedTag.id] = expectedTag
+                $0.entities.tags.append(expectedTag)
                 $0.editableTimeEntry?.tagIds.append(expectedTag.id)
             }
         )
@@ -1053,7 +1053,7 @@ class StartEditReducerTests: XCTestCase {
             reducer: reducer,
             steps:
             Step(.send, .tagCreated(expectedTag)) {
-                $0.entities.tags[expectedTag.id] = expectedTag
+                $0.entities.tags.append(expectedTag)
                 $0.editableTimeEntry!.tagIds.append(expectedTag.id)
             }
         )

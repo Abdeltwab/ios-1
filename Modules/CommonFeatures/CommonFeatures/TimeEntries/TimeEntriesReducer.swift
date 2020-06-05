@@ -17,7 +17,7 @@ public func createTimeEntriesReducer(time: Time, repository: TimeLogRepository) 
             ]
 
         case let .continueTimeEntry(timeEntryId):
-            guard let timeEntry = timeEntries[timeEntryId] else { fatalError() }
+            guard let timeEntry = timeEntries[id: timeEntryId] else { fatalError() }
             return [
                 startTimeEntryEffect(repository, timeEntry: timeEntry.toStartTimeEntryDto())
             ]
@@ -41,23 +41,23 @@ public func createTimeEntriesReducer(time: Time, repository: TimeLogRepository) 
             ]
 
         case let .timeEntryDeleted(timeEntryId):
-            timeEntries[timeEntryId] = nil
+            timeEntries.remove(id: timeEntryId)
             return []
 
         case let .timeEntryUpdated(timeEntry):
-            timeEntries[timeEntry.id] = timeEntry
+            timeEntries[id: timeEntry.id] = timeEntry
             return []
 
         case let .timeEntryStarted(startedTimeEntry, stoppedTimeEntry):
             if let stoppedTimeEntry = stoppedTimeEntry {
-                timeEntries[stoppedTimeEntry.id] = stoppedTimeEntry
+                timeEntries[id: stoppedTimeEntry.id] = stoppedTimeEntry
             }
-            timeEntries[startedTimeEntry.id] = startedTimeEntry
+            timeEntries.append(startedTimeEntry)
 
             return []
 
         case let .timeEntryCreated(timeEntry):
-            timeEntries[timeEntry.id] = timeEntry
+            timeEntries.append(timeEntry)
             return[]
 
         case let .setError(error):

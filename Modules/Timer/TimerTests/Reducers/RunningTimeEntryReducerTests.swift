@@ -26,7 +26,7 @@ class RunningTimeEntryReducerTests: XCTestCase {
         let runningEntry = TimeEntry(id: 0, description: "", start: mockTime.now() - 1000, duration: nil, billable: false, workspaceId: 0, tagIds: [])
 
         var entities = TimeLogEntities()
-        entities.timeEntries[runningEntry.id] = runningEntry
+        entities.timeEntries.insert(runningEntry, at: entities.timeEntries.endIndex)
 
         let state = RunningTimeEntryState(
             user: Loadable.loaded(mockUser),
@@ -67,9 +67,10 @@ class RunningTimeEntryReducerTests: XCTestCase {
     }
 
     func testStopButtonTappedStopsTimeEntry() {
-        var timeEntries = [Int64: TimeEntry]()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        let timeEntries = EntityCollection([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        ])
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
@@ -89,9 +90,10 @@ class RunningTimeEntryReducerTests: XCTestCase {
     }
 
     func testStopButtonTappedDoesNothingIfThereIsNoRunninTE() {
-        var timeEntries = [Int64: TimeEntry]()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 100)
+        let timeEntries = EntityCollection([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 100)
+        ])
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries

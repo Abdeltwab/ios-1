@@ -31,13 +31,13 @@ func createTimeEntriesLogReducer(
             }
 
         case let .timeEntryTapped(timeEntryId):
-            state.editableTimeEntry = EditableTimeEntry.fromSingle(state.entities.timeEntries[timeEntryId]!)
+            state.editableTimeEntry = EditableTimeEntry.fromSingle(state.entities.timeEntries[id: timeEntryId]!)
             return []
 
         case let .timeEntryGroupTapped(timeEntryIds):
             state.editableTimeEntry = EditableTimeEntry.fromGroup(
                 ids: timeEntryIds,
-                groupSample: state.entities.timeEntries[timeEntryIds.first!]!
+                groupSample: state.entities.timeEntries[id: timeEntryIds.first!]!
             )
             return []
 

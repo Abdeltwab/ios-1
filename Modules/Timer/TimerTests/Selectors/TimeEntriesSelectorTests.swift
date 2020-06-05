@@ -11,16 +11,16 @@ class TimeEntriesSelectorTests: XCTestCase {
         let components = DateComponents(year: 2019, month: 02, day: 07, hour: 16, minute: 25, second: 38)
         return calendar.date(from: components)!
     }()
-    
+
     private static let workspaceA: Workspace = Workspace(id: 1, name: "", admin: true)
     private static let workspaceB: Workspace = Workspace(id: 2, name: "", admin: true)
-    
+
     private let entriesPendingDeletion = Set<Int64>(arrayLiteral: 10, 20, 30, 40, 50)
 
     private let singleItemGroup = [
         TimeEntry.with(description: "S", start: now.addingTimeInterval(-110), duration: 1, workspaceId: workspaceA.id)
     ]
-    
+
     private let groupA = [
         TimeEntry.with(description: "A", start: now, duration: 1, workspaceId: workspaceA.id),
         TimeEntry.with(description: "A", start: now.addingTimeInterval(-50), duration: 2, workspaceId: workspaceA.id),
@@ -74,18 +74,18 @@ class TimeEntriesSelectorTests: XCTestCase {
     ]
 
     private var state: TimeEntriesLogState!
-    
+
     override func setUp() {
         state = TimeEntriesLogState(entities: TimeLogEntities(), expandedGroups: [], entriesPendingDeletion: entriesPendingDeletion)
-        state.entities.workspaces = [
-            TimeEntriesSelectorTests.workspaceA.id: TimeEntriesSelectorTests.workspaceA,
-            TimeEntriesSelectorTests.workspaceB.id: TimeEntriesSelectorTests.workspaceB
-        ]
+        state.entities.workspaces = EntityCollection([
+            TimeEntriesSelectorTests.workspaceA,
+            TimeEntriesSelectorTests.workspaceB
+        ])
     }
 
     // swiftlint:disable function_body_length
     func testTransformsTimeEntriesIntoACorrectTree() {
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: [],
             entriesPendingDeletion: [],
@@ -94,7 +94,7 @@ class TimeEntriesSelectorTests: XCTestCase {
                 logOf(collapsed(groupA))
             ]
         )
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: expandedGroups(groupA),
             entriesPendingDeletion: [],
@@ -103,7 +103,7 @@ class TimeEntriesSelectorTests: XCTestCase {
                 logOf(expanded(groupA))
             ]
         )
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: expandedGroups(groupA),
             entriesPendingDeletion: [],
@@ -112,7 +112,7 @@ class TimeEntriesSelectorTests: XCTestCase {
                 logOf(expanded(groupA) + collapsed(groupB))
             ]
         )
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: expandedGroups(groupB),
             entriesPendingDeletion: [],
@@ -121,7 +121,7 @@ class TimeEntriesSelectorTests: XCTestCase {
                 logOf(single(singleItemGroup.first!))
             ]
         )
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: [],
@@ -134,7 +134,7 @@ class TimeEntriesSelectorTests: XCTestCase {
                 )
             ]
         )
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: expandedGroups(groupA),
             entriesPendingDeletion: [],
@@ -147,7 +147,7 @@ class TimeEntriesSelectorTests: XCTestCase {
                 )
             ]
         )
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: expandedGroups(groupB),
             entriesPendingDeletion: [],
@@ -294,7 +294,7 @@ class TimeEntriesSelectorTests: XCTestCase {
             timeEntries: deletedGroup,
             expected: []
         )
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
@@ -306,7 +306,7 @@ class TimeEntriesSelectorTests: XCTestCase {
                 )
             ]
         )
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
@@ -318,7 +318,7 @@ class TimeEntriesSelectorTests: XCTestCase {
                 )
             ]
         )
-        
+
         assertTransformsTimeEntriesIntoACorrectTree(
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
@@ -339,38 +339,34 @@ class TimeEntriesSelectorTests: XCTestCase {
         expected: [DayViewModel],
         file: StaticString = #file,
         line: UInt = #line) {
-        
-        state.entities.timeEntries = timeEntries.reduce([Int64: TimeEntry]()) { acc, timeEntry in
-            var copy = acc
-            copy[timeEntry.id] = timeEntry
-            return copy
-        }
+
+        state.entities.timeEntries = EntityCollection(timeEntries)
         state.expandedGroups = expandedGroups
-        state.entriesPendingDeletion = entriesPendingDeletion 
-        
+        state.entriesPendingDeletion = entriesPendingDeletion
+
         let expandedGroups = expandedGroupsSelector(state)
         let timeEntryViewModels = timeEntryViewModelsSelector(state)
         let result = toDaysMapper(timeEntryViewModels, expandedGroups, entriesPendingDeletion)
-        
+
         XCTAssertEqual(result, expected, file: file, line: line)
     }
-    
+
     private func expandedGroups(_ timeEntryGroups: [TimeEntry]...) -> Set<Int> {
         return Set(timeEntryGroups.map {
             return TimeEntryViewModel(timeEntry: $0.first!).groupId
         })
     }
-    
+
     private func logOf(_ logCellViewModels: [TimeLogCellViewModel]) -> DayViewModel {
         return DayViewModel(timeLogCells: logCellViewModels.sorted(by: { $0.start > $1.start }))
     }
-    
+
     private func single(_ timeEntry: TimeEntry, excludedTimeEntryIds: Set<Int64> = []) -> [TimeLogCellViewModel] {
         guard !excludedTimeEntryIds.contains(timeEntry.id) else { return [] }
         let timeEntryViewModel = TimeEntryViewModel(timeEntry: timeEntry)
         return [TimeLogCellViewModel.singleEntry(timeEntryViewModel, inGroup: false)]
     }
-    
+
     private func collapsed(_ timeEntries: [TimeEntry], excludedTimeEntryIds: Set<Int64> = []) -> [TimeLogCellViewModel] {
         let timeEntreViewModels = timeEntries
             .filter({ !excludedTimeEntryIds.contains($0.id) })
@@ -378,10 +374,10 @@ class TimeEntriesSelectorTests: XCTestCase {
                 TimeEntryViewModel(timeEntry: $0)
             }
             .sorted(by: { $0.start > $1.start })
-        
+
         return [TimeLogCellViewModel.groupedEntriesHeader(timeEntreViewModels, open: false)]
     }
-    
+
     private func expanded(_ timeEntries: [TimeEntry], excludedTimeEntryIds: Set<Int64> = []) -> [TimeLogCellViewModel] {
         let timeEntreViewModels = timeEntries
             .filter({ !excludedTimeEntryIds.contains($0.id) })
@@ -389,7 +385,7 @@ class TimeEntriesSelectorTests: XCTestCase {
                 TimeEntryViewModel(timeEntry: $0)
             }
             .sorted(by: { $0.start > $1.start })
-        
+
         return [TimeLogCellViewModel.groupedEntriesHeader(timeEntreViewModels, open: true)]
             + timeEntreViewModels.map {
                 TimeLogCellViewModel.singleEntry($0, inGroup: true)

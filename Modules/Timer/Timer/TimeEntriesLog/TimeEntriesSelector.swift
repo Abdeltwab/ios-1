@@ -10,7 +10,7 @@ let entriesPendingDeletionSelector: (TimeEntriesLogState) -> Set<Int64> = { stat
 
 let timeEntryViewModelsSelector: (TimeEntriesLogState) -> [TimeEntryViewModel] = { state in
     
-    return state.entities.timeEntries.values
+    return state.entities.timeEntries
         .compactMap({ timeEntry in
             guard let workspace = state.entities.getWorkspace(timeEntry.workspaceId) else {
                 //fatalError("Workspace missing")

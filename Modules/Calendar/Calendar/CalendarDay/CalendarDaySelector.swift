@@ -18,7 +18,7 @@ let calendarItemsSelector: (CalendarDayState, Time) -> [CalendarItem] = { state,
         return calendarEvent.start >= date && calendarEvent.stop <= date.addingTimeInterval(.secondsInADay)
     }
 
-    let timeEntries = state.timeEntries.values
+    let timeEntries = state.timeEntries
         .filter(isTimeEntryIncluded)
         .map(CalendarItem.Value.timeEntry)
 

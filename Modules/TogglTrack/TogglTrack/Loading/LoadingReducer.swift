@@ -7,36 +7,36 @@ import Models
 func createLoadingReducer(repository: Repository) -> Reducer<LoadingState, LoadingAction> {
     return Reducer { state, action in
         switch action {
-            
+
         case .startLoading:
             return loadEntities(repository)
-            
+
         case .loadingFinished:
             state.route = AppRoute.main.path
             return []
-            
+
         case let .workspacesLoaded(workspaces):
-            state.entities.workspaces = arrayToDict(entities: workspaces)
+            state.entities.workspaces = EntityCollection(workspaces)
             return []
-            
+
         case let .clientsLoaded(clients):
-            state.entities.clients = arrayToDict(entities: clients)
+            state.entities.clients = EntityCollection(clients)
             return []
-            
+
         case let .projectsLoaded(projects):
-            state.entities.projects = arrayToDict(entities: projects)
+            state.entities.projects = EntityCollection(projects)
             return []
-            
+
         case let .tasksLoaded(tasks):
-            state.entities.tasks = arrayToDict(entities: tasks)
+            state.entities.tasks = EntityCollection(tasks)
             return []
-            
+
         case let .timeEntriesLoaded(timeEntries):
-            state.entities.timeEntries = arrayToDict(entities: timeEntries)
+            state.entities.timeEntries = EntityCollection(timeEntries)
             return []
-            
+
         case let .tagsLoaded(tags):
-            state.entities.tags = arrayToDict(entities: tags)
+            state.entities.tags = EntityCollection(tags)
             return []
 
         }
@@ -54,12 +54,4 @@ private func loadEntities(_ repository: Repository) -> [Effect<LoadingAction>] {
         Single.just(LoadingAction.loadingFinished)
     ]
         .map { $0.toEffect() }
-}
-
-private func arrayToDict<EntityType: Entity>(entities: [EntityType]) -> [Int64: EntityType] {
-    return entities.reduce([:], { acc, entity in
-        var acc = acc
-        acc[entity.id] = entity
-        return acc
-    })
 }

@@ -10,7 +10,7 @@ func createRunningTimeEntryReducer(repository: TimeLogRepository, time: Time) ->
         switch action {
         case .cardTapped:
             if let runningTimeEntryId = runningTimeEntryViewModelSelector(state)?.id {
-                guard let runningTimeEntry = state.entities.timeEntries[runningTimeEntryId]
+                guard let runningTimeEntry = state.entities.timeEntries[id: runningTimeEntryId]
                 else { return [] }
 
                 state.editableTimeEntry = EditableTimeEntry.fromSingle(runningTimeEntry)

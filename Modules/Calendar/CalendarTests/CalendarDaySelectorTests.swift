@@ -15,7 +15,7 @@ class CalendarDaySelectorTests: XCTestCase {
         let notExpectedTimeEntries: [TimeEntry] = (10..<20)
             .map({ createTimeEntry(id: $0, start: now + 2 * .secondsInADay, duration: 10 * .secondsInAMinute, description: "Unexpected") })
 
-        let timeEntries = (expectedTimeEntries + notExpectedTimeEntries).reduce(into: [Int64: TimeEntry](), { $0[$1.id] = $1 })
+        let timeEntries = EntityCollection(expectedTimeEntries + notExpectedTimeEntries)
 
         let state = CalendarDayState(
             user: .nothing,
@@ -39,7 +39,7 @@ class CalendarDaySelectorTests: XCTestCase {
         let notExpectedTimeEntries: [TimeEntry] = (10..<20)
             .map({ createTimeEntry(id: $0, start: now + 2 * .secondsInADay, duration: 10 * .secondsInAMinute, description: "Unexpected") })
 
-        let timeEntries = notExpectedTimeEntries.reduce(into: [Int64: TimeEntry](), { $0[$1.id] = $1 })
+        let timeEntries = EntityCollection(notExpectedTimeEntries)
 
         let state = CalendarDayState(
             user: .nothing,
@@ -66,8 +66,11 @@ class CalendarDaySelectorTests: XCTestCase {
         let timeEntriesThatStopsTheDayAfter: [TimeEntry] = (10..<20)
         .map({ createTimeEntry(id: $0, start: now + 23 * .secondsInAnHour, duration: 10 * .secondsInAnHour, description: "Unexpected") })
 
-        let timeEntries = (expectedTimeEntries + timeEntriesThatStartTheDayBefore + timeEntriesThatStopsTheDayAfter)
-            .reduce(into: [Int64: TimeEntry](), { $0[$1.id] = $1 })
+        let timeEntries = EntityCollection(
+            expectedTimeEntries
+                + timeEntriesThatStartTheDayBefore
+                + timeEntriesThatStopsTheDayAfter
+        )
 
         let state = CalendarDayState(
             user: .nothing,

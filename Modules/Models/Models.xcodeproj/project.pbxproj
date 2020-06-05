@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3451E3D2248816E100C96F7E /* EntityCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3451E3D1248816E100C96F7E /* EntityCollection.swift */; };
+		348CC1512488F66E00B4A605 /* EntityCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348CC1502488F66E00B4A605 /* EntityCollectionTests.swift */; };
 		8C2130C12424B297000FC72C /* ErrorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130C02424B297000FC72C /* ErrorType.swift */; };
 		8C2518332403C5FC00BAD4B5 /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2518292403C5FC00BAD4B5 /* Models.framework */; };
 		8C2518382403C5FC00BAD4B5 /* ModelsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2518372403C5FC00BAD4B5 /* ModelsTests.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3451E3D1248816E100C96F7E /* EntityCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollection.swift; sourceTree = "<group>"; };
+		348CC1502488F66E00B4A605 /* EntityCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityCollectionTests.swift; sourceTree = "<group>"; };
 		8C2130C02424B297000FC72C /* ErrorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorType.swift; sourceTree = "<group>"; };
 		8C2518292403C5FC00BAD4B5 /* Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C25182C2403C5FC00BAD4B5 /* Models.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 			children = (
 				8C38E2402419003100C9E053 /* Types */,
 				8CB5452B240D6F5B00154473 /* Entity.swift */,
+				3451E3D1248816E100C96F7E /* EntityCollection.swift */,
 				8C2518712403C62E00BAD4B5 /* Client.swift */,
 				8C2518732403C62E00BAD4B5 /* Project.swift */,
 				8C2518702403C62E00BAD4B5 /* Tag.swift */,
@@ -125,6 +130,7 @@
 		8C2518362403C5FC00BAD4B5 /* ModelsTests */ = {
 			isa = PBXGroup;
 			children = (
+				348CC1502488F66E00B4A605 /* EntityCollectionTests.swift */,
 				8C2518372403C5FC00BAD4B5 /* ModelsTests.swift */,
 				8C2518392403C5FC00BAD4B5 /* Info.plist */,
 			);
@@ -285,6 +291,7 @@
 				8C2518752403C62E00BAD4B5 /* TimeEntry.swift in Sources */,
 				ACCFF3E32444A61F0056CEF4 /* AutocompleteSuggestion.swift in Sources */,
 				8C5A8C95241A8EC5003DC3D0 /* TimeLogEntities.swift in Sources */,
+				3451E3D2248816E100C96F7E /* EntityCollection.swift in Sources */,
 				8C38E2422419008400C9E053 /* Loadable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +300,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				348CC1512488F66E00B4A605 /* EntityCollectionTests.swift in Sources */,
 				8C2518382403C5FC00BAD4B5 /* ModelsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

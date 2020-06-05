@@ -39,7 +39,7 @@ func fetchProjectSuggestions(for query: String, in entities: TimeLogEntities) ->
 
     let words = query.split(separator: " ").map { String($0) }
 
-    var suggestions = words.reduce(Array(entities.projects.values)) { projects, word in
+    var suggestions = words.reduce((entities.projects.entities)) { projects, word in
         return projects.filter { project in
             return project.name.contains(word)
                 || clientNameMatches(word, project)
@@ -54,7 +54,7 @@ func fetchProjectSuggestions(for query: String, in entities: TimeLogEntities) ->
 func fetchTagSuggestions(for query: String, in entities: TimeLogEntities, of workspaceId: Int64) -> [AutocompleteSuggestion] {
     let words = query.split(separator: " ").map { String($0) }
     
-    let tagsInCurrentWorkspace = entities.tags.values.filter { $0.workspaceId == workspaceId }
+    let tagsInCurrentWorkspace = entities.tags.filter { $0.workspaceId == workspaceId }
     
     let matchingTags = words.reduce(tagsInCurrentWorkspace) { tags, word in
         return tags.filter { tag in
@@ -96,7 +96,7 @@ func fetchTimeEntrySuggestions(for query: String, in entities: TimeLogEntities) 
 
     let words = query.split(separator: " ").map { String($0) }
 
-    return words.reduce(Array(entities.timeEntries.values)) { timeEntries, word in
+    return words.reduce((entities.timeEntries.entities)) { timeEntries, word in
         return timeEntries.filter { timeEntry in
             return timeEntry.description.contains(word)
                 || projectOrClientNameMatches(word, timeEntry)

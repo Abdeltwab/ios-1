@@ -19,9 +19,10 @@ class TimeEntriesReducerTests: XCTestCase {
     }
 
     func testDeletedRunningTimeEntry() {
-        var timeEntries = TimeEntriesState()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        let timeEntries = TimeEntriesState([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        ])
 
         assertReducerFlow(
             initialState: timeEntries,
@@ -29,7 +30,7 @@ class TimeEntriesReducerTests: XCTestCase {
             steps:
             Step(.send, .deleteTimeEntry(0)),
             Step(.receive, .timeEntryDeleted(0)) {
-                $0[0] = nil
+                $0.remove(id: 0)
             }
         )
 
@@ -38,11 +39,12 @@ class TimeEntriesReducerTests: XCTestCase {
 
     func testContinuesTimeEntry() {
 
-        var timeEntries = [Int64: TimeEntry]()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 200)
+        let timeEntries = TimeEntriesState([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 200)
+        ])
 
-        var expectedNewTimeEntry = timeEntries[0]!
+        var expectedNewTimeEntry = timeEntries[0]
         expectedNewTimeEntry.id = mockRepository.newTimeEntryId
         expectedNewTimeEntry.start = now
         expectedNewTimeEntry.duration = nil
@@ -53,7 +55,7 @@ class TimeEntriesReducerTests: XCTestCase {
             steps:
             Step(.send, .continueTimeEntry(0)),
             Step(.receive, .timeEntryStarted(started: expectedNewTimeEntry, stopped: nil)) {
-                $0[expectedNewTimeEntry.id] = expectedNewTimeEntry
+                $0.append(expectedNewTimeEntry)
             }
         )
 
@@ -62,16 +64,17 @@ class TimeEntriesReducerTests: XCTestCase {
 
     func testContinuesTimeEntryWhileOtherIsRunning() {
 
-        var timeEntries = [Int64: TimeEntry]()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        let timeEntries = TimeEntriesState([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        ])
 
-        var expectedNewTimeEntry = timeEntries[0]!
+        var expectedNewTimeEntry = timeEntries[0]
         expectedNewTimeEntry.id = mockRepository.newTimeEntryId
         expectedNewTimeEntry.start = now
         expectedNewTimeEntry.duration = nil
 
-        var expectedStoppedTimeEntry = timeEntries[1]!
+        var expectedStoppedTimeEntry = timeEntries[1]
         expectedStoppedTimeEntry.duration = 200
         mockRepository.stoppedTimeEntry = expectedStoppedTimeEntry
 
@@ -81,8 +84,8 @@ class TimeEntriesReducerTests: XCTestCase {
             steps:
             Step(.send, .continueTimeEntry(0)),
             Step(.receive, .timeEntryStarted(started: expectedNewTimeEntry, stopped: expectedStoppedTimeEntry)) {
-                $0[expectedNewTimeEntry.id] = expectedNewTimeEntry
-                $0[expectedStoppedTimeEntry.id] = expectedStoppedTimeEntry
+                $0.append(expectedNewTimeEntry)
+                $0[id: expectedStoppedTimeEntry.id] = expectedStoppedTimeEntry
             }
         )
 
@@ -91,9 +94,10 @@ class TimeEntriesReducerTests: XCTestCase {
 
     func testStartsATimeEntry() {
 
-        var timeEntries = [Int64: TimeEntry]()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 200)
+        let timeEntries = TimeEntriesState([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 200)
+        ])
 
         let expectedNewTimeEntry = TimeEntry.with(id: mockRepository.newTimeEntryId, start: now)
 
@@ -103,7 +107,7 @@ class TimeEntriesReducerTests: XCTestCase {
             steps:
             Step(.send, .startTimeEntry(expectedNewTimeEntry.toStartTimeEntryDto())),
             Step(.receive, .timeEntryStarted(started: expectedNewTimeEntry, stopped: nil)) {
-                $0[expectedNewTimeEntry.id] = expectedNewTimeEntry
+                $0.append(expectedNewTimeEntry)
             }
         )
 
@@ -112,13 +116,14 @@ class TimeEntriesReducerTests: XCTestCase {
 
     func testStartsATimeEntryWhileOtherIsRunning() {
 
-        var timeEntries = [Int64: TimeEntry]()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        let timeEntries = TimeEntriesState([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        ])
 
         let expectedNewTimeEntry = TimeEntry.with(id: mockRepository.newTimeEntryId, start: now)
 
-        var expectedStoppedTimeEntry = timeEntries[1]!
+        var expectedStoppedTimeEntry = timeEntries[1]
         expectedStoppedTimeEntry.duration = 200
         mockRepository.stoppedTimeEntry = expectedStoppedTimeEntry
 
@@ -128,8 +133,8 @@ class TimeEntriesReducerTests: XCTestCase {
             steps:
             Step(.send, .startTimeEntry(expectedNewTimeEntry.toStartTimeEntryDto())),
             Step(.receive, .timeEntryStarted(started: expectedNewTimeEntry, stopped: expectedStoppedTimeEntry)) {
-                $0[expectedNewTimeEntry.id] = expectedNewTimeEntry
-                $0[expectedStoppedTimeEntry.id] = expectedStoppedTimeEntry
+                $0.append(expectedNewTimeEntry)
+                $0[id: expectedStoppedTimeEntry.id] = expectedStoppedTimeEntry
             }
         )
 
@@ -138,9 +143,10 @@ class TimeEntriesReducerTests: XCTestCase {
 
     func test_createTimeEntry_createsATimeEntry() {
 
-        var timeEntries = [Int64: TimeEntry]()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 200)
+        let timeEntries = TimeEntriesState([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: 200)
+        ])
 
         let expectedNewTimeEntry = TimeEntry.with(id: mockRepository.newTimeEntryId, start: now, duration: 10)
 
@@ -150,7 +156,7 @@ class TimeEntriesReducerTests: XCTestCase {
             steps:
             Step(.send, .createTimeEntry(expectedNewTimeEntry.toCreateTimeEntryDto())),
             Step(.receive, .timeEntryCreated(expectedNewTimeEntry)) {
-                $0[expectedNewTimeEntry.id] = expectedNewTimeEntry
+                $0.append(expectedNewTimeEntry)
             }
         )
 
@@ -158,11 +164,12 @@ class TimeEntriesReducerTests: XCTestCase {
     }
 
     func testStopsRunningTimeEntry() {
-        var timeEntries = [Int64: TimeEntry]()
-        timeEntries[0] = TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
-        timeEntries[1] = TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        let timeEntries = TimeEntriesState([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100),
+            TimeEntry.with(id: 1, start: now.addingTimeInterval(-200), duration: nil)
+        ])
 
-        var expected = timeEntries[1]!
+        var expected = timeEntries[1]
         expected.duration = 200
 
         assertReducerFlow(
@@ -171,7 +178,7 @@ class TimeEntriesReducerTests: XCTestCase {
             steps:
             Step(.send, .stopRunningTimeEntry),
             Step(.receive, .timeEntryUpdated(expected)) {
-                $0[expected.id] = expected
+                $0[id: expected.id] = expected
             }
         )
     }

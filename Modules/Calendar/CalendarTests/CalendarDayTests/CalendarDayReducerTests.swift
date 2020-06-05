@@ -30,7 +30,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .nothing,
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -55,7 +55,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: .left(editableTimeEntry)
         )
@@ -80,7 +80,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -104,7 +104,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: .left(editableTimeEntry)
         )
@@ -128,7 +128,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -152,7 +152,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: .left(editableTimeEntry)
         )
@@ -176,7 +176,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -196,7 +196,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -219,7 +219,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: .left(EditableTimeEntry.empty(workspaceId: 0))
         )
@@ -237,7 +237,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -260,7 +260,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -286,7 +286,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: [:],
+            timeEntries: EntityCollection<TimeEntry>([]),
             calendarEvents: [:],
             selectedItem: .left(EditableTimeEntry.fromSingle(timeEntry))
         )
