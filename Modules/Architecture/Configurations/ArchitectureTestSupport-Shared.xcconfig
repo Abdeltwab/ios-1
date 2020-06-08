@@ -1,1 +1,2 @@
 #include "../../App/Configurations/base/StaticFramework-Base.xcconfig"
+ENABLE_BITCODE = NO

@@ -1,3 +1,4 @@
+#if DEBUG
 import Foundation
 import XCTest
 import Architecture
@@ -95,3 +96,4 @@ public func assertReducerFlow<State: Equatable, Action: Equatable>(
         XCTFail("Assertion failed to handle \(effects.count) pending effect(s)", file: file, line: line)
     }
 }
+#endif

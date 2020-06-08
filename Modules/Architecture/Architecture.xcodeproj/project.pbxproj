@@ -525,7 +525,7 @@
 		};
 		AC5AA340247FD4CE000EA873 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 934F3A956F71B6B99D2B4F61 /* Pods-Architecture-ArchitectureTestSupport.debug.xcconfig */;
+			baseConfigurationReference = AC5AA34D247FD752000EA873 /* ArchitectureTestSupport.debug.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = ArchitectureTestSupport/Info.plist;
@@ -539,7 +539,7 @@
 		};
 		AC5AA341247FD4CE000EA873 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0F8B83170F66F560E767181E /* Pods-Architecture-ArchitectureTestSupport.release.xcconfig */;
+			baseConfigurationReference = AC5AA34E247FD752000EA873 /* ArchitectureTestSupport.release.xcconfig */;
 			buildSettings = {
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = ArchitectureTestSupport/Info.plist;
