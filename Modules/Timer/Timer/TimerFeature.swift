@@ -3,8 +3,14 @@ import Architecture
 import Repository
 import OtherServices
 import CommonFeatures
+import Analytics
+import CalendarService
 
-public func createTimerReducer(repository: Repository, time: Time, schedulerProvider: SchedulerProvider) -> Reducer<TimerState, TimerAction> {
+public func createTimerReducer(
+    repository: Repository,
+    time: Time,
+    schedulerProvider: SchedulerProvider,
+    calendarService: CalendarService) -> Reducer<TimerState, TimerAction> {
 
     let timeEntriesCoreReducer = createTimeEntriesReducer(time: time, repository: repository)
 
@@ -19,7 +25,9 @@ public func createTimerReducer(repository: Repository, time: Time, schedulerProv
             .decorate(with: timeEntriesCoreReducer, state: \.entities.timeEntries, action: \.timeEntries)
             .pullback(state: \.runningTimeEntryState, action: \.runningTimeEntry),
         createProjectReducer(repository: repository)
-            .pullback(state: \.projectState, action: \.project)
+            .pullback(state: \.projectState, action: \.project),
+        createLogSuggestionReducer(repository: repository, time: time, calendarService: calendarService)
+            .pullback(state: \.logSuggestionsState, action: \.logSuggestion)
     )
 }
 
@@ -30,6 +38,7 @@ public class TimerFeature: BaseFeature<TimerState, TimerAction> {
         case startEdit
         case runningTimeEntry
         case project
+        case logSuggestions
     }
 
     private let time: Time
@@ -39,26 +48,31 @@ public class TimerFeature: BaseFeature<TimerState, TimerAction> {
         self.time = time
 
         features = [
-               .timeEntriesLog: TimeEntriesLogFeature()
+                .timeEntriesLog: TimeEntriesLogFeature()
                    .view { $0.view(
                        state: { $0.timeLogState },
                        action: { TimerAction.timeLog($0) })
-               },
-               .startEdit: StartEditFeature(time: time)
+                },
+                .startEdit: StartEditFeature(time: time)
                    .view { $0.view(
                        state: { $0.startEditState },
                        action: { TimerAction.startEdit($0) })
-               },
-               .runningTimeEntry: RunningTimeEntryFeature()
+                },
+                .runningTimeEntry: RunningTimeEntryFeature()
                    .view { $0.view(
                        state: { $0.runningTimeEntryState },
                        action: { TimerAction.runningTimeEntry($0) })
-               },
-               .project: ProjectFeature()
+                },
+                .project: ProjectFeature()
                    .view { $0.view(
                        state: { $0.projectState },
                        action: { TimerAction.project($0) })
-               }
+                },
+                .logSuggestions: LogSuggestionFeature()
+                    .view { $0.view(
+                        state: { $0.logSuggestionsState },
+                        action: { TimerAction.logSuggestion($0) })
+                }
            ]
     }
 

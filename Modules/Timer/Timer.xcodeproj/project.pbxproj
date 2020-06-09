@@ -70,6 +70,13 @@
 		ACAA58322434A1EE003FDECA /* RunningTimeEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA58312434A1EE003FDECA /* RunningTimeEntryViewController.swift */; };
 		ACAA585D24378106003FDECA /* SimpleBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA585C24378106003FDECA /* SimpleBottomSheet.swift */; };
 		ACBA56FE247FEF5A00692C57 /* ArchitectureTestSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACBA56FD247FEF5A00692C57 /* ArchitectureTestSupport.framework */; };
+		ACFCFDD3248A68710060C3A1 /* LogSuggestionAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDCC248A68710060C3A1 /* LogSuggestionAction.swift */; };
+		ACFCFDD4248A68710060C3A1 /* LogSuggestionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDCD248A68710060C3A1 /* LogSuggestionCoordinator.swift */; };
+		ACFCFDD5248A68710060C3A1 /* LogSuggestionFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDCE248A68710060C3A1 /* LogSuggestionFeature.swift */; };
+		ACFCFDD6248A68710060C3A1 /* LogSuggestionReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDCF248A68710060C3A1 /* LogSuggestionReducer.swift */; };
+		ACFCFDD7248A68710060C3A1 /* LogSuggestionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDD0248A68710060C3A1 /* LogSuggestionState.swift */; };
+		ACFCFDD9248A68710060C3A1 /* LogSuggestionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDD2248A68710060C3A1 /* LogSuggestionSelector.swift */; };
+		ACFCFDDC248A69F60060C3A1 /* LogSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDDB248A69F60060C3A1 /* LogSuggestion.swift */; };
 		B417E98D244F78D0004D251F /* ProjectReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B417E98C244F78D0004D251F /* ProjectReducerTests.swift */; };
 		B4A67F1B2486A1C000CC05F1 /* CommonFeatures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A67F1A2486A1C000CC05F1 /* CommonFeatures.framework */; };
 		B4A67F1C2486AC6E00CC05F1 /* MockTimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130C92424F5DE000FC72C /* MockTimeLogRepository.swift */; };
@@ -185,6 +192,13 @@
 		ACAA58312434A1EE003FDECA /* RunningTimeEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryViewController.swift; sourceTree = "<group>"; };
 		ACAA585C24378106003FDECA /* SimpleBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleBottomSheet.swift; sourceTree = "<group>"; };
 		ACBA56FD247FEF5A00692C57 /* ArchitectureTestSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ArchitectureTestSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACFCFDCC248A68710060C3A1 /* LogSuggestionAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionAction.swift; sourceTree = "<group>"; };
+		ACFCFDCD248A68710060C3A1 /* LogSuggestionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionCoordinator.swift; sourceTree = "<group>"; };
+		ACFCFDCE248A68710060C3A1 /* LogSuggestionFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionFeature.swift; sourceTree = "<group>"; };
+		ACFCFDCF248A68710060C3A1 /* LogSuggestionReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionReducer.swift; sourceTree = "<group>"; };
+		ACFCFDD0248A68710060C3A1 /* LogSuggestionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionState.swift; sourceTree = "<group>"; };
+		ACFCFDD2248A68710060C3A1 /* LogSuggestionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionSelector.swift; sourceTree = "<group>"; };
+		ACFCFDDB248A69F60060C3A1 /* LogSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestion.swift; sourceTree = "<group>"; };
 		B417E98C244F78D0004D251F /* ProjectReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReducerTests.swift; sourceTree = "<group>"; };
 		B4A67F1A2486A1C000CC05F1 /* CommonFeatures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFeatures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B4F0A224362F1400DFBF2E /* UIUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -341,6 +355,7 @@
 				8C509D352413E29B00B6DF30 /* StartEdit */,
 				ACAA581F2433A7BC003FDECA /* Running */,
 				CC2E552A2448AD8C005A3B40 /* Project */,
+				ACFCFDCB248A65BB0060C3A1 /* LogSuggestions */,
 				8C2516C22403C1B000BAD4B5 /* Timer.h */,
 				8C2516C32403C1B000BAD4B5 /* Info.plist */,
 			);
@@ -534,6 +549,28 @@
 				ACAA58312434A1EE003FDECA /* RunningTimeEntryViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		ACFCFDCB248A65BB0060C3A1 /* LogSuggestions */ = {
+			isa = PBXGroup;
+			children = (
+				ACFCFDDA248A69DE0060C3A1 /* Model */,
+				ACFCFDCC248A68710060C3A1 /* LogSuggestionAction.swift */,
+				ACFCFDCD248A68710060C3A1 /* LogSuggestionCoordinator.swift */,
+				ACFCFDCE248A68710060C3A1 /* LogSuggestionFeature.swift */,
+				ACFCFDCF248A68710060C3A1 /* LogSuggestionReducer.swift */,
+				ACFCFDD0248A68710060C3A1 /* LogSuggestionState.swift */,
+				ACFCFDD2248A68710060C3A1 /* LogSuggestionSelector.swift */,
+			);
+			path = LogSuggestions;
+			sourceTree = "<group>";
+		};
+		ACFCFDDA248A69DE0060C3A1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ACFCFDDB248A69F60060C3A1 /* LogSuggestion.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B417E98B244F76F0004D251F /* Views */ = {
@@ -756,6 +793,7 @@
 				CC03C27B2448AE1C0071FA55 /* ProjectReducer.swift in Sources */,
 				8C25178B2403C27200BAD4B5 /* TimeEntriesLogState.swift in Sources */,
 				8C7F6D07247FBC910026FF9D /* Wheel.swift in Sources */,
+				ACFCFDD3248A68710060C3A1 /* LogSuggestionAction.swift in Sources */,
 				34C93C082453387300024F06 /* DateTimePickMode.swift in Sources */,
 				ACAA58292433A7ED003FDECA /* RunningTimeEntryFeature.swift in Sources */,
 				AC42284F24572F4B00DD8AB3 /* ClockDial.swift in Sources */,
@@ -767,6 +805,7 @@
 				AC02D86924696A37007E38F6 /* DurationTextField.swift in Sources */,
 				8C25178C2403C27200BAD4B5 /* TimeEntriesLogAction.swift in Sources */,
 				CCE39F9F247C3B5E0069D196 /* BottomSheetViewController.swift in Sources */,
+				ACFCFDDC248A69F60060C3A1 /* LogSuggestion.swift in Sources */,
 				CCE39FA3247D65250069D196 /* BottomSheetState.swift in Sources */,
 				CC03C27D2448AE1C0071FA55 /* ProjectViewController.swift in Sources */,
 				8C509D172412641600B6DF30 /* TimeEntriesLogFeature.swift in Sources */,
@@ -776,6 +815,7 @@
 				8CB54533240E7DA100154473 /* TimeEntriesLogViewController.swift in Sources */,
 				8C008FD22409407B000A0C32 /* StartEditReducer.swift in Sources */,
 				CC8172392476E110004F1152 /* Constants.swift in Sources */,
+				ACFCFDD5248A68710060C3A1 /* LogSuggestionFeature.swift in Sources */,
 				ACAA58282433A7ED003FDECA /* RunningTimeEntryAction.swift in Sources */,
 				8C25178D2403C27200BAD4B5 /* TimeEntriesLogReducer.swift in Sources */,
 				AC42284C245720E700DD8AB3 /* WheelShape.swift in Sources */,
@@ -791,6 +831,7 @@
 				CC03C27C2448AE1C0071FA55 /* ProjectState.swift in Sources */,
 				CC5D320F24659308005A1837 /* Arc.swift in Sources */,
 				8C008FD024093FF8000A0C32 /* StartEditAction.swift in Sources */,
+				ACFCFDD4248A68710060C3A1 /* LogSuggestionCoordinator.swift in Sources */,
 				ACAA58262433A7ED003FDECA /* RunningTimeEntryCoordinator.swift in Sources */,
 				8C509D232412876A00B6DF30 /* TimeEntryViewModel.swift in Sources */,
 				CC8172342475B433004F1152 /* String+Extensions.swift in Sources */,
@@ -805,11 +846,14 @@
 				8C509D152412603800B6DF30 /* TimerState.swift in Sources */,
 				8C509D0E2412567900B6DF30 /* TimerAction.swift in Sources */,
 				8C509D1B241264A200B6DF30 /* TimerCoordinator.swift in Sources */,
+				ACFCFDD9248A68710060C3A1 /* LogSuggestionSelector.swift in Sources */,
+				ACFCFDD6248A68710060C3A1 /* LogSuggestionReducer.swift in Sources */,
 				AC823A05245ADA950078574D /* EditDurationView.swift in Sources */,
 				51FF7C3C2429120500CC2002 /* EditableTimeEntry.swift in Sources */,
 				CC5D320B2464A931005A1837 /* WheelForegroundView.swift in Sources */,
 				8C509D1324125AB500B6DF30 /* StartEditCoordinator.swift in Sources */,
 				8C509D192412644300B6DF30 /* StartEditFeature.swift in Sources */,
+				ACFCFDD7248A68710060C3A1 /* LogSuggestionState.swift in Sources */,
 				CC03C27A2448AE1C0071FA55 /* ProjectFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

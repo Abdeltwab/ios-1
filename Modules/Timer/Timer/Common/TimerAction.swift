@@ -6,6 +6,7 @@ public enum TimerAction: Equatable {
     case startEdit(StartEditAction)
     case runningTimeEntry(RunningTimeEntryAction)
     case project(ProjectAction)
+    case logSuggestion(LogSuggestionAction)
 }
 
 extension TimerAction {
@@ -52,6 +53,17 @@ extension TimerAction {
             self = .project(newValue)
         }
     }
+
+    var logSuggestion: LogSuggestionAction? {
+        get {
+            guard case let .logSuggestion(value) = self else { return nil }
+            return value
+        }
+        set {
+            guard case .logSuggestion = self, let newValue = newValue else { return }
+            self = .logSuggestion(newValue)
+        }
+    }
 }
 
 extension TimerAction: CustomDebugStringConvertible {
@@ -69,6 +81,9 @@ extension TimerAction: CustomDebugStringConvertible {
             return action.debugDescription
             
         case let .project(action):
+            return action.debugDescription
+
+        case let .logSuggestion(action):
             return action.debugDescription
         }
     }

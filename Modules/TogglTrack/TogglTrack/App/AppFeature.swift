@@ -12,7 +12,8 @@ func createAppReducer(environment: AppEnvironment) -> Reducer<AppState, AppActio
         createTimerReducer(
             repository: environment.repository,
             time: environment.time,
-            schedulerProvider: environment.schedulerProvider
+            schedulerProvider: environment.schedulerProvider,
+            calendarService: environment.calendarService
         ).pullback(state: \.timerState, action: \.timer),
         createCalendarReducer(repository: environment.repository, time: environment.time, calendarService: environment.calendarService)
             .pullback(state: \.calendarState, action: \.calendar),

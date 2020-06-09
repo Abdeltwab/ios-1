@@ -8,6 +8,7 @@ public struct LocalTimerState: Equatable {
     internal var autocompleteSuggestions: [AutocompleteSuggestion] = []
     internal var dateTimePickMode: DateTimePickMode = .none
     internal var cursorPosition: Int = 0
+    internal var logSuggestions: [LogSuggestion] = []
     
     public init() {
     }
@@ -100,6 +101,19 @@ extension TimerState {
             entities.projects = newValue.projects
             guard var timeEntry = editableTimeEntry else { return }
             timeEntry.editableProject = newValue.editableProject
+        }
+    }
+
+    internal var logSuggestionsState: LogSuggestionState {
+        get {
+            LogSuggestionState(
+                logSuggestions: localTimerState.logSuggestions,
+                entities: entities
+            )
+        }
+        set {
+            localTimerState.logSuggestions = newValue.logSuggestions
+            entities = newValue.entities
         }
     }
 }
