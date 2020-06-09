@@ -5,11 +5,11 @@ platform :ios, '11.0'
 # inhibit_all_warnings!
 
 def rxswift
-    pod 'RxSwift', '~> 5'
+    pod 'RxSwift', '~> 5.1'
 end
 
 def rxcocoa
-    pod 'RxCocoa', '~> 5'
+    pod 'RxCocoa', '~> 5.1'
 end
 
 def rxdatasources
@@ -17,8 +17,8 @@ def rxdatasources
 end
 
 def rxtests
-  pod 'RxBlocking', '~> 5'
-  pod 'RxTest', '~> 5'
+  pod 'RxBlocking', '~> 5.1'
+  pod 'RxTest', '~> 5.1'
 end
 
 def analytics
