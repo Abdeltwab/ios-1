@@ -56,6 +56,8 @@ func createCalendarDayReducer(calendarService: CalendarService) -> Reducer<Calen
             switch calendarItem.value {
             case .timeEntry(let timeEntry):
                 state.selectedItem = .left(EditableTimeEntry.fromSingle(timeEntry))
+            case .selectedItem(let selectedItem):
+                state.selectedItem = selectedItem
             case .calendarEvent(let calendarEvent):
                 state.selectedItem = .right(calendarEvent)
             }

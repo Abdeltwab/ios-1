@@ -1,16 +1,26 @@
 import Models
 import CalendarService
 import RxDataSources
+import Utils
+import Timer
 
 public struct CalendarItem: Equatable {
     enum Value: Equatable {
         case timeEntry(TimeEntry)
+        case selectedItem(Either<EditableTimeEntry, CalendarEvent>)
         case calendarEvent(CalendarEvent)
 
         var description: String {
             switch self {
             case .timeEntry(let timeEntry):
                 return timeEntry.description
+            case .selectedItem(let selectedItem):
+                switch selectedItem {
+                case let .left(editableTimeEntry):
+                    return editableTimeEntry.description
+                case let .right(calendarEvent):
+                    return calendarEvent.description
+                }
             case .calendarEvent(let calendarEvent):
                 return calendarEvent.description
             }
@@ -20,6 +30,13 @@ public struct CalendarItem: Equatable {
             switch self {
             case .timeEntry:
                 return "#000000"
+            case .selectedItem(let selectedItem):
+                switch selectedItem {
+                case let .left:
+                    return "#000000"
+                case let .right(calendarEvent):
+                    return calendarEvent.color
+                }
             case .calendarEvent(let calendarEvent):
                 return calendarEvent.color
             }
@@ -28,6 +45,13 @@ public struct CalendarItem: Equatable {
             switch self {
             case .timeEntry(let timeEntry):
                 return timeEntry.start
+            case .selectedItem(let selectedItem):
+                switch selectedItem {
+                case let .left(editableTimeEntry):
+                    return editableTimeEntry.start!
+                case let .right(calendarEvent):
+                    return calendarEvent.start
+                }
             case .calendarEvent(let timeEntry):
                 return timeEntry.start
             }
@@ -42,6 +66,13 @@ public struct CalendarItem: Equatable {
             switch self {
             case .timeEntry(let timeEntry):
                 return timeEntry.duration
+            case .selectedItem(let selectedItem):
+                switch selectedItem {
+                case let .left(editableTimeEntry):
+                    return editableTimeEntry.duration
+                case let .right(calendarEvent):
+                    return calendarEvent.duration
+                }
             case .calendarEvent(let calendarEvent):
                 return calendarEvent.duration
             }
@@ -69,6 +100,7 @@ extension CalendarItem: IdentifiableType {
     public var identity: Identity {
         switch self.value {
         case .timeEntry(let timeEntry): return timeEntry.id
+        case .selectedItem: return "SelectedItem"
         case .calendarEvent(let calendarEvent): return calendarEvent.id
         }
     }

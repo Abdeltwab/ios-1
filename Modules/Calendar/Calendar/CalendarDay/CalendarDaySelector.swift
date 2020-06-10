@@ -18,15 +18,36 @@ let calendarItemsSelector: (CalendarDayState, Time) -> [CalendarItem] = { state,
         return calendarEvent.start >= date && calendarEvent.stop <= date.addingTimeInterval(.secondsInADay)
     }
 
+    let replaceSelectedItemIfNeeded: (CalendarItem.Value) -> (CalendarItem.Value) = { currentItem in
+        guard let selectedItem = state.selectedItem else { return currentItem }
+        switch (selectedItem, currentItem) {
+        case (.left(let editableTimeEntry), .timeEntry(let timeEntry)):
+            return editableTimeEntry.ids.first == timeEntry.id ? .selectedItem(selectedItem) : currentItem
+        case (.right(let selectedCalendarEvent), .calendarEvent(let calendarEvent)):
+            return selectedCalendarEvent.id == calendarEvent.id ? .selectedItem(selectedItem) : currentItem
+        default:
+            return currentItem
+        }
+    }
+
     let timeEntries = state.timeEntries
         .filter(isTimeEntryIncluded)
         .map(CalendarItem.Value.timeEntry)
+        .map(replaceSelectedItemIfNeeded)
 
     let calendarEvents = state.calendarEvents.values
         .filter(isCalendarEventIncluded)
         .map(CalendarItem.Value.calendarEvent)
+        .map(replaceSelectedItemIfNeeded)
 
-    let values = timeEntries + calendarEvents
+    let newEditableTimeEntry: [CalendarItem.Value]
+    if let selectedItem = state.selectedItem, let emptyIds = selectedItem.left?.ids.isEmpty, emptyIds {
+        newEditableTimeEntry = [.selectedItem(selectedItem)]
+    } else {
+        newEditableTimeEntry = []
+    }
+
+    let values = timeEntries + calendarEvents + newEditableTimeEntry
     let calculator = CalendarLayoutCalculator(time: time)
     return calculator.calculateLayoutAttributesforItems(calendarItems: values)
 }

@@ -1,6 +1,7 @@
 import Models
 import OtherServices
 import Utils
+import Timer
 import XCTest
 @testable import Calendar
 
@@ -85,6 +86,64 @@ class CalendarDaySelectorTests: XCTestCase {
         XCTAssertEqual(selectedTimeEntries.count, expectedTimeEntries.count)
         selectedTimeEntries.forEach {
             XCTAssertEqual($0.description, "Expected")
+        }
+    }
+
+    func test_replacesTheSelectedTimeEntry_whenSelectedItemIsAnExistingTimeEntry() {
+        let now = Date.with(2020, 1, 1)
+
+        let unselectedTimeEntries: [TimeEntry] = (0..<10)
+            .map({ createTimeEntry(id: $0, start: now + 1 * .secondsInAnHour, duration: 10 * .secondsInAMinute, description: "Expected") })
+
+        let selectedTimeEntry = createTimeEntry(id: 10, start: now + 1 * .secondsInAnHour, duration: 10 * .secondsInAMinute, description: "Expected")
+        let editableTimeEntry = EditableTimeEntry.fromSingle(selectedTimeEntry)
+
+        let timeEntries = EntityCollection(unselectedTimeEntries + [selectedTimeEntry])
+
+        let state = CalendarDayState(
+            user: .nothing,
+            selectedDate: now,
+            timeEntries: timeEntries,
+            calendarEvents: [:],
+            selectedItem: .left(editableTimeEntry)
+        )
+
+        let time: Time = Time(getNow: { now })
+        let selectedTimeEntries = calendarItemsSelector(state, time)
+
+        XCTAssertEqual(selectedTimeEntries.count, unselectedTimeEntries.count + 1)
+        selectedTimeEntries.forEach {
+            XCTAssertEqual($0.description, "Expected")
+        }
+    }
+
+    func test_replacesTheSelectedTimeEntry_whenSelectedItemIsANewTimeEntry() {
+        let now = Date.with(2020, 1, 1)
+
+        let unselectedTimeEntries: [TimeEntry] = (0..<10)
+            .map({ createTimeEntry(id: $0, start: now + 1 * .secondsInAnHour, duration: 10 * .secondsInAMinute, description: "Expected") })
+
+        var editableTimeEntry = EditableTimeEntry.empty(workspaceId: 0)
+        editableTimeEntry.start = now
+
+        let timeEntries = EntityCollection(unselectedTimeEntries)
+
+        let state = CalendarDayState(
+            user: .nothing,
+            selectedDate: now,
+            timeEntries: timeEntries,
+            calendarEvents: [:],
+            selectedItem: .left(editableTimeEntry)
+        )
+
+        let time: Time = Time(getNow: { now })
+        let selectedTimeEntries = calendarItemsSelector(state, time)
+
+        XCTAssertEqual(selectedTimeEntries.count, unselectedTimeEntries.count + 1)
+        selectedTimeEntries.forEach {
+            if case .timeEntry(_) = $0.value {
+                XCTAssertEqual($0.description, "Expected")
+            }
         }
     }
 

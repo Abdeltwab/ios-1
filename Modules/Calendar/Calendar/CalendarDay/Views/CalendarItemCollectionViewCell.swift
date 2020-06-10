@@ -35,12 +35,21 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
 
     private var foregroundColor: UIColor {
         switch calendarItem.value {
+        case .timeEntry(let timeEntry):
+        return timeEntry.duration == nil
+            ? itemColor
+            : itemColor.foregroundColor
+        case .selectedItem(let selectedItem):
+            switch selectedItem {
+            case .left(let editableTimeEntry):
+                return editableTimeEntry.duration == nil
+                    ? itemColor
+                    : itemColor.foregroundColor
+            case .right:
+                return itemColor
+            }
         case .calendarEvent:
             return itemColor
-        case .timeEntry(let timeEntry):
-            return timeEntry.duration == nil
-                ? itemColor
-                : itemColor.foregroundColor
         }
     }
 
@@ -50,24 +59,17 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
 
     private var patternLayerColor: UIColor {
         switch calendarItem.value {
+        case .timeEntry(let timeEntry):
+            return patternBackground(forDuration: timeEntry.duration, color: itemColor)
+        case .selectedItem(let selectedItem):
+            switch selectedItem {
+            case let .left(editableTimeEntry):
+                return patternBackground(forDuration: editableTimeEntry.duration, color: itemColor)
+            case .right:
+                return itemColor.withAlphaComponent(0.24)
+            }
         case .calendarEvent:
             return itemColor.withAlphaComponent(0.24)
-        case .timeEntry(let timeEntry):
-            if timeEntry.duration != nil {
-                return itemColor
-            } else {
-                let patternTint = itemColor.withAlphaComponent(0.1)
-                let patternTemplate = Images.Calendar.stripesPattern
-                UIGraphicsBeginImageContextWithOptions(patternTemplate.size, false, patternTemplate.scale)
-                let context = UIGraphicsGetCurrentContext()
-                context?.scaleBy(x: 1, y: -1)
-                context?.translateBy(x: 0, y: -patternTemplate.size.height)
-                patternTint.setFill()
-                patternTemplate.drawAsPattern(in: CGRect(origin: .zero, size: patternTemplate.size))
-                let pattern = UIGraphicsGetImageFromCurrentImageContext()!
-                UIGraphicsEndImageContext()
-                return UIColor(patternImage: pattern)
-            }
         }
     }
 
@@ -153,12 +155,21 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
 
     private func updateIcon() {
         switch calendarItem.value {
+        case .timeEntry:
+            iconImageView.isHidden = true
+        case .selectedItem(let editableTimeEntry):
+            switch editableTimeEntry {
+            case .left:
+                iconImageView.isHidden = true
+            case .right:
+                iconImageView.isHidden = false
+                iconImageView.tintColor = foregroundColor
+                iconImageView.image = Images.Calendar.calendarSmall
+            }
         case .calendarEvent:
             iconImageView.isHidden = false
             iconImageView.tintColor = foregroundColor
             iconImageView.image = Images.Calendar.calendarSmall
-        case .timeEntry:
-            iconImageView.isHidden = true
         }
     }
 
@@ -224,5 +235,23 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
         borderLayer.borderWidth = 2
         borderLayer.fillColor = UIColor.clear.cgColor
         dragIndicator.layer.addSublayer(borderLayer)
+    }
+
+    private func patternBackground(forDuration duration: TimeInterval?, color: UIColor) -> UIColor {
+        if duration != nil {
+            return color
+        } else {
+            let patternTint = color.withAlphaComponent(0.1)
+            let patternTemplate = Images.Calendar.stripesPattern
+            UIGraphicsBeginImageContextWithOptions(patternTemplate.size, false, patternTemplate.scale)
+            let context = UIGraphicsGetCurrentContext()
+            context?.scaleBy(x: 1, y: -1)
+            context?.translateBy(x: 0, y: -patternTemplate.size.height)
+            patternTint.setFill()
+            patternTemplate.drawAsPattern(in: CGRect(origin: .zero, size: patternTemplate.size))
+            let pattern = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            return UIColor(patternImage: pattern)
+        }
     }
 }

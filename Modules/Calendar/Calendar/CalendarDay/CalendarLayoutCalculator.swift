@@ -47,10 +47,11 @@ final class CalendarLayoutCalculator {
             return false
         })
         let right = group.filter({
-            if case .timeEntry(_) = $0 {
+            switch $0 {
+            case .timeEntry, .selectedItem:
                 return true
+            default: return false
             }
-            return false
         })
 
         let leftColumns = left.reduce(into: [], intoColumns)
