@@ -17,6 +17,10 @@ func createStartEditReducer(
         switch action {
 
         case let .descriptionEntered(description, position):
+
+            // The description was replaced by tapping in a time entry suggestion, we ignore it then
+            if position == description.count && description == state.editableTimeEntry?.description { return [] }
+
             if let editableTimeEntry = state.editableTimeEntry {
                 state.cursorPosition = position
                 state.editableTimeEntry!.description = description
@@ -76,6 +80,7 @@ func createStartEditReducer(
                 return [ create(tag: tagDto, in: repository) ]
             }
 
+            state.autocompleteSuggestions = []
             return []
 
         case let .dateTimePicked(date):

@@ -19,4 +19,10 @@ public extension UIViewController {
         
         child.didMove(toParent: self)
     }
+
+    func uninstall() {
+        self.view.removeFromSuperview()
+        self.removeFromParent()
+        self.didMove(toParent: nil)
+    }
 }

@@ -649,6 +649,66 @@
             </objects>
             <point key="canvasLocation" x="3095.6521739130435" y="-163.04347826086959"/>
         </scene>
+        <!--Suggestions View Controller-->
+        <scene sceneID="Q32-gx-Zds">
+            <objects>
+                <viewController storyboardIdentifier="SuggestionsViewController" id="R8V-kv-w6I" customClass="SuggestionsViewController" customModule="Timer" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="skE-Zf-dH5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eSX-mW-H8u">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SuggestionCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SuggestionCell" rowHeight="50" id="ocI-z7-IBg" customClass="SuggestionCell" customModule="Timer">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ocI-z7-IBg" id="QaP-oC-Sos">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m44-5b-IdK">
+                                                    <rect key="frame" x="20" y="16" width="374" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="m44-5b-IdK" secondAttribute="trailing" constant="20" id="EZT-Dp-Vwc"/>
+                                                <constraint firstItem="m44-5b-IdK" firstAttribute="leading" secondItem="QaP-oC-Sos" secondAttribute="leading" constant="20" id="UPS-Vm-z3E"/>
+                                                <constraint firstItem="m44-5b-IdK" firstAttribute="centerY" secondItem="QaP-oC-Sos" secondAttribute="centerY" id="nsz-47-oCe"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="m44-5b-IdK" id="SJ0-fh-V91"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="eSX-mW-H8u" secondAttribute="bottom" id="3JY-iW-gjN"/>
+                            <constraint firstAttribute="trailing" secondItem="eSX-mW-H8u" secondAttribute="trailing" id="ZGd-xo-syS"/>
+                            <constraint firstItem="eSX-mW-H8u" firstAttribute="top" secondItem="skE-Zf-dH5" secondAttribute="top" id="r1w-iH-4BS"/>
+                            <constraint firstItem="eSX-mW-H8u" firstAttribute="leading" secondItem="skE-Zf-dH5" secondAttribute="leading" id="xzR-jy-Lkp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YaQ-eF-4fe"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="414" height="896"/>
+                    <connections>
+                        <outlet property="tableView" destination="eSX-mW-H8u" id="sxm-Ob-F7n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z9z-ns-1B6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2350.7246376811595" y="511.60714285714283"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icBillable" width="8" height="16"/>

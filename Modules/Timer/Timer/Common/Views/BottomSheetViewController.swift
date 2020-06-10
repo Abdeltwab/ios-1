@@ -59,28 +59,25 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
                 isVisible ? self?.show() : self?.hide()
             })
             .disposed(by: disposeBag)
-        
-        let navigationController = UINavigationController(rootViewController: containedViewController)
-        navigationController.navigationBar.isHidden = true
 
-        install(navigationController, customConstraints: true)
+        install(containedViewController, customConstraints: true)
 
-        navigationController.view.translatesAutoresizingMaskIntoConstraints = false
-        navigationController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        navigationController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        let bottomConstraint = navigationController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        containedViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        containedViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        containedViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        let bottomConstraint = containedViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         bottomConstraint.priority = .defaultHigh
         bottomConstraint.isActive = true
-        topConstraint = navigationController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+        topConstraint = containedViewController.view.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         topConstraint.isActive = true
 
         containedViewController.view.layer.cornerRadius = 10
         containedViewController.view.clipsToBounds = true
-        navigationController.view.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
-        navigationController.view.layer.shadowOffset = CGSize(width: 0, height: -6)
-        navigationController.view.layer.shadowRadius = 10.0
-        navigationController.view.layer.shadowOpacity = 0.2
-        navigationController.view.clipsToBounds = false
+        containedViewController.view.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
+        containedViewController.view.layer.shadowOffset = CGSize(width: 0, height: -6)
+        containedViewController.view.layer.shadowRadius = 10.0
+        containedViewController.view.layer.shadowOpacity = 0.2
+        containedViewController.view.clipsToBounds = false
 
         overlay.backgroundColor = UIColor(white: 0, alpha: 0.3)
         overlay.alpha = 0
@@ -131,7 +128,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         case .partial:
             view.isUserInteractionEnabled = true
             let viewHeight = view.frame.height - view.safeAreaInsets.top - view.safeAreaInsets.bottom
-            topConstraint.constant = viewHeight - minViewHeight - keyboardHeight + dragAmount
+            topConstraint.constant = viewHeight - minViewHeight + dragAmount
         case .full:
             view.isUserInteractionEnabled = true
             topConstraint.constant = fullScreenConstant + dragAmount
@@ -213,10 +210,11 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         guard let userInfo = notification.userInfo else { return 0 }
         let keyboardFrame =  (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)!.cgRectValue
 
-        let keyboardFrameInView = parent!.view.convert(keyboardFrame, from: nil)
-        let safeAreaFrame = parent!.view.safeAreaLayoutGuide.layoutFrame
+        let keyboardFrameInView = view.convert(keyboardFrame, from: nil)
+        let safeAreaFrame = view.safeAreaLayoutGuide.layoutFrame.insetBy(dx: 0, dy: -additionalSafeAreaInsets.bottom)
         let intersection = safeAreaFrame.intersection(keyboardFrameInView)
 
+        additionalSafeAreaInsets.bottom = intersection.height
         return intersection.height
     }
 

@@ -6,6 +6,7 @@ import Architecture
 import RxSwift
 import RxCocoa
 import OtherServices
+import Models
 
 public typealias StartEditStore = Store<StartEditState, StartEditAction>
 
@@ -14,10 +15,15 @@ public class StartEditViewController: UIViewController, Storyboarded {
     public static var storyboardName = "Timer"
     public static var storyboardBundle = Assets.bundle
 
-    var smallStateHeightSubject = BehaviorSubject<CGFloat>(value: 0)
+    private let smallStateHeightSubject = BehaviorSubject<CGFloat>(value: 0)
     var smallStateHeight: Driver<CGFloat> {
         smallStateHeightSubject.asDriver(onErrorJustReturn: 0)
     }
+
+    public override var inputAccessoryView: UIView? { startEditInputAccessoryView }
+
+    public var store: StartEditStore!
+    public var time: Time!
 
     @IBOutlet weak var handle: UIView!
     @IBOutlet weak var closeButton: UIButton!
@@ -31,13 +37,9 @@ public class StartEditViewController: UIViewController, Storyboarded {
     @IBOutlet weak var projectButton: UIButton!
     @IBOutlet weak var tagButton: UIButton!
     @IBOutlet weak var billableButton: UIButton!
-
     @IBOutlet var startEditInputAccessoryView: StartEditInputAccessoryView!
 
-    public override var inputAccessoryView: UIView? { startEditInputAccessoryView }
-
-    public var store: StartEditStore!
-    public var time: Time!
+    private var suggestionsView: SuggestionsViewController?
 
     private var disposeBag = DisposeBag()
     private var timer: Timer?
@@ -61,6 +63,10 @@ public class StartEditViewController: UIViewController, Storyboarded {
 
         store.select({ $0.editableTimeEntry })
             .drive(onNext: displayTimeEntry)
+            .disposed(by: disposeBag)
+
+        store.select({ $0.autocompleteSuggestions })
+            .drive(onNext: updateSuggestions)
             .disposed(by: disposeBag)
 
         Observable.combineLatest(descriptionTextView.rx.text, descriptionTextView.rx.cursorPosition)
@@ -107,6 +113,8 @@ public class StartEditViewController: UIViewController, Storyboarded {
 
     public func loseFocus() {
         descriptionTextView.resignFirstResponder()
+        suggestionsView?.hideAndDestroy()
+        suggestionsView = nil
         Tooltip.dismiss()
     }
 
@@ -151,6 +159,25 @@ public class StartEditViewController: UIViewController, Storyboarded {
         let formattedDuration = duration.formattedDuration()
         durationLabel.text = formattedDuration
         wheel.setDurationString(formattedDuration)
+    }
+
+    private func updateSuggestions(suggestions: [AutocompleteSuggestion]) {
+        guard let parentVC = parent else { return }
+        guard !suggestions.isEmpty else {
+            suggestionsView?.hideAndDestroy()
+            suggestionsView = nil
+            return
+        }
+
+        if suggestionsView == nil {
+            suggestionsView = SuggestionsViewController.create(
+                in: parentVC,
+                attachedTo: descriptionTextView
+            )
+            suggestionsView?.store = store
+        }
+
+        suggestionsView?.show(suggestions)
     }
 
     @objc private func cancelDatePicker() {

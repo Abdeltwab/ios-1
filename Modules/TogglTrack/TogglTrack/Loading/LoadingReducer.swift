@@ -47,10 +47,10 @@ private func loadEntities(_ repository: Repository) -> [Effect<LoadingAction>] {
     return [
         repository.getWorkspaces().map(LoadingAction.workspacesLoaded),
         repository.getClients().map(LoadingAction.clientsLoaded),
-        repository.getTimeEntries().map(LoadingAction.timeEntriesLoaded),
         repository.getProjects().map(LoadingAction.projectsLoaded),
         repository.getTasks().map(LoadingAction.tasksLoaded),
         repository.getTags().map(LoadingAction.tagsLoaded),
+        repository.getTimeEntries().map(LoadingAction.timeEntriesLoaded),
         Single.just(LoadingAction.loadingFinished)
     ]
         .map { $0.toEffect() }

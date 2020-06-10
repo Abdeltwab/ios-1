@@ -44,58 +44,27 @@ public class Repository {
 extension Repository: TimeLogRepository {
 
     public func getWorkspaces() -> Single<[Workspace]> {
-        if workspaces.isEmpty {
-            return api.loadWorkspaces()
-                .do(onSuccess: { self.workspaces = $0 })
-        }
-
-        return Single.just(workspaces)
+        database.workspaces.rx.getAll()
     }
     
     public func getClients() -> Single<[Client]> {
-        if clients.isEmpty {
-            return api.loadClients()
-                .do(onSuccess: { self.clients = $0 })
-        }
-        
-        return Single.just(clients)
+        database.clients.rx.getAll()
     }
     
     public func getTimeEntries() -> Single<[TimeEntry]> {
-        database.timeEntries.rx.getAll()
-//        if timeEntries.isEmpty {
-//            return api.loadEntries()
-//                .do(onSuccess: { self.timeEntries = $0 })
-//        }
-//
-//        return Single.just(timeEntries)
+        database.timeEntries.rx.getAllSortedBackground()
     }
     
     public func getProjects() -> Single<[Project]> {
-        if projects.isEmpty {
-            return api.loadProjects()
-                .do(onSuccess: { self.projects = $0 })
-        }
-        
-        return Single.just(projects)
+        database.projects.rx.getAll()
     }
     
     public func getTasks() -> Single<[Task]> {
-        if tasks.isEmpty {
-            return api.loadTasks()
-                .do(onSuccess: { self.tasks = $0 })
-        }
-        
-        return Single.just(tasks)
+        database.tasks.rx.getAll()
     }
     
     public func getTags() -> Single<[Tag]> {
-        if tags.isEmpty {
-            return api.loadTags()
-                .do(onSuccess: { self.tags = $0 })
-        }
-        
-        return Single.just(tags)
+        database.tags.rx.getAll()
     }
 
     public func startTimeEntry(_ timeEntry: StartTimeEntryDto) -> Single<(started: TimeEntry, stopped: TimeEntry?)> {
