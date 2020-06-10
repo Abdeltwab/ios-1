@@ -149,7 +149,9 @@ func createStartEditReducer(
         case let .setError(error):
             fatalError(error.description)
 
-        case .timeEntries(.timeEntryStarted), .timeEntries(.timeEntryUpdated):
+        case .timeEntries(.timeEntryStarted),
+             .timeEntries(.timeEntryCreated),
+             .timeEntries(.timeEntryUpdated):
             state.editableTimeEntry = nil
             return []
 
@@ -168,11 +170,34 @@ func create(tag: TagDTO, in repository: TimeLogRepository) -> Effect<StartEditAc
 }
 
 func doneButtonTapped(_ state: StartEditState, _ repository: TimeLogRepository) -> [Effect<StartEditAction>] {
-    let editableTimeEntry = state.editableTimeEntry!
-    let shouldStartNewTimeEntry = editableTimeEntry.ids.isEmpty
-    if shouldStartNewTimeEntry {
+    guard let editableTimeEntry = state.editableTimeEntry else {
+        fatalError("No editableTimeEntry present when tapping the done button")
+    }
+    
+    if editableTimeEntry.ids.isEmpty {
+        if editableTimeEntry.duration == nil {
+            return [
+                Effect.from(action: .timeEntries(.startTimeEntry(editableTimeEntry.toStartTimeEntryDto())))
+            ]
+        } else {
+            return [
+                Effect.from(action: .timeEntries(.createTimeEntry(editableTimeEntry.toCreateTimeEntryDto())))
+            ]
+        }
+    }
+    
+    if editableTimeEntry.ids.count == 1,
+        let timeEntry = state.entities.getTimeEntry(editableTimeEntry.ids[0]) {
+        let updatedTimeEntry = timeEntry.with(
+            description: editableTimeEntry.description,
+            start: editableTimeEntry.start,
+            duration: editableTimeEntry.duration,
+            projectId: editableTimeEntry.projectId,
+            taskId: editableTimeEntry.taskId,
+            tagIds: editableTimeEntry.tagIds,
+            billable: editableTimeEntry.billable)
         return [
-            Effect.from(action: .timeEntries(.startTimeEntry(editableTimeEntry.toStartTimeEntryDto())))
+            Effect.from(action: .timeEntries(.updateTimeEntry(updatedTimeEntry)))
         ]
     }
 
@@ -181,10 +206,15 @@ func doneButtonTapped(_ state: StartEditState, _ repository: TimeLogRepository) 
         .filter { $0 != nil }
         .map { $0!.with(
             description: editableTimeEntry.description,
+            workspaceId: editableTimeEntry.workspaceId,
+            projectId: editableTimeEntry.projectId,
+            taskId: editableTimeEntry.taskId,
+            tagIds: editableTimeEntry.tagIds,
             billable: editableTimeEntry.billable) }
-
-    persistUpdatedTimeEntries(updatedTimeEnries)
-    return []
+    
+    return updatedTimeEnries.map {
+        Effect.from(action: .timeEntries(.updateTimeEntry($0)))
+    }
 }
 
 func dateTimePicked(_ state: inout StartEditState, date: Date) {
@@ -196,10 +226,6 @@ func dateTimePicked(_ state: inout StartEditState, date: Date) {
     } else if state.dateTimePickMode == .stop && state.editableTimeEntry!.start != nil {
         state.editableTimeEntry!.duration = date.timeIntervalSince(state.editableTimeEntry!.start!)
     }
-}
-
-func persistUpdatedTimeEntries(_ timeEntries: [TimeEntry]) {
-    //repository.update()
 }
 
 func appendCharacter( _ character: String, toString string: String) -> String {

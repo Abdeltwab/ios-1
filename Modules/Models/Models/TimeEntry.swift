@@ -20,6 +20,8 @@ public struct TimeEntry: Entity, Equatable {
         duration: Double?,
         billable: Bool,
         workspaceId: Int64,
+        projectId: Int64? = nil,
+        taskId: Int64? = nil,
         tagIds: [Int64] = []
     ) {
         self.id = id
@@ -28,6 +30,7 @@ public struct TimeEntry: Entity, Equatable {
         self.duration = duration
         self.billable = billable
         self.workspaceId = workspaceId
+        self.projectId = projectId
         self.tagIds = tagIds
     }
 }
@@ -97,15 +100,24 @@ extension TimeEntry: Codable {
 }
 
 public extension TimeEntry {
-    func with(description: String? = nil, billable: Bool? = nil) -> TimeEntry {
+    func with(description: String? = nil,
+              start: Date? = nil,
+              duration: TimeInterval? = nil,
+              workspaceId: Int64? = nil,
+              projectId: Int64? = nil,
+              taskId: Int64? = nil,
+              tagIds: [Int64]? = nil,
+              billable: Bool? = nil) -> TimeEntry {
         return TimeEntry(
             id: self.id,
             description: description ?? self.description,
-            start: self.start,
-            duration: self.duration,
+            start: start ?? self.start,
+            duration: duration ?? self.duration,
             billable: billable ?? self.billable,
-            workspaceId: self.workspaceId,
-            tagIds: self.tagIds
+            workspaceId: workspaceId ?? self.workspaceId,
+            projectId: projectId ?? self.projectId,
+            taskId: taskId ?? self.taskId,
+            tagIds: tagIds ?? self.tagIds
         )
     }
 }

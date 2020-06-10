@@ -21,8 +21,10 @@ class MockTimeLogRepository: TimeLogRepository {
     var tags = [Tag]()
 
     var deleteCalled: Bool = false
-    var startCalled: Bool = false
     var createCalled: Bool = false
+    var startCalled: Bool = false
+    var updateTimeEntryCalled: Bool = false
+    var updateTimeEntriesCalled: Bool = false
 
     init(time: Time) {
         self.time = time
@@ -71,7 +73,7 @@ class MockTimeLogRepository: TimeLogRepository {
     func createTimeEntry(_ timeEntry: CreateTimeEntryDto) -> Single<TimeEntry> {
 
         createCalled = true
-        
+
         let createdTimeEntry = TimeEntry(
             id: newTimeEntryId,
             description: timeEntry.description,
@@ -85,6 +87,12 @@ class MockTimeLogRepository: TimeLogRepository {
     }
 
     func updateTimeEntry(_ timeEntry: TimeEntry) -> Single<Void> {
+        updateTimeEntryCalled = true
+        return Single.just(())
+    }
+
+    func updateTimeEntries(_ timeEntries: [TimeEntry]) -> Single<Void> {
+        updateTimeEntriesCalled = true
         return Single.just(())
     }
 

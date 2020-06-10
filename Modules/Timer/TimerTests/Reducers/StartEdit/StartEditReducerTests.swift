@@ -122,6 +122,130 @@ class StartEditReducerTests: XCTestCase {
             Step(.receive, .timeEntries(.startTimeEntry(expectedStartedEntry.toStartTimeEntryDto())))
         )
     }
+    
+    func test_doneButtonTapped_withANewTimeEntryWithStartAndDurationSet_createsANewTimeEntry() {
+
+        var editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+        editableTimeEntry.description = "🥔"
+        editableTimeEntry.billable = false
+        editableTimeEntry.start = mockTime.now() - 10
+        editableTimeEntry.duration = 100
+        editableTimeEntry.tagIds = [1]
+
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: TimeLogEntities(),
+            editableTimeEntry: editableTimeEntry,
+            autocompleteSuggestions: [],
+            dateTimePickMode: .none,
+            cursorPosition: 0
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .doneButtonTapped),
+            Step(.receive, .timeEntries(.createTimeEntry(editableTimeEntry.toCreateTimeEntryDto()))))
+    }
+
+    func test_doneButtonTapped_withAnExistingTimeEntry_updatesTimeEntry() {
+
+        let initialTimeEntry = TimeEntry.with(
+            id: 0,
+            description: "Initial name",
+            billable: true,
+            start: mockTime.now(),
+            duration: 50,
+            workspaceId: mockUser.defaultWorkspace,
+            tagIds: [])
+        
+        var entities = TimeLogEntities()
+        entities.timeEntries.append(initialTimeEntry)
+
+        var editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+        editableTimeEntry.ids = [0]
+        editableTimeEntry.description = "Altered name"
+        editableTimeEntry.billable = false
+        editableTimeEntry.start = mockTime.now() - 10
+        editableTimeEntry.duration = 100
+        editableTimeEntry.tagIds = [1]
+
+        let expectedTimeEntry = initialTimeEntry.with(
+            description: editableTimeEntry.description,
+            start: editableTimeEntry.start,
+            duration: editableTimeEntry.duration,
+            workspaceId: editableTimeEntry.workspaceId,
+            projectId: editableTimeEntry.projectId,
+            taskId: editableTimeEntry.taskId,
+            tagIds: editableTimeEntry.tagIds,
+            billable: editableTimeEntry.billable)
+
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: entities,
+            editableTimeEntry: editableTimeEntry,
+            autocompleteSuggestions: [],
+            dateTimePickMode: .none,
+            cursorPosition: 0
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .doneButtonTapped),
+            Step(.receive, .timeEntries(.updateTimeEntry(expectedTimeEntry))))
+    }
+    
+    func test_doneButtonTapped_withExistingTimeEntries_updatesTimeEntries() {
+
+        let initialTimeEntries = [0, 1, 2, 3, 4].map { TimeEntry.with(
+            id: Int64($0),
+            description: "Initial name",
+            billable: true,
+            start: mockTime.now(),
+            duration: 50,
+            workspaceId: mockUser.defaultWorkspace,
+            tagIds: []) }
+
+        var entities = TimeLogEntities()
+        entities.timeEntries.append(contentsOf: initialTimeEntries)
+
+        var editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+        editableTimeEntry.ids = [0, 1, 2, 3, 4]
+        editableTimeEntry.description = "Altered name"
+        editableTimeEntry.billable = false
+        editableTimeEntry.start = mockTime.now() - 10
+        editableTimeEntry.duration = 100
+        editableTimeEntry.tagIds = [1]
+
+        let expectedTimeEntries = initialTimeEntries.map { $0.with(
+            description: editableTimeEntry.description,
+            workspaceId: editableTimeEntry.workspaceId,
+            projectId: editableTimeEntry.projectId,
+            taskId: editableTimeEntry.taskId,
+            tagIds: editableTimeEntry.tagIds,
+            billable: editableTimeEntry.billable) }
+        
+        let expectedActions = expectedTimeEntries.map { StartEditAction.timeEntries(.updateTimeEntry($0)) }
+
+        let state = StartEditState(
+            user: Loadable.loaded(mockUser),
+            entities: entities,
+            editableTimeEntry: editableTimeEntry,
+            autocompleteSuggestions: [],
+            dateTimePickMode: .none,
+            cursorPosition: 0
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .doneButtonTapped),
+            Step(.receive, expectedActions))
+    }
 
     func testDoneButtonTappedWhenTheresARunningEntry() {
 
@@ -583,7 +707,7 @@ class StartEditReducerTests: XCTestCase {
         let workspaceId: Int64 = 10
         let projectName = "proj"
         let timeEntry = TimeEntry.with(description: "old description @proj", workspaceId: workspaceId)
-        
+
         let state = StartEditState(
             user: Loadable.loaded(mockUser),
             entities: TimeLogEntities(),
@@ -592,9 +716,9 @@ class StartEditReducerTests: XCTestCase {
             dateTimePickMode: .stop,
             cursorPosition: 19
         )
-        
+
         let suggestion = AutocompleteSuggestion.createProjectSuggestion(name: projectName)
-        
+
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
@@ -612,7 +736,7 @@ class StartEditReducerTests: XCTestCase {
         let workspaceId: Int64 = 10
         let tagName = "me tag"
         let timeEntry = TimeEntry.with(description: "old description #me tag", workspaceId: workspaceId)
-        
+
         let state = StartEditState(
             user: Loadable.loaded(mockUser),
             entities: TimeLogEntities(),
@@ -621,10 +745,10 @@ class StartEditReducerTests: XCTestCase {
             dateTimePickMode: .stop,
             cursorPosition: 19
         )
-        
+
         let expectedTag = Tag(id: 99999, name: tagName, workspaceId: workspaceId)
         let suggestion = AutocompleteSuggestion.createTagSuggestion(name: tagName)
-        
+
         assertReducerFlow(
             initialState: state,
             reducer: reducer,

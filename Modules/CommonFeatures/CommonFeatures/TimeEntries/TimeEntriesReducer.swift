@@ -26,6 +26,11 @@ public func createTimeEntriesReducer(time: Time, repository: TimeLogRepository) 
             return [
                 startTimeEntryEffect(repository, timeEntry: startTimeEntryDto)
             ]
+            
+        case let .updateTimeEntry(updatedTimeEntry):
+            return [
+                updateTimeEntryEffect(repository, timeEntry: updatedTimeEntry)
+            ]
 
         case let .createTimeEntry(createTimeEntryDto):
             return [
@@ -65,6 +70,7 @@ public func createTimeEntriesReducer(time: Time, repository: TimeLogRepository) 
         }
     }
 }
+// swiftlint:enable cyclomatic_complexity
 
 func deleteTimeEntryEffect(_ repository: TimeLogRepository, timeEntryId: Int64) -> Effect<TimeEntriesAction> {
     return repository.deleteTimeEntry(timeEntryId: timeEntryId)
@@ -97,4 +103,3 @@ func updateTimeEntryEffect(_ repository: TimeLogRepository, timeEntry: TimeEntry
             catch: { error in .setError(error.toErrorType()) }
         )
 }
-// swiftlint:enable cyclomatic_complexity

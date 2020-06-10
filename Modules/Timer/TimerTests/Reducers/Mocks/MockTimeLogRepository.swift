@@ -83,6 +83,10 @@ class MockTimeLogRepository: TimeLogRepository {
     func updateTimeEntry(_ timeEntry: TimeEntry) -> Single<Void> {
         return Single.just(())
     }
+    
+    func updateTimeEntries(_ timeEntries: [TimeEntry]) -> Single<Void> {
+        return Single.just(())
+    }
 
     func deleteTimeEntry(timeEntryId: Int64) -> Single<Void> {
         deleteCalled = true

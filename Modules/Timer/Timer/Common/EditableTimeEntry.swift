@@ -79,6 +79,24 @@ extension EditableTimeEntry {
         return StartTimeEntryDto(
             workspaceId: self.workspaceId,
             description: self.description,
+            billable: self.billable,
+            projectId: self.projectId,
+            taskId: self.taskId,
+            tagIds: self.tagIds
+        )
+    }
+    
+    func toCreateTimeEntryDto() -> CreateTimeEntryDto {
+        guard let start = self.start,
+            let duration = self.duration else { fatalError("TimeEntry must have a start date and duration") }
+        return CreateTimeEntryDto(
+            workspaceId: self.workspaceId,
+            description: self.description,
+            billable: self.billable,
+            start: start,
+            duration: duration,
+            projectId: self.projectId,
+            taskId: self.taskId,
             tagIds: self.tagIds
         )
     }

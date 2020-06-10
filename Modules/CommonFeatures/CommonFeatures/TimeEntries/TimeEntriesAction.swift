@@ -7,6 +7,7 @@ public enum TimeEntriesAction: Equatable {
     case continueTimeEntry(Int64)
     case startTimeEntry(StartTimeEntryDto)
     case createTimeEntry(CreateTimeEntryDto)
+    case updateTimeEntry(TimeEntry)
     case stopRunningTimeEntry
     case timeEntryDeleted(Int64)
     case timeEntryUpdated(TimeEntry)
@@ -27,6 +28,8 @@ extension TimeEntriesAction: CustomDebugStringConvertible {
             return "StartTimeEntry: \(startTimeEntryDto.description)"
         case let .createTimeEntry(createTimeEntryDto):
             return "CreateTimeEntry: \(createTimeEntryDto.description)"
+        case let .updateTimeEntry(updatedTimeEntry):
+            return "UpdateTimeEntry: \(updatedTimeEntry.description)"
         case .stopRunningTimeEntry:
             return "StopRunningTimeEntry"
         case let .timeEntryDeleted(id):

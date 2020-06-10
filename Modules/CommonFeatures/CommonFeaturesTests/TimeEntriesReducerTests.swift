@@ -140,6 +140,27 @@ class TimeEntriesReducerTests: XCTestCase {
 
         assert(mockRepository.startCalled, "Must call start on repository")
     }
+    
+    func test_updateTimeEntry_updatesTimeEntry() {
+        let timeEntries = EntityCollection([
+            TimeEntry.with(id: 0, start: now.addingTimeInterval(-300), duration: 100)
+        ])
+
+        var expected = timeEntries[0]
+        expected.description = "Test"
+
+        assertReducerFlow(
+            initialState: timeEntries,
+            reducer: reducer,
+            steps:
+            Step(.send, .updateTimeEntry(expected)),
+            Step(.receive, .timeEntryUpdated(expected)) {
+                $0[id: expected.id] = expected
+            }
+        )
+        
+        assert(mockRepository.updateTimeEntryCalled, "Must call update TE on repository")
+    }
 
     func test_createTimeEntry_createsATimeEntry() {
 

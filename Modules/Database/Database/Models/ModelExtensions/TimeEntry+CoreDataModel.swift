@@ -11,6 +11,7 @@ extension TimeEntry: CoreDataModel {
             duration: managedObject.duration?.doubleValue,
             billable: managedObject.billable,
             workspaceId: managedObject.workspace.id,
+            projectId: managedObject.project?.id,
             tagIds: managedObject.tags.map { $0.id }
         )
     }
@@ -22,6 +23,9 @@ extension TimeEntry: CoreDataModel {
         managedObject.duration = self.duration != nil ? NSNumber(value: self.duration!) : nil
         managedObject.billable = self.billable
         managedObject.workspace = try ManagedWorkspace.findOrFetch(in: context, withId: workspaceId)!
+        managedObject.project = self.projectId != nil
+            ? try ManagedProject.findOrFetch(in: context, withId: self.projectId!)!
+            : nil
         managedObject.tags = Set(try self.tagIds.map { try ManagedTag.findOrFetch(in: context, withId: $0)! })
     }
 }

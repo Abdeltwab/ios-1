@@ -15,6 +15,7 @@ public protocol TimeLogRepository {
     func startTimeEntry(_ timeEntry: StartTimeEntryDto) -> Single<(started: TimeEntry, stopped: TimeEntry?)>
     func createTimeEntry(_ timeEntry: CreateTimeEntryDto) -> Single<TimeEntry>
     func updateTimeEntry(_ timeEntry: TimeEntry) -> Single<Void>
+    func updateTimeEntries(_ timeEntries: [TimeEntry]) -> Single<Void>
     func deleteTimeEntry(timeEntryId: Int64) -> Single<Void>
     func createProject(_ project: ProjectDTO) -> Single<Project>
     func createTag(_ project: TagDTO) -> Single<Tag>
@@ -115,7 +116,11 @@ extension Repository: TimeLogRepository {
     }
     
     public func updateTimeEntry(_ timeEntry: TimeEntry) -> Single<Void> {
-        return Single.just(())
+        return database.timeEntries.rx.update(entity: timeEntry)
+    }
+    
+    public func updateTimeEntries(_ timeEntries: [TimeEntry]) -> Single<Void> {
+        return database.timeEntries.rx.update(entities: timeEntries)
     }
     
     public func deleteTimeEntry(timeEntryId: Int64) -> Single<Void> {
