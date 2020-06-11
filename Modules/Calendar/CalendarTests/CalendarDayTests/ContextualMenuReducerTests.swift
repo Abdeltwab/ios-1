@@ -8,6 +8,7 @@ import RxBlocking
 import Timer
 @testable import Calendar
 
+// swiftlint:disable type_body_length
 class ContextualMenuReducerTests: XCTestCase {
 
     var now = Date(timeIntervalSince1970: 987654321)
@@ -98,6 +99,58 @@ class ContextualMenuReducerTests: XCTestCase {
             Step(.send, ContextualMenuAction.dismissButtonTapped) {
                 $0.selectedItem = nil
             }
+        )
+    }
+    
+    func test_saveButtonTapped_withANewTimeEntrySelected_createsANewTimeEntry() {
+
+        var editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+        editableTimeEntry.start = mockTime.now()
+        editableTimeEntry.duration = 600
+
+        let state = ContextualMenuState(
+            user: .loaded(mockUser),
+            selectedItem: .left(editableTimeEntry),
+            timeEntries: EntityCollection<TimeEntry>([])
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, .saveButtonTapped) { $0.selectedItem = nil},
+            Step(.receive, .timeEntries(.createTimeEntry(editableTimeEntry.toCreateTimeEntryDto())))
+        )
+    }
+
+    func test_saveButtonTapped_withAnExistingTimeEntrySelected_updatesThatTimeEntry() {
+
+        var editableTimeEntry = EditableTimeEntry.empty(workspaceId: mockUser.defaultWorkspace)
+        editableTimeEntry.ids = [0]
+        editableTimeEntry.start = mockTime.now()
+        editableTimeEntry.duration = 600
+        
+        var timeEntry = TimeEntry.init(id: 0,
+                                       description: "",
+                                       start: mockTime.now(),
+                                       duration: 300,
+                                       billable: false,
+                                       workspaceId: mockUser.defaultWorkspace)
+
+        let state = ContextualMenuState(
+            user: .loaded(mockUser),
+            selectedItem: .left(editableTimeEntry),
+            timeEntries: EntityCollection<TimeEntry>([timeEntry])
+        )
+        
+        timeEntry.duration = 600
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, ContextualMenuAction.saveButtonTapped) { $0.selectedItem = nil},
+            Step(.receive, .timeEntries(.updateTimeEntry(timeEntry)))
         )
     }
 

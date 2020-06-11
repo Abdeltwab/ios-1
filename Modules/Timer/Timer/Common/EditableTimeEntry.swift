@@ -75,7 +75,7 @@ public struct EditableTimeEntry: Equatable {
 }
 
 extension EditableTimeEntry {
-    func toStartTimeEntryDto() -> StartTimeEntryDto {
+    public func toStartTimeEntryDto() -> StartTimeEntryDto {
         return StartTimeEntryDto(
             workspaceId: self.workspaceId,
             description: self.description,
@@ -86,7 +86,7 @@ extension EditableTimeEntry {
         )
     }
     
-    func toCreateTimeEntryDto() -> CreateTimeEntryDto {
+    public func toCreateTimeEntryDto() -> CreateTimeEntryDto {
         guard let start = self.start,
             let duration = self.duration else { fatalError("TimeEntry must have a start date and duration") }
         return CreateTimeEntryDto(

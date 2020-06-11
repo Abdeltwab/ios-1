@@ -32,7 +32,7 @@ public struct CalendarItem: Equatable {
                 return "#000000"
             case .selectedItem(let selectedItem):
                 switch selectedItem {
-                case let .left:
+                case .left:
                     return "#000000"
                 case let .right(calendarEvent):
                     return calendarEvent.color
