@@ -17,6 +17,7 @@ public class CalendarDayViewController: UIViewController, Storyboarded {
 
     @IBOutlet var collectionView: UICollectionView!
     private var dataSource: CalendarDayCollectionViewDataSource!
+    private var layout: CalendarDayCollectionViewLayout!
 
     private var disposeBag = DisposeBag()
 
@@ -28,8 +29,22 @@ public class CalendarDayViewController: UIViewController, Storyboarded {
 
         // MARK: Configure collectionView
 
-        collectionView.register(CalendarItemCollectionViewCell.nib, forCellWithReuseIdentifier: CalendarItemCollectionViewCell.reuseIdentifier)
-        dataSource = CalendarDayCollectionViewDataSource()
+        collectionView.register(CalendarItemCollectionViewCell.nib,
+                                forCellWithReuseIdentifier: CalendarItemCollectionViewCell.reuseIdentifier)
+        collectionView.register(HourIndicatorSupplementaryView.nib,
+                                forSupplementaryViewOfKind: CalendarDayCollectionViewLayout.SupplementaryViews.hourIndicatorKind,
+                                withReuseIdentifier: HourIndicatorSupplementaryView.reuseIdentifier)
+        collectionView.register(EditingHourIndicatorSupplementaryView.nib,
+                                forSupplementaryViewOfKind: CalendarDayCollectionViewLayout.SupplementaryViews.editingHourIndicatorKind,
+                                withReuseIdentifier: EditingHourIndicatorSupplementaryView.reuseIdentifier)
+        collectionView.register(CurrentTimeSupplementaryView.nib,
+                                forSupplementaryViewOfKind: CalendarDayCollectionViewLayout.SupplementaryViews.currentTimeKind,
+                                withReuseIdentifier: CurrentTimeSupplementaryView.reuseIdentifier)
+
+        dataSource = CalendarDayCollectionViewDataSource(time: time)
+        layout = CalendarDayCollectionViewLayout(time: time)
+        layout.delegate = dataSource
+        collectionView.setCollectionViewLayout(layout, animated: false)
 
         store.select({ calendarItemsSelector($0, self.time) })
             .mapTo({ [CalendarItemsSingleSection(items: $0)] })

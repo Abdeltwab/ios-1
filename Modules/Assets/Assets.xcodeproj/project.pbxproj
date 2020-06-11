@@ -23,6 +23,9 @@
 		B42EB0B9246D90DD0036F707 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B42EB0B8246D90DD0036F707 /* Colors.xcassets */; };
 		B42EB0BB246D921B0036F707 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42EB0BA246D921B0036F707 /* Colors.swift */; };
 		B448913124852DD200D144B4 /* CalendarItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B448913024852DD200D144B4 /* CalendarItemCollectionViewCell.xib */; };
+		B47397DB248FDAF100DA8620 /* HourIndicatorSupplementaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B47397DA248FDAF100DA8620 /* HourIndicatorSupplementaryView.xib */; };
+		B47397E3248FEE3000DA8620 /* EditingHourIndicatorSupplementaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B47397E2248FEE3000DA8620 /* EditingHourIndicatorSupplementaryView.xib */; };
+		B47397E7248FF0A800DA8620 /* CurrentTimeSupplementaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B47397E6248FF0A800DA8620 /* CurrentTimeSupplementaryView.xib */; };
 		CC817231247582BA004F1152 /* XIBLocalizablePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC817230247582BA004F1152 /* XIBLocalizablePlaceholder.swift */; };
 		CCAC4BAF24744D5100F9E3A3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCAC4BA524743D8200F9E3A3 /* Localizable.strings */; };
 		CCAC4BB024744D5300F9E3A3 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CCAC4BA324743D8200F9E3A3 /* Localizable.stringsdict */; };
@@ -61,6 +64,9 @@
 		B42EB0B8246D90DD0036F707 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B42EB0BA246D921B0036F707 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B448913024852DD200D144B4 /* CalendarItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		B47397DA248FDAF100DA8620 /* HourIndicatorSupplementaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourIndicatorSupplementaryView.xib; sourceTree = "<group>"; };
+		B47397E2248FEE3000DA8620 /* EditingHourIndicatorSupplementaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditingHourIndicatorSupplementaryView.xib; sourceTree = "<group>"; };
+		B47397E6248FF0A800DA8620 /* CurrentTimeSupplementaryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentTimeSupplementaryView.xib; sourceTree = "<group>"; };
 		CC817230247582BA004F1152 /* XIBLocalizablePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XIBLocalizablePlaceholder.swift; sourceTree = "<group>"; };
 		CCAC4BA424743D8200F9E3A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = Base; path = Base.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		CCAC4BA624743D8200F9E3A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -182,6 +188,9 @@
 			isa = PBXGroup;
 			children = (
 				B448913024852DD200D144B4 /* CalendarItemCollectionViewCell.xib */,
+				B47397DA248FDAF100DA8620 /* HourIndicatorSupplementaryView.xib */,
+				B47397E2248FEE3000DA8620 /* EditingHourIndicatorSupplementaryView.xib */,
+				B47397E6248FF0A800DA8620 /* CurrentTimeSupplementaryView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -272,6 +281,7 @@
 			files = (
 				8C0B54C624508E400078E250 /* Database.xcdatamodeld in Resources */,
 				CCBD697F2474257200182A15 /* Timer.storyboard in Resources */,
+				B47397E7248FF0A800DA8620 /* CurrentTimeSupplementaryView.xib in Resources */,
 				B42EB0B9246D90DD0036F707 /* Colors.xcassets in Resources */,
 				CCAC4BAF24744D5100F9E3A3 /* Localizable.strings in Resources */,
 				8CFDB37F247C0E1F00952533 /* Calendar.storyboard in Resources */,
@@ -280,12 +290,14 @@
 				CCBD6991247425A800182A15 /* Project.storyboard in Resources */,
 				8C2517C42403C2CA00BAD4B5 /* tags.txt in Resources */,
 				8C2517C02403C2CA00BAD4B5 /* me.txt in Resources */,
+				B47397DB248FDAF100DA8620 /* HourIndicatorSupplementaryView.xib in Resources */,
 				CCAC4BB024744D5300F9E3A3 /* Localizable.stringsdict in Resources */,
 				8C2517BF2403C2CA00BAD4B5 /* workspaces.txt in Resources */,
 				CCBD69882474259A00182A15 /* Onboarding.storyboard in Resources */,
 				8C2517C12403C2CA00BAD4B5 /* projects.txt in Resources */,
 				8C2517C22403C2CA00BAD4B5 /* clients.txt in Resources */,
 				B42EB0B4246D8DF20036F707 /* Images.xcassets in Resources */,
+				B47397E3248FEE3000DA8620 /* EditingHourIndicatorSupplementaryView.xib in Resources */,
 				8CB5452E240E49C300154473 /* tasks.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

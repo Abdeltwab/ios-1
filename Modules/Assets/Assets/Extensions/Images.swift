@@ -18,7 +18,7 @@ public struct Images {
         }
         
         public static var stripesPattern: UIImage {
-            UIImage(named: "icTime", in: Assets.bundle, compatibleWith: nil)!.withRenderingMode(.alwaysTemplate)
+            UIImage(named: "stripes", in: Assets.bundle, compatibleWith: nil)!.withRenderingMode(.alwaysTemplate)
         }
     }
 }

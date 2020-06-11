@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7EP-UB-XMW" customClass="CurrentTimeSupplementaryView" customModule="Calendar">
+            <rect key="frame" x="0.0" y="0.0" width="338" height="8"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="338" height="8"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sio-u2-au5">
+                        <rect key="frame" x="8" y="0.0" width="8" height="8"/>
+                        <color key="backgroundColor" red="0.023529411760000001" green="0.66666666669999997" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="2Y9-Lt-QEb"/>
+                            <constraint firstAttribute="height" constant="8" id="Vdg-xY-bAh"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iA7-6V-Aox">
+                        <rect key="frame" x="12" y="3.5" width="326" height="1"/>
+                        <color key="backgroundColor" red="0.023529411760000001" green="0.66666666669999997" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="tRi-Qd-CNo"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="iA7-6V-Aox" firstAttribute="leading" secondItem="Sio-u2-au5" secondAttribute="centerX" id="1y5-gL-AyI"/>
+                <constraint firstItem="Sio-u2-au5" firstAttribute="centerY" secondItem="7EP-UB-XMW" secondAttribute="centerY" id="DVz-AG-4KA"/>
+                <constraint firstItem="Sio-u2-au5" firstAttribute="top" secondItem="7EP-UB-XMW" secondAttribute="top" id="HhX-ZM-n5q"/>
+                <constraint firstItem="iA7-6V-Aox" firstAttribute="centerY" secondItem="7EP-UB-XMW" secondAttribute="centerY" id="O4d-AD-24b"/>
+                <constraint firstItem="Sio-u2-au5" firstAttribute="leading" secondItem="7EP-UB-XMW" secondAttribute="leading" constant="8" id="RJP-Aj-6EU"/>
+                <constraint firstAttribute="bottom" secondItem="Sio-u2-au5" secondAttribute="bottom" id="Thj-K6-6KV"/>
+                <constraint firstAttribute="trailing" secondItem="iA7-6V-Aox" secondAttribute="trailing" id="t7y-bY-4Rf"/>
+            </constraints>
+            <size key="customSize" width="338" height="30"/>
+            <point key="canvasLocation" x="178" y="70"/>
+        </collectionViewCell>
+    </objects>
+</document>

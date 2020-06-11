@@ -86,11 +86,8 @@ public struct CalendarItem: Equatable {
     var description: String { value.description }
     var color: String { value.color }
     var start: Date { value.start }
-    var duration: TimeInterval?
-    var stop: Date? {
-        guard let duration = duration else { return nil }
-        return start + duration
-    }
+    var duration: TimeInterval
+    var stop: Date { start + duration }
 }
 
 extension CalendarItem: IdentifiableType {
