@@ -73,8 +73,8 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: Touch related properties
-    private var topDragTouchArea: CGRect { topDragIndicator.frame.insetBy(dx: -20, dy: -20) }
-    private var bottomDragTouchArea: CGRect { bottomDragIndicator.frame.insetBy(dx: -20, dy: -20) }
+    public var topDragTouchArea: CGRect { topDragIndicator.frame.insetBy(dx: -20, dy: -20) }
+    public var bottomDragTouchArea: CGRect { bottomDragIndicator.frame.insetBy(dx: -20, dy: -20) }
 
     // MARK: Convenience properties
     private var isEditing = false

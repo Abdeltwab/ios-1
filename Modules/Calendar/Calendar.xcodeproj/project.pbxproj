@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		342D40142492769400D50D3F /* EditTimeEntryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342D40132492769400D50D3F /* EditTimeEntryHelper.swift */; };
 		3448B3DD24850D0F00DB85C9 /* ContextualMenuReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3448B3DC24850D0F00DB85C9 /* ContextualMenuReducerTests.swift */; };
 		559FF6CD3B698FCABB15FD01 /* Pods_Calendar_CalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097E62FDCBC7925F4F46B626 /* Pods_Calendar_CalendarTests.framework */; };
 		8CE188DE247FC5BB00FD81C7 /* Repository.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CE188DD247FC5BB00FD81C7 /* Repository.framework */; };
@@ -81,6 +82,7 @@
 		071A28E0DB2F7C6A0900BBB4 /* Pods-Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.debug.xcconfig"; path = "Target Support Files/Pods-Calendar/Pods-Calendar.debug.xcconfig"; sourceTree = "<group>"; };
 		097E62FDCBC7925F4F46B626 /* Pods_Calendar_CalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendar_CalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BE2579A412815787A21827C /* Pods_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		342D40132492769400D50D3F /* EditTimeEntryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimeEntryHelper.swift; sourceTree = "<group>"; };
 		3448B3DC24850D0F00DB85C9 /* ContextualMenuReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuReducerTests.swift; sourceTree = "<group>"; };
 		387803EDA935829A817A2A17 /* Pods-Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar.release.xcconfig"; path = "Target Support Files/Pods-Calendar/Pods-Calendar.release.xcconfig"; sourceTree = "<group>"; };
 		8CE188DD247FC5BB00FD81C7 /* Repository.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Repository.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -300,6 +302,7 @@
 				B438EE3624893E7200B805A2 /* CalendarDayCollectionViewDataSource.swift */,
 				B438EE38248971ED00B805A2 /* CalendarDayCollectionViewLayout.swift */,
 				B496577E249108920061340B /* CreateTimeEntryHelper.swift */,
+				342D40132492769400D50D3F /* EditTimeEntryHelper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				AC4E25C6247D6CCA004655F6 /* CalendarDayReducer.swift in Sources */,
 				B444280124803DE300BAA3EE /* Constants.swift in Sources */,
 				B47397E9248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift in Sources */,
+				342D40142492769400D50D3F /* EditTimeEntryHelper.swift in Sources */,
 				8CFDB387247C127F00952533 /* CalendarAction.swift in Sources */,
 				8CFDB389247CDBEA00952533 /* CalendarCoordinator.swift in Sources */,
 				ACBA123F24814F57007F939D /* ContextualMenuAction.swift in Sources */,
