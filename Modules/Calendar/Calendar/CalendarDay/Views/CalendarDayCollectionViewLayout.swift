@@ -246,4 +246,9 @@ class CalendarDayCollectionViewLayout: UICollectionViewLayout {
             invalidateLayout(with: invalidationContext)
         }
     }
+
+    // MARK: TimeInterval at point
+    public func timeInterval(at point: CGPoint) -> TimeInterval {
+        return TimeInterval(point.y / hourHeight) * TimeInterval.secondsInAnHour
+    }
 }

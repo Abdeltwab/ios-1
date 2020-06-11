@@ -18,6 +18,7 @@ public class CalendarDayViewController: UIViewController, Storyboarded {
     @IBOutlet var collectionView: UICollectionView!
     private var dataSource: CalendarDayCollectionViewDataSource!
     private var layout: CalendarDayCollectionViewLayout!
+    private var createTimeEntryHelper: CreateTimeEntryHelper!
 
     private var disposeBag = DisposeBag()
 
@@ -45,6 +46,10 @@ public class CalendarDayViewController: UIViewController, Storyboarded {
         layout = CalendarDayCollectionViewLayout(time: time)
         layout.delegate = dataSource
         collectionView.setCollectionViewLayout(layout, animated: false)
+        createTimeEntryHelper = CreateTimeEntryHelper(collectionView: collectionView,
+                                                      dataSource: dataSource,
+                                                      layout: layout,
+                                                      store: store)
 
         store.select({ calendarItemsSelector($0, self.time) })
             .mapTo({ [CalendarItemsSingleSection(items: $0)] })

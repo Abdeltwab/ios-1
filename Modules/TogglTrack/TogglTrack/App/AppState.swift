@@ -69,12 +69,14 @@ extension AppState {
     var calendarState: CalendarState {
         get {
             CalendarState(
+                user: user,
                 localCalendarState: localCalendarState,
                 editableTimeEntry: editableTimeEntry
             )
         }
 
         set {
+            user = newValue.user
             localCalendarState = newValue.localCalendarState
             editableTimeEntry = newValue.editableTimeEntry
         }

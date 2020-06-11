@@ -5,10 +5,10 @@ import Models
 public enum CalendarDayAction: Equatable {
     case calendarViewAppeared
     case calendarEventsFetched([CalendarEvent])
-    case startTimeDragged(Date)
-    case stopTimeDragged(Date)
-    case timeEntryDragged(Date)
-    case emptyPositionLongPressed(Date)
+    case startTimeDragged(TimeInterval)
+    case stopTimeDragged(TimeInterval)
+    case timeEntryDragged(TimeInterval)
+    case emptyPositionLongPressed(TimeInterval)
     case itemTapped(CalendarItem)
 }
 

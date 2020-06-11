@@ -60,15 +60,15 @@ class CalendarDayReducerTests: XCTestCase {
             selectedItem: .left(editableTimeEntry)
         )
 
-        let newTime = now.addingTimeInterval(20)
+        let timeInterval: TimeInterval = 20
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, CalendarDayAction.startTimeDragged(newTime)) {
+            Step(.send, CalendarDayAction.startTimeDragged(timeInterval)) {
                 guard case var .left(editableTimeEntry) = $0.selectedItem else { return }
-                editableTimeEntry.start = newTime
+                editableTimeEntry.start = self.now + timeInterval
                 editableTimeEntry.duration = 40
                 $0.selectedItem = .left(editableTimeEntry)
             }
@@ -85,13 +85,13 @@ class CalendarDayReducerTests: XCTestCase {
             selectedItem: nil
         )
 
-        let newTime = now.addingTimeInterval(20)
+        let timeInterval: TimeInterval = 20
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, CalendarDayAction.startTimeDragged(newTime))
+            Step(.send, CalendarDayAction.startTimeDragged(timeInterval))
         )
     }
 
@@ -109,15 +109,15 @@ class CalendarDayReducerTests: XCTestCase {
             selectedItem: .left(editableTimeEntry)
         )
 
-        let newTime = now.addingTimeInterval(80)
+        let timeInterval: TimeInterval = 20
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, CalendarDayAction.stopTimeDragged(newTime)) {
+            Step(.send, CalendarDayAction.stopTimeDragged(timeInterval)) {
                 guard case var .left(editableTimeEntry) = $0.selectedItem else { return }
-                editableTimeEntry.duration = 30
+                editableTimeEntry.duration = 10
                 $0.selectedItem = .left(editableTimeEntry)
             }
         )
@@ -133,13 +133,13 @@ class CalendarDayReducerTests: XCTestCase {
             selectedItem: nil
         )
 
-        let newTime = now.addingTimeInterval(20)
+        let timeInterval: TimeInterval = 20
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, CalendarDayAction.startTimeDragged(newTime))
+            Step(.send, CalendarDayAction.startTimeDragged(timeInterval))
         )
     }
 
@@ -157,15 +157,15 @@ class CalendarDayReducerTests: XCTestCase {
             selectedItem: .left(editableTimeEntry)
         )
 
-        let newTime = now.addingTimeInterval(80)
+        let timeInterval: TimeInterval = 20
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, CalendarDayAction.timeEntryDragged(newTime)) {
+            Step(.send, CalendarDayAction.timeEntryDragged(timeInterval)) {
                 guard case var .left(editableTimeEntry) = $0.selectedItem else { return }
-                editableTimeEntry.start = newTime
+                editableTimeEntry.start = self.now + timeInterval
                 $0.selectedItem = .left(editableTimeEntry)
             }
         )
@@ -181,13 +181,13 @@ class CalendarDayReducerTests: XCTestCase {
             selectedItem: nil
         )
 
-        let newTime = now.addingTimeInterval(20)
+        let timeInterval: TimeInterval = 20
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, CalendarDayAction.startTimeDragged(newTime))
+            Step(.send, CalendarDayAction.startTimeDragged(timeInterval))
         )
     }
 
@@ -205,30 +205,12 @@ class CalendarDayReducerTests: XCTestCase {
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, CalendarDayAction.emptyPositionLongPressed(now)) {
+            Step(.send, CalendarDayAction.emptyPositionLongPressed(0)) {
                 var editableTimeEntry = EditableTimeEntry.empty(workspaceId: 0)
                 editableTimeEntry.start = self.now
                 editableTimeEntry.duration = defaultTimeEntryDuration
                 $0.selectedItem = .left(editableTimeEntry)
             }
-        )
-    }
-
-    func test_emptyPositionLongPressed_whenselectedItemIsNotNil_shouldDoNothing() {
-
-        let state = CalendarDayState(
-            user: .loaded(mockUser),
-            selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
-            calendarEvents: [:],
-            selectedItem: .left(EditableTimeEntry.empty(workspaceId: 0))
-        )
-
-        assertReducerFlow(
-            initialState: state,
-            reducer: reducer,
-            steps:
-            Step(.send, CalendarDayAction.emptyPositionLongPressed(now))
         )
     }
 
