@@ -1,4 +1,5 @@
 import UIKit
+import Assets
 
 public final class Snackbar: UIView {
 
@@ -48,7 +49,7 @@ public final class Snackbar: UIView {
     }
 
     private func applyStyles() {
-        backgroundColor = .systemTeal
+        backgroundColor = Color.continueAction.uiColor
         layer.cornerRadius = 8
     }
 

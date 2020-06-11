@@ -1,4 +1,5 @@
 import UIKit
+import Assets
 
 public class Tooltip: UIView {
 
@@ -33,9 +34,9 @@ public class Tooltip: UIView {
     }
 
     private func applyStyles() {
-        backgroundColor = .white
+        backgroundColor = Color.backgroundSecondary.uiColor
         layer.cornerRadius = 8
-        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowColor = Color.shadow.cgColor
         layer.shadowOpacity = 0.18
         layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowRadius = 6

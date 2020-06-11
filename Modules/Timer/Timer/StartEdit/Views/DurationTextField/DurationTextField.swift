@@ -1,16 +1,17 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Assets
 
 public class DurationTextField: UITextField, UITextFieldDelegate {
 
-    private let placeHolderColor = UIColor.lightGray
+    private let placeHolderColor = Color.ghostText.uiColor
     private var originalDuration: TimeInterval?
     private var input: DurationTextFieldInfo = .empty
     private var formattedDuration: String = ""
     private let defaultFont = UIFont.monospacedDigitSystemFont(ofSize: 27, weight: .regular)
-    private let defaultTintColor = UIColor.gray
-    private let defaultTextColor = UIColor.black
+    private let defaultTintColor = Color.textSecondary.uiColor
+    private let defaultTextColor = Color.textPrimary.uiColor
     public var duration: TimeInterval = 0
 
     public override func awakeFromNib() {

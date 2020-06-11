@@ -2,6 +2,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import UIKit
+import Assets
 
 class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
 
@@ -32,12 +33,12 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     init(viewController: ContainedViewController) {
         containedViewController = viewController
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     override func viewDidLoad() {
         view.backgroundColor = .clear
         view.isOpaque = false
@@ -53,7 +54,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
             .map(keyboardIntersectionHeight(notification:))
             .subscribe(onNext: keyboardWillChange(intersectionHeight:))
             .disposed(by: disposeBag)
-        
+
         containedViewController.visibility
             .drive(onNext: { [weak self] isVisible in
                 isVisible ? self?.show() : self?.hide()
@@ -73,13 +74,13 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
 
         containedViewController.view.layer.cornerRadius = 10
         containedViewController.view.clipsToBounds = true
-        containedViewController.view.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
+        containedViewController.view.layer.shadowColor = Color.shadow.cgColor
         containedViewController.view.layer.shadowOffset = CGSize(width: 0, height: -6)
         containedViewController.view.layer.shadowRadius = 10.0
         containedViewController.view.layer.shadowOpacity = 0.2
         containedViewController.view.clipsToBounds = false
 
-        overlay.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        overlay.backgroundColor = Color.overlay.uiColor
         overlay.alpha = 0
         view.insertSubview(overlay, at: 0)
         overlay.constraintToParent()
@@ -120,7 +121,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
 
     private func layout() {
         guard view.superview != nil else { return }
-        
+
         switch state {
         case .hidden:
             view.isUserInteractionEnabled = false
@@ -140,7 +141,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         UIView.animate(withDuration: 0.3) {
             self.overlay.alpha = self.state == .hidden ? 0 : 1
         }
-        
+
         UIView.animate(
             withDuration: 0.35,
             delay: 0,
@@ -153,9 +154,9 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
             completion: nil)
 
     }
-    
+
     override func didMove(toParent parent: UIViewController?) {
-        
+
         guard let parent = parent else { return }
 
         view.backgroundColor = .clear
@@ -169,13 +170,13 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
     }
-    
+
     @objc
     func panGesture(recognizer: UIPanGestureRecognizer) {
-        
+
         let translation = recognizer.translation(in: view).y
         let velocity = recognizer.velocity(in: view).y
-        
+
         switch recognizer.state {
         case .began:
             isDragging = true
@@ -202,7 +203,7 @@ class BottomSheetViewController: UIViewController, UIGestureRecognizerDelegate {
         default:
             break
         }
-        
+
         recognizer.setTranslation(CGPoint.zero, in: view)
     }
 

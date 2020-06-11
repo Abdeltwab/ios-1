@@ -43,7 +43,7 @@ public class StartEditViewController: UIViewController, Storyboarded {
 
     private var disposeBag = DisposeBag()
     private var timer: Timer?
-    
+
     // swiftlint:disable function_body_length
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,8 +94,8 @@ public class StartEditViewController: UIViewController, Storyboarded {
         store.select({ $0.editableTimeEntry?.billable ?? false })
             .drive(onNext: { isBillable in
                 self.billableButton.backgroundColor = isBillable
-                    ? UIColor.gray
-                    : .white
+                    ? Color.itemActive.uiColor
+                    : Color.itemInactive.uiColor
             })
             .disposed(by: disposeBag)
 
@@ -193,7 +193,7 @@ extension StartEditViewController: BottomSheetContent {
     var scrollView: UIScrollView? {
         return contentScrollView
     }
-    
+
     var visibility: Driver<Bool> {
         return store.select(shouldShowEditView)
     }

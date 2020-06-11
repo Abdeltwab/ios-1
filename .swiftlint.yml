@@ -7,11 +7,11 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
 # configurable rules can be customized from this configuration file
 # binary rules can set their severity level
 line_length:
-    warning: 150
-    error: 250
-    ignores_comments: true
-    ignores_urls: true
-    ignores_interpolated_strings: true
+  warning: 150
+  error: 250
+  ignores_comments: true
+  ignores_urls: true
+  ignores_interpolated_strings: true
 
 identifier_name:
   excluded: # excluded via string array
@@ -20,3 +20,18 @@ identifier_name:
 type_name:
   excluded: # excluded via string array
     - ID
+
+custom_rules:
+  no_ui_colors:
+    excluded: ".*Colors.swift|.*ColorsTests.swift|.*UIColor+Extensions.swift"
+    name: "Don't use Standard UIColors"
+    regex: '[.]\b(systemBlue|systemGreen|systemIndigo|systemOrange|systemPink|systemPurple|systemRed|systemTeal|systemYellow|systemGray|systemGray2|systemGray3|systemGray4|systemGray5|systemGray6|black|blue|brown|cyan|darkGray|gray|green|lightGray|magenta|orange|purple|red|white|yellow)\b'
+    message: "Only use the colors from the Design System"
+    severity: warning
+
+  no_color_initializers:
+    excluded: ".*Colors.swift|.*ColorsTests.swift|.*UIColor+Extensions.swift"
+    name: "Don't use standard color initializers"
+    regex: 'UIColor\((?!hex|patternImage)'
+    message: "Only use the colors from the Design System using the Color initializer"
+    severity: warning

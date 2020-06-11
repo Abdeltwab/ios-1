@@ -111,6 +111,7 @@ class ClockDial: UIView {
         return CGAffineTransform(translationX: wheelCenter.x + transformX, y: wheelCenter.y + transformY)
     }
 
+    // swiftlint:disable no_color_initializers
     private func createMinuteNumber(number: Int, color: CGColor, distanceFromCenter: CGFloat, angle: CGFloat, wheelCenter: CGPoint) -> UIView {
         let label = UILabel()
 
@@ -125,4 +126,5 @@ class ClockDial: UIView {
 
         return label
     }
+    // swiftlint:enable no_color_initializers
 }

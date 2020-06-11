@@ -24,7 +24,6 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
     private var bottomBorderLayer = CAShapeLayer()
     private var topDragIndicatorBorderLayer = CAShapeLayer()
     private var bottomDragIndicatorBorderLayer = CAShapeLayer()
-    private var itemTintColor: UIColor = .black
 
     private let dashLineHeight: CGFloat = 14
     private let halfLineWidth: CGFloat = 0.5
@@ -121,10 +120,10 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
         descriptionLabel.text = calendarItem.description
         descriptionLabel.textColor = foregroundColor
 
-        backgroundLayer.backgroundColor = Colors.background.cgColor
+        backgroundLayer.backgroundColor = Color.backgroundPrimary.cgColor
         patternLayer.backgroundColor = patternLayerColor.cgColor
         tintLayer.backgroundColor = tintLayerColor.cgColor
-        backgroundColor = Colors.background
+        backgroundColor = Color.backgroundPrimary.uiColor
         switch calendarItem.value {
         case .calendarEvent: bottomLine.isHidden = false
         default: bottomLine.isHidden = true
@@ -147,7 +146,7 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
             layer.shadowOpacity = 0.1
             layer.masksToBounds = false
             layer.shadowOffset = CGSize(width: 0, height: 4)
-            layer.shadowColor = UIColor.black.cgColor
+            layer.shadowColor = Color.separator.cgColor
         } else {
             layer.shadowOpacity = 0
         }

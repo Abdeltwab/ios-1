@@ -68,7 +68,9 @@ public extension UIColor {
     }
     // swiftlint:enable identifier_name
 
+    // swiftlint:disable no_ui_colors
     var foregroundColor: UIColor {
         self.luminance < 0.5 ? .white : .black
     }
+    // swiftlint:enable no_ui_colors
 }

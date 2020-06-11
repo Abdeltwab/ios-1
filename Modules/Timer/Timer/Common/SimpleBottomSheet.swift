@@ -18,12 +18,12 @@ class SimpleBottomSheet: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = Color.backgroundCard.uiColor
 
         install(containedViewController)
 
         view.layer.cornerRadius = 10
-        view.layer.shadowColor = UIColor.black.withAlphaComponent(0.4).cgColor
+        view.layer.shadowColor = Color.shadow.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: -6)
         view.layer.shadowRadius = 10.0
         view.layer.shadowOpacity = 0.2
@@ -31,7 +31,7 @@ class SimpleBottomSheet: UIViewController {
 
     override func didMove(toParent parent: UIViewController?) {
         super.didMove(toParent: parent)
-        
+
         guard let parent = parent else { return }
 
         view.leadingAnchor.constraint(equalTo: parent.view.leadingAnchor).isActive = true

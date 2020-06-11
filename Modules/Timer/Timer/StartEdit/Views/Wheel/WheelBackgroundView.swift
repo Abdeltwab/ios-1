@@ -1,11 +1,12 @@
 import UIKit
 import Utils
 import CoreGraphics
+import Assets
 
 class WheelBackgroundView: UIView {
-    private let wheelBackgroundColor: CGColor = UIColor.gray.withAlphaComponent(0.1).cgColor
-    private let thickSegmentColor: CGColor = UIColor.gray.withAlphaComponent(0.6).cgColor
-    private let thinSegmentColor: CGColor = UIColor.gray.withAlphaComponent(0.3).cgColor
+    private let wheelBackgroundColor: CGColor = Color.wheelThumbTint.cgColor
+    private let thickSegmentColor: CGColor = Color.wheelTickMajor.cgColor
+    private let thinSegmentColor: CGColor = Color.wheelTickMinor.cgColor
     private var smallRadius: CGFloat = 0
 
     private var radius: CGFloat { 0.5 * min(frame.width, frame.height) }

@@ -13,7 +13,7 @@ public class Cap: CAShapeLayer {
     private let circleLayer: CAShapeLayer
     private let imageLayer: CALayer
     private let shadowDirection: ShadowDirection
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -70,8 +70,8 @@ public class Cap: CAShapeLayer {
     }
 
     public func traitCollectionDidChange() {
-        circleLayer.fillColor = Colors.background.cgColor
-        shadowColor = Colors.separator.cgColor
+        circleLayer.fillColor = Color.backgroundPrimary.cgColor
+        shadowColor = Color.separator.cgColor
     }
 
     public func set(color: CGColor) {
@@ -87,21 +87,21 @@ public class Cap: CAShapeLayer {
         shadowOffset = CGSize(width: dx, height: dy)
     }
     // swiftlint:enable identifier_name
-    
+
     public static func endCap(scale: (CGFloat) -> (CGFloat)) -> Cap {
         let icon = Images.endLabel
         let iconHeight: CGFloat = 10 / 128
         let iconWidth: CGFloat = 10 / 128
-        
+
         return Cap(icon: icon.cgImage!, scale: scale, iconHeight: iconHeight, iconWidth: iconWidth, shadowDirection: .left)
     }
-    
+
     public static func startCap(scale: (CGFloat) -> (CGFloat)) -> Cap {
         let icon = Images.startLabel
         let iconCenterHorizontalCorrection: CGFloat = 1.4 / 128.0
         let iconWidth: CGFloat = 9.0 / 128.0
         let iconHeight: CGFloat = 10.0 / 128.0
-        
+
         let cap = Cap(icon: icon.cgImage!, scale: scale, iconHeight: iconHeight, iconWidth: iconWidth, shadowDirection: .right)
         cap.frame = CGRect(
             x: cap.frame.minX + scale(iconCenterHorizontalCorrection),
@@ -109,14 +109,14 @@ public class Cap: CAShapeLayer {
             width: cap.frame.width,
             height: cap.frame.height
         )
-        
+
         return cap
     }
 
     public func setShowOnlyBackground(hidden: Bool) {
         sublayers?.first?.isHidden = hidden
     }
-    
+
     private enum ShadowDirection: Int {
         case left = 1
         case right = -1
