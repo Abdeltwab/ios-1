@@ -40,4 +40,8 @@ extension Array {
         collection.removeFirst()
         return collection
     }
+
+    public func take(_ firstN: Int) -> [Element] {
+        Array(self.prefix(firstN))
+    }
 }

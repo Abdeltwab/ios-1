@@ -23,6 +23,10 @@ public extension TimeInterval {
     init(hours: Int) {
         self.init(seconds: hours * .secondsInAnHour)
     }
+
+    init(days: Int) {
+        self.init(seconds: days * .secondsInADay)
+    }
 }
 
 extension TimeInterval {

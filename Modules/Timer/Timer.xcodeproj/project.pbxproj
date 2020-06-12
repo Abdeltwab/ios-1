@@ -61,6 +61,7 @@
 		AC42284A2456EC5C00DD8AB3 /* WheelBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4228492456EC5C00DD8AB3 /* WheelBackgroundView.swift */; };
 		AC42284C245720E700DD8AB3 /* WheelShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42284B245720E700DD8AB3 /* WheelShape.swift */; };
 		AC42284F24572F4B00DD8AB3 /* ClockDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42284E24572F4B00DD8AB3 /* ClockDial.swift */; };
+		AC6808E9249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6808E8249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift */; };
 		AC823A01245874BB0078574D /* StartEditSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8239FF245874BB0078574D /* StartEditSelector.swift */; };
 		AC823A05245ADA950078574D /* EditDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC823A04245ADA950078574D /* EditDurationView.swift */; };
 		ACAA58262433A7ED003FDECA /* RunningTimeEntryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA58202433A7ED003FDECA /* RunningTimeEntryCoordinator.swift */; };
@@ -79,6 +80,7 @@
 		ACFCFDD7248A68710060C3A1 /* LogSuggestionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDD0248A68710060C3A1 /* LogSuggestionState.swift */; };
 		ACFCFDD9248A68710060C3A1 /* LogSuggestionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDD2248A68710060C3A1 /* LogSuggestionSelector.swift */; };
 		ACFCFDDC248A69F60060C3A1 /* LogSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDDB248A69F60060C3A1 /* LogSuggestion.swift */; };
+		ACFCFDDF248FD14E0060C3A1 /* MostUsedTimeEntrySuggestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFCFDDE248FD14E0060C3A1 /* MostUsedTimeEntrySuggestionProvider.swift */; };
 		B417E98D244F78D0004D251F /* ProjectReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B417E98C244F78D0004D251F /* ProjectReducerTests.swift */; };
 		B4A67F1B2486A1C000CC05F1 /* CommonFeatures.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4A67F1A2486A1C000CC05F1 /* CommonFeatures.framework */; };
 		B4A67F1C2486AC6E00CC05F1 /* MockTimeLogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2130C92424F5DE000FC72C /* MockTimeLogRepository.swift */; };
@@ -185,6 +187,7 @@
 		AC4228492456EC5C00DD8AB3 /* WheelBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelBackgroundView.swift; sourceTree = "<group>"; };
 		AC42284B245720E700DD8AB3 /* WheelShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelShape.swift; sourceTree = "<group>"; };
 		AC42284E24572F4B00DD8AB3 /* ClockDial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockDial.swift; sourceTree = "<group>"; };
+		AC6808E8249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostUsedTimeEntrySuggestionProviderTests.swift; sourceTree = "<group>"; };
 		AC8239FF245874BB0078574D /* StartEditSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditSelector.swift; sourceTree = "<group>"; };
 		AC823A04245ADA950078574D /* EditDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDurationView.swift; sourceTree = "<group>"; };
 		ACAA58202433A7ED003FDECA /* RunningTimeEntryCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryCoordinator.swift; sourceTree = "<group>"; };
@@ -203,6 +206,7 @@
 		ACFCFDD0248A68710060C3A1 /* LogSuggestionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionState.swift; sourceTree = "<group>"; };
 		ACFCFDD2248A68710060C3A1 /* LogSuggestionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionSelector.swift; sourceTree = "<group>"; };
 		ACFCFDDB248A69F60060C3A1 /* LogSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestion.swift; sourceTree = "<group>"; };
+		ACFCFDDE248FD14E0060C3A1 /* MostUsedTimeEntrySuggestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostUsedTimeEntrySuggestionProvider.swift; sourceTree = "<group>"; };
 		B417E98C244F78D0004D251F /* ProjectReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectReducerTests.swift; sourceTree = "<group>"; };
 		B4A67F1A2486A1C000CC05F1 /* CommonFeatures.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonFeatures.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4B4F0A224362F1400DFBF2E /* UIUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +382,7 @@
 		8C2516CC2403C1B000BAD4B5 /* TimerTests */ = {
 			isa = PBXGroup;
 			children = (
+				AC6808E7249104AC008A2916 /* LogSuggestions */,
 				CC8172352476A387004F1152 /* Extensions */,
 				8C2130CD2424F641000FC72C /* TestUtils */,
 				8C1DD94C242A1946005CE40A /* Selectors */,
@@ -551,6 +556,14 @@
 			path = Wheel;
 			sourceTree = "<group>";
 		};
+		AC6808E7249104AC008A2916 /* LogSuggestions */ = {
+			isa = PBXGroup;
+			children = (
+				AC6808E8249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift */,
+			);
+			path = LogSuggestions;
+			sourceTree = "<group>";
+		};
 		ACAA581F2433A7BC003FDECA /* Running */ = {
 			isa = PBXGroup;
 			children = (
@@ -576,6 +589,7 @@
 		ACFCFDCB248A65BB0060C3A1 /* LogSuggestions */ = {
 			isa = PBXGroup;
 			children = (
+				ACFCFDDD248FD1320060C3A1 /* Providers */,
 				ACFCFDDA248A69DE0060C3A1 /* Model */,
 				ACFCFDCC248A68710060C3A1 /* LogSuggestionAction.swift */,
 				ACFCFDCD248A68710060C3A1 /* LogSuggestionCoordinator.swift */,
@@ -593,6 +607,14 @@
 				ACFCFDDB248A69F60060C3A1 /* LogSuggestion.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		ACFCFDDD248FD1320060C3A1 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				ACFCFDDE248FD14E0060C3A1 /* MostUsedTimeEntrySuggestionProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 		B417E98B244F76F0004D251F /* Views */ = {
@@ -875,6 +897,7 @@
 				51FF7C3C2429120500CC2002 /* EditableTimeEntry.swift in Sources */,
 				8CB3131A247D92FA00D5B205 /* SuggestionsViewController.swift in Sources */,
 				CC5D320B2464A931005A1837 /* WheelForegroundView.swift in Sources */,
+				ACFCFDDF248FD14E0060C3A1 /* MostUsedTimeEntrySuggestionProvider.swift in Sources */,
 				8C509D1324125AB500B6DF30 /* StartEditCoordinator.swift in Sources */,
 				8C509D192412644300B6DF30 /* StartEditFeature.swift in Sources */,
 				ACFCFDD7248A68710060C3A1 /* LogSuggestionState.swift in Sources */,
@@ -895,6 +918,7 @@
 				341A0280247268EB00EB25AF /* Project+Extensions.swift in Sources */,
 				8C2130C42424F46D000FC72C /* TimeEntriesLogReducerTests.swift in Sources */,
 				341A028424726AF200EB25AF /* Task+Extensions.swift in Sources */,
+				AC6808E9249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift in Sources */,
 				B4A67F1C2486AC6E00CC05F1 /* MockTimeLogRepository.swift in Sources */,
 				8C2130D12424F9EE000FC72C /* TimeEntry+Extensions.swift in Sources */,
 				341A028824728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift in Sources */,

@@ -82,4 +82,8 @@ public extension Date {
     ) -> Date {
         DateComponents(calendar: .current, timeZone: timeZone, year: year, month: month, day: day, hour: hour, minute: minute, second: seconds).date!
     }
+
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
 }

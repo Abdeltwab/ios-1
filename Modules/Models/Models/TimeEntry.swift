@@ -31,6 +31,7 @@ public struct TimeEntry: Entity, Equatable {
         self.billable = billable
         self.workspaceId = workspaceId
         self.projectId = projectId
+        self.taskId = taskId
         self.tagIds = tagIds
     }
 }
