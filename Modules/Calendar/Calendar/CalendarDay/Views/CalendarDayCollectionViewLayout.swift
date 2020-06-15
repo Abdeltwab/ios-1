@@ -251,4 +251,18 @@ class CalendarDayCollectionViewLayout: UICollectionViewLayout {
     public func timeInterval(at point: CGPoint) -> TimeInterval {
         return TimeInterval(point.y / hourHeight) * TimeInterval.secondsInAnHour
     }
+
+    public func setScale(_ scale: CGFloat, center: CGPoint) {
+        guard let collectionView = collectionView else { return }
+        let newHourHeight = hourHeight * scale
+
+        if minHourHeight...maxHourHeight ~= newHourHeight {
+            let offset = center.y - center.y * scale
+            collectionView.contentOffset = CGPoint(x: collectionView.contentOffset.x, y: collectionView.contentOffset.y - offset)
+        }
+
+        hourHeight = newHourHeight.clamp(minHourHeight...maxHourHeight)
+
+        invalidateLayout()
+    }
 }

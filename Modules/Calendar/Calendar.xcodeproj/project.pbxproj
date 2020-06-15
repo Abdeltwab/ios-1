@@ -66,6 +66,7 @@
 		B47397E9248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47397E8248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift */; };
 		B496577F249108920061340B /* CreateTimeEntryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B496577E249108920061340B /* CreateTimeEntryHelper.swift */; };
 		B4A647722488021000A8C434 /* CalendarEvent+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A647712488021000A8C434 /* CalendarEvent+Extensions.swift */; };
+		B4BD1AA22492965700C962C4 /* ZoomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BD1AA12492965700C962C4 /* ZoomHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,6 +145,7 @@
 		B47397E8248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeSupplementaryView.swift; sourceTree = "<group>"; };
 		B496577E249108920061340B /* CreateTimeEntryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimeEntryHelper.swift; sourceTree = "<group>"; };
 		B4A647712488021000A8C434 /* CalendarEvent+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarEvent+Extensions.swift"; sourceTree = "<group>"; };
+		B4BD1AA12492965700C962C4 /* ZoomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomHelper.swift; sourceTree = "<group>"; };
 		BF55096AEEB6FF794B0E44C6 /* Pods-Calendar-CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar-CalendarTests.release.xcconfig"; path = "Target Support Files/Pods-Calendar-CalendarTests/Pods-Calendar-CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -302,6 +304,7 @@
 				B438EE3624893E7200B805A2 /* CalendarDayCollectionViewDataSource.swift */,
 				B438EE38248971ED00B805A2 /* CalendarDayCollectionViewLayout.swift */,
 				B496577E249108920061340B /* CreateTimeEntryHelper.swift */,
+				B4BD1AA12492965700C962C4 /* ZoomHelper.swift */,
 				342D40132492769400D50D3F /* EditTimeEntryHelper.swift */,
 			);
 			path = Views;
@@ -589,6 +592,7 @@
 				AC4E25C9247D6CCA004655F6 /* CalendarDaySelector.swift in Sources */,
 				ACBA124424814F57007F939D /* ContextualMenuViewController.swift in Sources */,
 				AC4E25C5247D6CCA004655F6 /* CalendarDayFeature.swift in Sources */,
+				B4BD1AA22492965700C962C4 /* ZoomHelper.swift in Sources */,
 				ACBA124124814F57007F939D /* ContextualMenuFeature.swift in Sources */,
 				8CFDB381247C124100952533 /* CalendarViewController.swift in Sources */,
 				B438EE3724893E7200B805A2 /* CalendarDayCollectionViewDataSource.swift in Sources */,
