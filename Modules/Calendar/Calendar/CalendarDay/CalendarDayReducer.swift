@@ -6,6 +6,7 @@ import OtherServices
 import Repository
 import RxSwift
 import Timer
+import Utils
 
 // swiftlint:disable cyclomatic_complexity
 // swiftlint:disable function_body_length
@@ -24,6 +25,7 @@ func createCalendarDayReducer(calendarService: CalendarService) -> Reducer<Calen
 
         case .startTimeDragged(let timeInterval):
             let newStart = state.selectedDate + timeInterval
+            guard newStart >= state.selectedDate else { return [] }
             guard case var .left(editableTimeEntry) = state.selectedItem else { return [] }
             guard let oldStart = editableTimeEntry.start, let duration = editableTimeEntry.duration else { return [] }
             editableTimeEntry.start = newStart
@@ -33,6 +35,7 @@ func createCalendarDayReducer(calendarService: CalendarService) -> Reducer<Calen
 
         case .stopTimeDragged(let timeInterval):
             let newStop = state.selectedDate + timeInterval
+            guard newStop < state.selectedDate + .secondsInADay else { return [] }
             guard case var .left(editableTimeEntry) = state.selectedItem else { return [] }
             guard let start = editableTimeEntry.start, start <= newStop else { return [] }
             editableTimeEntry.duration = newStop.timeIntervalSince(start)
@@ -41,7 +44,9 @@ func createCalendarDayReducer(calendarService: CalendarService) -> Reducer<Calen
 
         case .timeEntryDragged(let timeInterval):
             let newStart = state.selectedDate + timeInterval
-            guard case var .left(editableTimeEntry) = state.selectedItem else { return [] }
+            guard newStart >= state.selectedDate else { return [] }
+            guard case var .left(editableTimeEntry) = state.selectedItem, let duration = editableTimeEntry.duration else { return [] }
+            guard newStart + duration < state.selectedDate + .secondsInADay else { return [] }
             editableTimeEntry.start = newStart
             state.selectedItem = .left(editableTimeEntry)
             return []

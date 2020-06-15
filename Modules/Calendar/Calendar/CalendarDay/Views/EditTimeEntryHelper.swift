@@ -1,6 +1,6 @@
 import UIKit
 
-class EditTimeEntryHelper: NSObject, UIGestureRecognizerDelegate {
+class EditTimeEntryHelper: AutoScrollHelper, UIGestureRecognizerDelegate {
     
     private enum PanTarget {
         case start
@@ -8,9 +8,6 @@ class EditTimeEntryHelper: NSObject, UIGestureRecognizerDelegate {
         case timeEntry
     }
 
-    private unowned var collectionView: UICollectionView!
-    private unowned var dataSource: CalendarDayCollectionViewDataSource!
-    private unowned var layout: CalendarDayCollectionViewLayout!
     private unowned var store: CalendarDayStore!
 
     private var gestureRecognizer: UIPanGestureRecognizer!
@@ -21,11 +18,7 @@ class EditTimeEntryHelper: NSObject, UIGestureRecognizerDelegate {
          layout: CalendarDayCollectionViewLayout,
          store: CalendarDayStore
     ) {
-        super.init()
-
-        self.collectionView = collectionView
-        self.dataSource = dataSource
-        self.layout = layout
+        super.init(collectionView: collectionView, dataSource: dataSource, layout: layout)
         self.store = store
 
         self.gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(onGesture(_:)))
@@ -53,11 +46,10 @@ class EditTimeEntryHelper: NSObject, UIGestureRecognizerDelegate {
         case .began:
             gestureBegan(at: point)
         case .changed:
-            dispathDragActions(at: point)
-        case .ended:
-            target = nil
+            gestureChanged(at: point)
         default:
-            break
+            target = nil
+            stopAutoScroll()
         }
     }
     
@@ -71,7 +63,33 @@ class EditTimeEntryHelper: NSObject, UIGestureRecognizerDelegate {
         } else {
             target = .timeEntry
         }
+        firstPoint = point
         dispathDragActions(at: point)
+    }
+
+    private func gestureChanged(at point: CGPoint) {
+        currentPoint = point
+        if isScrollingUp {
+            if point.y > topAutoScrollLine {
+                startAutoScrollUp(gestureChanged(at:))
+            } else {
+                stopAutoScroll()
+            }
+        } else if isScrollingDown {
+            if point.y < bottomAutoScrollLine {
+                startAutoScrollDown(gestureChanged(at:))
+            } else {
+                stopAutoScroll()
+            }
+        } else {
+            stopAutoScroll()
+        }
+
+        dispathDragActions(at: point)
+    }
+
+    override func update(point: CGPoint) {
+        self.gestureChanged(at: point)
     }
     
     private func dispathDragActions(at point: CGPoint) {

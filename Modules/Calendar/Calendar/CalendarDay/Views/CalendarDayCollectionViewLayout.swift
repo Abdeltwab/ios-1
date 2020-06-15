@@ -22,7 +22,7 @@ class CalendarDayCollectionViewLayout: UICollectionViewLayout {
     private let hoursPerDay: Int = 24
     private let minHourHeight: CGFloat = 28
     private let maxHourHeight: CGFloat = 28 * 4
-    private var hourHeight: CGFloat = 56
+    private(set) var hourHeight: CGFloat = 56
 
     private let leftPadding: CGFloat = 76
     private let hourSupplementaryLabelHeight: CGFloat = 20
