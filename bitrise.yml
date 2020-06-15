@@ -33,6 +33,8 @@ workflows:
         - status_identifier: Unit Tests
         - auth_token: "$GITHUB_STATUS_KEY"
     before_run: []
+    after_run:
+    - cache-push-pods
   health-linter:
     steps:
     - swiftlint@0.4.2:
@@ -50,6 +52,7 @@ workflows:
     - recreate-user-schemes@1.0.2:
         inputs:
         - project_path: "$BITRISE_PROJECT_PATH"
+    - cache-pull: {}
     - cocoapods-install@1.10.1: {}
     before_run: []
   AppStore:
@@ -63,6 +66,13 @@ workflows:
         - password: "$TOGGL_APPSTORE_UPLOADER_PASSWORD"
         - app_id: '1500044755'
         - itunescon_user: "$TOGGL_APPSTORE_UPLOADER_USER"
+    after_run:
+      - cache-push-pods
+    cache-push-pods:
+      steps:
+      - cache-push@2:
+          inputs:
+          - cache_paths: "./Pods -> ./Podfile.lock"
 app:
   envs:
   - opts:
