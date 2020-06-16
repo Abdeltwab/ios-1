@@ -73,4 +73,15 @@ public extension UIColor {
         self.luminance < 0.5 ? .white : .black
     }
     // swiftlint:enable no_ui_colors
+    
+    // swiftlint:disable large_tuple
+    var hsb: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat) {
+        var hue: CGFloat = 0
+        var saturation: CGFloat = 0
+        var brightness: CGFloat = 0
+        var alpha: CGFloat = 0
+        self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
+        return (hue, saturation, brightness)
+    }
+    // swiftlint:enable large_tuple
 }

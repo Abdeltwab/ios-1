@@ -32,8 +32,8 @@
 		B4B4F02C24351BE800DFBF2E /* Snackbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B4F02B24351BE800DFBF2E /* Snackbar.swift */; };
 		B4B4F02E2435222A00DFBF2E /* UIView+ConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B4F02D2435222A00DFBF2E /* UIView+ConstraintExtensions.swift */; };
 		B4BAADE02458528200F9DB8F /* Driver+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BAADDF2458528200F9DB8F /* Driver+Extensions.swift */; };
-		B4FA31752493A0C3008A1D52 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FA31742493A0C3008A1D52 /* UIScrollView+Extensions.swift */; };
 		B4BD1AA42492980500C962C4 /* CGFloat+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BD1AA32492980500C962C4 /* CGFloat+Extensions.swift */; };
+		B4FA31752493A0C3008A1D52 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FA31742493A0C3008A1D52 /* UIScrollView+Extensions.swift */; };
 		CC21B2FB2451DDDA0077393E /* WheelMathExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC21B2FA2451DDDA0077393E /* WheelMathExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,8 +87,8 @@
 		B4B4F02B24351BE800DFBF2E /* Snackbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snackbar.swift; sourceTree = "<group>"; };
 		B4B4F02D2435222A00DFBF2E /* UIView+ConstraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintExtensions.swift"; sourceTree = "<group>"; };
 		B4BAADDF2458528200F9DB8F /* Driver+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Driver+Extensions.swift"; sourceTree = "<group>"; };
-		B4FA31742493A0C3008A1D52 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		B4BD1AA32492980500C962C4 /* CGFloat+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extensions.swift"; sourceTree = "<group>"; };
+		B4FA31742493A0C3008A1D52 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		BA966568DC4D267ABE8B8D26 /* Pods-Utils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utils.debug.xcconfig"; path = "Target Support Files/Pods-Utils/Pods-Utils.debug.xcconfig"; sourceTree = "<group>"; };
 		CC21B2FA2451DDDA0077393E /* WheelMathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelMathExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */

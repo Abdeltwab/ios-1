@@ -32,6 +32,6 @@ custom_rules:
   no_color_initializers:
     excluded: ".*Colors.swift|.*ColorsTests.swift|.*UIColor+Extensions.swift"
     name: "Don't use standard color initializers"
-    regex: 'UIColor\((?!hex|patternImage)'
+    regex: 'UIColor\((?!hex|patternImage|hue)'
     message: "Only use the colors from the Design System using the Color initializer"
     severity: warning
