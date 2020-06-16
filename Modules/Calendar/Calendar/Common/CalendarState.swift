@@ -7,14 +7,18 @@ import Timer
 public struct CalendarState {
     var selectedDate: Date = Date().ignoreTimeComponents()
     var timeEntries = EntityCollection<TimeEntry>([])
-    var calendarEvents: [String: CalendarEvent] = [:]
+    public var calendarEvents: [String: CalendarEvent]
     public var user: Loadable<User>
     public var editableTimeEntry: EditableTimeEntry?
     public var localCalendarState: LocalCalendarState
     
-    public init(user: Loadable<User>, localCalendarState: LocalCalendarState, editableTimeEntry: EditableTimeEntry?) {
+    public init(user: Loadable<User>,
+                localCalendarState: LocalCalendarState,
+                calendarEvents: [String: CalendarEvent],
+                editableTimeEntry: EditableTimeEntry?) {
         self.user = user
         self.localCalendarState = localCalendarState
+        self.calendarEvents = calendarEvents
         self.editableTimeEntry = editableTimeEntry
     }
 }

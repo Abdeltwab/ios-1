@@ -1,6 +1,7 @@
 import Foundation
 import Models
 import Utils
+import CalendarService
 
 public struct LocalTimerState: Equatable {
     internal var expandedGroups: Set<Int> = Set<Int>()
@@ -19,12 +20,18 @@ public struct TimerState: Equatable {
     public var entities: TimeLogEntities
     public var localTimerState: LocalTimerState
     public var editableTimeEntry: EditableTimeEntry?
+    public var calendarEvents: [String: CalendarEvent]
 
-    public init(user: Loadable<User>, entities: TimeLogEntities, editableTimeEntry: EditableTimeEntry?, localTimerState: LocalTimerState) {
+    public init(user: Loadable<User>,
+                entities: TimeLogEntities,
+                editableTimeEntry: EditableTimeEntry?,
+                localTimerState: LocalTimerState,
+                calendarEvents: [String: CalendarEvent]) {
         self.user = user
         self.entities = entities
         self.localTimerState = localTimerState
         self.editableTimeEntry = editableTimeEntry
+        self.calendarEvents = calendarEvents
     }
 }
 
@@ -108,12 +115,14 @@ extension TimerState {
         get {
             LogSuggestionState(
                 logSuggestions: localTimerState.logSuggestions,
-                entities: entities
+                entities: entities,
+                calendarEvents: calendarEvents
             )
         }
         set {
             localTimerState.logSuggestions = newValue.logSuggestions
             entities = newValue.entities
+            calendarEvents = newValue.calendarEvents
         }
     }
 }

@@ -59,7 +59,6 @@
 		B43AA877247F0617005867CE /* CalendarDaySelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43AA876247F0617005867CE /* CalendarDaySelectorTests.swift */; };
 		B444280124803DE300BAA3EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B444280024803DE300BAA3EE /* Constants.swift */; };
 		B45A50D3247FE69B00D730A8 /* CalendarService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B45A50D2247FE69B00D730A8 /* CalendarService.framework */; };
-		B4697F092486CFAB00A1A375 /* MockCalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4697F072486CF5E00A1A375 /* MockCalendarService.swift */; };
 		B47397DD248FDB1400DA8620 /* HourIndicatorSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47397DC248FDB1400DA8620 /* HourIndicatorSupplementaryView.swift */; };
 		B47397DF248FDC2700DA8620 /* CalendarItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B448912D24851F9C00D144B4 /* CalendarItemCollectionViewCell.swift */; };
 		B47397E5248FEE4500DA8620 /* EditingHourIndicatorSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47397E4248FEE4500DA8620 /* EditingHourIndicatorSupplementaryView.swift */; };
@@ -140,7 +139,6 @@
 		B444280024803DE300BAA3EE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B448912D24851F9C00D144B4 /* CalendarItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B45A50D2247FE69B00D730A8 /* CalendarService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CalendarService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B4697F072486CF5E00A1A375 /* MockCalendarService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCalendarService.swift; sourceTree = "<group>"; };
 		B47397DC248FDB1400DA8620 /* HourIndicatorSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourIndicatorSupplementaryView.swift; sourceTree = "<group>"; };
 		B47397E4248FEE4500DA8620 /* EditingHourIndicatorSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingHourIndicatorSupplementaryView.swift; sourceTree = "<group>"; };
 		B47397E8248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeSupplementaryView.swift; sourceTree = "<group>"; };
@@ -357,7 +355,6 @@
 		B4697F062486CF5E00A1A375 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				B4697F072486CF5E00A1A375 /* MockCalendarService.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -621,7 +618,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3448B3DD24850D0F00DB85C9 /* ContextualMenuReducerTests.swift in Sources */,
-				B4697F092486CFAB00A1A375 /* MockCalendarService.swift in Sources */,
 				B43AA877247F0617005867CE /* CalendarDaySelectorTests.swift in Sources */,
 				B43AA869247EDDD7005867CE /* CalendarLayoutCalculatorTests.swift in Sources */,
 				ACBA12352480010C007F939D /* CalendarDayReducerTests.swift in Sources */,

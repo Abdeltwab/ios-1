@@ -1,5 +1,6 @@
 import Foundation
 import Models
+import CalendarService
 
 struct SuggestionProperties: Equatable {
     let description: String
@@ -46,5 +47,28 @@ extension TimeEntry {
             duration: duration ?? 0)
 
         return LogSuggestion.mostUsed(properties)
+    }
+}
+
+extension CalendarEvent {
+    func toCalendarLogSuggestion(defaultWorkspaceId: Int64) -> LogSuggestion {
+        let properties = SuggestionProperties(
+            description: description,
+            projectId: nil,
+            taskId: nil,
+            projectColor: "",
+            projectName: "",
+            taskName: "",
+            clientName: "",
+            hasProject: false,
+            hasClient: false,
+            hasTask: false,
+            workspaceId: defaultWorkspaceId,
+            isBillable: false,
+            tagIds: [],
+            startTime: start,
+            duration: duration)
+
+        return LogSuggestion.calendar(properties)
     }
 }

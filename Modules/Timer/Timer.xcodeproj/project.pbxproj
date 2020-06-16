@@ -64,6 +64,8 @@
 		AC6808E9249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6808E8249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift */; };
 		AC823A01245874BB0078574D /* StartEditSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8239FF245874BB0078574D /* StartEditSelector.swift */; };
 		AC823A05245ADA950078574D /* EditDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC823A04245ADA950078574D /* EditDurationView.swift */; };
+		ACA0F61424978EE5006899DD /* CalendarSuggestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0F61324978EE5006899DD /* CalendarSuggestionProvider.swift */; };
+		ACA0F6162497C3DC006899DD /* CalendarSuggestionProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0F6152497C3DC006899DD /* CalendarSuggestionProviderTests.swift */; };
 		ACAA58262433A7ED003FDECA /* RunningTimeEntryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA58202433A7ED003FDECA /* RunningTimeEntryCoordinator.swift */; };
 		ACAA58272433A7ED003FDECA /* RunningTimeEntryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA58212433A7ED003FDECA /* RunningTimeEntryState.swift */; };
 		ACAA58282433A7ED003FDECA /* RunningTimeEntryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA58222433A7ED003FDECA /* RunningTimeEntryAction.swift */; };
@@ -190,6 +192,8 @@
 		AC6808E8249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostUsedTimeEntrySuggestionProviderTests.swift; sourceTree = "<group>"; };
 		AC8239FF245874BB0078574D /* StartEditSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditSelector.swift; sourceTree = "<group>"; };
 		AC823A04245ADA950078574D /* EditDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDurationView.swift; sourceTree = "<group>"; };
+		ACA0F61324978EE5006899DD /* CalendarSuggestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSuggestionProvider.swift; sourceTree = "<group>"; };
+		ACA0F6152497C3DC006899DD /* CalendarSuggestionProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSuggestionProviderTests.swift; sourceTree = "<group>"; };
 		ACAA58202433A7ED003FDECA /* RunningTimeEntryCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryCoordinator.swift; sourceTree = "<group>"; };
 		ACAA58212433A7ED003FDECA /* RunningTimeEntryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryState.swift; sourceTree = "<group>"; };
 		ACAA58222433A7ED003FDECA /* RunningTimeEntryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryAction.swift; sourceTree = "<group>"; };
@@ -560,6 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				AC6808E8249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift */,
+				ACA0F6152497C3DC006899DD /* CalendarSuggestionProviderTests.swift */,
 			);
 			path = LogSuggestions;
 			sourceTree = "<group>";
@@ -613,6 +618,7 @@
 			isa = PBXGroup;
 			children = (
 				ACFCFDDE248FD14E0060C3A1 /* MostUsedTimeEntrySuggestionProvider.swift */,
+				ACA0F61324978EE5006899DD /* CalendarSuggestionProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -857,6 +863,7 @@
 				CC03C27E2448AE1C0071FA55 /* ProjectSelector.swift in Sources */,
 				CCE39FA1247D65010069D196 /* BottomSheetContent.swift in Sources */,
 				8CB54533240E7DA100154473 /* TimeEntriesLogViewController.swift in Sources */,
+				ACA0F61424978EE5006899DD /* CalendarSuggestionProvider.swift in Sources */,
 				8C008FD22409407B000A0C32 /* StartEditReducer.swift in Sources */,
 				CC8172392476E110004F1152 /* Constants.swift in Sources */,
 				ACFCFDD5248A68710060C3A1 /* LogSuggestionFeature.swift in Sources */,
@@ -909,6 +916,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA0F6162497C3DC006899DD /* CalendarSuggestionProviderTests.swift in Sources */,
 				CC8172372476A397004F1152 /* StringExtensionsTests.swift in Sources */,
 				B417E98D244F78D0004D251F /* ProjectReducerTests.swift in Sources */,
 				346B6A5E246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift in Sources */,

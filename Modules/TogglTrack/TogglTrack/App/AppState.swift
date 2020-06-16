@@ -5,11 +5,13 @@ import Onboarding
 import Timer
 import Calendar
 import Utils
+import CalendarService
 
 public struct AppState {
     public var route: RoutePath = AppRoute.start.path
     public var user: Loadable<User> = .nothing
     public var entities: TimeLogEntities =  TimeLogEntities()
+    public var calendarEvents: [String: CalendarEvent] = [:]
     public var editableTimeEntry: EditableTimeEntry?
 
     public var localOnboardingState: LocalOnboardingState = LocalOnboardingState()
@@ -54,7 +56,8 @@ extension AppState {
                 user: user,
                 entities: entities,
                 editableTimeEntry: editableTimeEntry,
-                localTimerState: localTimerState
+                localTimerState: localTimerState,
+                calendarEvents: calendarEvents
             )
         }
         
@@ -63,6 +66,7 @@ extension AppState {
             entities = newValue.entities
             editableTimeEntry = newValue.editableTimeEntry
             localTimerState = newValue.localTimerState
+            calendarEvents = newValue.calendarEvents
         }
     }
 
@@ -71,6 +75,7 @@ extension AppState {
             CalendarState(
                 user: user,
                 localCalendarState: localCalendarState,
+                calendarEvents: calendarEvents,
                 editableTimeEntry: editableTimeEntry
             )
         }
@@ -78,6 +83,7 @@ extension AppState {
         set {
             user = newValue.user
             localCalendarState = newValue.localCalendarState
+            calendarEvents = newValue.calendarEvents
             editableTimeEntry = newValue.editableTimeEntry
         }
     }
