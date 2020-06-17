@@ -59,8 +59,6 @@ public class ProjectViewController: UIViewController, Storyboarded {
             .mapTo(ProjectAction.doneButtonTapped)
             .bind(onNext: store.dispatch)
             .disposed(by: disposeBag)
-        
-        UIColor(hex: "ffffff")
     }
 }
 
