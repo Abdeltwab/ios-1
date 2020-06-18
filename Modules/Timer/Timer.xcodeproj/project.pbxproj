@@ -66,6 +66,8 @@
 		AC823A05245ADA950078574D /* EditDurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC823A04245ADA950078574D /* EditDurationView.swift */; };
 		ACA0F61424978EE5006899DD /* CalendarSuggestionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0F61324978EE5006899DD /* CalendarSuggestionProvider.swift */; };
 		ACA0F6162497C3DC006899DD /* CalendarSuggestionProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0F6152497C3DC006899DD /* CalendarSuggestionProviderTests.swift */; };
+		ACA0F61C249A4760006899DD /* SuggestionProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0F61B249A4760006899DD /* SuggestionProviderProtocol.swift */; };
+		ACA0F61E249B5A16006899DD /* LogSuggestionReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA0F61D249B5A16006899DD /* LogSuggestionReducerTests.swift */; };
 		ACAA58262433A7ED003FDECA /* RunningTimeEntryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA58202433A7ED003FDECA /* RunningTimeEntryCoordinator.swift */; };
 		ACAA58272433A7ED003FDECA /* RunningTimeEntryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA58212433A7ED003FDECA /* RunningTimeEntryState.swift */; };
 		ACAA58282433A7ED003FDECA /* RunningTimeEntryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA58222433A7ED003FDECA /* RunningTimeEntryAction.swift */; };
@@ -194,6 +196,8 @@
 		AC823A04245ADA950078574D /* EditDurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDurationView.swift; sourceTree = "<group>"; };
 		ACA0F61324978EE5006899DD /* CalendarSuggestionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSuggestionProvider.swift; sourceTree = "<group>"; };
 		ACA0F6152497C3DC006899DD /* CalendarSuggestionProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarSuggestionProviderTests.swift; sourceTree = "<group>"; };
+		ACA0F61B249A4760006899DD /* SuggestionProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionProviderProtocol.swift; sourceTree = "<group>"; };
+		ACA0F61D249B5A16006899DD /* LogSuggestionReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionReducerTests.swift; sourceTree = "<group>"; };
 		ACAA58202433A7ED003FDECA /* RunningTimeEntryCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryCoordinator.swift; sourceTree = "<group>"; };
 		ACAA58212433A7ED003FDECA /* RunningTimeEntryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryState.swift; sourceTree = "<group>"; };
 		ACAA58222433A7ED003FDECA /* RunningTimeEntryAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunningTimeEntryAction.swift; sourceTree = "<group>"; };
@@ -322,6 +326,7 @@
 				CCD8DDAB2449EE9F00AC9932 /* RunningTimeEntryReducerTests.swift */,
 				8C2130C32424F46D000FC72C /* TimeEntriesLogReducerTests.swift */,
 				B417E98C244F78D0004D251F /* ProjectReducerTests.swift */,
+				ACA0F61D249B5A16006899DD /* LogSuggestionReducerTests.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -610,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				ACFCFDDB248A69F60060C3A1 /* LogSuggestion.swift */,
+				ACA0F61B249A4760006899DD /* SuggestionProviderProtocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -865,6 +871,7 @@
 				8CB54533240E7DA100154473 /* TimeEntriesLogViewController.swift in Sources */,
 				ACA0F61424978EE5006899DD /* CalendarSuggestionProvider.swift in Sources */,
 				8C008FD22409407B000A0C32 /* StartEditReducer.swift in Sources */,
+				ACA0F61C249A4760006899DD /* SuggestionProviderProtocol.swift in Sources */,
 				CC8172392476E110004F1152 /* Constants.swift in Sources */,
 				ACFCFDD5248A68710060C3A1 /* LogSuggestionFeature.swift in Sources */,
 				ACAA58282433A7ED003FDECA /* RunningTimeEntryAction.swift in Sources */,
@@ -925,6 +932,7 @@
 				341A028624728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift in Sources */,
 				341A0280247268EB00EB25AF /* Project+Extensions.swift in Sources */,
 				8C2130C42424F46D000FC72C /* TimeEntriesLogReducerTests.swift in Sources */,
+				ACA0F61E249B5A16006899DD /* LogSuggestionReducerTests.swift in Sources */,
 				341A028424726AF200EB25AF /* Task+Extensions.swift in Sources */,
 				AC6808E9249104DA008A2916 /* MostUsedTimeEntrySuggestionProviderTests.swift in Sources */,
 				B4A67F1C2486AC6E00CC05F1 /* MockTimeLogRepository.swift in Sources */,

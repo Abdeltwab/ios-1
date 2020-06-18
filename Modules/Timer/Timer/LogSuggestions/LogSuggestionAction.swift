@@ -2,18 +2,17 @@ import Foundation
 import Models
 
 public enum LogSuggestionAction: Equatable {
-//    case <#value#>
+    case loadSuggestions
 }
 
 extension LogSuggestionAction: CustomDebugStringConvertible {
 
     public var debugDescription: String {
-//        switch self {
-//
-//        case .<#value#>:
-//            return "<#value#>"
-//
-//        }
-        return ""
+        switch self {
+
+        case .loadSuggestions:
+            return "LoadSuggestions"
+
+        }
     }
 }

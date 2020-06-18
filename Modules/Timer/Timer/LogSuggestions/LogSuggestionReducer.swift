@@ -7,17 +7,26 @@ import OtherServices
 import Analytics
 import CalendarService
 
-func createLogSuggestionReducer(
-    repository: Repository,
-    time: Time,
-    calendarService: CalendarService) -> Reducer<LogSuggestionState, LogSuggestionAction> {
+func createLogSuggestionReducer(time: Time) -> Reducer<LogSuggestionState, LogSuggestionAction> {
 
-    return Reducer {_, _ -> [Effect<LogSuggestionAction>] in
+    // swiftlint:disable line_length
+    return Reducer {state, action -> [Effect<LogSuggestionAction>] in
 
-//        switch action {
-//
-//        case <#value#>:
-//            return []
-//        }
+        switch action {
+
+        case .loadSuggestions:
+            guard case let Loadable.loaded(user) = state.user else { return [] }
+
+            let providers: [SuggestionPrivider] = [
+                CalendarSuggestionProvider(time: time, calendarEvents: Array(state.calendarEvents.values), defaultWorkspaceId: user.defaultWorkspace),
+                MostUsedTimeEntrySuggestionProvider(time: time, timeLogEntities: state.entities, maxNumberOfSuggestions: TimerConstants.LogSuggestions.maxSuggestionsCount)]
+            let suggestions = providers
+                .map { $0.getSuggestions() }
+                .flatMap { $0 }
+                .take(TimerConstants.LogSuggestions.maxSuggestionsCount)
+            state.logSuggestions = suggestions
+            return []
+        }
     }
+    // swiftlint:enable line_length
 }

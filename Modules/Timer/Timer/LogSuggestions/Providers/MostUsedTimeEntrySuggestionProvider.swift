@@ -5,7 +5,7 @@ import Repository
 import Models
 import RxSwift
 
-class MostUsedTimeEntrySuggestionProvider {
+class MostUsedTimeEntrySuggestionProvider: SuggestionPrivider {
     private static let daysBackToQuery: Int = 42
     private let thresholdPeriod = TimeInterval(days: daysBackToQuery)
     private let timeLogEntities: TimeLogEntities

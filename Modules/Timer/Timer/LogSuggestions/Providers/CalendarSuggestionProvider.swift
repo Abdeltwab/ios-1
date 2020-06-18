@@ -6,7 +6,7 @@ import Models
 import RxSwift
 import CalendarService
 
-class CalendarSuggestionProvider {
+class CalendarSuggestionProvider: SuggestionPrivider {
     private let time: Time
     private let defaultWorkspaceId: Int64
     private let calendarEvents: [CalendarEvent]

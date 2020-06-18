@@ -26,7 +26,7 @@ public func createTimerReducer(
             .pullback(state: \.runningTimeEntryState, action: \.runningTimeEntry),
         createProjectReducer(repository: repository)
             .pullback(state: \.projectState, action: \.project),
-        createLogSuggestionReducer(repository: repository, time: time, calendarService: calendarService)
+        createLogSuggestionReducer(time: time)
             .pullback(state: \.logSuggestionsState, action: \.logSuggestion)
     )
 }
@@ -92,4 +92,8 @@ public class TimerFeature: BaseFeature<TimerState, TimerAction> {
 public struct TimerConstants {
     static let timeEntryDeletionDelaySeconds: Int = 5
     static let maxTimeEntryDurationInHours: Int = 999
+
+    public struct LogSuggestions {
+        static let maxSuggestionsCount = 3
+    }
 }

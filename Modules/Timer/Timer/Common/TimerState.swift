@@ -116,13 +116,15 @@ extension TimerState {
             LogSuggestionState(
                 logSuggestions: localTimerState.logSuggestions,
                 entities: entities,
-                calendarEvents: calendarEvents
+                calendarEvents: calendarEvents,
+                user: user
             )
         }
         set {
             localTimerState.logSuggestions = newValue.logSuggestions
             entities = newValue.entities
             calendarEvents = newValue.calendarEvents
+            user = newValue.user
         }
     }
 }
