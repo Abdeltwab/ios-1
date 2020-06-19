@@ -11,6 +11,8 @@
 		341A028424726AF200EB25AF /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A028324726AF200EB25AF /* Task+Extensions.swift */; };
 		341A028624728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A028524728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift */; };
 		341A028824728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A028724728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift */; };
+		34221D66249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34221D65249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift */; };
+		34221D68249CFA5A00453F3B /* SuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34221D67249CFA5A00453F3B /* SuggestionViewModel.swift */; };
 		3430C36C24213CEB009CF454 /* OtherServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430C36B24213CEB009CF454 /* OtherServices.framework */; };
 		346B6A5B246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */; };
 		346B6A5E246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */; };
@@ -127,6 +129,8 @@
 		341A028324726AF200EB25AF /* Task+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extensions.swift"; sourceTree = "<group>"; };
 		341A028524728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteProjects.swift"; sourceTree = "<group>"; };
 		341A028724728B0500EB25AF /* StartEditReducerTests+AutocompleteEntities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteEntities.swift"; sourceTree = "<group>"; };
+		34221D65249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesLogSectionViewModel.swift; sourceTree = "<group>"; };
+		34221D67249CFA5A00453F3B /* SuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionViewModel.swift; sourceTree = "<group>"; };
 		3430C365241A8FE4009CF454 /* Time.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Time.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3430C36B24213CEB009CF454 /* OtherServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OtherServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAutocompleteSuggestionsEffect.swift; sourceTree = "<group>"; };
@@ -473,6 +477,8 @@
 				8C509D242412879200B6DF30 /* DayViewModel.swift */,
 				8C509D222412876A00B6DF30 /* TimeEntryViewModel.swift */,
 				8C4EDC56242902FF00C03E14 /* TimeLogCellViewModel.swift */,
+				34221D65249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift */,
+				34221D67249CFA5A00453F3B /* SuggestionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -888,6 +894,7 @@
 				ACAA582A2433A7ED003FDECA /* RunningTimeEntryReducer.swift in Sources */,
 				8C7F6D03247FB4E80026FF9D /* DatePickers.swift in Sources */,
 				CC03C27C2448AE1C0071FA55 /* ProjectState.swift in Sources */,
+				34221D66249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift in Sources */,
 				CC5D320F24659308005A1837 /* Arc.swift in Sources */,
 				8C008FD024093FF8000A0C32 /* StartEditAction.swift in Sources */,
 				ACFCFDD4248A68710060C3A1 /* LogSuggestionCoordinator.swift in Sources */,
@@ -901,6 +908,7 @@
 				AC823A01245874BB0078574D /* StartEditSelector.swift in Sources */,
 				CC03C2782448AE1B0071FA55 /* ProjectAction.swift in Sources */,
 				346B6A5B246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift in Sources */,
+				34221D68249CFA5A00453F3B /* SuggestionViewModel.swift in Sources */,
 				8C509D202412874100B6DF30 /* TimeEntriesSelector.swift in Sources */,
 				8C509D152412603800B6DF30 /* TimerState.swift in Sources */,
 				8C509D0E2412567900B6DF30 /* TimerAction.swift in Sources */,
