@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Not called under iOS 13 - See SceneDelegate sceneWillEnterForeground
+        togglTrack.appDidBecomeActive()
     }
 
     // MARK: UISceneSession Lifecycle

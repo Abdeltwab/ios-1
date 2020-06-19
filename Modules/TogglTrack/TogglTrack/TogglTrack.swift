@@ -45,4 +45,8 @@ public class TogglTrack {
         appCoordinator.start(window: window)
         store.dispatch(.start)                
     }
+
+    public func appDidBecomeActive() {
+        store.dispatch(.timer(.logSuggestion(.loadSuggestions)))
+    }
 }
