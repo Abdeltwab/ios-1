@@ -2,7 +2,7 @@ import UIKit
 import Utils
 import Models
 
-class SuggestionCell: BaseTableViewCell<AutocompleteSuggestion> {
+class AutocompleteSuggestionCell: BaseTableViewCell<AutocompleteSuggestion> {
 
     @IBOutlet weak var label: UILabel!
     

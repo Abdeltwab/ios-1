@@ -13,5 +13,5 @@ enum TimeEntriesLogSectionViewModel: Equatable {
     }
     
     case day(DayViewModel)
-    case suggestions([SuggestionViewModel])
+    case suggestions([LogSuggestionViewModel])
 }

@@ -4,7 +4,7 @@ import Utils
 import Models
 import Architecture
 
-class SuggestionsViewController: UIViewController, Storyboarded {
+class AutocompleteSuggestionsViewController: UIViewController, Storyboarded {
 
     private let rowHeight: CGFloat = 50
 
@@ -35,7 +35,7 @@ class SuggestionsViewController: UIViewController, Storyboarded {
         view.clipsToBounds = true
     }
 
-    static func create(in parent: UIViewController, attachedTo attachedView: UIView) -> SuggestionsViewController {
+    static func create(in parent: UIViewController, attachedTo attachedView: UIView) -> AutocompleteSuggestionsViewController {
         let suggestionsViewController = self.instantiate()
 
         parent.install(suggestionsViewController, customConstraints: true)
@@ -84,15 +84,15 @@ class SuggestionsViewController: UIViewController, Storyboarded {
     }
 }
 
-extension SuggestionsViewController: UITableViewDataSource, UITableViewDelegate {
+extension AutocompleteSuggestionsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return suggestions.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: SuggestionCell.identifier,
-            for: indexPath) as? SuggestionCell else { fatalError() }
+            withIdentifier: AutocompleteSuggestionCell.identifier,
+            for: indexPath) as? AutocompleteSuggestionCell else { fatalError() }
         cell.configure(with: suggestions[indexPath.row])
         return cell
     }

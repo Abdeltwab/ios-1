@@ -39,7 +39,7 @@ public class StartEditViewController: UIViewController, Storyboarded {
     @IBOutlet weak var billableButton: UIButton!
     @IBOutlet var startEditInputAccessoryView: StartEditInputAccessoryView!
 
-    private var suggestionsView: SuggestionsViewController?
+    private var suggestionsView: AutocompleteSuggestionsViewController?
 
     private var disposeBag = DisposeBag()
     private var timer: Timer?
@@ -170,7 +170,7 @@ public class StartEditViewController: UIViewController, Storyboarded {
         }
 
         if suggestionsView == nil {
-            suggestionsView = SuggestionsViewController.create(
+            suggestionsView = AutocompleteSuggestionsViewController.create(
                 in: parentVC,
                 attachedTo: descriptionTextView
             )
