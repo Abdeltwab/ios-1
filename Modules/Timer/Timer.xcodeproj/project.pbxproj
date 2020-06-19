@@ -18,6 +18,7 @@
 		346B6A5E246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */; };
 		349ED3E9247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349ED3E8247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift */; };
 		34C93C082453387300024F06 /* DateTimePickMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C93C072453387300024F06 /* DateTimePickMode.swift */; };
+		34F78CE2249D140800D0AE44 /* LogSuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F78CE1249D140800D0AE44 /* LogSuggestionCell.swift */; };
 		3F08D7D72EA783CBBD146B1F /* Pods_Timer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB2199F93BBF3239F419242 /* Pods_Timer.framework */; };
 		510BD5B824363CF80028C445 /* StartEditReducerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BD5B724363CF80028C445 /* StartEditReducerTests.swift */; };
 		51FF7C3C2429120500CC2002 /* EditableTimeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FF7C3B2429120500CC2002 /* EditableTimeEntry.swift */; };
@@ -137,6 +138,7 @@
 		346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteTimeEntries.swift"; sourceTree = "<group>"; };
 		349ED3E8247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteTags.swift"; sourceTree = "<group>"; };
 		34C93C072453387300024F06 /* DateTimePickMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickMode.swift; sourceTree = "<group>"; };
+		34F78CE1249D140800D0AE44 /* LogSuggestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionCell.swift; sourceTree = "<group>"; };
 		510BD5B724363CF80028C445 /* StartEditReducerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditReducerTests.swift; sourceTree = "<group>"; };
 		51FF7C3B2429120500CC2002 /* EditableTimeEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditableTimeEntry.swift; sourceTree = "<group>"; };
 		5B870F35C1C8E6FAB9F0A257 /* Pods-Timer-TimerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer-TimerTests.debug.xcconfig"; path = "Target Support Files/Pods-Timer-TimerTests/Pods-Timer-TimerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 			children = (
 				8CB54532240E7DA100154473 /* TimeEntriesLogViewController.swift */,
 				8C2517802403C27200BAD4B5 /* TimeEntryCell.swift */,
+				34F78CE1249D140800D0AE44 /* LogSuggestionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -917,6 +920,7 @@
 				ACFCFDD6248A68710060C3A1 /* LogSuggestionReducer.swift in Sources */,
 				AC823A05245ADA950078574D /* EditDurationView.swift in Sources */,
 				51FF7C3C2429120500CC2002 /* EditableTimeEntry.swift in Sources */,
+				34F78CE2249D140800D0AE44 /* LogSuggestionCell.swift in Sources */,
 				8CB3131A247D92FA00D5B205 /* AutocompleteSuggestionsViewController.swift in Sources */,
 				CC5D320B2464A931005A1837 /* WheelForegroundView.swift in Sources */,
 				ACFCFDDF248FD14E0060C3A1 /* MostUsedTimeEntrySuggestionProvider.swift in Sources */,
