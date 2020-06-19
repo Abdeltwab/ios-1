@@ -47,6 +47,7 @@ extension TimerState {
     internal var timeLogState: TimeEntriesLogState {
         get {
             TimeEntriesLogState(
+                logSuggestions: localTimerState.logSuggestions,
                 entities: entities,
                 expandedGroups: localTimerState.expandedGroups,
                 editableTimeEntry: editableTimeEntry,

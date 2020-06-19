@@ -30,7 +30,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [])
 
         assertReducerFlow(
             initialState: state,
@@ -47,7 +47,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [])
 
         assertReducerFlow(
             initialState: state,
@@ -66,7 +66,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [])
 
         assertReducerFlow(
             initialState: state,
@@ -92,7 +92,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [], entriesPendingDeletion: [waitingToBeDeletedId])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [], entriesPendingDeletion: [waitingToBeDeletedId])
 
         assertReducerFlow(
             initialState: state,
@@ -117,7 +117,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [])
 
         assertReducerFlow(
             initialState: state,
@@ -143,7 +143,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [], entriesPendingDeletion: [waitingToBeDeletedId])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [], entriesPendingDeletion: [waitingToBeDeletedId])
 
         assertReducerFlow(
             initialState: state,
@@ -168,7 +168,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [])
 
         assertReducerFlow(
             initialState: state,
@@ -187,7 +187,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [])
 
         assertReducerFlow(
             initialState: state,
@@ -206,7 +206,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [])
 
         let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntries[id: timeEntryTappedId]!)
 
@@ -226,7 +226,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [])
 
         let allIds = entities.timeEntries.ids
         let editableTimeEntry = EditableTimeEntry.fromGroup(ids: allIds, groupSample: timeEntries.first!)
@@ -247,7 +247,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [], entriesPendingDeletion: [0, 1])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [], entriesPendingDeletion: [0, 1])
 
         assertReducerFlow(
             initialState: state,
@@ -265,7 +265,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [], entriesPendingDeletion: [])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [], entriesPendingDeletion: [])
 
         assertReducerFlow(
             initialState: state,
@@ -285,7 +285,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [], entriesPendingDeletion: entriesToBeDeleted)
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [], entriesPendingDeletion: entriesToBeDeleted)
 
         assertReducerFlow(
             initialState: state,
@@ -305,7 +305,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [], entriesPendingDeletion: entriesToBeDeleted)
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [], entriesPendingDeletion: entriesToBeDeleted)
 
         assertReducerFlow(
             initialState: state,
@@ -325,7 +325,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [], entriesPendingDeletion: entriesToBeDeleted)
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [], entriesPendingDeletion: entriesToBeDeleted)
 
         assertReducerFlow(
             initialState: state,
@@ -342,7 +342,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [], entriesPendingDeletion: [2])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [], entriesPendingDeletion: [2])
 
         assertReducerFlow(
             initialState: state,
@@ -359,7 +359,7 @@ class TimeEntriesLogReducerTests: XCTestCase {
 
         var entities = TimeLogEntities()
         entities.timeEntries = timeEntries
-        let state = TimeEntriesLogState(entities: entities, expandedGroups: [], entriesPendingDeletion: [1, 2])
+        let state = TimeEntriesLogState(logSuggestions: [], entities: entities, expandedGroups: [], entriesPendingDeletion: [1, 2])
 
         assertReducerFlow(
             initialState: state,

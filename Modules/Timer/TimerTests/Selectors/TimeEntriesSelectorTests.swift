@@ -76,7 +76,10 @@ class TimeEntriesSelectorTests: XCTestCase {
     private var state: TimeEntriesLogState!
 
     override func setUp() {
-        state = TimeEntriesLogState(entities: TimeLogEntities(), expandedGroups: [], entriesPendingDeletion: entriesPendingDeletion)
+        state = TimeEntriesLogState(logSuggestions: [],
+                                    entities: TimeLogEntities(),
+                                    expandedGroups: [],
+                                    entriesPendingDeletion: entriesPendingDeletion)
         state.entities.workspaces = EntityCollection([
             TimeEntriesSelectorTests.workspaceA,
             TimeEntriesSelectorTests.workspaceB
