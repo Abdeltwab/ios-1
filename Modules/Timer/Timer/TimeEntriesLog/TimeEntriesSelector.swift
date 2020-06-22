@@ -29,22 +29,25 @@ let timeEntryViewModelsSelector: (TimeEntriesLogState) -> [TimeEntryViewModel] =
         })
 }
 
-let toDaysMapper: ([TimeEntryViewModel], Set<Int>, Set<Int64>) -> [DayViewModel] = { timeEntries, expandedGroups, entriesPendingDeletion in
+let toDaySectionsMapper: ([TimeEntryViewModel], Set<Int>, Set<Int64>) -> [TimeEntriesLogSectionViewModel] = {
+    timeEntries, expandedGroups, entriesPendingDeletion in
     
     return timeEntries
         .filter({ !entriesPendingDeletion.contains($0.id) })
         .grouped(by: { $0.start.ignoreTimeComponents() })
         .map(groupTimeEntries(expandedGroups))
+        .map { $0.map(TimeEntriesLogCellViewModel.timeEntryCell) }
         .map(DayViewModel.init)
         .sorted(by: { $0.day > $1.day })
+        .map(TimeEntriesLogSectionViewModel.day)
 }
 
-let groupTimeEntries: (Set<Int>) -> ([TimeEntryViewModel]) -> [TimeLogCellViewModel] = { expandedGroups in
+let groupTimeEntries: (Set<Int>) -> ([TimeEntryViewModel]) -> [TimeEntryCellViewModel] = { expandedGroups in
 
     return { timeEntryViewModels in
         return timeEntryViewModels
             .grouped { $0.groupId }
-            .flatMap { group -> [TimeLogCellViewModel] in
+            .flatMap { group -> [TimeEntryCellViewModel] in
                 let sorted = group.sorted(by: { $0.start > $1.start })
                 if sorted.count == 1 {
                     return [.singleEntry(sorted.first!, inGroup: false)]

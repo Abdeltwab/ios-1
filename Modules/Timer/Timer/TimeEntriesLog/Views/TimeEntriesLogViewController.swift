@@ -18,7 +18,7 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
     @IBOutlet weak var tableView: UITableView!
 
     private var disposeBag = DisposeBag()
-    private var dataSource: RxTableViewSectionedAnimatedDataSource<DayViewModel>!
+    private var dataSource: RxTableViewSectionedAnimatedDataSource<TimeEntriesLogSectionViewModel>!
     private var snackbar: Snackbar?
 
     public var store: TimeEntriesLogStore!
@@ -36,41 +36,57 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
 
         if dataSource == nil {
             // We should do this in ViewDidLoad, but there's a bug that causes an ugly warning. That's why we are doing it here for now
-            dataSource = RxTableViewSectionedAnimatedDataSource<DayViewModel>(
+            dataSource = RxTableViewSectionedAnimatedDataSource<TimeEntriesLogSectionViewModel>(
                 configureCell: { [weak self] _, tableView, indexPath, item in
-                    guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimeEntryCell", for: indexPath) as? TimeEntryCell else {
-                        fatalError("Wrong cell type")
+                    switch item {
+                    case let .timeEntryCell(cellViewModel):
+                        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimeEntryCell", for: indexPath) as? TimeEntryCell else {
+                            fatalError("Wrong cell type")
+                        }
+                        cell.descriptionLabel.text = cellViewModel.description
+                        cell.descriptionLabel.textColor = cellViewModel.descriptionColor
+                        cell.projectClientTaskLabel.textColor = cellViewModel.projectColor
+                        cell.projectClientTaskLabel.attributedText = cellViewModel.projectTaskClient
+                        cell.durationLabel.text = cellViewModel.durationString
+                        cell.continueButton.rx.tap
+                            .mapTo(TimeEntriesLogAction.continueButtonTapped(cellViewModel.mainEntryId))
+                            .subscribe(onNext: self?.store.dispatch)
+                            .disposed(by: cell.disposeBag)
+                        cell.hasTagsImageView.isHidden = cellViewModel.tags?.isEmpty ?? true
+                        cell.isBillableImage.isHidden = cellViewModel.billable
+                        return cell
+                    case let .suggestionCell(cellViewModel):
+                        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimeEntryCell", for: indexPath) as? TimeEntryCell else {
+                            fatalError("Wrong cell type")
+                        }
+                        cell.descriptionLabel.text = "Suggestion!"
+                        return cell
                     }
-                    cell.descriptionLabel.text = item.description
-                    cell.descriptionLabel.textColor = item.descriptionColor
-                    cell.projectClientTaskLabel.textColor = item.projectColor
-                    cell.projectClientTaskLabel.attributedText = item.projectTaskClient
-                    cell.durationLabel.text = item.durationString
-                    cell.continueButton.rx.tap
-                        .mapTo(TimeEntriesLogAction.continueButtonTapped(item.mainEntryId))
-                        .subscribe(onNext: self?.store.dispatch)
-                        .disposed(by: cell.disposeBag)
-                    cell.hasTagsImageView.isHidden = item.tags?.isEmpty ?? true
-                    cell.isBillableImage.isHidden = item.billable
-                    return cell
             })
 
             dataSource.canEditRowAtIndexPath = { _, _ in true }
 
             dataSource.titleForHeaderInSection = { dataSource, index in
-              return dataSource.sectionModels[index].dayString
+              return dataSource.sectionModels[index].title
             }
 
             Driver.combineLatest(
                 store.select(timeEntryViewModelsSelector),
                 store.select(expandedGroupsSelector),
                 store.select(entriesPendingDeletionSelector),
-                resultSelector: toDaysMapper
+                resultSelector: toDaySectionsMapper
             )
                 .drive(tableView.rx.items(dataSource: dataSource!))
                 .disposed(by: disposeBag)
 
-            tableView.rx.modelSelected(TimeLogCellViewModel.self)
+            tableView.rx.modelSelected(TimeEntriesLogCellViewModel.self)
+                .compactMap({ cellViewModel -> TimeEntryCellViewModel? in
+                    if case let .timeEntryCell(timeEntryCellViewModel) = cellViewModel {
+                        return timeEntryCellViewModel
+                    } else {
+                        return nil
+                    }
+                })
                 .map { $0.tappedAction }
                 .subscribe(onNext: store.dispatch)
                 .disposed(by: disposeBag)
@@ -103,25 +119,27 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
 extension TimeEntriesLogViewController: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let item = self.dataSource.sectionModels[indexPath.section].items[indexPath.item]
+        guard case let .timeEntryCell(timeEntryCellViewModel) = item else { return nil }
         let action = UIContextualAction(style: .normal, title: "Continue") { _, _, _ in
-            let timeLogCellViewModel = self.dataSource.sectionModels[indexPath.section].items[indexPath.item]
-            self.store.dispatch(timeLogCellViewModel.swipedAction(direction: .right))
+            self.store.dispatch(timeEntryCellViewModel.swipedAction(direction: .right))
         }
         action.backgroundColor = Color.continueAction.uiColor
         return UISwipeActionsConfiguration(actions: [action])
     }
 
     public func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let item = self.dataSource.sectionModels[indexPath.section].items[indexPath.item]
+        guard case let .timeEntryCell(timeEntryCellViewModel) = item else { return nil }
         let action = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-            let timeLogCellViewModel = self.dataSource.sectionModels[indexPath.section].items[indexPath.item]
-            self.store.dispatch(timeLogCellViewModel.swipedAction(direction: .left))
+            self.store.dispatch(timeEntryCellViewModel.swipedAction(direction: .left))
         }
         action.backgroundColor = Color.deleteAction.uiColor
         return UISwipeActionsConfiguration(actions: [action])
     }
 }
 
-extension TimeLogCellViewModel {
+extension TimeEntryCellViewModel {
     var tappedAction: TimeEntriesLogAction {
         switch self {
         case let .singleEntry(timeEntry, inGroup: _):
@@ -139,21 +157,4 @@ extension TimeLogCellViewModel {
             return TimeEntriesLogAction.timeEntryGroupSwiped(direction, timeEntries.map { $0.id })
         }
     }
-}
-
-// ANIMATED DATASOURCE EXTENSIONS
-
-extension TimeLogCellViewModel: IdentifiableType {
-    public var identity: String { id }
-}
-
-extension DayViewModel: AnimatableSectionModelType {
-
-    public init(original: DayViewModel, items: [TimeLogCellViewModel]) {
-        self = original
-        self.timeLogCells = items
-    }
-
-    public var identity: Date { day }
-    public var items: [TimeLogCellViewModel] { timeLogCells }
 }

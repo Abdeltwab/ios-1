@@ -1,9 +1,9 @@
 import UIKit
 import Models
 
-enum TimeLogCellViewModel: Equatable {
+enum TimeEntryCellViewModel: Equatable {
     
-    public static func == (lhs: TimeLogCellViewModel, rhs: TimeLogCellViewModel) -> Bool {
+    public static func == (lhs: TimeEntryCellViewModel, rhs: TimeEntryCellViewModel) -> Bool {
         switch (lhs, rhs) {
         case (let .singleEntry(lEntry, lInGroup), let .singleEntry(rEntry, rInGroup)):
             return lEntry == rEntry && lInGroup == rInGroup

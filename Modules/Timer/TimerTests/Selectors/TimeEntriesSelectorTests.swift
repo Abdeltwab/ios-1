@@ -339,7 +339,7 @@ class TimeEntriesSelectorTests: XCTestCase {
         expandedGroups: Set<Int>,
         entriesPendingDeletion: Set<Int64>,
         timeEntries: [TimeEntry],
-        expected: [DayViewModel],
+        expected: [TimeEntriesLogSectionViewModel],
         file: StaticString = #file,
         line: UInt = #line) {
 
@@ -349,7 +349,7 @@ class TimeEntriesSelectorTests: XCTestCase {
 
         let expandedGroups = expandedGroupsSelector(state)
         let timeEntryViewModels = timeEntryViewModelsSelector(state)
-        let result = toDaysMapper(timeEntryViewModels, expandedGroups, entriesPendingDeletion)
+        let result = toDaySectionsMapper(timeEntryViewModels, expandedGroups, entriesPendingDeletion)
 
         XCTAssertEqual(result, expected, file: file, line: line)
     }
@@ -360,17 +360,20 @@ class TimeEntriesSelectorTests: XCTestCase {
         })
     }
 
-    private func logOf(_ logCellViewModels: [TimeLogCellViewModel]) -> DayViewModel {
-        return DayViewModel(timeLogCells: logCellViewModels.sorted(by: { $0.start > $1.start }))
+    private func logOf(_ timeEntryCellViewModels: [TimeEntryCellViewModel]) -> TimeEntriesLogSectionViewModel {
+        let logCellViewModels = timeEntryCellViewModels
+            .sorted(by: { $0.start > $1.start })
+            .map(TimeEntriesLogCellViewModel.timeEntryCell)
+        return TimeEntriesLogSectionViewModel.day(DayViewModel(timeLogCells: logCellViewModels))
     }
 
-    private func single(_ timeEntry: TimeEntry, excludedTimeEntryIds: Set<Int64> = []) -> [TimeLogCellViewModel] {
+    private func single(_ timeEntry: TimeEntry, excludedTimeEntryIds: Set<Int64> = []) -> [TimeEntryCellViewModel] {
         guard !excludedTimeEntryIds.contains(timeEntry.id) else { return [] }
         let timeEntryViewModel = TimeEntryViewModel(timeEntry: timeEntry)
-        return [TimeLogCellViewModel.singleEntry(timeEntryViewModel, inGroup: false)]
+        return [TimeEntryCellViewModel.singleEntry(timeEntryViewModel, inGroup: false)]
     }
 
-    private func collapsed(_ timeEntries: [TimeEntry], excludedTimeEntryIds: Set<Int64> = []) -> [TimeLogCellViewModel] {
+    private func collapsed(_ timeEntries: [TimeEntry], excludedTimeEntryIds: Set<Int64> = []) -> [TimeEntryCellViewModel] {
         let timeEntreViewModels = timeEntries
             .filter({ !excludedTimeEntryIds.contains($0.id) })
             .map {
@@ -378,10 +381,10 @@ class TimeEntriesSelectorTests: XCTestCase {
             }
             .sorted(by: { $0.start > $1.start })
 
-        return [TimeLogCellViewModel.groupedEntriesHeader(timeEntreViewModels, open: false)]
+        return [TimeEntryCellViewModel.groupedEntriesHeader(timeEntreViewModels, open: false)]
     }
 
-    private func expanded(_ timeEntries: [TimeEntry], excludedTimeEntryIds: Set<Int64> = []) -> [TimeLogCellViewModel] {
+    private func expanded(_ timeEntries: [TimeEntry], excludedTimeEntryIds: Set<Int64> = []) -> [TimeEntryCellViewModel] {
         let timeEntreViewModels = timeEntries
             .filter({ !excludedTimeEntryIds.contains($0.id) })
             .map {
@@ -389,20 +392,20 @@ class TimeEntriesSelectorTests: XCTestCase {
             }
             .sorted(by: { $0.start > $1.start })
 
-        return [TimeLogCellViewModel.groupedEntriesHeader(timeEntreViewModels, open: true)]
+        return [TimeEntryCellViewModel.groupedEntriesHeader(timeEntreViewModels, open: true)]
             + timeEntreViewModels.map {
-                TimeLogCellViewModel.singleEntry($0, inGroup: true)
+                TimeEntryCellViewModel.singleEntry($0, inGroup: true)
             }
     }
 }
 
 extension DayViewModel: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "\(dayString), duration: \(durationString), entries: \(items)"
+        return "\(dayString), duration: \(durationString), entries: \(timeLogCells)"
     }
 }
 
-extension TimeLogCellViewModel: CustomDebugStringConvertible {
+extension TimeEntryCellViewModel: CustomDebugStringConvertible {
     public var debugDescription: String {
         return "\(description): \(start)"
     }

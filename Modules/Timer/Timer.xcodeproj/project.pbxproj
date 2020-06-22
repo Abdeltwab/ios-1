@@ -16,6 +16,7 @@
 		3430C36C24213CEB009CF454 /* OtherServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430C36B24213CEB009CF454 /* OtherServices.framework */; };
 		346B6A5B246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */; };
 		346B6A5E246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */; };
+		347E827C24A114E900B49853 /* TimeEntriesLogCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E827B24A114E900B49853 /* TimeEntriesLogCellViewModel.swift */; };
 		349ED3E9247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349ED3E8247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift */; };
 		34C93C082453387300024F06 /* DateTimePickMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C93C072453387300024F06 /* DateTimePickMode.swift */; };
 		34F78CE2249D140800D0AE44 /* LogSuggestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F78CE1249D140800D0AE44 /* LogSuggestionCell.swift */; };
@@ -40,7 +41,7 @@
 		8C2518AA2403C78600BAD4B5 /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2518A92403C78600BAD4B5 /* Models.framework */; };
 		8C2518AD2403C79000BAD4B5 /* Assets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2518AC2403C79000BAD4B5 /* Assets.framework */; };
 		8C2518C02403C87200BAD4B5 /* Repository.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C2518BF2403C87200BAD4B5 /* Repository.framework */; };
-		8C4EDC57242902FF00C03E14 /* TimeLogCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EDC56242902FF00C03E14 /* TimeLogCellViewModel.swift */; };
+		8C4EDC57242902FF00C03E14 /* TimeEntryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EDC56242902FF00C03E14 /* TimeEntryCellViewModel.swift */; };
 		8C4EDC5B2429F8B200C03E14 /* TimeEntriesSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EDC5A2429F8B200C03E14 /* TimeEntriesSelectorTests.swift */; };
 		8C509D0A2412509F00B6DF30 /* TimerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C509D092412509F00B6DF30 /* TimerFeature.swift */; };
 		8C509D0E2412567900B6DF30 /* TimerAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C509D0D2412567900B6DF30 /* TimerAction.swift */; };
@@ -136,6 +137,7 @@
 		3430C36B24213CEB009CF454 /* OtherServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OtherServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAutocompleteSuggestionsEffect.swift; sourceTree = "<group>"; };
 		346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteTimeEntries.swift"; sourceTree = "<group>"; };
+		347E827B24A114E900B49853 /* TimeEntriesLogCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesLogCellViewModel.swift; sourceTree = "<group>"; };
 		349ED3E8247830CC00FDD44D /* StartEditReducerTests+AutocompleteTags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteTags.swift"; sourceTree = "<group>"; };
 		34C93C072453387300024F06 /* DateTimePickMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePickMode.swift; sourceTree = "<group>"; };
 		34F78CE1249D140800D0AE44 /* LogSuggestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionCell.swift; sourceTree = "<group>"; };
@@ -165,7 +167,7 @@
 		8C2518AC2403C79000BAD4B5 /* Assets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Assets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2518BF2403C87200BAD4B5 /* Repository.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Repository.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C2518EE2403CA5F00BAD4B5 /* RxDatasourcesDep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxDatasourcesDep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C4EDC56242902FF00C03E14 /* TimeLogCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLogCellViewModel.swift; sourceTree = "<group>"; };
+		8C4EDC56242902FF00C03E14 /* TimeEntryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntryCellViewModel.swift; sourceTree = "<group>"; };
 		8C4EDC5A2429F8B200C03E14 /* TimeEntriesSelectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesSelectorTests.swift; sourceTree = "<group>"; };
 		8C509D092412509F00B6DF30 /* TimerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFeature.swift; sourceTree = "<group>"; };
 		8C509D0D2412567900B6DF30 /* TimerAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAction.swift; sourceTree = "<group>"; };
@@ -478,9 +480,10 @@
 			children = (
 				8C509D242412879200B6DF30 /* DayViewModel.swift */,
 				8C509D222412876A00B6DF30 /* TimeEntryViewModel.swift */,
-				8C4EDC56242902FF00C03E14 /* TimeLogCellViewModel.swift */,
-				34221D65249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift */,
+				8C4EDC56242902FF00C03E14 /* TimeEntryCellViewModel.swift */,
 				34221D67249CFA5A00453F3B /* LogSuggestionViewModel.swift */,
+				347E827B24A114E900B49853 /* TimeEntriesLogCellViewModel.swift */,
+				34221D65249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -861,6 +864,7 @@
 				ACFCFDD3248A68710060C3A1 /* LogSuggestionAction.swift in Sources */,
 				34C93C082453387300024F06 /* DateTimePickMode.swift in Sources */,
 				ACAA58292433A7ED003FDECA /* RunningTimeEntryFeature.swift in Sources */,
+				347E827C24A114E900B49853 /* TimeEntriesLogCellViewModel.swift in Sources */,
 				AC42284F24572F4B00DD8AB3 /* ClockDial.swift in Sources */,
 				8C509D0A2412509F00B6DF30 /* TimerFeature.swift in Sources */,
 				CC03C2792448AE1C0071FA55 /* ProjectCoordinator.swift in Sources */,
@@ -887,7 +891,7 @@
 				8C25178D2403C27200BAD4B5 /* TimeEntriesLogReducer.swift in Sources */,
 				AC42284C245720E700DD8AB3 /* WheelShape.swift in Sources */,
 				8C509D112412591E00B6DF30 /* TimeEntriesLogCoordinator.swift in Sources */,
-				8C4EDC57242902FF00C03E14 /* TimeLogCellViewModel.swift in Sources */,
+				8C4EDC57242902FF00C03E14 /* TimeEntryCellViewModel.swift in Sources */,
 				8CE32669243601D500C6C014 /* StartEditInputAccessoryView.swift in Sources */,
 				8C008FC424090C85000A0C32 /* StartEditViewController.swift in Sources */,
 				CC03C2802448AF0A0071FA55 /* EditableProject.swift in Sources */,
