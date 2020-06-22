@@ -1,8 +1,9 @@
 import Foundation
 import Models
 import CalendarService
+import Repository
 
-struct SuggestionProperties: Equatable {
+public struct SuggestionProperties: Equatable {
     let description: String
     let projectId: Int64?
     let taskId: Int64?
@@ -20,9 +21,31 @@ struct SuggestionProperties: Equatable {
     let duration: TimeInterval
 }
 
-enum LogSuggestion {
+extension SuggestionProperties {
+    public func toStartTimeEntryDto() -> StartTimeEntryDto {
+        return StartTimeEntryDto(
+            workspaceId: self.workspaceId,
+            description: self.description,
+            billable: self.isBillable,
+            projectId: self.projectId,
+            taskId: self.taskId,
+            tagIds: self.tagIds
+        )
+    }
+}
+
+public enum LogSuggestion {
     case mostUsed(SuggestionProperties)
     case calendar(SuggestionProperties)
+
+    var properties: SuggestionProperties {
+        switch self {
+        case .mostUsed(let property):
+            return property
+        case .calendar(let property):
+            return property
+        }
+    }
 }
 
 extension LogSuggestion: Equatable { }

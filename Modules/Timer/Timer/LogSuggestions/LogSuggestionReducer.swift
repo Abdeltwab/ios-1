@@ -4,7 +4,6 @@ import Models
 import RxSwift
 import Repository
 import OtherServices
-import Analytics
 import CalendarService
 
 func createLogSuggestionReducer(time: Time) -> Reducer<LogSuggestionState, LogSuggestionAction> {
@@ -26,6 +25,13 @@ func createLogSuggestionReducer(time: Time) -> Reducer<LogSuggestionState, LogSu
                 .take(TimerConstants.LogSuggestions.maxSuggestionsCount)
             state.logSuggestions = suggestions
             return []
+
+        case .suggestionTapped(let suggestion):
+            return [Effect.from(action: .timeEntries(.startTimeEntry(suggestion.properties.toStartTimeEntryDto())))]
+
+        case .timeEntries:
+            return []
+
         }
     }
     // swiftlint:enable line_length
