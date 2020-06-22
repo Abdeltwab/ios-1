@@ -5,6 +5,7 @@ import CommonFeatures
 public enum LogSuggestionAction: Equatable {
     case loadSuggestions
     case suggestionTapped(LogSuggestion)
+    case suggestionLoaded([LogSuggestion])
     case timeEntries(TimeEntriesAction)
 }
 
@@ -31,6 +32,9 @@ extension LogSuggestionAction: CustomDebugStringConvertible {
             
         case .suggestionTapped(let suggestion):
             return "SuggestionTapped: \(suggestion)"
+
+        case .suggestionLoaded(let suggestions):
+            return "SuggestionLoaded: \(suggestions)"
 
         case let .timeEntries(action):
             return action.debugDescription

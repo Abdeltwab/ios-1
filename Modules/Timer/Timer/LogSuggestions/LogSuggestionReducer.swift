@@ -24,11 +24,14 @@ func createLogSuggestionReducer(time: Time) -> Reducer<LogSuggestionState, LogSu
                 .flatMap { $0 }
                 .take(TimerConstants.LogSuggestions.maxSuggestionsCount)
             state.logSuggestions = suggestions
-            return []
+            return [Effect.from(action: .suggestionLoaded(suggestions))]
 
         case .suggestionTapped(let suggestion):
             return [Effect.from(action: .timeEntries(.startTimeEntry(suggestion.properties.toStartTimeEntryDto())))]
 
+        case .suggestionLoaded:
+            return []
+            
         case .timeEntries:
             return []
 

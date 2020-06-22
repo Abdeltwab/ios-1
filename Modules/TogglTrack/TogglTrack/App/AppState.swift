@@ -14,6 +14,8 @@ public struct AppState {
     public var calendarEvents: [String: CalendarEvent] = [:]
     public var editableTimeEntry: EditableTimeEntry?
 
+    public var calendarPermissionWasGranted = false
+
     public var localOnboardingState: LocalOnboardingState = LocalOnboardingState()
     public var localTimerState: LocalTimerState = LocalTimerState()
     public var localCalendarState: LocalCalendarState = LocalCalendarState()

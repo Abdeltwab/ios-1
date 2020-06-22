@@ -63,7 +63,8 @@ class LogSuggestionReducerTests: XCTestCase {
             steps:
             Step(.send, LogSuggestionAction.loadSuggestions) {
                 $0.logSuggestions = expectedSuggestions
-            }
+            },
+            Step(.receive, LogSuggestionAction.suggestionLoaded(expectedSuggestions))
         )
     }
 
