@@ -74,6 +74,17 @@ public extension UIColor {
     }
     // swiftlint:enable no_ui_colors
     
+    var hex: String {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+        let rgb: Int = (Int)(red * 255)<<16 | (Int)(green * 255)<<8 | (Int)(blue * 255)<<0
+        return String(format: "#%06x", rgb)
+    }
+
     // swiftlint:disable large_tuple
     var hsb: (hue: CGFloat, saturation: CGFloat, brightness: CGFloat, alpha: CGFloat) {
         var hue: CGFloat = 0

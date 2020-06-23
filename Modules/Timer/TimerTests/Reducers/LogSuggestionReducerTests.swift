@@ -63,7 +63,75 @@ class LogSuggestionReducerTests: XCTestCase {
             steps:
             Step(.send, LogSuggestionAction.loadSuggestions) {
                 $0.logSuggestions = expectedSuggestions
-            }
+            },
+            Step(.receive, LogSuggestionAction.suggestionLoaded(expectedSuggestions))
+        )
+    }
+
+    func test_suggestionTapped_withCalendarSuggestion_startsATimeEntry() {
+        let entries = TimeLogEntities()
+        let calendarEvents = [
+            "1": CalendarEvent(id: "1",
+                          calendarId: "1",
+                          description: "1",
+                          start: mockTime.now().addingTimeInterval(TimeInterval(minutes: 10)),
+                          stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: 20)),
+                          color: ""),
+            "2": CalendarEvent(id: "2",
+                          calendarId: "2",
+                          description: "2",
+                          start: mockTime.now().addingTimeInterval(TimeInterval(minutes: 15)),
+                          stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: 20)),
+                          color: "")
+        ]
+
+        let tappedSuggestion = suggestionsFor(entries: entries, calendarEvents: calendarEvents).first!
+
+        let state = LogSuggestionState(
+            logSuggestions: [],
+            entities: entries,
+            calendarEvents: calendarEvents,
+            user: Loadable.loaded(mockUser)
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, LogSuggestionAction.suggestionTapped(tappedSuggestion)),
+            Step(.receive, .timeEntries(.startTimeEntry(tappedSuggestion.properties.toStartTimeEntryDto())))
+        )
+    }
+
+    func test_suggestionTapped_withMostUsedSuggestion_startsATimeEntry() {
+        var entries = TimeLogEntities()
+        entries.timeEntries.append(contentsOf: [
+            TimeEntry(id: 1, description: "1", start: now.addingTimeInterval(-1000), duration: 50, billable: false, workspaceId: mockUser.defaultWorkspace),
+            TimeEntry(id: 2, description: "1", start: now.addingTimeInterval(-950), duration: 50, billable: false, workspaceId: mockUser.defaultWorkspace),
+            TimeEntry(id: 3, description: "2", start: now.addingTimeInterval(-900), duration: 50, billable: false, workspaceId: mockUser.defaultWorkspace),
+            TimeEntry(id: 4, description: "2", start: now.addingTimeInterval(-850), duration: 50, billable: false, workspaceId: mockUser.defaultWorkspace),
+            TimeEntry(id: 5, description: "2", start: now.addingTimeInterval(-800), duration: 50, billable: false, workspaceId: mockUser.defaultWorkspace),
+            TimeEntry(id: 6, description: "2", start: now.addingTimeInterval(-800), duration: 50, billable: false, workspaceId: mockUser.defaultWorkspace),
+            TimeEntry(id: 7, description: "3", start: now.addingTimeInterval(-750), duration: 50, billable: false, workspaceId: mockUser.defaultWorkspace)
+        ])
+
+        let calendarEvents = [String: CalendarEvent]()
+
+        let tappedSuggestion = suggestionsFor(entries: entries, calendarEvents: calendarEvents).first!
+
+        let state = LogSuggestionState(
+            logSuggestions: [],
+            entities: entries,
+            calendarEvents: calendarEvents,
+            user: Loadable.loaded(mockUser)
+        )
+
+        assertReducerFlow(
+            initialState: state,
+            reducer: reducer,
+            steps:
+            Step(.send, LogSuggestionAction.suggestionTapped(tappedSuggestion)),
+            Step(.receive, .timeEntries(.startTimeEntry(tappedSuggestion.properties.toStartTimeEntryDto())))
         )
     }
 

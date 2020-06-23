@@ -27,6 +27,7 @@ public func createTimerReducer(
         createProjectReducer(repository: repository)
             .pullback(state: \.projectState, action: \.project),
         createLogSuggestionReducer(time: time)
+            .decorate(with: timeEntriesCoreReducer, state: \.entities.timeEntries, action: \.timeEntries)
             .pullback(state: \.logSuggestionsState, action: \.logSuggestion)
     )
 }

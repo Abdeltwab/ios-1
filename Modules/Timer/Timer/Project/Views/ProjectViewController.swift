@@ -26,7 +26,8 @@ public class ProjectViewController: UIViewController, Storyboarded {
     @IBOutlet var addClientButton: UIButton!
     @IBOutlet var selectWorkspaceButton: UIButton!
     @IBOutlet var selectColorButton: UIButton!
-
+    @IBOutlet var colorSelectionCollectionView: UICollectionView!
+    
     private var disposeBag = DisposeBag()
 
     public var store: ProjectStore!
@@ -54,11 +55,71 @@ public class ProjectViewController: UIViewController, Storyboarded {
             .bind(onNext: store.dispatch)
             .disposed(by: disposeBag)
         
+        // Project color
+        setUpColors()
+        
         // Done button
         saveButton.rx.tap
             .mapTo(ProjectAction.doneButtonTapped)
             .bind(onNext: store.dispatch)
             .disposed(by: disposeBag)
+    }
+    
+    override public func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        _ = selectColorButton.circularView()
+            .bordered(with: Color.backgroundCard.uiColor, width: 3)
+            .bordered(with: Color.textPrimary.uiColor, width: 1)
+    }
+    
+    override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        colorSelectionCollectionView.reloadData()
+    }
+    
+    private func setUpColors() {
+        store.compactSelect({ $0.editableProject?.color })
+            .map { UIColor(hex: $0).projectColor }
+            .drive(onNext: { self.selectColorButton.backgroundColor = $0 })
+            .disposed(by: disposeBag)
+        
+        store.compactSelect({ $0.editableProject?.color })
+            .map(generateColorOptions)
+            .asObservable()
+            .bind(to: colorSelectionCollectionView.rx.items) { (collectionView, row, element) in
+                let indexPath = IndexPath(row: row, section: 0)
+                switch element {
+                case let .default(color, isSelected: selected):
+                    guard let cell = collectionView
+                        .dequeueReusableCell(withReuseIdentifier: "ColorOptionCell",
+                                             for: indexPath) as? ColorOptionCell else { fatalError("Wrong cell type") }
+                    cell.contentView.backgroundColor = UIColor(hex: color).projectColor
+                    cell.isCurrentColor = selected
+                    return cell
+                case .custom:
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomColorCell", for: indexPath)
+                    return cell
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        colorSelectionCollectionView.rx.modelSelected(ColorOptionViewModel.self)
+            .compactMap { colorOption in
+                if case let .default(color, isSelected: _) = colorOption {
+                    return color
+                } else {
+                    return nil
+                }
+            }
+            .mapTo(ProjectAction.colorPicked)
+            .bind(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+    }
+    
+    private func generateColorOptions(_ color: String) -> [ColorOptionViewModel] {
+        Project.defaultColors.map { ColorOptionViewModel.default($0, isSelected: $0 == color) }
+            .appending(ColorOptionViewModel.custom(isSelected: false))
     }
 }
 

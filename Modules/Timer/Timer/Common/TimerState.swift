@@ -109,6 +109,7 @@ extension TimerState {
             entities.projects = newValue.projects
             guard var timeEntry = editableTimeEntry else { return }
             timeEntry.editableProject = newValue.editableProject
+            editableTimeEntry = timeEntry
         }
     }
 

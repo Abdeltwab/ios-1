@@ -14,6 +14,9 @@
 		34221D66249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34221D65249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift */; };
 		34221D68249CFA5A00453F3B /* LogSuggestionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34221D67249CFA5A00453F3B /* LogSuggestionViewModel.swift */; };
 		3430C36C24213CEB009CF454 /* OtherServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3430C36B24213CEB009CF454 /* OtherServices.framework */; };
+		343E57F524994CF80072BA9E /* ColorOptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343E57F424994CF80072BA9E /* ColorOptionViewModel.swift */; };
+		343E57F7249A5AF10072BA9E /* ColorOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343E57F6249A5AF10072BA9E /* ColorOptionCell.swift */; };
+		343E57F9249A64150072BA9E /* CustomColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343E57F8249A64150072BA9E /* CustomColorCell.swift */; };
 		346B6A5B246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */; };
 		346B6A5E246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */; };
 		347E827C24A114E900B49853 /* TimeEntriesLogCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E827B24A114E900B49853 /* TimeEntriesLogCellViewModel.swift */; };
@@ -135,6 +138,9 @@
 		34221D67249CFA5A00453F3B /* LogSuggestionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogSuggestionViewModel.swift; sourceTree = "<group>"; };
 		3430C365241A8FE4009CF454 /* Time.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Time.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3430C36B24213CEB009CF454 /* OtherServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OtherServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		343E57F424994CF80072BA9E /* ColorOptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOptionViewModel.swift; sourceTree = "<group>"; };
+		343E57F6249A5AF10072BA9E /* ColorOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorOptionCell.swift; sourceTree = "<group>"; };
+		343E57F8249A64150072BA9E /* CustomColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorCell.swift; sourceTree = "<group>"; };
 		346B6A5A246EB7CC00A76A1E /* UpdateAutocompleteSuggestionsEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAutocompleteSuggestionsEffect.swift; sourceTree = "<group>"; };
 		346B6A5D246EB87700A76A1E /* StartEditReducerTests+AutocompleteTimeEntries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteTimeEntries.swift"; sourceTree = "<group>"; };
 		347E827B24A114E900B49853 /* TimeEntriesLogCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeEntriesLogCellViewModel.swift; sourceTree = "<group>"; };
@@ -289,6 +295,14 @@
 			);
 			name = Pods;
 			path = ../../Pods;
+			sourceTree = "<group>";
+		};
+		343E57F324994CD40072BA9E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				343E57F424994CF80072BA9E /* ColorOptionViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		346B6A59246EB7B100A76A1E /* Effects */ = {
@@ -645,6 +659,8 @@
 			isa = PBXGroup;
 			children = (
 				CC03C2762448AE1B0071FA55 /* ProjectViewController.swift */,
+				343E57F6249A5AF10072BA9E /* ColorOptionCell.swift */,
+				343E57F8249A64150072BA9E /* CustomColorCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -653,6 +669,7 @@
 			isa = PBXGroup;
 			children = (
 				B417E98B244F76F0004D251F /* Views */,
+				343E57F324994CD40072BA9E /* ViewModels */,
 				CC03C2712448AE1B0071FA55 /* ProjectAction.swift */,
 				CC03C2722448AE1B0071FA55 /* ProjectCoordinator.swift */,
 				CC03C2732448AE1B0071FA55 /* ProjectFeature.swift */,
@@ -881,9 +898,11 @@
 				ACAA58272433A7ED003FDECA /* RunningTimeEntryState.swift in Sources */,
 				CC03C27E2448AE1C0071FA55 /* ProjectSelector.swift in Sources */,
 				CCE39FA1247D65010069D196 /* BottomSheetContent.swift in Sources */,
+				343E57F7249A5AF10072BA9E /* ColorOptionCell.swift in Sources */,
 				8CB54533240E7DA100154473 /* TimeEntriesLogViewController.swift in Sources */,
 				ACA0F61424978EE5006899DD /* CalendarSuggestionProvider.swift in Sources */,
 				8C008FD22409407B000A0C32 /* StartEditReducer.swift in Sources */,
+				343E57F9249A64150072BA9E /* CustomColorCell.swift in Sources */,
 				ACA0F61C249A4760006899DD /* SuggestionProviderProtocol.swift in Sources */,
 				CC8172392476E110004F1152 /* Constants.swift in Sources */,
 				ACFCFDD5248A68710060C3A1 /* LogSuggestionFeature.swift in Sources */,
@@ -910,6 +929,7 @@
 				CC8172342475B433004F1152 /* String+Extensions.swift in Sources */,
 				8CB54535240EA67400154473 /* StartEditState.swift in Sources */,
 				ACAA585D24378106003FDECA /* SimpleBottomSheet.swift in Sources */,
+				343E57F524994CF80072BA9E /* ColorOptionViewModel.swift in Sources */,
 				ACAA58322434A1EE003FDECA /* RunningTimeEntryViewController.swift in Sources */,
 				8C2517892403C27200BAD4B5 /* TimeEntryCell.swift in Sources */,
 				AC823A01245874BB0078574D /* StartEditSelector.swift in Sources */,

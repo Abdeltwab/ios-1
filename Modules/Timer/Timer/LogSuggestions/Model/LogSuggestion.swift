@@ -1,28 +1,51 @@
 import Foundation
 import Models
 import CalendarService
+import Repository
 
-struct SuggestionProperties: Equatable {
-    let description: String
-    let projectId: Int64?
-    let taskId: Int64?
-    let projectColor: String
-    let projectName: String
-    let taskName: String
-    let clientName: String
-    let hasProject: Bool
-    let hasClient: Bool
-    let hasTask: Bool
-    let workspaceId: Int64
-    let isBillable: Bool
-    let tagIds: [Int64]
-    let startTime: Date
-    let duration: TimeInterval
+public struct SuggestionProperties: Equatable {
+    public let description: String
+    public let projectId: Int64?
+    public let taskId: Int64?
+    public let projectColor: String
+    public let projectName: String
+    public let taskName: String
+    public let clientName: String
+    public let hasProject: Bool
+    public let hasClient: Bool
+    public let hasTask: Bool
+    public let workspaceId: Int64
+    public let isBillable: Bool
+    public let tagIds: [Int64]
+    public let startTime: Date
+    public let duration: TimeInterval
 }
 
-enum LogSuggestion {
+extension SuggestionProperties {
+    public func toStartTimeEntryDto() -> StartTimeEntryDto {
+        return StartTimeEntryDto(
+            workspaceId: self.workspaceId,
+            description: self.description,
+            billable: self.isBillable,
+            projectId: self.projectId,
+            taskId: self.taskId,
+            tagIds: self.tagIds
+        )
+    }
+}
+
+public enum LogSuggestion {
     case mostUsed(SuggestionProperties)
     case calendar(SuggestionProperties)
+
+    var properties: SuggestionProperties {
+        switch self {
+        case .mostUsed(let property):
+            return property
+        case .calendar(let property):
+            return property
+        }
+    }
 }
 
 extension LogSuggestion: Equatable { }
