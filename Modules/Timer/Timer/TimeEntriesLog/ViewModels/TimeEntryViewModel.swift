@@ -57,21 +57,8 @@ public struct TimeEntryViewModel: Equatable {
 }
 
 private func attributedStringFrom(project: Project?, task: Task?, client: Client?) -> NSAttributedString {
-    let attributedString = NSMutableAttributedString()
-    if let project = project {
-        var string = project.name
-        if let task = task {
-            string += ": \(task.name)"
-        }
-        let part = NSAttributedString.init(string: project.name, attributes: [.foregroundColor: project.color])
-        attributedString.append(part)
-    }
-
-    if let client = client {
-        let string = " · \(client.name)"
-        let part = NSAttributedString.init(string: string, attributes: [.foregroundColor: Color.ghostText.uiColor])
-        attributedString.append(part)
-    }
-
-    return attributedString
+    return projectClientTaskString(projectName: project?.name,
+                            projectColor: project?.color,
+                            taskName: task?.name,
+                            clientName: client?.name)
 }
