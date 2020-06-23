@@ -57,7 +57,7 @@ public class ProjectViewController: UIViewController, Storyboarded {
             .mapTo(ProjectAction.privateProjectSwitchTapped)
             .bind(onNext: store.dispatch)
             .disposed(by: disposeBag)
-        
+
         // Project color
         setUpColors()
 
@@ -76,7 +76,7 @@ public class ProjectViewController: UIViewController, Storyboarded {
             .bind(onNext: store.dispatch)
             .disposed(by: disposeBag)
     }
-    
+
     override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -84,18 +84,18 @@ public class ProjectViewController: UIViewController, Storyboarded {
             .bordered(with: Color.backgroundCard.uiColor, width: 3)
             .bordered(with: Color.textPrimary.uiColor, width: 1)
     }
-    
+
     override public func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
         colorSelectionCollectionView.reloadData()
     }
-    
+
     private func setUpColors() {
         store.compactSelect({ $0.editableProject?.color })
             .map { UIColor(hex: $0).projectColor }
             .drive(onNext: { self.selectColorButton.backgroundColor = $0 })
             .disposed(by: disposeBag)
-        
+
         store.compactSelect({ $0.editableProject?.color })
             .map(generateColorOptions)
             .asObservable()
@@ -115,7 +115,7 @@ public class ProjectViewController: UIViewController, Storyboarded {
                 }
             }
             .disposed(by: disposeBag)
-        
+
         colorSelectionCollectionView.rx.modelSelected(ColorOptionViewModel.self)
             .compactMap { colorOption in
                 if case let .default(color, isSelected: _) = colorOption {
@@ -130,7 +130,7 @@ public class ProjectViewController: UIViewController, Storyboarded {
             .bind(onNext: store.dispatch)
             .disposed(by: disposeBag)
     }
-    
+
     private func generateColorOptions(_ color: String) -> [ColorOptionViewModel] {
         Project.defaultColors.map { ColorOptionViewModel.default($0, isSelected: $0 == color) }
             .appending(ColorOptionViewModel.custom(isSelected: false))
@@ -141,23 +141,23 @@ extension ProjectViewController: BottomSheetContent {
     var scrollView: UIScrollView? {
         return contentScrollView
     }
-    
+
     var smallStateHeight: Driver<CGFloat> {
         return Driver.just(200)
     }
-    
+
     var visibility: Driver<Bool> {
         return store.select({ $0.editableProject != nil })
     }
-    
+
     func loseFocus() {
         projectNameTextField.resignFirstResponder()
     }
-    
+
     func focus() {
         projectNameTextField.becomeFirstResponder()
     }
-    
+
     func dispatchDialogDismissed() {
         store.dispatch(.doneButtonTapped)
     }
