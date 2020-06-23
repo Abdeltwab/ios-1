@@ -29,6 +29,18 @@ let timeEntryViewModelsSelector: (TimeEntriesLogState) -> [TimeEntryViewModel] =
         })
 }
 
+let toSectionsMapper: ([LogSuggestion], [TimeEntryViewModel], Set<Int>, Set<Int64>) -> [TimeEntriesLogSectionViewModel] = {
+    suggestions, timeEntries, expandedGroups, entriesPendingDeletion in
+    var result: [TimeEntriesLogSectionViewModel] = []
+    if suggestions.count > 0 {
+        let suggestionCellViewModels = suggestions.map { LogSuggestionViewModel(suggestion: $0) }
+                                                  .map(TimeEntriesLogCellViewModel.suggestionCell)
+        result.append(.suggestions(suggestionCellViewModels))
+    }
+    result.append(contentsOf: toDaySectionsMapper(timeEntries, expandedGroups, entriesPendingDeletion))
+    return result
+}
+
 let toDaySectionsMapper: ([TimeEntryViewModel], Set<Int>, Set<Int64>) -> [TimeEntriesLogSectionViewModel] = {
     timeEntries, expandedGroups, entriesPendingDeletion in
     

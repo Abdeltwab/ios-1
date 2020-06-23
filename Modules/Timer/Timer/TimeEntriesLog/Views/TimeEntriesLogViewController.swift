@@ -71,10 +71,11 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
             }
 
             Driver.combineLatest(
+                store.select { $0.logSuggestions },
                 store.select(timeEntryViewModelsSelector),
                 store.select(expandedGroupsSelector),
                 store.select(entriesPendingDeletionSelector),
-                resultSelector: toDaySectionsMapper
+                resultSelector: toSectionsMapper
             )
                 .drive(tableView.rx.items(dataSource: dataSource!))
                 .disposed(by: disposeBag)

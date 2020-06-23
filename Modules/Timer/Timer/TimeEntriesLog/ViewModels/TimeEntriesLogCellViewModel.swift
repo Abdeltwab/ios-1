@@ -12,7 +12,7 @@ enum TimeEntriesLogCellViewModel: IdentifiableType, Equatable {
         case let .timeEntryCell(timeEntryCellViewModel):
             return "TimeEntry: \(timeEntryCellViewModel.id)"
         case let .suggestionCell(logSuggestionViewModel):
-            return "Suggestion: \(logSuggestionViewModel.title)"
+            return "Suggestion: \(logSuggestionViewModel.identifier)"
         }
     }
 }
