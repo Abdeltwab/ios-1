@@ -65,8 +65,9 @@
 		B47397E9248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47397E8248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift */; };
 		B496577F249108920061340B /* CreateTimeEntryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B496577E249108920061340B /* CreateTimeEntryHelper.swift */; };
 		B4A647722488021000A8C434 /* CalendarEvent+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A647712488021000A8C434 /* CalendarEvent+Extensions.swift */; };
-		B4BD1AA62492B74400C962C4 /* AutoScrollHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BD1AA52492B74400C962C4 /* AutoScrollHelper.swift */; };
+		B4BBB86D24994B3700C263E6 /* ContextualMenuActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBB86C24994B3700C263E6 /* ContextualMenuActionView.swift */; };
 		B4BD1AA22492965700C962C4 /* ZoomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BD1AA12492965700C962C4 /* ZoomHelper.swift */; };
+		B4BD1AA62492B74400C962C4 /* AutoScrollHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BD1AA52492B74400C962C4 /* AutoScrollHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,8 +145,9 @@
 		B47397E8248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeSupplementaryView.swift; sourceTree = "<group>"; };
 		B496577E249108920061340B /* CreateTimeEntryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimeEntryHelper.swift; sourceTree = "<group>"; };
 		B4A647712488021000A8C434 /* CalendarEvent+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarEvent+Extensions.swift"; sourceTree = "<group>"; };
-		B4BD1AA52492B74400C962C4 /* AutoScrollHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScrollHelper.swift; sourceTree = "<group>"; };
+		B4BBB86C24994B3700C263E6 /* ContextualMenuActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuActionView.swift; sourceTree = "<group>"; };
 		B4BD1AA12492965700C962C4 /* ZoomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomHelper.swift; sourceTree = "<group>"; };
+		B4BD1AA52492B74400C962C4 /* AutoScrollHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScrollHelper.swift; sourceTree = "<group>"; };
 		BF55096AEEB6FF794B0E44C6 /* Pods-Calendar-CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calendar-CalendarTests.release.xcconfig"; path = "Target Support Files/Pods-Calendar-CalendarTests/Pods-Calendar-CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -348,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				ACBA123D24814F57007F939D /* ContextualMenuViewController.swift */,
+				B4BBB86C24994B3700C263E6 /* ContextualMenuActionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				8CFDB381247C124100952533 /* CalendarViewController.swift in Sources */,
 				B438EE3724893E7200B805A2 /* CalendarDayCollectionViewDataSource.swift in Sources */,
 				ACBA124524814F57007F939D /* ContextualMenuSelector.swift in Sources */,
+				B4BBB86D24994B3700C263E6 /* ContextualMenuActionView.swift in Sources */,
 				ACBA124324814F57007F939D /* ContextualMenuState.swift in Sources */,
 				B47397E5248FEE4500DA8620 /* EditingHourIndicatorSupplementaryView.swift in Sources */,
 				AC4E25C7247D6CCA004655F6 /* CalendarDayState.swift in Sources */,

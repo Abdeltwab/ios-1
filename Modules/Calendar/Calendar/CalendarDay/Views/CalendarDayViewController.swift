@@ -30,6 +30,9 @@ public class CalendarDayViewController: UIViewController, Storyboarded {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = Color.backgroundPrimary.uiColor
+        collectionView.backgroundColor = Color.backgroundPrimary.uiColor
+
         // MARK: Configure collectionView
 
         collectionView.register(CalendarItemCollectionViewCell.nib,

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,24 +54,220 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="contextual menu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGG-wF-IAd">
-                                <rect key="frame" x="143.5" y="442.5" width="127" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="11:00 AM - 11:45 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iV9-HW-dtU">
+                                <rect key="frame" x="280" y="59" width="119" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <color key="textColor" name="Text Primary"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5qo-cg-9bR">
+                                <rect key="frame" x="15" y="59" width="255" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="753" text="Time Entry description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krh-tj-NAv">
+                                        <rect key="frame" x="0.0" y="0.0" width="159" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <color key="textColor" name="Text Primary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pPs-YQ-1C8">
+                                        <rect key="frame" x="0.0" y="26" width="110.5" height="18"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ci-ux-TlT">
+                                                <rect key="frame" x="0.0" y="4" width="10" height="10"/>
+                                                <color key="backgroundColor" name="Accent"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="bba-aU-rx5"/>
+                                                    <constraint firstAttribute="height" constant="10" id="w4l-ov-TNr"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Project name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMi-1l-yfe">
+                                                <rect key="frame" x="20" y="0.0" width="90.5" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <color key="textColor" name="Text Primary"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6Ow-bf-WKa">
+                                <rect key="frame" x="32" y="118" width="350" height="80"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rY8-EX-J3L" customClass="ContextualMenuButtonView" customModule="Calendar">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icCalendarClose"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="Discard"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedButtonName" value="Discard"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                <color key="value" name="Delete Action"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKM-bc-Ltl" customClass="ContextualMenuButtonView" customModule="Calendar">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icCalendarCopy"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="Discard"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedButtonName" value="Copy as Time Entry"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                <color key="value" name="Delete Action"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scI-sY-jYT" customClass="ContextualMenuButtonView" customModule="Calendar">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icCalendarPlay"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="Discard"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedButtonName" value="Start from Event"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                <color key="value" name="Delete Action"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxl-gK-D5j" customClass="ContextualMenuButtonView" customModule="Calendar">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icCalendarDelete"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="Discard"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedButtonName" value="Delete"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                <color key="value" name="Delete Action"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZW-Ga-cqW" customClass="ContextualMenuButtonView" customModule="Calendar">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icCalendarEdit"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="Discard"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedButtonName" value="Edit"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                <color key="value" name="Delete Action"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-oe-uvo" customClass="ContextualMenuButtonView" customModule="Calendar">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icCalendarStop"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="Discard"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedButtonName" value="Stop"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                <color key="value" name="Delete Action"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ukw-B0-kbE" customClass="ContextualMenuButtonView" customModule="Calendar">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icCalendarSave"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="Discard"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedButtonName" value="Save"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                <color key="value" name="Delete Action"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyK-2H-tXX" customClass="ContextualMenuButtonView" customModule="Calendar">
+                                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="30"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="icCalendarPlay"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="buttonName" value="Discard"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="localizedButtonName" value="Continue"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="iconBackgroundColor">
+                                                <color key="value" name="Delete Action"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="jIQ-HK-b4n"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5b8-BP-DT3">
+                                <rect key="frame" x="0.0" y="811" width="414" height="1"/>
+                                <color key="backgroundColor" name="Separator"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Ohr-vy-jaJ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A6n-FK-duS">
+                                <rect key="frame" x="182" y="827" width="50" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" name="Text Primary"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedTextKey" value="Cancel"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="dGG-wF-IAd" firstAttribute="centerY" secondItem="SO1-iY-4w5" secondAttribute="centerY" id="HDc-sa-ZIl"/>
-                            <constraint firstItem="dGG-wF-IAd" firstAttribute="centerX" secondItem="SO1-iY-4w5" secondAttribute="centerX" id="zZQ-rG-Iv4"/>
+                            <constraint firstItem="SO1-iY-4w5" firstAttribute="trailing" secondItem="iV9-HW-dtU" secondAttribute="trailing" constant="15" id="6FP-YL-0do"/>
+                            <constraint firstItem="A6n-FK-duS" firstAttribute="centerX" secondItem="SO1-iY-4w5" secondAttribute="centerX" id="7l8-ZP-q8Q"/>
+                            <constraint firstItem="SO1-iY-4w5" firstAttribute="bottom" secondItem="A6n-FK-duS" secondAttribute="bottom" constant="5" id="9Su-Tb-rxl"/>
+                            <constraint firstItem="5qo-cg-9bR" firstAttribute="top" secondItem="SO1-iY-4w5" secondAttribute="top" constant="15" id="CFz-TA-hkI"/>
+                            <constraint firstItem="iV9-HW-dtU" firstAttribute="leading" secondItem="5qo-cg-9bR" secondAttribute="trailing" constant="10" id="Ea2-HI-E3J"/>
+                            <constraint firstItem="SO1-iY-4w5" firstAttribute="trailing" secondItem="5b8-BP-DT3" secondAttribute="trailing" id="VbN-D3-2b6"/>
+                            <constraint firstItem="6Ow-bf-WKa" firstAttribute="leading" secondItem="SO1-iY-4w5" secondAttribute="leading" constant="32" id="aJx-hl-3AR"/>
+                            <constraint firstItem="iV9-HW-dtU" firstAttribute="top" secondItem="SO1-iY-4w5" secondAttribute="top" constant="15" id="kew-Bx-95I"/>
+                            <constraint firstItem="6Ow-bf-WKa" firstAttribute="top" secondItem="5qo-cg-9bR" secondAttribute="bottom" constant="15" id="ky8-qJ-NHt"/>
+                            <constraint firstItem="A6n-FK-duS" firstAttribute="top" secondItem="5b8-BP-DT3" secondAttribute="bottom" constant="15" id="mHa-Kq-fAm"/>
+                            <constraint firstItem="5qo-cg-9bR" firstAttribute="leading" secondItem="SO1-iY-4w5" secondAttribute="leading" constant="15" id="ofQ-nD-Viu"/>
+                            <constraint firstItem="5b8-BP-DT3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Ow-bf-WKa" secondAttribute="bottom" constant="5" id="rlI-Mh-fba"/>
+                            <constraint firstItem="SO1-iY-4w5" firstAttribute="trailing" secondItem="6Ow-bf-WKa" secondAttribute="trailing" constant="32" id="rvq-Vg-mo3"/>
+                            <constraint firstItem="5b8-BP-DT3" firstAttribute="leading" secondItem="SO1-iY-4w5" secondAttribute="leading" id="toB-oE-l2j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SO1-iY-4w5"/>
                     </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="A6n-FK-duS" id="h8K-ig-pQv"/>
+                        <outlet property="continueButton" destination="uyK-2H-tXX" id="PlH-M9-qOt"/>
+                        <outlet property="copyAsTimeEntryButton" destination="NKM-bc-Ltl" id="dly-lK-x1u"/>
+                        <outlet property="deleteButton" destination="fxl-gK-D5j" id="mDZ-9r-EpY"/>
+                        <outlet property="descriptionLabel" destination="krh-tj-NAv" id="Tez-kV-AIB"/>
+                        <outlet property="discardButton" destination="rY8-EX-J3L" id="q3K-Pm-dkT"/>
+                        <outlet property="editButton" destination="xZW-Ga-cqW" id="g3a-bl-oLu"/>
+                        <outlet property="projectColorView" destination="5ci-ux-TlT" id="vxc-kk-fCm"/>
+                        <outlet property="projectNameLabel" destination="TMi-1l-yfe" id="7UU-pm-BOO"/>
+                        <outlet property="saveButton" destination="Ukw-B0-kbE" id="Yrx-JF-mId"/>
+                        <outlet property="startAndStopLabel" destination="iV9-HW-dtU" id="5d3-kg-3kn"/>
+                        <outlet property="startFromCalendarEventButton" destination="scI-sY-jYT" id="HYx-km-MpJ"/>
+                        <outlet property="stopButton" destination="iaV-oe-uvo" id="0p0-Yo-RI9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPn-ce-S8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1620" y="56"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icCalendarClose" width="10" height="10"/>
+        <image name="icCalendarCopy" width="19" height="20"/>
+        <image name="icCalendarDelete" width="18" height="19"/>
+        <image name="icCalendarEdit" width="18" height="18"/>
+        <image name="icCalendarPlay" width="11" height="12"/>
+        <image name="icCalendarSave" width="16" height="12"/>
+        <image name="icCalendarStop" width="12" height="12"/>
+        <namedColor name="Accent">
+            <color red="0.8666666666666667" green="0.43529411764705883" blue="0.81960784313725488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Delete Action">
+            <color red="1" green="0.53725490196078429" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Separator">
+            <color red="0.83529411764705885" green="0.81568627450980391" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Text Primary">
+            <color red="0.17254901960784313" green="0.074509803921568626" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
