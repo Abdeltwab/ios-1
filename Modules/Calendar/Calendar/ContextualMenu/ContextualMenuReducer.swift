@@ -22,7 +22,7 @@ func createContextualMenuReducer() -> Reducer<ContextualMenuState, ContextualMen
             if editableTimeEntry.ids.isEmpty {
                 return crateTimeEntryEffect(for: editableTimeEntry)
             } else {
-                return updateTimeEntryEffect(for: editableTimeEntry, in: state.timeEntries)
+                return updateTimeEntryEffect(for: editableTimeEntry, in: state.entities.timeEntries)
             }
 
         case .editButtonTapped:

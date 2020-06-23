@@ -6,7 +6,7 @@ import Timer
 
 public struct CalendarState {
     var selectedDate: Date = Date().ignoreTimeComponents()
-    var timeEntries = EntityCollection<TimeEntry>([])
+    var entities = TimeLogEntities()
     public var calendarEvents: [String: CalendarEvent]
     public var user: Loadable<User>
     public var editableTimeEntry: EditableTimeEntry?
@@ -35,7 +35,7 @@ extension CalendarState {
             CalendarDayState(
                 user: user,
                 selectedDate: selectedDate,
-                timeEntries: timeEntries,
+                entities: entities,
                 calendarEvents: calendarEvents,
                 selectedItem: localCalendarState.selectedItem
             )
@@ -43,7 +43,7 @@ extension CalendarState {
         set {
             user = newValue.user
             selectedDate = newValue.selectedDate
-            timeEntries = newValue.timeEntries
+            entities = newValue.entities
             calendarEvents = newValue.calendarEvents
             localCalendarState.selectedItem = newValue.selectedItem
         }
@@ -55,14 +55,14 @@ extension CalendarState {
                 user: user,
                 selectedItem: localCalendarState.selectedItem,
                 editableTimeEntry: editableTimeEntry,
-                timeEntries: timeEntries
+                entities: entities
             )
         }
         set {
             user = newValue.user
             localCalendarState.selectedItem = newValue.selectedItem
             editableTimeEntry = newValue.editableTimeEntry
-            timeEntries = newValue.timeEntries
+            entities = newValue.entities
         }
     }
 }

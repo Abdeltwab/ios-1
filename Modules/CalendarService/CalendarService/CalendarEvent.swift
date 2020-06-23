@@ -3,6 +3,7 @@ import Foundation
 public struct CalendarEvent: Equatable {
     public let id: String
     public let calendarId: String
+    public let calendarName: String
     public let description: String
     public let start: Date
     public let stop: Date
@@ -11,6 +12,7 @@ public struct CalendarEvent: Equatable {
     public init(
         id: String,
         calendarId: String,
+        calendarName: String,
         description: String,
         start: Date,
         stop: Date,
@@ -18,6 +20,7 @@ public struct CalendarEvent: Equatable {
     ) {
         self.id = id
         self.calendarId = calendarId
+        self.calendarName = calendarName
         self.description = description
         self.start = start
         self.stop = stop

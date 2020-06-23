@@ -16,12 +16,14 @@ class CalendarSuggestionProviderTests: XCTestCase {
         let calendarEvents = [
             CalendarEvent(id: "1",
                           calendarId: "1",
+                          calendarName: "",
                           description: "1",
                           start: mockTime.now().addingTimeInterval(TimeInterval(minutes: 10)),
                           stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: 20)),
                           color: ""),
             CalendarEvent(id: "2",
                           calendarId: "2",
+                          calendarName: "",
                           description: "2",
                           start: mockTime.now().addingTimeInterval(TimeInterval(minutes: 15)),
                           stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: 20)),
@@ -37,6 +39,7 @@ class CalendarSuggestionProviderTests: XCTestCase {
         let calendarEvents = [
             CalendarEvent(id: "1",
                           calendarId: "1",
+                          calendarName: "",
                           description: "1",
                           start: mockTime.now().addingTimeInterval(TimeInterval(minutes: 61)),
                           stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: 70)),
@@ -52,6 +55,7 @@ class CalendarSuggestionProviderTests: XCTestCase {
         let calendarEvents = [
             CalendarEvent(id: "1",
                           calendarId: "1",
+                          calendarName: "",
                           description: "1",
                           start: mockTime.now().addingTimeInterval(TimeInterval(minutes: -61)),
                           stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: -40)),
@@ -67,6 +71,7 @@ class CalendarSuggestionProviderTests: XCTestCase {
         let calendarEvents = [
             CalendarEvent(id: "1",
                           calendarId: "1",
+                          calendarName: "",
                           description: "1",
                           start: mockTime.now().addingTimeInterval(TimeInterval(minutes: 10)),
                           stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: 20)),
@@ -82,6 +87,7 @@ class CalendarSuggestionProviderTests: XCTestCase {
         let calendarEvents = [
             CalendarEvent(id: "1",
                           calendarId: "1",
+                          calendarName: "",
                           description: "",
                           start: mockTime.now().addingTimeInterval(TimeInterval(minutes: 10)),
                           stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: 20)),
@@ -97,12 +103,14 @@ class CalendarSuggestionProviderTests: XCTestCase {
         let calendarEvents = [
             CalendarEvent(id: "1",
                           calendarId: "1",
+                          calendarName: "",
                           description: "1",
                           start: mockTime.now().addingTimeInterval(TimeInterval(minutes: 15)),
                           stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: 20)),
                           color: ""),
             CalendarEvent(id: "2",
                           calendarId: "2",
+                          calendarName: "",
                           description: "2",
                           start: mockTime.now().addingTimeInterval(TimeInterval(minutes: -5)),
                           stop: mockTime.now().addingTimeInterval(TimeInterval(minutes: 20)),

@@ -30,6 +30,7 @@ public enum Color: String, CaseIterable {
     case wheelThumbTint = "Wheel Thumb Tint"
     case wheelTickMajor = "Wheel Tick Major"
     case wheelTickMinor = "Wheel Tick Minor"
+    case noProject = "No Project"
     
     public var uiColor: UIColor {
         UIColor.init(named: self.rawValue, in: Assets.bundle, compatibleWith: nil)!

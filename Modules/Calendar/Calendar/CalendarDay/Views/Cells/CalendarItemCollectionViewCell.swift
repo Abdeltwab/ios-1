@@ -29,7 +29,8 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
     private let halfLineWidth: CGFloat = 0.5
 
     private var itemColor: UIColor {
-        UIColor(hex: calendarItem.color)
+        guard let color = calendarItem.color else { return Color.noProject.uiColor }
+        return UIColor(hex: color)
     }
 
     private var foregroundColor: UIColor {

@@ -16,12 +16,13 @@ class CalendarDaySelectorTests: XCTestCase {
         let notExpectedTimeEntries: [TimeEntry] = (10..<20)
             .map({ createTimeEntry(id: $0, start: now + 2 * .secondsInADay, duration: 10 * .secondsInAMinute, description: "Unexpected") })
 
-        let timeEntries = EntityCollection(expectedTimeEntries + notExpectedTimeEntries)
+        var entities = TimeLogEntities()
+        entities.timeEntries = EntityCollection(expectedTimeEntries + notExpectedTimeEntries)
 
         let state = CalendarDayState(
             user: .nothing,
             selectedDate: now,
-            timeEntries: timeEntries,
+            entities: entities,
             calendarEvents: [:]
         )
 
@@ -40,12 +41,13 @@ class CalendarDaySelectorTests: XCTestCase {
         let notExpectedTimeEntries: [TimeEntry] = (10..<20)
             .map({ createTimeEntry(id: $0, start: now + 2 * .secondsInADay, duration: 10 * .secondsInAMinute, description: "Unexpected") })
 
-        let timeEntries = EntityCollection(notExpectedTimeEntries)
+        var entities = TimeLogEntities()
+        entities.timeEntries = EntityCollection(notExpectedTimeEntries)
 
         let state = CalendarDayState(
             user: .nothing,
             selectedDate: now,
-            timeEntries: timeEntries,
+            entities: entities,
             calendarEvents: [:]
         )
 
@@ -67,7 +69,8 @@ class CalendarDaySelectorTests: XCTestCase {
         let timeEntriesThatStopsTheDayAfter: [TimeEntry] = (10..<20)
         .map({ createTimeEntry(id: $0, start: now + 23 * .secondsInAnHour, duration: 10 * .secondsInAnHour, description: "Unexpected") })
 
-        let timeEntries = EntityCollection(
+        var entities = TimeLogEntities()
+        entities.timeEntries = EntityCollection(
             expectedTimeEntries
                 + timeEntriesThatStartTheDayBefore
                 + timeEntriesThatStopsTheDayAfter
@@ -76,7 +79,7 @@ class CalendarDaySelectorTests: XCTestCase {
         let state = CalendarDayState(
             user: .nothing,
             selectedDate: now,
-            timeEntries: timeEntries,
+            entities: entities,
             calendarEvents: [:]
         )
 
@@ -98,12 +101,13 @@ class CalendarDaySelectorTests: XCTestCase {
         let selectedTimeEntry = createTimeEntry(id: 10, start: now + 1 * .secondsInAnHour, duration: 10 * .secondsInAMinute, description: "Expected")
         let editableTimeEntry = EditableTimeEntry.fromSingle(selectedTimeEntry)
 
-        let timeEntries = EntityCollection(unselectedTimeEntries + [selectedTimeEntry])
+        var entities = TimeLogEntities()
+        entities.timeEntries = EntityCollection(unselectedTimeEntries + [selectedTimeEntry])
 
         let state = CalendarDayState(
             user: .nothing,
             selectedDate: now,
-            timeEntries: timeEntries,
+            entities: entities,
             calendarEvents: [:],
             selectedItem: .left(editableTimeEntry)
         )
@@ -126,12 +130,13 @@ class CalendarDaySelectorTests: XCTestCase {
         var editableTimeEntry = EditableTimeEntry.empty(workspaceId: 0)
         editableTimeEntry.start = now
 
-        let timeEntries = EntityCollection(unselectedTimeEntries)
+        var entities = TimeLogEntities()
+        entities.timeEntries = EntityCollection(unselectedTimeEntries)
 
         let state = CalendarDayState(
             user: .nothing,
             selectedDate: now,
-            timeEntries: timeEntries,
+            entities: entities,
             calendarEvents: [:],
             selectedItem: .left(editableTimeEntry)
         )

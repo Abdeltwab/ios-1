@@ -14,7 +14,7 @@ public func createCalendarReducer(repository: Repository, time: Time, calendarSe
         createCalendarDayReducer(calendarService: calendarService)
             .pullback(state: \.calendarDayState, action: \.calendarDay),
         createContextualMenuReducer()
-            .decorate(with: timeEntriesCoreReducer, state: \.timeEntries, action: \.timeEntries)
+            .decorate(with: timeEntriesCoreReducer, state: \.entities.timeEntries, action: \.timeEntries)
             .pullback(state: \.contextualMenuState, action: \.contextualMenu)
     )
 }

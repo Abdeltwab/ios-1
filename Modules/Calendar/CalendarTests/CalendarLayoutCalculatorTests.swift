@@ -16,7 +16,7 @@ class CalendarLayoutCalculatorTests: XCTestCase {
         let now = Date()
         let time = Time(getNow: { now })
 
-        let calculator = CalendarLayoutCalculator(time: time)
+        let calculator = CalendarLayoutCalculator(time: time, entities: TimeLogEntities())
 
         let layoutAttributes = calculator.calculateLayoutAttributesforItems(calendarItems: calendarItems)
 
@@ -38,7 +38,7 @@ class CalendarLayoutCalculatorTests: XCTestCase {
         let now = Date()
         let time = Time(getNow: { now })
 
-        let calculator = CalendarLayoutCalculator(time: time)
+        let calculator = CalendarLayoutCalculator(time: time, entities: TimeLogEntities())
 
         let layoutAttributes = calculator.calculateLayoutAttributesforItems(calendarItems: calendarItems)
 
@@ -61,7 +61,7 @@ class CalendarLayoutCalculatorTests: XCTestCase {
         let now = Date()
         let time = Time(getNow: { now })
 
-        let calculator = CalendarLayoutCalculator(time: time)
+        let calculator = CalendarLayoutCalculator(time: time, entities: TimeLogEntities())
 
         let layoutAttributes = calculator.calculateLayoutAttributesforItems(calendarItems: calendarItems)
 
@@ -82,7 +82,7 @@ class CalendarLayoutCalculatorTests: XCTestCase {
         let now = Date()
         let time = Time(getNow: { now })
 
-        let calculator = CalendarLayoutCalculator(time: time)
+        let calculator = CalendarLayoutCalculator(time: time, entities: TimeLogEntities())
 
         let layoutAttributes = calculator.calculateLayoutAttributesforItems(calendarItems: calendarItems)
 
@@ -109,7 +109,7 @@ class CalendarLayoutCalculatorTests: XCTestCase {
         let now = Date()
         let time = Time(getNow: { now })
 
-        let calculator = CalendarLayoutCalculator(time: time)
+        let calculator = CalendarLayoutCalculator(time: time, entities: TimeLogEntities())
 
         let layoutAttributes = calculator.calculateLayoutAttributesforItems(calendarItems: calendarItems)
 
@@ -142,7 +142,7 @@ class CalendarLayoutCalculatorTests: XCTestCase {
         let now = Date()
         let time = Time(getNow: { now })
 
-        let calculator = CalendarLayoutCalculator(time: time)
+        let calculator = CalendarLayoutCalculator(time: time, entities: TimeLogEntities())
 
         let layoutAttributes = calculator.calculateLayoutAttributesforItems(calendarItems: calendarItems)
 
@@ -173,7 +173,7 @@ class CalendarLayoutCalculatorTests: XCTestCase {
         let now = Date()
         let time = Time(getNow: { now })
 
-        let calculator = CalendarLayoutCalculator(time: time)
+        let calculator = CalendarLayoutCalculator(time: time, entities: TimeLogEntities())
 
         let layoutAttributes = calculator.calculateLayoutAttributesforItems(calendarItems: calendarItems)
 
@@ -194,6 +194,12 @@ class CalendarLayoutCalculatorTests: XCTestCase {
     }
 
     private func calendarEvent(id: String, description: String, start: Date, duration: TimeInterval) -> CalendarItem.Value {
-        .calendarEvent(CalendarEvent(id: id, calendarId: "", description: description, start: start, stop: start + duration, color: ""))
+        .calendarEvent(CalendarEvent(id: id,
+                                     calendarId: "",
+                                     calendarName: "",
+                                     description: description,
+                                     start: start,
+                                     stop: start + duration,
+                                     color: ""))
     }
 }
