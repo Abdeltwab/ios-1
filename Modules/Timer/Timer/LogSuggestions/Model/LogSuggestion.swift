@@ -7,10 +7,10 @@ public struct SuggestionProperties: Equatable {
     public let description: String
     public let projectId: Int64?
     public let taskId: Int64?
-    public let projectColor: String
-    public let projectName: String
-    public let taskName: String
-    public let clientName: String
+    public let projectColor: String?
+    public let projectName: String?
+    public let taskName: String?
+    public let clientName: String?
     public let hasProject: Bool
     public let hasClient: Bool
     public let hasTask: Bool
@@ -56,10 +56,10 @@ extension TimeEntry {
             description: description,
             projectId: projectId,
             taskId: taskId,
-            projectColor: project?.color ?? "",
-            projectName: project?.name ?? "",
-            taskName: task?.name ?? "",
-            clientName: client?.name ?? "",
+            projectColor: project?.color,
+            projectName: project?.name,
+            taskName: task?.name,
+            clientName: client?.name,
             hasProject: project != nil,
             hasClient: client != nil,
             hasTask: task != nil,
@@ -79,10 +79,10 @@ extension CalendarEvent {
             description: description,
             projectId: nil,
             taskId: nil,
-            projectColor: "",
-            projectName: "",
-            taskName: "",
-            clientName: "",
+            projectColor: nil,
+            projectName: nil,
+            taskName: nil,
+            clientName: nil,
             hasProject: false,
             hasClient: false,
             hasTask: false,

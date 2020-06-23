@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -20,16 +20,53 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogSuggestionCell" id="N2y-39-gI7" userLabel="SuggestionCell" customClass="LogSuggestionCell" customModule="Timer">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogSuggestionCell" rowHeight="72" id="N2y-39-gI7" userLabel="SuggestionCell" customClass="LogSuggestionCell" customModule="Timer">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N2y-39-gI7" id="lQJ-TY-w6Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abF-SF-2sw" userLabel="Description Label">
+                                                    <rect key="frame" x="20" y="11" width="322" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsE-KK-GEB" userLabel="Continue Button">
+                                                    <rect key="frame" x="362" y="16" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="1ep-Gd-ilJ"/>
+                                                        <constraint firstAttribute="height" constant="40" id="FLB-fH-GFs"/>
+                                                    </constraints>
+                                                    <state key="normal" image="icContinue"/>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4m-dr-aZ4" userLabel="Project Client Task Label">
+                                                    <rect key="frame" x="20" y="40" width="322" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="L4m-dr-aZ4" secondAttribute="bottom" constant="15" id="MP4-2i-29b"/>
+                                                <constraint firstItem="LsE-KK-GEB" firstAttribute="leading" secondItem="abF-SF-2sw" secondAttribute="trailing" constant="20" id="Ugo-Xo-hal"/>
+                                                <constraint firstItem="L4m-dr-aZ4" firstAttribute="leading" secondItem="lQJ-TY-w6Y" secondAttribute="leading" constant="20" id="W8d-6R-5da"/>
+                                                <constraint firstItem="LsE-KK-GEB" firstAttribute="centerY" secondItem="lQJ-TY-w6Y" secondAttribute="centerY" id="eHq-Tm-Ko7"/>
+                                                <constraint firstItem="LsE-KK-GEB" firstAttribute="leading" secondItem="L4m-dr-aZ4" secondAttribute="trailing" constant="20" id="n6y-zI-MTE"/>
+                                                <constraint firstItem="abF-SF-2sw" firstAttribute="leading" secondItem="lQJ-TY-w6Y" secondAttribute="leading" constant="20" id="rgh-rT-zRi"/>
+                                                <constraint firstAttribute="trailing" secondItem="LsE-KK-GEB" secondAttribute="trailing" constant="12" id="tVQ-pU-QnX"/>
+                                                <constraint firstItem="abF-SF-2sw" firstAttribute="top" secondItem="lQJ-TY-w6Y" secondAttribute="top" constant="11" id="x4P-h7-oo2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="continueButton" destination="LsE-KK-GEB" id="DKP-AU-4Xp"/>
+                                            <outlet property="descriptionLabel" destination="abF-SF-2sw" id="N7m-uZ-pZX"/>
+                                            <outlet property="projectTaskClientLabel" destination="L4m-dr-aZ4" id="INS-hf-kWL"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TimeEntryCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimeEntryCell" rowHeight="72" id="Jru-Bn-nLE" customClass="TimeEntryCell" customModule="Timer">
-                                        <rect key="frame" x="0.0" y="71.5" width="414" height="72"/>
+                                        <rect key="frame" x="0.0" y="100" width="414" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jru-Bn-nLE" id="0j9-8D-Ze1">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>

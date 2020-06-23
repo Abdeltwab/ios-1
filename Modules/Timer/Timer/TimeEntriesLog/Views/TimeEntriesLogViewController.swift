@@ -56,10 +56,13 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
                         cell.isBillableImage.isHidden = cellViewModel.billable
                         return cell
                     case let .suggestionCell(cellViewModel):
-                        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimeEntryCell", for: indexPath) as? TimeEntryCell else {
+                        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LogSuggestionCell",
+                                                                       for: indexPath) as? LogSuggestionCell
+                            else {
                             fatalError("Wrong cell type")
                         }
-                        cell.descriptionLabel.text = "Suggestion!"
+                        cell.descriptionLabel.text = cellViewModel.description
+                        cell.projectTaskClientLabel.attributedText = cellViewModel.projectTaskClient
                         return cell
                     }
             })

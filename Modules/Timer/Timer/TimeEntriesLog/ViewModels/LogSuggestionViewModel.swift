@@ -14,14 +14,14 @@ struct LogSuggestionViewModel: Equatable {
     
     var identifier: String {
         var result = suggestionProperties.description
-        if suggestionProperties.hasProject {
-            result += ": \(suggestionProperties.projectName)"
-            if suggestionProperties.hasClient {
-                result += " (\(suggestionProperties.clientName))"
+        if let projectName = suggestionProperties.projectName {
+            result += ": \(projectName)"
+            if let clientName = suggestionProperties.clientName {
+                result += " (\(clientName))"
             }
         }
-        if suggestionProperties.hasTask {
-            result += " - \(suggestionProperties.taskName)"
+        if let taskName = suggestionProperties.taskName {
+            result += " - \(taskName)"
         }
         return result
     }
