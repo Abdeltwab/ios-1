@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		340A652A249B9AAA00E8A63F /* UIView+Circular.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340A6529249B9AAA00E8A63F /* UIView+Circular.swift */; };
 		340A652C249B9D4600E8A63F /* UIView+Bordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340A652B249B9D4600E8A63F /* UIView+Bordered.swift */; };
+		34124E0124A4040400B46D47 /* UIView+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34124E0024A4040400B46D47 /* UIView+Rounded.swift */; };
 		3430C397242259BC009CF454 /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3430C396242259BC009CF454 /* Apply.swift */; };
 		347E827F24A2276200B49853 /* ProjectClientTaskString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E827E24A2276200B49853 /* ProjectClientTaskString.swift */; };
 		776D8BEEE21401F9DC087CB2 /* Pods_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B61B8F23DFC4B8B42A6199 /* Pods_Utils.framework */; };
@@ -54,6 +55,7 @@
 		00B61B8F23DFC4B8B42A6199 /* Pods_Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		340A6529249B9AAA00E8A63F /* UIView+Circular.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Circular.swift"; sourceTree = "<group>"; };
 		340A652B249B9D4600E8A63F /* UIView+Bordered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Bordered.swift"; sourceTree = "<group>"; };
+		34124E0024A4040400B46D47 /* UIView+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rounded.swift"; sourceTree = "<group>"; };
 		3430C396242259BC009CF454 /* Apply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apply.swift; sourceTree = "<group>"; };
 		347E827E24A2276200B49853 /* ProjectClientTaskString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectClientTaskString.swift; sourceTree = "<group>"; };
 		576E4EB2A9A66A487D6A2D42 /* Pods-Utils.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utils.release.xcconfig"; path = "Target Support Files/Pods-Utils/Pods-Utils.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			children = (
 				340A6529249B9AAA00E8A63F /* UIView+Circular.swift */,
 				340A652B249B9D4600E8A63F /* UIView+Bordered.swift */,
+				34124E0024A4040400B46D47 /* UIView+Rounded.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				340A652C249B9D4600E8A63F /* UIView+Bordered.swift in Sources */,
 				B43AA875247EF3E4005867CE /* TimeZone+Extensions.swift in Sources */,
 				B4BAADE02458528200F9DB8F /* Driver+Extensions.swift in Sources */,
+				34124E0124A4040400B46D47 /* UIView+Rounded.swift in Sources */,
 				347E827F24A2276200B49853 /* ProjectClientTaskString.swift in Sources */,
 				B4B4F02E2435222A00DFBF2E /* UIView+ConstraintExtensions.swift in Sources */,
 				AC825508247EA92300B0CF72 /* Either.swift in Sources */,

@@ -27,7 +27,7 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
 
         self.title = "Toggl"
-        tableView.rowHeight = 72
+        tableView.rowHeight = 63
     }
 
     // swiftlint:disable function_body_length
