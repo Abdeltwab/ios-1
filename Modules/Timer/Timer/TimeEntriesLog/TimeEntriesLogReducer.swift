@@ -78,6 +78,9 @@ func createTimeEntriesLogReducer(
             state.entriesPendingDeletion.removeAll()
             return []
             
+        case let .logSuggestions(.suggestionTapped(suggestion)):
+            return [Effect.from(action: .timeEntries(.startTimeEntry(suggestion.properties.toStartTimeEntryDto())))]
+            
         case .timeEntries, .logSuggestions:
             return []
         }
