@@ -84,17 +84,10 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
                 .disposed(by: disposeBag)
 
             tableView.rx.modelSelected(TimeEntriesLogCellViewModel.self)
-                .compactMap({ cellViewModel -> TimeEntryCellViewModel? in
-                    if case let .timeEntryCell(timeEntryCellViewModel) = cellViewModel {
-                        return timeEntryCellViewModel
-                    } else {
-                        return nil
-                    }
-                })
                 .map { $0.tappedAction }
                 .subscribe(onNext: store.dispatch)
                 .disposed(by: disposeBag)
-
+            
             tableView.rx.setDelegate(self)
                 .disposed(by: disposeBag)
 
@@ -143,16 +136,20 @@ extension TimeEntriesLogViewController: UITableViewDelegate {
     }
 }
 
-extension TimeEntryCellViewModel {
+extension TimeEntriesLogCellViewModel {
     var tappedAction: TimeEntriesLogAction {
         switch self {
-        case let .singleEntry(timeEntry, inGroup: _):
-            return TimeEntriesLogAction.timeEntryTapped(timeEntry.id)
-        case let .groupedEntriesHeader(timeEntries, open: _):
-            return TimeEntriesLogAction.timeEntryGroupTapped(timeEntries.map { $0.id })
+        case let .timeEntryCell(.singleEntry(timeEntry, inGroup: _)):
+            return .timeEntryTapped(timeEntry.id)
+        case let .timeEntryCell(.groupedEntriesHeader(timeEntries, open: _)):
+            return .timeEntryGroupTapped(timeEntries.map { $0.id })
+        case let .suggestionCell(suggestionViewModel):
+            return .logSuggestions(.suggestionTapped(suggestionViewModel.suggestion))
         }
     }
+}
 
+extension TimeEntryCellViewModel {
     func swipedAction(direction: SwipeDirection) -> TimeEntriesLogAction {
         switch self {
         case let .singleEntry(timeEntry, inGroup: _):

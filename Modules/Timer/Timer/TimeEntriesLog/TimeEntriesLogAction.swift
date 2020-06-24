@@ -22,6 +22,7 @@ public enum TimeEntriesLogAction: Equatable {
     case setError(ErrorType)
 
     case timeEntries(TimeEntriesAction)
+    case logSuggestions(LogSuggestionAction)
 }
 
 extension TimeEntriesLogAction {
@@ -33,6 +34,19 @@ extension TimeEntriesLogAction {
         set {
             guard case .timeEntries = self, let newValue = newValue else { return }
             self = .timeEntries(newValue)
+        }
+    }
+}
+
+extension TimeEntriesLogAction {
+    var logSuggestions: LogSuggestionAction? {
+        get {
+            guard case let .logSuggestions(value) = self else { return nil }
+            return value
+        }
+        set {
+            guard case .logSuggestions = self, let newValue = newValue else { return }
+            self = .logSuggestions(newValue)
         }
     }
 }
@@ -70,6 +84,9 @@ extension TimeEntriesLogAction: CustomDebugStringConvertible {
             return "UndoButtonTapped"
 
         case let .timeEntries(action):
+            return action.debugDescription
+            
+        case let .logSuggestions(action):
             return action.debugDescription
         }
     }

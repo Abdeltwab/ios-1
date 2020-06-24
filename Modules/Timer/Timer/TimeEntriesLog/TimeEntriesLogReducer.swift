@@ -78,7 +78,7 @@ func createTimeEntriesLogReducer(
             state.entriesPendingDeletion.removeAll()
             return []
             
-        case .timeEntries:
+        case .timeEntries, .logSuggestions:
             return []
         }
     }
