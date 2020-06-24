@@ -67,7 +67,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8C2516A32403C19D00BAD4B5"
+               BlueprintIdentifier = "348DE158248E31DC00A9D537"
                BuildableName = "AssetsTests.xctest"
                BlueprintName = "AssetsTests"
                ReferencedContainer = "container:../Modules/Assets/Assets.xcodeproj">
@@ -201,6 +201,16 @@
                BuildableName = "CommonFeaturesTests.xctest"
                BlueprintName = "CommonFeaturesTests"
                ReferencedContainer = "container:../Modules/CommonFeatures/CommonFeatures.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B483FFED24A391EB008A2B58"
+               BuildableName = "SettingsTests.xctest"
+               BlueprintName = "SettingsTests"
+               ReferencedContainer = "container:../Modules/Settings/Settings.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

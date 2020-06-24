@@ -4,7 +4,7 @@ import OtherServices
 
 public class SettingsFeature: BaseFeature<SettingsState, SettingsAction> {
 
-    private enum Features {
+    private enum Features: Hashable {
     }
 
     private let time: Time
@@ -13,7 +13,7 @@ public class SettingsFeature: BaseFeature<SettingsState, SettingsAction> {
     public init(time: Time) {
         self.time = time
 
-        features = []
+        features = [:]
     }
 
     public override func mainCoordinator(store: Store<SettingsState, SettingsAction>) -> Coordinator {

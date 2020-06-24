@@ -22,11 +22,16 @@
 		B4C25D1E24A393E500DD703D /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D1D24A393E500DD703D /* SettingsFeature.swift */; };
 		B4C25D2724A3940900DD703D /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2024A3940900DD703D /* SettingsAction.swift */; };
 		B4C25D2824A3940900DD703D /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2124A3940900DD703D /* SettingsCoordinator.swift */; };
-		B4C25D2924A3940900DD703D /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2224A3940900DD703D /* SettingsFeature.swift */; };
 		B4C25D2A24A3940900DD703D /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2324A3940900DD703D /* SettingsReducer.swift */; };
 		B4C25D2B24A3940900DD703D /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2424A3940900DD703D /* SettingsState.swift */; };
 		B4C25D2C24A3940900DD703D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2524A3940900DD703D /* SettingsViewController.swift */; };
 		B4C25D2D24A3940900DD703D /* SettingsSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2624A3940900DD703D /* SettingsSelector.swift */; };
+		B4C25D3924A3A1E100DD703D /* Architecture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C25D3424A3A1E100DD703D /* Architecture.framework */; };
+		B4C25D3B24A3A1E100DD703D /* Assets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C25D3524A3A1E100DD703D /* Assets.framework */; };
+		B4C25D3D24A3A1E100DD703D /* Models.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C25D3624A3A1E100DD703D /* Models.framework */; };
+		B4C25D3F24A3A1E200DD703D /* OtherServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C25D3724A3A1E100DD703D /* OtherServices.framework */; };
+		B4C25D4124A3A1E200DD703D /* Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C25D3824A3A1E100DD703D /* Utils.framework */; };
+		B4C25D4524A3A2AB00DD703D /* ArchitectureTestSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4C25D4424A3A2AB00DD703D /* ArchitectureTestSupport.framework */; };
 		E518B28757375AB6B46D458A /* Pods_Settings_SettingsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1BAF6FBBC7DA54D5A33E299 /* Pods_Settings_SettingsTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,11 +68,16 @@
 		B4C25D1D24A393E500DD703D /* SettingsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeature.swift; sourceTree = "<group>"; };
 		B4C25D2024A3940900DD703D /* SettingsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
 		B4C25D2124A3940900DD703D /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
-		B4C25D2224A3940900DD703D /* SettingsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeature.swift; sourceTree = "<group>"; };
 		B4C25D2324A3940900DD703D /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
 		B4C25D2424A3940900DD703D /* SettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
 		B4C25D2524A3940900DD703D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B4C25D2624A3940900DD703D /* SettingsSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSelector.swift; sourceTree = "<group>"; };
+		B4C25D3424A3A1E100DD703D /* Architecture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Architecture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4C25D3524A3A1E100DD703D /* Assets.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Assets.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4C25D3624A3A1E100DD703D /* Models.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Models.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4C25D3724A3A1E100DD703D /* OtherServices.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OtherServices.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4C25D3824A3A1E100DD703D /* Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4C25D4424A3A2AB00DD703D /* ArchitectureTestSupport.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ArchitectureTestSupport.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1BAF6FBBC7DA54D5A33E299 /* Pods_Settings_SettingsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Settings_SettingsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -76,7 +86,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C25D3D24A3A1E100DD703D /* Models.framework in Frameworks */,
+				B4C25D3F24A3A1E200DD703D /* OtherServices.framework in Frameworks */,
+				B4C25D3B24A3A1E100DD703D /* Assets.framework in Frameworks */,
+				B4C25D4524A3A2AB00DD703D /* ArchitectureTestSupport.framework in Frameworks */,
 				29B7BD9676925FA24B7306D9 /* Pods_Settings.framework in Frameworks */,
+				B4C25D4124A3A1E200DD703D /* Utils.framework in Frameworks */,
+				B4C25D3924A3A1E100DD703D /* Architecture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +123,12 @@
 		8895CDDF742DB4301C247935 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B4C25D4424A3A2AB00DD703D /* ArchitectureTestSupport.framework */,
+				B4C25D3424A3A1E100DD703D /* Architecture.framework */,
+				B4C25D3524A3A1E100DD703D /* Assets.framework */,
+				B4C25D3624A3A1E100DD703D /* Models.framework */,
+				B4C25D3724A3A1E100DD703D /* OtherServices.framework */,
+				B4C25D3824A3A1E100DD703D /* Utils.framework */,
 				9803C62649098B5252F32393 /* Pods_Settings.framework */,
 				C1BAF6FBBC7DA54D5A33E299 /* Pods_Settings_SettingsTests.framework */,
 			);
@@ -174,7 +196,6 @@
 			children = (
 				B4C25D2024A3940900DD703D /* SettingsAction.swift */,
 				B4C25D2124A3940900DD703D /* SettingsCoordinator.swift */,
-				B4C25D2224A3940900DD703D /* SettingsFeature.swift */,
 				B4C25D2324A3940900DD703D /* SettingsReducer.swift */,
 				B4C25D2424A3940900DD703D /* SettingsState.swift */,
 				B4C25D2524A3940900DD703D /* SettingsViewController.swift */,
@@ -372,7 +393,6 @@
 				B4C25D2724A3940900DD703D /* SettingsAction.swift in Sources */,
 				B4C25D2C24A3940900DD703D /* SettingsViewController.swift in Sources */,
 				B4C25D2D24A3940900DD703D /* SettingsSelector.swift in Sources */,
-				B4C25D2924A3940900DD703D /* SettingsFeature.swift in Sources */,
 				B4C25D2824A3940900DD703D /* SettingsCoordinator.swift in Sources */,
 				B4C25D1E24A393E500DD703D /* SettingsFeature.swift in Sources */,
 				B4C25D2A24A3940900DD703D /* SettingsReducer.swift in Sources */,

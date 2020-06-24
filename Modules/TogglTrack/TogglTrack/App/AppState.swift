@@ -6,6 +6,7 @@ import Timer
 import Calendar
 import Utils
 import CalendarService
+import Settings
 
 public struct AppState {
     public var route: RoutePath = AppRoute.start.path
@@ -88,6 +89,15 @@ extension AppState {
             localCalendarState = newValue.localCalendarState
             calendarEvents = newValue.calendarEvents
             editableTimeEntry = newValue.editableTimeEntry
+        }
+    }
+
+    var settingsState: SettingsState {
+        get {
+            SettingsState(preferences: preferences)
+        }
+        set {
+            preferences = newValue.preferences
         }
     }
 }
