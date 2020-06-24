@@ -10,6 +10,7 @@ import CalendarService
 public struct AppState {
     public var route: RoutePath = AppRoute.start.path
     public var user: Loadable<User> = .nothing
+    public var preferences: Loadable<UserPreferences> = .nothing
     public var entities: TimeLogEntities =  TimeLogEntities()
     public var calendarEvents: [String: CalendarEvent] = [:]
     public var editableTimeEntry: EditableTimeEntry?

@@ -24,6 +24,7 @@
 		8C5A8C95241A8EC5003DC3D0 /* TimeLogEntities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5A8C94241A8EC5003DC3D0 /* TimeLogEntities.swift */; };
 		8CB5452C240D6F5B00154473 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB5452B240D6F5B00154473 /* Entity.swift */; };
 		ACCFF3E32444A61F0056CEF4 /* AutocompleteSuggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACCFF3E22444A61F0056CEF4 /* AutocompleteSuggestion.swift */; };
+		B4C25D2F24A39FF900DD703D /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2E24A39FF900DD703D /* UserPreferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		8CAF7AFF24581C2E006B961D /* Models-Shared.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Models-Shared.xcconfig"; sourceTree = "<group>"; };
 		8CB5452B240D6F5B00154473 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		ACCFF3E22444A61F0056CEF4 /* AutocompleteSuggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteSuggestion.swift; sourceTree = "<group>"; };
+		B4C25D2E24A39FF900DD703D /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				8C2518722403C62E00BAD4B5 /* Task.swift */,
 				8C25186D2403C62E00BAD4B5 /* TimeEntry.swift */,
 				8C2518742403C62E00BAD4B5 /* User.swift */,
+				B4C25D2E24A39FF900DD703D /* UserPreferences.swift */,
 				8C25186F2403C62E00BAD4B5 /* Workspace.swift */,
 				8C5A8C94241A8EC5003DC3D0 /* TimeLogEntities.swift */,
 				8C25182C2403C5FC00BAD4B5 /* Models.h */,
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C2518782403C62E00BAD4B5 /* Tag.swift in Sources */,
+				B4C25D2F24A39FF900DD703D /* UserPreferences.swift in Sources */,
 				8C2518772403C62E00BAD4B5 /* Workspace.swift in Sources */,
 				8C2518792403C62E00BAD4B5 /* Client.swift in Sources */,
 				8C25187C2403C62E00BAD4B5 /* User.swift in Sources */,
