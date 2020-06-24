@@ -3,9 +3,9 @@ import UIKit
 import Assets
 
 public func projectClientTaskString(projectName: String? = nil,
-                             projectColor: String? = nil,
-                             taskName: String? = nil,
-                             clientName: String? = nil) -> NSAttributedString {
+                                    projectColor: String? = nil,
+                                    taskName: String? = nil,
+                                    clientName: String? = nil) -> NSAttributedString {
     let attributedString = NSMutableAttributedString()
     if let project = projectName, let color = projectColor {
         var string = project
