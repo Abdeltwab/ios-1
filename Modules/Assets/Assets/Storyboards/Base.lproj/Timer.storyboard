@@ -17,9 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bg9-R4-8nf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="44" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bg9-R4-8nf">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="Background Primary"/>
                                 <color key="sectionIndexBackgroundColor" name="Background Primary"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LogSuggestionCell" rowHeight="63" id="N2y-39-gI7" userLabel="SuggestionCell" customClass="LogSuggestionCell" customModule="Timer">
@@ -165,7 +165,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="Background Primary"/>
                         <constraints>
                             <constraint firstItem="bg9-R4-8nf" firstAttribute="leading" secondItem="DZL-Ct-Chv" secondAttribute="leading" id="aUu-g9-5vL"/>
                             <constraint firstItem="DZL-Ct-Chv" firstAttribute="top" secondItem="bg9-R4-8nf" secondAttribute="top" id="fmf-I6-zIE"/>

@@ -2,11 +2,11 @@ import Foundation
 import UIKit
 import Assets
 
-class TimeLogSuggestionsHeader: UITableViewHeaderFooterView {
+class TimeLogSuggestionsFooter: UITableViewHeaderFooterView {
     
-    static let reuseIdentifier: String = "TimeLogSuggestionsHeader"
-    static let nib: UINib = UINib(nibName: "TimeLogSuggestionsHeader", bundle: Assets.bundle)
-    
+    static let reuseIdentifier: String = "TimeLogSuggestionsFooter"
+    static let nib: UINib = UINib(nibName: "TimeLogSuggestionsFooter", bundle: Assets.bundle)
+
     @IBOutlet var titleLabel: UILabel!
     
     override func awakeFromNib() {

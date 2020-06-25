@@ -11,31 +11,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TimeLogSuggestionsHeader" customModule="Timer">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TimeLogSuggestionsFooter" customModule="Timer">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4t-gK-5vK">
-                    <rect key="frame" x="15" y="15" width="41.5" height="18"/>
-                    <color key="tintColor" name="Subheading"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ezM-yu-hWM">
+                    <rect key="frame" x="15" y="30" width="41.5" height="14"/>
                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                     <color key="textColor" name="Subheading"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="localizedTextKey" value="suggestions"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="localizedTextKey" value="yourActivity"/>
                     </userDefinedRuntimeAttributes>
                 </label>
             </subviews>
             <constraints>
-                <constraint firstItem="x4t-gK-5vK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="n7L-Q3-T4B"/>
-                <constraint firstItem="x4t-gK-5vK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="qMT-9N-UMZ"/>
+                <constraint firstAttribute="bottom" secondItem="ezM-yu-hWM" secondAttribute="bottom" constant="2" id="5xw-sd-Mra"/>
+                <constraint firstItem="ezM-yu-hWM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="WnS-4R-6kQ"/>
+                <constraint firstItem="ezM-yu-hWM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="qVw-7W-OaW"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="titleLabel" destination="x4t-gK-5vK" id="NKk-g2-jP5"/>
+                <outlet property="titleLabel" destination="ezM-yu-hWM" id="bjg-1h-Dic"/>
             </connections>
             <point key="canvasLocation" x="139" y="153"/>
         </view>

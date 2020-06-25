@@ -29,8 +29,12 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
         self.title = "Toggl"
         tableView.rowHeight = 63
         
+        tableView.register(TimeLogDayHeader.nib,
+                           forHeaderFooterViewReuseIdentifier: TimeLogDayHeader.reuseIdentifier)
         tableView.register(TimeLogSuggestionsHeader.nib,
                            forHeaderFooterViewReuseIdentifier: TimeLogSuggestionsHeader.reuseIdentifier)
+        tableView.register(TimeLogSuggestionsFooter.nib,
+                           forHeaderFooterViewReuseIdentifier: TimeLogSuggestionsFooter.reuseIdentifier)
     }
 
     // swiftlint:disable function_body_length
@@ -71,7 +75,6 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
             })
 
             dataSource.canEditRowAtIndexPath = { _, _ in true }
-
 
             Driver.combineLatest(
                 store.select { $0.logSuggestions },
@@ -136,19 +139,46 @@ extension TimeEntriesLogViewController: UITableViewDelegate {
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 0 {
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TimeLogSuggestionsHeader")
+        switch dataSource.sectionModels[section] {
+        case .suggestions:
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TimeLogSuggestionsHeader.reuseIdentifier)
+            return header
+        case let .day(dayViewModel):
+            guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: TimeLogDayHeader.reuseIdentifier) as? TimeLogDayHeader else {
+                fatalError("Wrong header type!")
+            }
+            header.titleLabel.text = dayViewModel.dayString.uppercased()
+            header.totalTimeLabel.text = dayViewModel.durationString.uppercased()
             return header
         }
-        // use dataSource.sectionModels[index].title to set title for day sections
-        return nil
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        switch dataSource.sectionModels[section] {
+        case .suggestions:
+            let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: TimeLogSuggestionsFooter.reuseIdentifier)
+            return footer
+        case .day:
+            return nil
+        }
     }
     
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 48
+        switch dataSource.sectionModels[section] {
+        case .suggestions:
+            return 44
+        case .day:
+            return 45
         }
-        return 40
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        switch dataSource.sectionModels[section] {
+        case .suggestions:
+            return 46
+        case .day:
+            return 0
+        }
     }
 }
 

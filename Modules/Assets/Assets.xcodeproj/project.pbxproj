@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		34124E0324A4926B00B46D47 /* TimeLogSuggestionsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34124E0224A4926B00B46D47 /* TimeLogSuggestionsHeader.xib */; };
+		34124E0724A4DE5C00B46D47 /* TimeLogSuggestionsFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34124E0624A4DE5C00B46D47 /* TimeLogSuggestionsFooter.xib */; };
+		34124E0B24A4E48C00B46D47 /* TimeLogDayHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34124E0A24A4E48C00B46D47 /* TimeLogDayHeader.xib */; };
 		348DE15C248E31DC00A9D537 /* AssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348DE15B248E31DC00A9D537 /* AssetsTests.swift */; };
 		348DE15E248E31DC00A9D537 /* Assets.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C25169B2403C19D00BAD4B5 /* Assets.framework */; };
 		348DE164248E323F00A9D537 /* ColorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348DE153248E313600A9D537 /* ColorsTests.swift */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		34124E0224A4926B00B46D47 /* TimeLogSuggestionsHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLogSuggestionsHeader.xib; sourceTree = "<group>"; };
+		34124E0624A4DE5C00B46D47 /* TimeLogSuggestionsFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLogSuggestionsFooter.xib; sourceTree = "<group>"; };
+		34124E0A24A4E48C00B46D47 /* TimeLogDayHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeLogDayHeader.xib; sourceTree = "<group>"; };
 		348DE153248E313600A9D537 /* ColorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsTests.swift; sourceTree = "<group>"; };
 		348DE159248E31DC00A9D537 /* AssetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AssetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		348DE15B248E31DC00A9D537 /* AssetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsTests.swift; sourceTree = "<group>"; };
@@ -231,6 +235,8 @@
 				B47397E2248FEE3000DA8620 /* EditingHourIndicatorSupplementaryView.xib */,
 				B47397E6248FF0A800DA8620 /* CurrentTimeSupplementaryView.xib */,
 				34124E0224A4926B00B46D47 /* TimeLogSuggestionsHeader.xib */,
+				34124E0624A4DE5C00B46D47 /* TimeLogSuggestionsFooter.xib */,
+				34124E0A24A4E48C00B46D47 /* TimeLogDayHeader.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -354,6 +360,7 @@
 				B42EB0B9246D90DD0036F707 /* Colors.xcassets in Resources */,
 				CCAC4BAF24744D5100F9E3A3 /* Localizable.strings in Resources */,
 				8CFDB37F247C0E1F00952533 /* Calendar.storyboard in Resources */,
+				34124E0724A4DE5C00B46D47 /* TimeLogSuggestionsFooter.xib in Resources */,
 				8C2517C32403C2CA00BAD4B5 /* timeentries.txt in Resources */,
 				B448913124852DD200D144B4 /* CalendarItemCollectionViewCell.xib in Resources */,
 				CCBD6991247425A800182A15 /* Project.storyboard in Resources */,
@@ -367,6 +374,7 @@
 				8C2517C22403C2CA00BAD4B5 /* clients.txt in Resources */,
 				B42EB0B4246D8DF20036F707 /* Images.xcassets in Resources */,
 				34124E0324A4926B00B46D47 /* TimeLogSuggestionsHeader.xib in Resources */,
+				34124E0B24A4E48C00B46D47 /* TimeLogDayHeader.xib in Resources */,
 				B47397E3248FEE3000DA8620 /* EditingHourIndicatorSupplementaryView.xib in Resources */,
 				8CB5452E240E49C300154473 /* tasks.txt in Resources */,
 			);
