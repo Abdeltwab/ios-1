@@ -18,7 +18,7 @@ extension String {
         do {
             let joinedTokens = tokens.map { String($0) }.joined(separator: "|")
             let regex = try NSRegularExpression(pattern: "(^| )(\(joinedTokens))")
-            let searchRange = startIndex..<index(startIndex, offsetBy: cursorPosition.clamp(0...self.count))
+            let searchRange = startIndex..<index(startIndex, offsetBy: cursorPosition.clamp(min: 0, max: self.count))
             let matches = regex.matches(in: self, range: NSRange(searchRange, in: self))
             
             guard let match = matches.last else { return (nil, self) }

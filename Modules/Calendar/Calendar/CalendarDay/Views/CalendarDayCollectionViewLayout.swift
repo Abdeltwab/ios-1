@@ -261,7 +261,7 @@ class CalendarDayCollectionViewLayout: UICollectionViewLayout {
             collectionView.contentOffset = CGPoint(x: collectionView.contentOffset.x, y: collectionView.contentOffset.y - offset)
         }
 
-        hourHeight = newHourHeight.clamp(minHourHeight...maxHourHeight)
+        hourHeight = newHourHeight.clamp(min: minHourHeight, max: maxHourHeight)
 
         invalidateLayout()
     }

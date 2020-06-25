@@ -16,7 +16,7 @@ public class WheelForegroundView: UIControl {
         get { return _startTime }
         set(value) {
             guard _startTime != value else { return }
-            _startTime = value.clamp(between: minimumStartTime, and: maximumStartTime)
+            _startTime = value.clamp(min: minimumStartTime, max: maximumStartTime)
             setNeedsLayout()
         }
     }
@@ -26,7 +26,7 @@ public class WheelForegroundView: UIControl {
         get { return _endTime < _startTime ? _startTime : _endTime }
         set(value) {
             guard _endTime != value else { return }
-            _endTime = value.clamp(between: minimumEndTime, and: maximumEndTime)
+            _endTime = value.clamp(min: minimumEndTime, max: maximumEndTime)
             setNeedsLayout()
         }
     }

@@ -20,7 +20,7 @@ struct DurationTextFieldInfo: Equatable {
     public var toTimeInterval: TimeInterval {
         TimeInterval.from(hours: hours)
             .advanced(by: TimeInterval.from(minutes: minutes))
-            .clamp(0...DurationTextFieldInfo.maximumDuration)
+            .clamp(min: 0, max: DurationTextFieldInfo.maximumDuration)
     }
 
     init(digits: [Int]) {
@@ -29,7 +29,7 @@ struct DurationTextFieldInfo: Equatable {
 
     public static func fromTimeInterval(_ timeInterval: TimeInterval) -> DurationTextFieldInfo {
         var stack = DurationTextFieldInfo.empty
-        let totalSeconds = Int(timeInterval.clamp(0...maximumDuration))
+        let totalSeconds = Int(timeInterval.clamp(min: 0, max: maximumDuration))
         let hoursPart = totalSeconds / .secondsInAnHour
         let minutesPart = (totalSeconds / .minutesInAnHour) % .minutesInAnHour
         let digitsString = "\(hoursPart * 100 + minutesPart)"

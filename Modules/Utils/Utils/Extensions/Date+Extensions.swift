@@ -23,17 +23,6 @@ private let encoderDateFormatter: DateFormatter =
 }()
 
 extension Date {
-
-    public func clamp(between minBound: Date, and maxBound: Date) -> Date {
-        if self < minBound {
-            return minBound
-        }
-        if self > maxBound {
-            return maxBound
-        }
-        return self
-    }
-
     public func ignoreTimeComponents() -> Date {
         let units: NSCalendar.Unit = [ .year, .month, .day]
         let calendar = Calendar.current
