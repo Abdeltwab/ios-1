@@ -28,6 +28,9 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
 
         self.title = "Toggl"
         tableView.rowHeight = 63
+        
+        tableView.register(TimeLogSuggestionsHeader.nib,
+                           forHeaderFooterViewReuseIdentifier: TimeLogSuggestionsHeader.reuseIdentifier)
     }
 
     // swiftlint:disable function_body_length
@@ -69,9 +72,6 @@ public class TimeEntriesLogViewController: UIViewController, Storyboarded {
 
             dataSource.canEditRowAtIndexPath = { _, _ in true }
 
-            dataSource.titleForHeaderInSection = { dataSource, index in
-              return dataSource.sectionModels[index].title
-            }
 
             Driver.combineLatest(
                 store.select { $0.logSuggestions },
@@ -133,6 +133,22 @@ extension TimeEntriesLogViewController: UITableViewDelegate {
         }
         action.backgroundColor = Color.deleteAction.uiColor
         return UISwipeActionsConfiguration(actions: [action])
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TimeLogSuggestionsHeader")
+            return header
+        }
+        // use dataSource.sectionModels[index].title to set title for day sections
+        return nil
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 48
+        }
+        return 40
     }
 }
 

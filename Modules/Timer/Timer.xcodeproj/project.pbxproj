@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34124E0524A49E3B00B46D47 /* TimeLogSuggestionsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34124E0424A49E3B00B46D47 /* TimeLogSuggestionsHeader.swift */; };
 		341A0280247268EB00EB25AF /* Project+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A027F247268EB00EB25AF /* Project+Extensions.swift */; };
 		341A028424726AF200EB25AF /* Task+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A028324726AF200EB25AF /* Task+Extensions.swift */; };
 		341A028624728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341A028524728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift */; };
@@ -130,6 +131,7 @@
 /* Begin PBXFileReference section */
 		1774F5621311F644B3258D92 /* Pods-Timer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Timer.debug.xcconfig"; path = "Target Support Files/Pods-Timer/Pods-Timer.debug.xcconfig"; sourceTree = "<group>"; };
 		1DB2199F93BBF3239F419242 /* Pods_Timer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Timer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		34124E0424A49E3B00B46D47 /* TimeLogSuggestionsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLogSuggestionsHeader.swift; sourceTree = "<group>"; };
 		341A027F247268EB00EB25AF /* Project+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Project+Extensions.swift"; sourceTree = "<group>"; };
 		341A028324726AF200EB25AF /* Task+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+Extensions.swift"; sourceTree = "<group>"; };
 		341A028524728AB900EB25AF /* StartEditReducerTests+AutocompleteProjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StartEditReducerTests+AutocompleteProjects.swift"; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 				8CB54532240E7DA100154473 /* TimeEntriesLogViewController.swift */,
 				8C2517802403C27200BAD4B5 /* TimeEntryCell.swift */,
 				34F78CE1249D140800D0AE44 /* LogSuggestionCell.swift */,
+				34124E0424A49E3B00B46D47 /* TimeLogSuggestionsHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 				8C7F6D03247FB4E80026FF9D /* DatePickers.swift in Sources */,
 				CC03C27C2448AE1C0071FA55 /* ProjectState.swift in Sources */,
 				34221D66249CFA0200453F3B /* TimeEntriesLogSectionViewModel.swift in Sources */,
+				34124E0524A49E3B00B46D47 /* TimeLogSuggestionsHeader.swift in Sources */,
 				CC5D320F24659308005A1837 /* Arc.swift in Sources */,
 				8C008FD024093FF8000A0C32 /* StartEditAction.swift in Sources */,
 				ACFCFDD4248A68710060C3A1 /* LogSuggestionCoordinator.swift in Sources */,
