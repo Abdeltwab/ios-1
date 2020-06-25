@@ -17,6 +17,39 @@ class TimeEntriesSelectorTests: XCTestCase {
 
     private let entriesPendingDeletion = Set<Int64>(arrayLiteral: 10, 20, 30, 40, 50)
 
+    private let suggestions = [
+        LogSuggestion.calendar(SuggestionProperties(description: "Test 1",
+                                                    projectId: nil,
+                                                    taskId: nil,
+                                                    projectColor: nil,
+                                                    projectName: nil,
+                                                    taskName: nil,
+                                                    clientName: nil,
+                                                    hasProject: false,
+                                                    hasClient: false,
+                                                    hasTask: false,
+                                                    workspaceId: 1,
+                                                    isBillable: false,
+                                                    tagIds: [],
+                                                    startTime: now,
+                                                    duration: 300)),
+        LogSuggestion.calendar(SuggestionProperties(description: "Test 2",
+                                                    projectId: nil,
+                                                    taskId: nil,
+                                                    projectColor: nil,
+                                                    projectName: nil,
+                                                    taskName: nil,
+                                                    clientName: nil,
+                                                    hasProject: false,
+                                                    hasClient: false,
+                                                    hasTask: false,
+                                                    workspaceId: 1,
+                                                    isBillable: false,
+                                                    tagIds: [],
+                                                    startTime: now,
+                                                    duration: 300))
+    ]
+
     private let singleItemGroup = [
         TimeEntry.with(description: "S", start: now.addingTimeInterval(-110), duration: 1, workspaceId: workspaceA.id)
     ]
@@ -90,201 +123,172 @@ class TimeEntriesSelectorTests: XCTestCase {
     func testTransformsTimeEntriesIntoACorrectTree() {
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: [],
             entriesPendingDeletion: [],
             timeEntries: groupA,
-            expected: [
-                logOf(collapsed(groupA))
-            ]
+            expected: logOf(suggestions: suggestions, timeEntries: collapsed(groupA))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupA),
             entriesPendingDeletion: [],
             timeEntries: groupA,
-            expected: [
-                logOf(expanded(groupA))
-            ]
+            expected: logOf(suggestions: suggestions, timeEntries: expanded(groupA))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupA),
             entriesPendingDeletion: [],
             timeEntries: groupA + groupB,
-            expected: [
-                logOf(expanded(groupA) + collapsed(groupB))
-            ]
+            expected: logOf(suggestions: suggestions, timeEntries: expanded(groupA) + collapsed(groupB))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupB),
             entriesPendingDeletion: [],
             timeEntries: singleItemGroup,
-            expected: [
-                logOf(single(singleItemGroup.first!))
-            ]
+            expected: logOf(suggestions: suggestions, timeEntries: single(singleItemGroup.first!))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: [],
             timeEntries: groupA + singleItemGroup + groupB,
-            expected: [
-                logOf(
-                    collapsed(groupA)
-                        + single(singleItemGroup.first!)
-                        + collapsed(groupB)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: collapsed(groupA)
+                                + single(singleItemGroup.first!)
+                                + collapsed(groupB))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupA),
             entriesPendingDeletion: [],
             timeEntries: groupA + singleItemGroup + groupB,
-            expected: [
-                logOf(
-                    expanded(groupA)
-                        + single(singleItemGroup.first!)
-                        + collapsed(groupB)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: expanded(groupA)
+                                + single(singleItemGroup.first!)
+                                + collapsed(groupB))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupB),
             entriesPendingDeletion: [],
             timeEntries: groupA + singleItemGroup + groupB,
-            expected: [
-                logOf(
-                    collapsed(groupA)
-                        + single(singleItemGroup.first!)
-                        + expanded(groupB)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: collapsed(groupA)
+                                + single(singleItemGroup.first!)
+                                + expanded(groupB))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupA + singleItemGroup + singleDeletedGroup + groupB,
-            expected: [
-                logOf(
-                    collapsed(groupA)
-                        + single(singleItemGroup.first!)
-                        + collapsed(groupB)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: collapsed(groupA)
+                                + single(singleItemGroup.first!)
+                                + collapsed(groupB))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupA),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupA + singleItemGroup + singleDeletedGroup + groupB,
-            expected: [
-                logOf(
-                    expanded(groupA)
-                        + single(singleItemGroup.first!)
-                        + collapsed(groupB)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: expanded(groupA)
+                                + single(singleItemGroup.first!)
+                                + collapsed(groupB))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupB),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupA + singleItemGroup + singleDeletedGroup + groupB,
-            expected: [
-                logOf(
-                    collapsed(groupA)
-                        + single(singleItemGroup.first!)
-                        + expanded(groupB)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: collapsed(groupA)
+                                + single(singleItemGroup.first!)
+                                + expanded(groupB))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupA, groupB),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupA + singleItemGroup + singleDeletedGroup + groupB,
-            expected: [
-                logOf(
-                    expanded(groupA)
-                        + single(singleItemGroup.first!)
-                        + expanded(groupB)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: expanded(groupA)
+                                + single(singleItemGroup.first!)
+                                + expanded(groupB))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupWithDeletedEntries1,
-            expected: [
-                logOf(
-                    collapsed(groupWithDeletedEntries1, excludedTimeEntryIds: entriesPendingDeletion)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: collapsed(groupWithDeletedEntries1, excludedTimeEntryIds: entriesPendingDeletion))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupWithDeletedEntries2,
-            expected: [
-                logOf(
-                    collapsed(groupWithDeletedEntries2, excludedTimeEntryIds: entriesPendingDeletion)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: collapsed(groupWithDeletedEntries2, excludedTimeEntryIds: entriesPendingDeletion))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupWithDeletedEntries1),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupWithDeletedEntries1,
-            expected: [
-                logOf(
-                    expanded(groupWithDeletedEntries1, excludedTimeEntryIds: entriesPendingDeletion)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: expanded(groupWithDeletedEntries1, excludedTimeEntryIds: entriesPendingDeletion))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupWithDeletedEntries2),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupWithDeletedEntries2,
-            expected: [
-                logOf(
-                    expanded(groupWithDeletedEntries2, excludedTimeEntryIds: entriesPendingDeletion)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: expanded(groupWithDeletedEntries2, excludedTimeEntryIds: entriesPendingDeletion))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupA, groupWithDeletedEntries1),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupA + groupWithDeletedEntries1,
-            expected: [
-                logOf(
-                    expanded(groupA)
-                        + expanded(groupWithDeletedEntries1, excludedTimeEntryIds: entriesPendingDeletion)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: expanded(groupA)
+                                + expanded(groupWithDeletedEntries1, excludedTimeEntryIds: entriesPendingDeletion))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(groupA, groupWithDeletedEntries2),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: groupA + groupWithDeletedEntries2,
-            expected: [
-                logOf(
-                    expanded(groupA)
-                         + expanded(groupWithDeletedEntries2, excludedTimeEntryIds: entriesPendingDeletion)
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: expanded(groupA)
+                                 + expanded(groupWithDeletedEntries2, excludedTimeEntryIds: entriesPendingDeletion))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: [],
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: singleDeletedGroup,
@@ -292,6 +296,7 @@ class TimeEntriesSelectorTests: XCTestCase {
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: [],
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: deletedGroup,
@@ -299,43 +304,38 @@ class TimeEntriesSelectorTests: XCTestCase {
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: twoWorkspaces,
-            expected: [
-                logOf(
-                    single(twoWorkspaces[0])
-                        + single(twoWorkspaces[1])
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: single(twoWorkspaces[0])
+                                + single(twoWorkspaces[1]))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: differentDescriptions,
-            expected: [
-                logOf(
-                    collapsed(Array(differentDescriptions.prefix(2)))
-                    + single(differentDescriptions[2])
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: collapsed(Array(differentDescriptions.prefix(2)))
+                                + single(differentDescriptions[2]))
         )
 
         assertTransformsTimeEntriesIntoACorrectTree(
+            suggestions: suggestions,
             expandedGroups: expandedGroups(),
             entriesPendingDeletion: entriesPendingDeletion,
             timeEntries: longDuration,
-            expected: [
-                logOf(
-                    collapsed(Array(longDuration.prefix(2)))
-                    + single(longDuration[2])
-                )
-            ]
+            expected: logOf(suggestions: suggestions,
+                            timeEntries: collapsed(Array(longDuration.prefix(2)))
+                                + single(longDuration[2]))
         )
     }
 
     private func assertTransformsTimeEntriesIntoACorrectTree(
+        suggestions: [LogSuggestion],
         expandedGroups: Set<Int>,
         entriesPendingDeletion: Set<Int64>,
         timeEntries: [TimeEntry],
@@ -349,7 +349,7 @@ class TimeEntriesSelectorTests: XCTestCase {
 
         let expandedGroups = expandedGroupsSelector(state)
         let timeEntryViewModels = timeEntryViewModelsSelector(state)
-        let result = toDaySectionsMapper(timeEntryViewModels, expandedGroups, entriesPendingDeletion)
+        let result = toSectionsMapper(suggestions, timeEntryViewModels, expandedGroups, entriesPendingDeletion)
 
         XCTAssertEqual(result, expected, file: file, line: line)
     }
@@ -360,11 +360,21 @@ class TimeEntriesSelectorTests: XCTestCase {
         })
     }
 
-    private func logOf(_ timeEntryCellViewModels: [TimeEntryCellViewModel]) -> TimeEntriesLogSectionViewModel {
+    private func logOf(suggestions: [LogSuggestion],
+                       timeEntries timeEntryCellViewModels: [TimeEntryCellViewModel]) -> [TimeEntriesLogSectionViewModel] {
+        var result: [TimeEntriesLogSectionViewModel] = []
+
+        if !suggestions.isEmpty {
+            let suggestionViewModels = suggestions.map { LogSuggestionViewModel(suggestion: $0) }
+            let suggestionCellViewModels = suggestionViewModels.map { TimeEntriesLogCellViewModel.suggestionCell($0) }
+            let suggestionSection = TimeEntriesLogSectionViewModel.suggestions(suggestionCellViewModels)
+            result += [suggestionSection]
+        }
+
         let logCellViewModels = timeEntryCellViewModels
             .sorted(by: { $0.start > $1.start })
             .map(TimeEntriesLogCellViewModel.timeEntryCell)
-        return TimeEntriesLogSectionViewModel.day(DayViewModel(timeLogCells: logCellViewModels))
+        return result.appending(TimeEntriesLogSectionViewModel.day(DayViewModel(timeLogCells: logCellViewModels)))
     }
 
     private func single(_ timeEntry: TimeEntry, excludedTimeEntryIds: Set<Int64> = []) -> [TimeEntryCellViewModel] {
