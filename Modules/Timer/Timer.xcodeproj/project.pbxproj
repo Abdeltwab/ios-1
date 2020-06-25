@@ -61,6 +61,7 @@
 		8CE32669243601D500C6C014 /* StartEditInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE32668243601D500C6C014 /* StartEditInputAccessoryView.swift */; };
 		AC0131B3246AEF6000C42D39 /* DurationTextFieldInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0131B2246AEF6000C42D39 /* DurationTextFieldInfo.swift */; };
 		AC02D86924696A37007E38F6 /* DurationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC02D86824696A37007E38F6 /* DurationTextField.swift */; };
+		AC35332724A370B70074518F /* HueSaturationPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC35332624A370B70074518F /* HueSaturationPickerView.swift */; };
 		AC42284A2456EC5C00DD8AB3 /* WheelBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4228492456EC5C00DD8AB3 /* WheelBackgroundView.swift */; };
 		AC42284C245720E700DD8AB3 /* WheelShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42284B245720E700DD8AB3 /* WheelShape.swift */; };
 		AC42284F24572F4B00DD8AB3 /* ClockDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC42284E24572F4B00DD8AB3 /* ClockDial.swift */; };
@@ -194,6 +195,7 @@
 		8CE32668243601D500C6C014 /* StartEditInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartEditInputAccessoryView.swift; sourceTree = "<group>"; };
 		AC0131B2246AEF6000C42D39 /* DurationTextFieldInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTextFieldInfo.swift; sourceTree = "<group>"; };
 		AC02D86824696A37007E38F6 /* DurationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationTextField.swift; sourceTree = "<group>"; };
+		AC35332624A370B70074518F /* HueSaturationPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueSaturationPickerView.swift; sourceTree = "<group>"; };
 		AC4228492456EC5C00DD8AB3 /* WheelBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelBackgroundView.swift; sourceTree = "<group>"; };
 		AC42284B245720E700DD8AB3 /* WheelShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelShape.swift; sourceTree = "<group>"; };
 		AC42284E24572F4B00DD8AB3 /* ClockDial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockDial.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 			isa = PBXGroup;
 			children = (
 				CC03C2762448AE1B0071FA55 /* ProjectViewController.swift */,
+				AC35332624A370B70074518F /* HueSaturationPickerView.swift */,
 				343E57F6249A5AF10072BA9E /* ColorOptionCell.swift */,
 				343E57F8249A64150072BA9E /* CustomColorCell.swift */,
 			);
@@ -871,6 +874,7 @@
 				ACAA58292433A7ED003FDECA /* RunningTimeEntryFeature.swift in Sources */,
 				AC42284F24572F4B00DD8AB3 /* ClockDial.swift in Sources */,
 				8C509D0A2412509F00B6DF30 /* TimerFeature.swift in Sources */,
+				AC35332724A370B70074518F /* HueSaturationPickerView.swift in Sources */,
 				CC03C2792448AE1C0071FA55 /* ProjectCoordinator.swift in Sources */,
 				ACAA583024349F02003FDECA /* RunningTimeEntrySelector.swift in Sources */,
 				8C25178A2403C27200BAD4B5 /* TimerViewController.swift in Sources */,
