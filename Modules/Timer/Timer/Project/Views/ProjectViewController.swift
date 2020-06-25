@@ -27,8 +27,11 @@ public class ProjectViewController: UIViewController, Storyboarded {
     @IBOutlet var selectWorkspaceButton: UIButton!
     @IBOutlet var selectColorButton: UIButton!
     @IBOutlet var colorSelectionCollectionView: UICollectionView!
-    
+    @IBOutlet var customProjectColor: UIView!
+    @IBOutlet var customColorView: UIView!
+
     private var disposeBag = DisposeBag()
+    private let defaultCustomColor = UIColor(hex: "3178be")
 
     public var store: ProjectStore!
 
@@ -57,7 +60,16 @@ public class ProjectViewController: UIViewController, Storyboarded {
         
         // Project color
         setUpColors()
-        
+
+        store.compactSelect({ $0.editableProject?.color })
+            .drive(onNext: {
+                guard !self.customProjectColor.isHidden else { return }
+                self.customColorView.backgroundColor = Project.defaultColors.contains($0)
+                    ? self.defaultCustomColor
+                    : UIColor(hex: $0)
+            })
+            .disposed(by: disposeBag)
+
         // Done button
         saveButton.rx.tap
             .mapTo(ProjectAction.doneButtonTapped)
@@ -107,8 +119,10 @@ public class ProjectViewController: UIViewController, Storyboarded {
         colorSelectionCollectionView.rx.modelSelected(ColorOptionViewModel.self)
             .compactMap { colorOption in
                 if case let .default(color, isSelected: _) = colorOption {
+                    self.customProjectColor.isHidden = true
                     return color
                 } else {
+                    self.customProjectColor.isHidden = false
                     return nil
                 }
             }
