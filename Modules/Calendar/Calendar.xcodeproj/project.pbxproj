@@ -63,6 +63,7 @@
 		B47397DF248FDC2700DA8620 /* CalendarItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B448912D24851F9C00D144B4 /* CalendarItemCollectionViewCell.swift */; };
 		B47397E5248FEE4500DA8620 /* EditingHourIndicatorSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47397E4248FEE4500DA8620 /* EditingHourIndicatorSupplementaryView.swift */; };
 		B47397E9248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47397E8248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift */; };
+		B483FFB624A37A86008A2B58 /* SelectedCalendarItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483FFB524A37A86008A2B58 /* SelectedCalendarItemViewModel.swift */; };
 		B496577F249108920061340B /* CreateTimeEntryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B496577E249108920061340B /* CreateTimeEntryHelper.swift */; };
 		B4A647722488021000A8C434 /* CalendarEvent+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A647712488021000A8C434 /* CalendarEvent+Extensions.swift */; };
 		B4BBB86D24994B3700C263E6 /* ContextualMenuActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BBB86C24994B3700C263E6 /* ContextualMenuActionView.swift */; };
@@ -143,6 +144,7 @@
 		B47397DC248FDB1400DA8620 /* HourIndicatorSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourIndicatorSupplementaryView.swift; sourceTree = "<group>"; };
 		B47397E4248FEE4500DA8620 /* EditingHourIndicatorSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingHourIndicatorSupplementaryView.swift; sourceTree = "<group>"; };
 		B47397E8248FF0BD00DA8620 /* CurrentTimeSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeSupplementaryView.swift; sourceTree = "<group>"; };
+		B483FFB524A37A86008A2B58 /* SelectedCalendarItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCalendarItemViewModel.swift; sourceTree = "<group>"; };
 		B496577E249108920061340B /* CreateTimeEntryHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTimeEntryHelper.swift; sourceTree = "<group>"; };
 		B4A647712488021000A8C434 /* CalendarEvent+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarEvent+Extensions.swift"; sourceTree = "<group>"; };
 		B4BBB86C24994B3700C263E6 /* ContextualMenuActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextualMenuActionView.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				ACBA123B24814F57007F939D /* ContextualMenuReducer.swift */,
 				ACBA123C24814F57007F939D /* ContextualMenuState.swift */,
 				ACBA123E24814F57007F939D /* ContextualMenuSelector.swift */,
+				B483FFB524A37A86008A2B58 /* SelectedCalendarItemViewModel.swift */,
 			);
 			path = ContextualMenu;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				B496577F249108920061340B /* CreateTimeEntryHelper.swift in Sources */,
 				AC4E25B8247D6A10004655F6 /* CalendarFeature.swift in Sources */,
 				B47397DD248FDB1400DA8620 /* HourIndicatorSupplementaryView.swift in Sources */,
+				B483FFB624A37A86008A2B58 /* SelectedCalendarItemViewModel.swift in Sources */,
 				AC4E25C8247D6CCA004655F6 /* CalendarDayViewController.swift in Sources */,
 				ACBA124224814F57007F939D /* ContextualMenuReducer.swift in Sources */,
 				AC4E25C3247D6CCA004655F6 /* CalendarDayAction.swift in Sources */,

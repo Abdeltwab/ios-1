@@ -12,7 +12,7 @@ func createContextualMenuReducer() -> Reducer<ContextualMenuState, ContextualMen
 
         switch action {
 
-        case .closeButtonTapped, .dismissButtonTapped:
+        case .cancelButtonTapped, .discardButtonTapped:
             state.selectedItem = nil
             return []
 

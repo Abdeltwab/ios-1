@@ -36,7 +36,7 @@ class ContextualMenuReducerTests: XCTestCase {
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, ContextualMenuAction.closeButtonTapped) {
+            Step(.send, ContextualMenuAction.cancelButtonTapped) {
                 $0.selectedItem = nil
             }
         )
@@ -62,7 +62,7 @@ class ContextualMenuReducerTests: XCTestCase {
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, ContextualMenuAction.closeButtonTapped) {
+            Step(.send, ContextualMenuAction.cancelButtonTapped) {
                 $0.selectedItem = nil
             }
         )
@@ -82,7 +82,7 @@ class ContextualMenuReducerTests: XCTestCase {
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, ContextualMenuAction.dismissButtonTapped) {
+            Step(.send, ContextualMenuAction.discardButtonTapped) {
                 $0.selectedItem = nil
             }
         )
@@ -108,7 +108,7 @@ class ContextualMenuReducerTests: XCTestCase {
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, ContextualMenuAction.dismissButtonTapped) {
+            Step(.send, ContextualMenuAction.discardButtonTapped) {
                 $0.selectedItem = nil
             }
         )

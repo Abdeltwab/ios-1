@@ -6,6 +6,8 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import Models
+import CalendarService
+import Timer
 
 public typealias ContextualMenuStore = Store<ContextualMenuState, ContextualMenuAction>
 
@@ -29,11 +31,13 @@ public class ContextualMenuViewController: UIViewController, Storyboarded {
     @IBOutlet var saveButton: UIButton!
     @IBOutlet var continueButton: UIButton!
 
+    private var bottomConstraint: NSLayoutConstraint!
     private var height: CGFloat = 238
     private var disposeBag = DisposeBag()
 
     public var store: ContextualMenuStore!
 
+    // swiftlint:disable function_body_length
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layer.cornerRadius = 10
@@ -46,29 +50,100 @@ public class ContextualMenuViewController: UIViewController, Storyboarded {
         store.select(shouldShowContextualMenu)
             .drive(onNext: { $0 ? self.show() : self.hide() })
             .disposed(by: disposeBag)
+
+        store.compactSelect(selectedCalendarItem)
+            .drive(onNext: self.configure(with:))
+            .disposed(by: disposeBag)
+
+        cancelButton.rx.tap
+            .mapTo(ContextualMenuAction.cancelButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        discardButton.rx.tap
+            .mapTo(ContextualMenuAction.discardButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        copyAsTimeEntryButton.rx.tap
+            .mapTo(ContextualMenuAction.copyAsTimeEntryButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        startFromCalendarEventButton.rx.tap
+            .mapTo(ContextualMenuAction.startFromEventButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        deleteButton.rx.tap
+            .mapTo(ContextualMenuAction.deleteButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        editButton.rx.tap
+            .mapTo(ContextualMenuAction.editButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        stopButton.rx.tap
+            .mapTo(ContextualMenuAction.stopButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        saveButton.rx.tap
+            .mapTo(ContextualMenuAction.saveButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
+
+        continueButton.rx.tap
+            .mapTo(ContextualMenuAction.continueButtonTapped)
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
     }
+    // swiftlint:enable function_body_length
 
     public override func didMove(toParent parent: UIViewController?) {
         guard let parent = parent else { return }
 
+        bottomConstraint = view.bottomAnchor.constraint(equalTo: parent.view.bottomAnchor, constant: height)
         NSLayoutConstraint.activate([
             view.leadingAnchor.constraint(equalTo: parent.view.leadingAnchor),
             view.trailingAnchor.constraint(equalTo: parent.view.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: parent.view.bottomAnchor, constant: height),
+            bottomConstraint,
             view.heightAnchor.constraint(equalToConstant: height)
         ])
     }
 
+    private func configure(with viewModel: SelectedCalendarItemViewModel) {
+        descriptionLabel.text = viewModel.description
+        startAndStopLabel.text = viewModel.formattedStartAndStop
+        projectColorView.isHidden = viewModel.projectOrCalendar == nil
+        projectNameLabel.isHidden = viewModel.projectOrCalendar == nil
+        if viewModel.projectOrCalendar != nil {
+            projectColorView.backgroundColor = viewModel.color.flatMap({ UIColor(hex: $0) }) ?? Color.noProject.uiColor
+            projectNameLabel.text = viewModel.projectOrCalendar
+        }
+
+        discardButton.isHidden = !viewModel.isNewTimeEntry
+        copyAsTimeEntryButton.isHidden = !viewModel.isCalendarEvent
+        startFromCalendarEventButton.isHidden = !viewModel.isCalendarEvent
+        deleteButton.isHidden = !viewModel.isStoppedTimeEntry
+        editButton.isHidden = !viewModel.isTimeEntry
+        stopButton.isHidden = !viewModel.isRunningTimeEntry
+        saveButton.isHidden = !viewModel.isTimeEntry
+        continueButton.isHidden = !viewModel.isStoppedTimeEntry
+    }
+
     private func show() {
-        guard let parent = parent, view.superview != nil else { return }
-        view.bottomAnchor.constraint(equalTo: parent.view.bottomAnchor, constant: 0).isActive = true
+        guard parent != nil, view.superview != nil else { return }
+        bottomConstraint.constant = 0
         tabBarController?.tabBar.isHidden = true
         animateVisibility()
     }
 
     private func hide() {
-        guard let parent = parent, view.superview != nil else { return }
-        view.bottomAnchor.constraint(equalTo: parent.view.bottomAnchor, constant: height).isActive = true
+        guard parent != nil, view.superview != nil else { return }
+        bottomConstraint.constant = height
         tabBarController?.tabBar.isHidden = false
         animateVisibility()
     }

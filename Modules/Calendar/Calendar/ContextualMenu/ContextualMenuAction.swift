@@ -3,8 +3,8 @@ import Models
 import CommonFeatures
 
 public enum ContextualMenuAction: Equatable {
-    case closeButtonTapped
-    case dismissButtonTapped
+    case cancelButtonTapped
+    case discardButtonTapped
     case saveButtonTapped
     case editButtonTapped
     case stopButtonTapped
@@ -33,10 +33,10 @@ extension ContextualMenuAction: CustomDebugStringConvertible {
 
     public var debugDescription: String {
         switch self {
-        case .closeButtonTapped:
-            return "CloseButtonTapped"
-        case .dismissButtonTapped:
-            return "DismissButtonTapped"
+        case .cancelButtonTapped:
+            return "CancelButtonTapped"
+        case .discardButtonTapped:
+            return "DiscardButtonTapped"
         case .saveButtonTapped:
             return "SaveButtonTapped"
         case .editButtonTapped:
