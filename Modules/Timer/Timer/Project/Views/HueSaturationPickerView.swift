@@ -81,13 +81,13 @@ class HueSaturationPickerView: UIControl {
     private func drawRainbowBackground(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
 
-        let red = UIColor.red.projectColor
-        let yellow = UIColor.yellow.projectColor
-        let green = UIColor.green.projectColor
-        let cyan = UIColor.cyan.projectColor
-        let blue = UIColor.blue.projectColor
-        let magenta = UIColor.magenta.projectColor
-        let borderColor = UIColor(hex: "CECECE").projectColor
+        let red = UIColor.red
+        let yellow = UIColor.yellow
+        let green = UIColor.green
+        let cyan = UIColor.cyan
+        let blue = UIColor.blue.
+        let magenta = UIColor.magenta
+        let borderColor = UIColor(hex: "CECECE")
 
         let step: CGFloat = 1/6
         let locations: [CGFloat] = [0.0, step * 1, step * 2, step * 3, step * 4, step * 5, 1.0]
