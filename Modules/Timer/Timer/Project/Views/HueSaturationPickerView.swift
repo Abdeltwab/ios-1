@@ -10,9 +10,9 @@ class HueSaturationPickerView: UIControl {
     private var outerCircleRadius: CGFloat { outerCircleDiameter / 2 }
     private let outerCircleColor = UIColor.white.projectColor
 
-    private static let defautlColor = UIColor(hex: "3178be").projectColor
-    public var hue: CGFloat = defautlColor.hsb.hue
-    public var saturation: CGFloat = defautlColor.hsb.saturation
+    private static let defaultColor = UIColor(hex: "3178be").projectColor
+    public var hue: CGFloat = defaultColor.hsb.hue
+    public var saturation: CGFloat = defaultColor.hsb.saturation
 
     private var _value: CGFloat = 0
     public var value: Double {
