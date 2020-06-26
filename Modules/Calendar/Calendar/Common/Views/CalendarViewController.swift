@@ -14,5 +14,6 @@ class CalendarViewController: UIViewController {
         super.viewDidLoad()
 
         install(calendarDayViewController)
+        install(contextualMenuViewController, customConstraints: true)
     }
 }

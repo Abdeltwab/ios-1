@@ -29,7 +29,8 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
     private let halfLineWidth: CGFloat = 0.5
 
     private var itemColor: UIColor {
-        UIColor(hex: calendarItem.color)
+        guard let color = calendarItem.color else { return Color.noProject.uiColor }
+        return UIColor(hex: color)
     }
 
     private var foregroundColor: UIColor {
@@ -101,13 +102,6 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
         configureDragIndicator(bottomDragIndicator, borderLayer: bottomDragIndicatorBorderLayer)
     }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        updateShadow()
-        updateBorderLayers()
-        updateBackgroundLayers()
-    }
-
     func configure(with calendarItem: CalendarItem) {
         self.calendarItem = calendarItem
         updateView()
@@ -116,6 +110,7 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
     private func updateView() {
         CATransaction.begin()
         CATransaction.setDisableActions(true)
+        CATransaction.setAnimationDuration(0)
 
         descriptionLabel.text = calendarItem.description
         descriptionLabel.textColor = foregroundColor
@@ -131,7 +126,10 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
         bottomLine.backgroundColor = itemColor
 
         updateIcon()
+        updateShadow()
         updateBorderStyle()
+        updateBorderLayers()
+        updateBackgroundLayers()
         updateDragIndicators()
 
         CATransaction.commit()
@@ -186,9 +184,6 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
     }
 
     private func updateBorderLayers() {
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(0)
-
         topBorderLayer.frame = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: contentView.bounds.height - dashLineHeight)
         bottomBorderLayer.frame = CGRect(x: 0, y: contentView.bounds.height - dashLineHeight, width: contentView.bounds.width, height: dashLineHeight)
 
@@ -203,22 +198,15 @@ public final class CalendarItemCollectionViewCell: UICollectionViewCell {
                                                   byRoundingCorners: [.bottomLeft, .bottomRight],
                                                   cornerRadii: CGSize(width: 2, height: 2))
         bottomBorderLayer.path = bottomBorderBezierPath.cgPath
-
-        CATransaction.commit()
     }
 
     private func updateBackgroundLayers() {
-        CATransaction.begin()
-        CATransaction.setAnimationDuration(0)
-
         let borderWidth: CGFloat = isRunningTimeEntry ? 1.5 : 0
         let rect = contentView.bounds.insetBy(dx: borderWidth, dy: borderWidth)
 
         backgroundLayer.frame = rect
         patternLayer.frame = rect
         tintLayer.frame = rect
-
-        CATransaction.commit()
     }
 
     private func updateDragIndicators() {

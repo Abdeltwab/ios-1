@@ -5,5 +5,5 @@ protocol Localizable {
 }
 
 extension String: Localizable {
-    var localized: String { NSLocalizedString(self, bundle: Assets.bundle, comment: "") }
+    public var localized: String { NSLocalizedString(self, bundle: Assets.bundle, comment: "") }
 }

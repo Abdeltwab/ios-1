@@ -1,0 +1,2 @@
+#include "SettingsTests-Shared.xcconfig"
+#include? "../../Pods/Target Support Files/Pods-Settings-SettingsTests/Pods-Settings-SettingsTests.debug.xcconfig"

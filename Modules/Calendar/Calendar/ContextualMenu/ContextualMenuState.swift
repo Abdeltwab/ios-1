@@ -8,5 +8,5 @@ public struct ContextualMenuState: Equatable {
     var user: Loadable<User>
     var selectedItem: Either<EditableTimeEntry, CalendarEvent>?
     var editableTimeEntry: EditableTimeEntry?
-    var timeEntries: EntityCollection<TimeEntry>
+    var entities: TimeLogEntities
 }

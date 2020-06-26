@@ -30,7 +30,7 @@ let calendarItemsSelector: (CalendarDayState, Time) -> [CalendarItem] = { state,
         }
     }
 
-    let timeEntries = state.timeEntries
+    let timeEntries = state.entities.timeEntries
         .filter(isTimeEntryIncluded)
         .map(CalendarItem.Value.timeEntry)
         .map(replaceSelectedItemIfNeeded)
@@ -48,6 +48,6 @@ let calendarItemsSelector: (CalendarDayState, Time) -> [CalendarItem] = { state,
     }
 
     let values = timeEntries + calendarEvents + newEditableTimeEntry
-    let calculator = CalendarLayoutCalculator(time: time)
+    let calculator = CalendarLayoutCalculator(time: time, entities: state.entities)
     return calculator.calculateLayoutAttributesforItems(calendarItems: values)
 }

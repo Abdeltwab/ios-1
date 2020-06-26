@@ -29,14 +29,14 @@ class ContextualMenuReducerTests: XCTestCase {
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
-            timeEntries: EntityCollection<TimeEntry>([])
+            entities: TimeLogEntities()
         )
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, ContextualMenuAction.closeButtonTapped) {
+            Step(.send, ContextualMenuAction.cancelButtonTapped) {
                 $0.selectedItem = nil
             }
         )
@@ -44,19 +44,25 @@ class ContextualMenuReducerTests: XCTestCase {
 
     func test_closeButtonTapped_withACalendarItemSelected_setsSelectedItemToNil() {
 
-        let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now, color: "")
+        let calendarEvent = CalendarEvent(id: "1",
+                                          calendarId: "1",
+                                          calendarName: "",
+                                          description: "Potato",
+                                          start: now,
+                                          stop: now,
+                                          color: "")
 
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .right(calendarEvent),
-            timeEntries: EntityCollection<TimeEntry>([])
+            entities: TimeLogEntities()
         )
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, ContextualMenuAction.closeButtonTapped) {
+            Step(.send, ContextualMenuAction.cancelButtonTapped) {
                 $0.selectedItem = nil
             }
         )
@@ -69,14 +75,14 @@ class ContextualMenuReducerTests: XCTestCase {
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
-            timeEntries: EntityCollection<TimeEntry>([])
+            entities: TimeLogEntities()
         )
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, ContextualMenuAction.dismissButtonTapped) {
+            Step(.send, ContextualMenuAction.discardButtonTapped) {
                 $0.selectedItem = nil
             }
         )
@@ -84,19 +90,25 @@ class ContextualMenuReducerTests: XCTestCase {
 
     func test_dissmissButtonTapped_withACalendarItemSelected_setsSelectedItemToNil() {
 
-        let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now, color: "")
+        let calendarEvent = CalendarEvent(id: "1",
+                                          calendarId: "1",
+                                          calendarName: "",
+                                          description: "Potato",
+                                          start: now,
+                                          stop: now,
+                                          color: "")
 
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .right(calendarEvent),
-            timeEntries: EntityCollection<TimeEntry>([])
+            entities: TimeLogEntities()
         )
 
         assertReducerFlow(
             initialState: state,
             reducer: reducer,
             steps:
-            Step(.send, ContextualMenuAction.dismissButtonTapped) {
+            Step(.send, ContextualMenuAction.discardButtonTapped) {
                 $0.selectedItem = nil
             }
         )
@@ -111,7 +123,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
-            timeEntries: EntityCollection<TimeEntry>([])
+            entities: TimeLogEntities()
         )
 
         assertReducerFlow(
@@ -137,10 +149,13 @@ class ContextualMenuReducerTests: XCTestCase {
                                        billable: false,
                                        workspaceId: mockUser.defaultWorkspace)
 
+        var entities = TimeLogEntities()
+        entities.timeEntries.append(timeEntry)
+
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
-            timeEntries: EntityCollection<TimeEntry>([timeEntry])
+            entities: entities
         )
         
         timeEntry.duration = 600
@@ -160,7 +175,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
-            timeEntries: EntityCollection<TimeEntry>([])
+            entities: TimeLogEntities()
         )
 
         assertReducerFlow(
@@ -184,10 +199,13 @@ class ContextualMenuReducerTests: XCTestCase {
                                   workspaceId: 0)
         let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntry)
 
+        var entities = TimeLogEntities()
+        entities.timeEntries.append(timeEntry)
+
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
-            timeEntries: EntityCollection([timeEntry])
+            entities: entities
         )
 
         assertReducerFlow(
@@ -211,10 +229,13 @@ class ContextualMenuReducerTests: XCTestCase {
                                   workspaceId: 0)
         let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntry)
 
+        var entities = TimeLogEntities()
+        entities.timeEntries.append(timeEntry)
+
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
-            timeEntries: EntityCollection([timeEntry])
+            entities: entities
         )
 
         assertReducerFlow(
@@ -238,10 +259,13 @@ class ContextualMenuReducerTests: XCTestCase {
                                   workspaceId: 0)
         let editableTimeEntry = EditableTimeEntry.fromSingle(timeEntry)
 
+        var entities = TimeLogEntities()
+        entities.timeEntries.append(timeEntry)
+
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .left(editableTimeEntry),
-            timeEntries: EntityCollection([timeEntry])
+            entities: entities
         )
 
         assertReducerFlow(
@@ -264,10 +288,13 @@ class ContextualMenuReducerTests: XCTestCase {
                                   billable: false,
                                   workspaceId: 0)
 
+        var entities = TimeLogEntities()
+        entities.timeEntries.append(timeEntry)
+
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: nil,
-            timeEntries: EntityCollection([timeEntry])
+            entities: entities
         )
 
         assertReducerFlow(
@@ -282,6 +309,7 @@ class ContextualMenuReducerTests: XCTestCase {
 
         let calendarEvent = CalendarEvent(id: "1",
                                           calendarId: "1",
+                                          calendarName: "",
                                           description: "I'm a calendar event",
                                           start: now,
                                           stop: now.addingTimeInterval(10),
@@ -292,7 +320,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .right(calendarEvent),
-            timeEntries: EntityCollection<TimeEntry>([])
+            entities: TimeLogEntities()
         )
 
         assertReducerFlow(
@@ -310,6 +338,7 @@ class ContextualMenuReducerTests: XCTestCase {
 
         let calendarEvent = CalendarEvent(id: "1",
                                           calendarId: "1",
+                                          calendarName: "",
                                           description: "I'm a calendar event",
                                           start: now,
                                           stop: now.addingTimeInterval(10),
@@ -320,7 +349,7 @@ class ContextualMenuReducerTests: XCTestCase {
         let state = ContextualMenuState(
             user: .loaded(mockUser),
             selectedItem: .right(calendarEvent),
-            timeEntries: EntityCollection<TimeEntry>([])
+            entities: TimeLogEntities()
         )
 
         assertReducerFlow(

@@ -8,6 +8,7 @@ import RxBlocking
 import Timer
 @testable import Calendar
 
+// swiftlint:disable type_body_length
 class CalendarDayReducerTests: XCTestCase {
 
     var now = Date(timeIntervalSince1970: 987654321)
@@ -20,8 +21,20 @@ class CalendarDayReducerTests: XCTestCase {
         mockTime = Time(getNow: { return self.now })
         mockUser = User(id: 0, apiToken: "token", defaultWorkspace: 0)
         mockCalendarEvents = [
-            CalendarEvent(id: "1", calendarId: "1", description: "Hello there", start: now, stop: now, color: ""),
-            CalendarEvent(id: "2", calendarId: "1", description: "TWSS", start: now, stop: now, color: "")
+            CalendarEvent(id: "1",
+                          calendarId: "1",
+                          calendarName: "",
+                          description: "Hello there",
+                          start: now,
+                          stop: now,
+                          color: ""),
+            CalendarEvent(id: "2",
+                          calendarId: "1",
+                          calendarName: "",
+                          description: "TWSS",
+                          start: now,
+                          stop: now,
+                          color: "")
         ]
         reducer = createCalendarDayReducer(calendarService: MockCalendarService(calendarEvents: mockCalendarEvents))
     }
@@ -30,7 +43,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .nothing,
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -55,7 +68,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: .left(editableTimeEntry)
         )
@@ -80,7 +93,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -104,7 +117,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: .left(editableTimeEntry)
         )
@@ -128,7 +141,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -152,7 +165,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: .left(editableTimeEntry)
         )
@@ -176,7 +189,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -196,7 +209,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -219,7 +232,7 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: nil
         )
@@ -242,12 +255,18 @@ class CalendarDayReducerTests: XCTestCase {
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: nil
         )
 
-        let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now.addingTimeInterval(10), color: "")
+        let calendarEvent = CalendarEvent(id: "1",
+                                          calendarId: "1",
+                                          calendarName: "",
+                                          description: "Potato",
+                                          start: now,
+                                          stop: now.addingTimeInterval(10),
+                                          color: "")
         let calendarItem = CalendarItem(value: .calendarEvent(calendarEvent), columnIndex: 0, totalColumns: 1, duration: 10)
 
         assertReducerFlow(
@@ -263,12 +282,18 @@ class CalendarDayReducerTests: XCTestCase {
     func test_itemTapped_withAlreadySelectedItem_selectsTheNewItem() {
 
         let timeEntry = TimeEntry(id: 1, description: "Potato", start: now, duration: 10, billable: false, workspaceId: 0)
-        let calendarEvent = CalendarEvent(id: "1", calendarId: "1", description: "Potato", start: now, stop: now.addingTimeInterval(10), color: "")
+        let calendarEvent = CalendarEvent(id: "1",
+                                          calendarId: "1",
+                                          calendarName: "",
+                                          description: "Potato",
+                                          start: now,
+                                          stop: now.addingTimeInterval(10),
+                                          color: "")
 
         let state = CalendarDayState(
             user: .loaded(mockUser),
             selectedDate: now,
-            timeEntries: EntityCollection<TimeEntry>([]),
+            entities: TimeLogEntities(),
             calendarEvents: [:],
             selectedItem: .left(EditableTimeEntry.fromSingle(timeEntry))
         )
@@ -285,3 +310,4 @@ class CalendarDayReducerTests: XCTestCase {
         )
     }
 }
+// swiftlint:enable type_body_length

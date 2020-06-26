@@ -1,3 +1,4 @@
+import Models
 import OtherServices
 import Utils
 
@@ -9,9 +10,11 @@ final class CalendarLayoutCalculator {
     private let offsetFromNow: TimeInterval = 7 * .secondsInAMinute
     private let minimumDurationForUIPurposes: TimeInterval = 15 * .secondsInAMinute
     private let time: Time
+    private let entities: TimeLogEntities
 
-    init(time: Time) {
+    init(time: Time, entities: TimeLogEntities) {
         self.time = time
+        self.entities = entities
     }
 
     func calculateLayoutAttributesforItems(calendarItems: [CalendarItem.Value]) -> [CalendarItem] {
@@ -120,7 +123,49 @@ final class CalendarLayoutCalculator {
             value: value,
             columnIndex: columnIndex,
             totalColumns: totalColumns,
+            projectOrCalendar: projectOrCalendar(for: value),
+            color: color(for: value),
             duration: durationForUIPurposes(for: value)
         )
+    }
+
+    private func color(for value: CalendarItem.Value) -> String? {
+        switch value {
+        case .calendarEvent(let calendarEvent):
+            return calendarEvent.color
+        case .selectedItem(let selectedItem):
+            switch selectedItem {
+            case .left(let editableTimeEntry):
+                guard let projectId = editableTimeEntry.projectId else { return nil }
+                guard let project = entities.getProject(projectId) else { return nil }
+                return project.color
+            case .right(let calendarEvent):
+                return calendarEvent.calendarName
+            }
+        case .timeEntry(let timeEntry):
+            guard let projectId = timeEntry.projectId else { return nil }
+            guard let project = entities.getProject(projectId) else { return nil }
+            return project.color
+        }
+    }
+
+    private func projectOrCalendar(for value: CalendarItem.Value) -> String? {
+        switch value {
+        case .calendarEvent(let calendarEvent):
+            return calendarEvent.calendarName
+        case .selectedItem(let selectedItem):
+            switch selectedItem {
+            case .left(let editableTimeEntry):
+                guard let projectId = editableTimeEntry.projectId else { return nil }
+                guard let project = entities.getProject(projectId) else { return nil }
+                return project.name
+            case .right(let calendarEvent):
+                return calendarEvent.calendarName
+            }
+        case .timeEntry(let timeEntry):
+            guard let projectId = timeEntry.projectId else { return nil }
+            guard let project = entities.getProject(projectId) else { return nil }
+            return project.name
+        }
     }
 }
