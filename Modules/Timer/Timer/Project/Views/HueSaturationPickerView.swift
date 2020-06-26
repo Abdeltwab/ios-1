@@ -85,7 +85,7 @@ class HueSaturationPickerView: UIControl {
         let yellow = UIColor.yellow
         let green = UIColor.green
         let cyan = UIColor.cyan
-        let blue = UIColor.blue.
+        let blue = UIColor.blue
         let magenta = UIColor.magenta
         let borderColor = UIColor(hex: "CECECE")
 
