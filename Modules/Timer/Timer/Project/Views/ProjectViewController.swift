@@ -29,6 +29,7 @@ public class ProjectViewController: UIViewController, Storyboarded {
     @IBOutlet var colorSelectionCollectionView: UICollectionView!
     @IBOutlet var customProjectColor: UIView!
     @IBOutlet var customColorView: UIView!
+    @IBOutlet var customColorPicker: HueSaturationPickerView!
 
     private var disposeBag = DisposeBag()
     private let defaultCustomColor = UIColor(hex: "3178be")
@@ -60,6 +61,11 @@ public class ProjectViewController: UIViewController, Storyboarded {
 
         // Project color
         setUpColors()
+
+        customColorPicker.rx.controlEvent(.valueChanged)
+            .mapTo({ _ in ProjectAction.colorPicked(self.customColorPicker.selectedColor.hex) })
+            .subscribe(onNext: store.dispatch)
+            .disposed(by: disposeBag)
 
         store.compactSelect({ $0.editableProject?.color })
             .drive(onNext: {

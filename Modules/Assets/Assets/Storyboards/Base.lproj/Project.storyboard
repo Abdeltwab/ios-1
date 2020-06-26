@@ -314,6 +314,7 @@
                         <outlet property="closeButton" destination="7J0-fg-COE" id="kM8-Zg-MqB"/>
                         <outlet property="colorSelectionCollectionView" destination="1R3-CF-0EZ" id="Nno-Ws-0zQ"/>
                         <outlet property="contentScrollView" destination="h5g-zq-OJz" id="jdc-Z6-vlR"/>
+                        <outlet property="customColorPicker" destination="APE-56-Q7w" id="Ij6-BZ-VmU"/>
                         <outlet property="customColorView" destination="4lq-T6-r9O" id="nsA-Ho-t13"/>
                         <outlet property="customProjectColor" destination="ZlQ-kJ-CUi" id="HG5-Fq-ow6"/>
                         <outlet property="projectNameTextField" destination="hFk-lS-e0Q" id="9Je-kl-Pg8"/>
