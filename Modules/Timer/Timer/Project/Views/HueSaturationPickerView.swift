@@ -2,67 +2,27 @@ import UIKit
 import Utils
 
 class HueSaturationPickerView: UIControl {
-    private let opacityLayer = CALayer()
-
     // swiftlint:disable no_ui_colors
-    private let colorLayer: CAGradientLayer = {
-        var gLayer = CAGradientLayer()
-        let step: Double = 1/6
-        gLayer.cornerRadius = 8
-        gLayer.startPoint = CGPoint(x: 0, y: 0)
-        gLayer.endPoint = CGPoint(x: 1, y: 0)
-        gLayer.locations = [0.0, step * 1, step * 2, step * 3, step * 4, step * 5, 1.0] as [NSNumber]
-        gLayer.colors = [
-            UIColor.red.cgColor,
-            UIColor.yellow.cgColor,
-            UIColor.green.cgColor,
-            UIColor.cyan.cgColor,
-            UIColor.blue.cgColor,
-            UIColor.magenta.cgColor,
-            UIColor.red.cgColor
-        ]
-
-        let mask = CAGradientLayer()
-        mask.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        mask.locations = [0.0, 1.0] as [NSNumber]
-
-        gLayer.mask = mask
-
-        return gLayer
-    }()
-
     private let circleDiameter: CGFloat = 30
     private var circleRadius: CGFloat { circleDiameter / 2 }
-    private let circleColor: CGColor = UIColor.white.cgColor
 
     private let outerCircleDiameter: CGFloat = 32
     private var outerCircleRadius: CGFloat { outerCircleDiameter / 2 }
-    private let outerCircleColor: CGColor = UIColor.black.withAlphaComponent(0.3).cgColor
+    private let outerCircleColor = UIColor.white
 
     private static let defautlColor = UIColor(hex: "3178be")
-    public var color: UIColor = defautlColor
     public var hue: CGFloat = defautlColor.hsb.hue
     public var saturation: CGFloat = defautlColor.hsb.saturation
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-
-        opacityLayer.cornerRadius = 8
-        //        opacityLayer.backgroundColor = UIColor.black.withAlphaComponent(complement(value)).CGColor
-        layer.insertSublayer(opacityLayer, at: 0)
-        layer.insertSublayer(colorLayer, at: 0)
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        opacityLayer.frame = bounds
-        colorLayer.frame = bounds
-        colorLayer.mask?.frame = bounds
+    private var _value: CGFloat = 0
+    public var value: Double {
+        get {
+            return Double(_value)
+        }
+        set {
+            _value = complement(CGFloat(newValue))
+            setNeedsDisplay()
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,37 +49,102 @@ class HueSaturationPickerView: UIControl {
         saturation = complement(pointY / frame.height)
 
         setNeedsDisplay()
+        sendActions(for: .valueChanged)
     }
-
-    // swiftlint:disable identifier_name
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-
-        guard let context = UIGraphicsGetCurrentContext() else { return }
-
-        let x = frame.width * hue - circleRadius
-        let y = frame.height * complement(saturation) - circleRadius
-
-        let circleRect = CGRect(x: x, y: y, width: circleDiameter, height: circleDiameter)
-        let path = UIBezierPath.init(roundedRect: circleRect, cornerRadius: circleRadius)
-        path.lineWidth = 2
-        context.addPath(path.cgPath)
-        context.setStrokeColor(circleColor)
-        context.setFillColor(UIColor.init(hue: hue, saturation: saturation, brightness: 1, alpha: 1).cgColor)
-        context.drawPath(using: .fillStroke)
-
-        let outerCircleRect = CGRect(x: x - 1, y: y - 1, width: outerCircleDiameter, height: outerCircleDiameter)
-        let outerPath = UIBezierPath.init(roundedRect: outerCircleRect, cornerRadius: outerCircleRadius)
-        outerPath.lineWidth = 1
-        context.addPath(outerPath.cgPath)
-        context.setStrokeColor(outerCircleColor)
-        context.drawPath(using: .stroke)
-    }
-    // swiftlint:enable identifier_name
 
     private func complement(_ number: CGFloat) -> CGFloat {
         abs(number - 1)
     }
 
-    // swiftlint:enable no_ui_colors
+    // swiftlint:disable identifier_name force_cast line_length
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+
+        drawRainbowBackground(rect: bounds)
+
+        drawDarkOverlay(rect: bounds)
+
+        let x = frame.width * hue - circleRadius
+        let y = frame.height * complement(saturation) - circleRadius
+
+        let outerCircleRect = CGRect(x: x - 1, y: y - 1, width: outerCircleDiameter, height: outerCircleDiameter)
+        drawOuterCircleWithShadow(rect: outerCircleRect)
+
+        let circleRect = CGRect(x: x, y: y, width: circleDiameter, height: circleDiameter)
+        drawColorCircle(rect: circleRect)
+    }
+
+    private func drawRainbowBackground(rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()!
+
+        let red = UIColor.red
+        let yellow = UIColor.yellow
+        let green = UIColor.green
+        let cyan = UIColor.cyan
+        let blue = UIColor.blue
+        let magenta = UIColor.magenta
+        let borderColor = UIColor(hex: "CECECE")
+
+        let step: CGFloat = 1/6
+        let locations: [CGFloat] = [0.0, step * 1, step * 2, step * 3, step * 4, step * 5, 1.0]
+        let gradient = CGGradient(colorsSpace: nil, colors: [red.cgColor, yellow.cgColor, green.cgColor, cyan.cgColor, blue.cgColor, magenta.cgColor, red.cgColor] as CFArray, locations: locations)!
+
+        let rainbowRect = CGRect(x: rect.minX + 0.5, y: rect.minY + 0.5, width: rect.width - 1, height: rect.height - 1)
+        let rainbowPath = UIBezierPath(roundedRect: rainbowRect, cornerRadius: 8)
+        context.saveGState()
+        rainbowPath.addClip()
+        context.drawLinearGradient(gradient,
+            start: CGPoint(x: rainbowRect.minX, y: rainbowRect.midY),
+            end: CGPoint(x: rainbowRect.maxX, y: rainbowRect.midY),
+            options: [])
+        context.restoreGState()
+        borderColor.setStroke()
+        rainbowPath.lineWidth = 1
+        rainbowPath.lineCapStyle = .round
+        rainbowPath.lineJoinStyle = .round
+        rainbowPath.stroke()
+
+        let whiteGradientOverlay = CGGradient(colorsSpace: nil, colors: [UIColor.clear.cgColor, UIColor.white.cgColor] as CFArray, locations: [0, 1])!
+        let gradientOverlayRect = CGRect(x: rect.minX + 1, y: rect.minY + 1, width: rect.width - 2, height: rect.height - 2)
+        let gradientOverlayPath = UIBezierPath(roundedRect: gradientOverlayRect, cornerRadius: 7.5)
+        context.saveGState()
+        gradientOverlayPath.addClip()
+        context.drawLinearGradient(whiteGradientOverlay,
+            start: CGPoint(x: gradientOverlayRect.midX, y: gradientOverlayRect.minY),
+            end: CGPoint(x: gradientOverlayRect.midX, y: gradientOverlayRect.maxY),
+            options: [])
+
+        context.restoreGState()
+    }
+
+    private func drawOuterCircleWithShadow(rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()!
+
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.black.withAlphaComponent(0.3)
+        shadow.shadowOffset = CGSize(width: 0, height: 1)
+        shadow.shadowBlurRadius = 3
+
+        let ovalPath = UIBezierPath(ovalIn: rect)
+        context.saveGState()
+        context.setShadow(offset: shadow.shadowOffset, blur: shadow.shadowBlurRadius, color: (shadow.shadowColor as! UIColor).cgColor)
+        outerCircleColor.setFill()
+        ovalPath.fill()
+        context.restoreGState()
+    }
+
+    private func drawColorCircle(rect: CGRect) {
+        let ovalPath = UIBezierPath(ovalIn: rect)
+        UIColor(hue: hue, saturation: saturation, brightness: complement(_value), alpha: 1).setFill()
+        ovalPath.fill()
+    }
+
+    private func drawDarkOverlay(rect: CGRect) {
+        let color = UIColor.black.withAlphaComponent(_value)
+
+        let opacityOverlayPath = UIBezierPath(roundedRect: rect, cornerRadius: 8)
+        color.setFill()
+        opacityOverlayPath.fill()
+    }
+    // swiftlint:enable identifier_name force_cast line_length no_ui_colors
 }
