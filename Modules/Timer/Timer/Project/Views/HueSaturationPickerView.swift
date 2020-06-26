@@ -10,7 +10,7 @@ class HueSaturationPickerView: UIControl {
     private var outerCircleRadius: CGFloat { outerCircleDiameter / 2 }
     private let outerCircleColor = UIColor.white
 
-    private static let defautlColor = UIColor(hex: "3178be")
+    private static let defautlColor = UIColor(hex: "3178be").projectColor
     public var hue: CGFloat = defautlColor.hsb.hue
     public var saturation: CGFloat = defautlColor.hsb.saturation
 
@@ -23,6 +23,10 @@ class HueSaturationPickerView: UIControl {
             _value = complement(CGFloat(newValue))
             setNeedsDisplay()
         }
+    }
+
+    public var selectedColor: UIColor {
+        UIColor(hue: hue, saturation: saturation, brightness: complement(_value), alpha: 1).projectColor
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -135,7 +139,7 @@ class HueSaturationPickerView: UIControl {
 
     private func drawColorCircle(rect: CGRect) {
         let ovalPath = UIBezierPath(ovalIn: rect)
-        UIColor(hue: hue, saturation: saturation, brightness: complement(_value), alpha: 1).setFill()
+        selectedColor.setFill()
         ovalPath.fill()
     }
 
