@@ -1,0 +1,495 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		29B7BD9676925FA24B7306D9 /* Pods_Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9803C62649098B5252F32393 /* Pods_Settings.framework */; };
+		B4314F7724A392DE0044619B /* SettingsTests-Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4314F6F24A392DE0044619B /* SettingsTests-Shared.xcconfig */; };
+		B4314F7824A392DE0044619B /* Settings.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4314F7024A392DE0044619B /* Settings.release.xcconfig */; };
+		B4314F7924A392DE0044619B /* SettingsTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4314F7124A392DE0044619B /* SettingsTests.release.xcconfig */; };
+		B4314F7A24A392DE0044619B /* SettingsTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4314F7224A392DE0044619B /* SettingsTests.debug.xcconfig */; };
+		B4314F7B24A392DE0044619B /* Settings.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4314F7324A392DE0044619B /* Settings.debug.xcconfig */; };
+		B4314F7C24A392DE0044619B /* Settings-Shared.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4314F7424A392DE0044619B /* Settings-Shared.xcconfig */; };
+		B4314F7D24A392DE0044619B /* Project.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4314F7524A392DE0044619B /* Project.debug.xcconfig */; };
+		B4314F7E24A392DE0044619B /* Project.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = B4314F7624A392DE0044619B /* Project.release.xcconfig */; };
+		B483FFEF24A391EB008A2B58 /* Settings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B483FFE524A391EB008A2B58 /* Settings.framework */; };
+		B483FFF424A391EB008A2B58 /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483FFF324A391EB008A2B58 /* SettingsTests.swift */; };
+		B483FFF624A391EB008A2B58 /* Settings.h in Headers */ = {isa = PBXBuildFile; fileRef = B483FFE824A391EB008A2B58 /* Settings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4C25D1E24A393E500DD703D /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D1D24A393E500DD703D /* SettingsFeature.swift */; };
+		B4C25D2724A3940900DD703D /* SettingsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2024A3940900DD703D /* SettingsAction.swift */; };
+		B4C25D2824A3940900DD703D /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2124A3940900DD703D /* SettingsCoordinator.swift */; };
+		B4C25D2924A3940900DD703D /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2224A3940900DD703D /* SettingsFeature.swift */; };
+		B4C25D2A24A3940900DD703D /* SettingsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2324A3940900DD703D /* SettingsReducer.swift */; };
+		B4C25D2B24A3940900DD703D /* SettingsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2424A3940900DD703D /* SettingsState.swift */; };
+		B4C25D2C24A3940900DD703D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2524A3940900DD703D /* SettingsViewController.swift */; };
+		B4C25D2D24A3940900DD703D /* SettingsSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C25D2624A3940900DD703D /* SettingsSelector.swift */; };
+		E518B28757375AB6B46D458A /* Pods_Settings_SettingsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1BAF6FBBC7DA54D5A33E299 /* Pods_Settings_SettingsTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B483FFF024A391EB008A2B58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B483FFDC24A391EB008A2B58 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B483FFE424A391EB008A2B58;
+			remoteInfo = Settings;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3AF1F32D5460C188FA7F8371 /* Pods-Settings.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Settings.release.xcconfig"; path = "Target Support Files/Pods-Settings/Pods-Settings.release.xcconfig"; sourceTree = "<group>"; };
+		75137F521386134E439CE8EE /* Pods-Settings.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Settings.debug.xcconfig"; path = "Target Support Files/Pods-Settings/Pods-Settings.debug.xcconfig"; sourceTree = "<group>"; };
+		947A7667BC19B9658EDA679E /* Pods-Settings-SettingsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Settings-SettingsTests.debug.xcconfig"; path = "Target Support Files/Pods-Settings-SettingsTests/Pods-Settings-SettingsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9803C62649098B5252F32393 /* Pods_Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC30E35D6A28166AC43354C0 /* Pods-Settings-SettingsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Settings-SettingsTests.release.xcconfig"; path = "Target Support Files/Pods-Settings-SettingsTests/Pods-Settings-SettingsTests.release.xcconfig"; sourceTree = "<group>"; };
+		B4314F6F24A392DE0044619B /* SettingsTests-Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "SettingsTests-Shared.xcconfig"; sourceTree = "<group>"; };
+		B4314F7024A392DE0044619B /* Settings.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Settings.release.xcconfig; sourceTree = "<group>"; };
+		B4314F7124A392DE0044619B /* SettingsTests.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SettingsTests.release.xcconfig; sourceTree = "<group>"; };
+		B4314F7224A392DE0044619B /* SettingsTests.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = SettingsTests.debug.xcconfig; sourceTree = "<group>"; };
+		B4314F7324A392DE0044619B /* Settings.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Settings.debug.xcconfig; sourceTree = "<group>"; };
+		B4314F7424A392DE0044619B /* Settings-Shared.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Settings-Shared.xcconfig"; sourceTree = "<group>"; };
+		B4314F7524A392DE0044619B /* Project.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.debug.xcconfig; sourceTree = "<group>"; };
+		B4314F7624A392DE0044619B /* Project.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.release.xcconfig; sourceTree = "<group>"; };
+		B483FFE524A391EB008A2B58 /* Settings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Settings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B483FFE824A391EB008A2B58 /* Settings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		B483FFE924A391EB008A2B58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B483FFEE24A391EB008A2B58 /* SettingsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B483FFF324A391EB008A2B58 /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
+		B483FFF524A391EB008A2B58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4C25D1D24A393E500DD703D /* SettingsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeature.swift; sourceTree = "<group>"; };
+		B4C25D2024A3940900DD703D /* SettingsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAction.swift; sourceTree = "<group>"; };
+		B4C25D2124A3940900DD703D /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		B4C25D2224A3940900DD703D /* SettingsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeature.swift; sourceTree = "<group>"; };
+		B4C25D2324A3940900DD703D /* SettingsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReducer.swift; sourceTree = "<group>"; };
+		B4C25D2424A3940900DD703D /* SettingsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsState.swift; sourceTree = "<group>"; };
+		B4C25D2524A3940900DD703D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B4C25D2624A3940900DD703D /* SettingsSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSelector.swift; sourceTree = "<group>"; };
+		C1BAF6FBBC7DA54D5A33E299 /* Pods_Settings_SettingsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Settings_SettingsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B483FFE224A391EB008A2B58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29B7BD9676925FA24B7306D9 /* Pods_Settings.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B483FFEB24A391EB008A2B58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B483FFEF24A391EB008A2B58 /* Settings.framework in Frameworks */,
+				E518B28757375AB6B46D458A /* Pods_Settings_SettingsTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		28F08C7CC68BF0A857AAAE15 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75137F521386134E439CE8EE /* Pods-Settings.debug.xcconfig */,
+				3AF1F32D5460C188FA7F8371 /* Pods-Settings.release.xcconfig */,
+				947A7667BC19B9658EDA679E /* Pods-Settings-SettingsTests.debug.xcconfig */,
+				AC30E35D6A28166AC43354C0 /* Pods-Settings-SettingsTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
+		8895CDDF742DB4301C247935 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9803C62649098B5252F32393 /* Pods_Settings.framework */,
+				C1BAF6FBBC7DA54D5A33E299 /* Pods_Settings_SettingsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B4314F6E24A392CD0044619B /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				B4314F6F24A392DE0044619B /* SettingsTests-Shared.xcconfig */,
+				B4314F7024A392DE0044619B /* Settings.release.xcconfig */,
+				B4314F7124A392DE0044619B /* SettingsTests.release.xcconfig */,
+				B4314F7224A392DE0044619B /* SettingsTests.debug.xcconfig */,
+				B4314F7324A392DE0044619B /* Settings.debug.xcconfig */,
+				B4314F7424A392DE0044619B /* Settings-Shared.xcconfig */,
+				B4314F7524A392DE0044619B /* Project.debug.xcconfig */,
+				B4314F7624A392DE0044619B /* Project.release.xcconfig */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		B483FFDB24A391EB008A2B58 = {
+			isa = PBXGroup;
+			children = (
+				B4314F6E24A392CD0044619B /* Configurations */,
+				B483FFE724A391EB008A2B58 /* Settings */,
+				B483FFF224A391EB008A2B58 /* SettingsTests */,
+				B483FFE624A391EB008A2B58 /* Products */,
+				28F08C7CC68BF0A857AAAE15 /* Pods */,
+				8895CDDF742DB4301C247935 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B483FFE624A391EB008A2B58 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B483FFE524A391EB008A2B58 /* Settings.framework */,
+				B483FFEE24A391EB008A2B58 /* SettingsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B483FFE724A391EB008A2B58 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				B4C25D1D24A393E500DD703D /* SettingsFeature.swift */,
+				B4C25D1F24A393F700DD703D /* Common */,
+				B483FFE824A391EB008A2B58 /* Settings.h */,
+				B483FFE924A391EB008A2B58 /* Info.plist */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		B483FFF224A391EB008A2B58 /* SettingsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B483FFF324A391EB008A2B58 /* SettingsTests.swift */,
+				B483FFF524A391EB008A2B58 /* Info.plist */,
+			);
+			path = SettingsTests;
+			sourceTree = "<group>";
+		};
+		B4C25D1F24A393F700DD703D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B4C25D2024A3940900DD703D /* SettingsAction.swift */,
+				B4C25D2124A3940900DD703D /* SettingsCoordinator.swift */,
+				B4C25D2224A3940900DD703D /* SettingsFeature.swift */,
+				B4C25D2324A3940900DD703D /* SettingsReducer.swift */,
+				B4C25D2424A3940900DD703D /* SettingsState.swift */,
+				B4C25D2524A3940900DD703D /* SettingsViewController.swift */,
+				B4C25D2624A3940900DD703D /* SettingsSelector.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B483FFE024A391EB008A2B58 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B483FFF624A391EB008A2B58 /* Settings.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B483FFE424A391EB008A2B58 /* Settings */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B483FFF924A391EB008A2B58 /* Build configuration list for PBXNativeTarget "Settings" */;
+			buildPhases = (
+				8ADFA346EDE5D82463444675 /* [CP] Check Pods Manifest.lock */,
+				B483FFE024A391EB008A2B58 /* Headers */,
+				B483FFE124A391EB008A2B58 /* Sources */,
+				B483FFE224A391EB008A2B58 /* Frameworks */,
+				B483FFE324A391EB008A2B58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Settings;
+			productName = Settings;
+			productReference = B483FFE524A391EB008A2B58 /* Settings.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B483FFED24A391EB008A2B58 /* SettingsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B483FFFC24A391EB008A2B58 /* Build configuration list for PBXNativeTarget "SettingsTests" */;
+			buildPhases = (
+				AD50431CE68BC06812843281 /* [CP] Check Pods Manifest.lock */,
+				B483FFEA24A391EB008A2B58 /* Sources */,
+				B483FFEB24A391EB008A2B58 /* Frameworks */,
+				B483FFEC24A391EB008A2B58 /* Resources */,
+				4B60A98639963DF90FF50E00 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B483FFF124A391EB008A2B58 /* PBXTargetDependency */,
+			);
+			name = SettingsTests;
+			productName = SettingsTests;
+			productReference = B483FFEE24A391EB008A2B58 /* SettingsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B483FFDC24A391EB008A2B58 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = "Toggl OÜ";
+				TargetAttributes = {
+					B483FFE424A391EB008A2B58 = {
+						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
+					};
+					B483FFED24A391EB008A2B58 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+				};
+			};
+			buildConfigurationList = B483FFDF24A391EB008A2B58 /* Build configuration list for PBXProject "Settings" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B483FFDB24A391EB008A2B58;
+			productRefGroup = B483FFE624A391EB008A2B58 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B483FFE424A391EB008A2B58 /* Settings */,
+				B483FFED24A391EB008A2B58 /* SettingsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B483FFE324A391EB008A2B58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4314F7A24A392DE0044619B /* SettingsTests.debug.xcconfig in Resources */,
+				B4314F7824A392DE0044619B /* Settings.release.xcconfig in Resources */,
+				B4314F7724A392DE0044619B /* SettingsTests-Shared.xcconfig in Resources */,
+				B4314F7D24A392DE0044619B /* Project.debug.xcconfig in Resources */,
+				B4314F7924A392DE0044619B /* SettingsTests.release.xcconfig in Resources */,
+				B4314F7E24A392DE0044619B /* Project.release.xcconfig in Resources */,
+				B4314F7C24A392DE0044619B /* Settings-Shared.xcconfig in Resources */,
+				B4314F7B24A392DE0044619B /* Settings.debug.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B483FFEC24A391EB008A2B58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B60A98639963DF90FF50E00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Settings-SettingsTests/Pods-Settings-SettingsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Settings-SettingsTests/Pods-Settings-SettingsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Settings-SettingsTests/Pods-Settings-SettingsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8ADFA346EDE5D82463444675 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Settings-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD50431CE68BC06812843281 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Settings-SettingsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B483FFE124A391EB008A2B58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4C25D2B24A3940900DD703D /* SettingsState.swift in Sources */,
+				B4C25D2724A3940900DD703D /* SettingsAction.swift in Sources */,
+				B4C25D2C24A3940900DD703D /* SettingsViewController.swift in Sources */,
+				B4C25D2D24A3940900DD703D /* SettingsSelector.swift in Sources */,
+				B4C25D2924A3940900DD703D /* SettingsFeature.swift in Sources */,
+				B4C25D2824A3940900DD703D /* SettingsCoordinator.swift in Sources */,
+				B4C25D1E24A393E500DD703D /* SettingsFeature.swift in Sources */,
+				B4C25D2A24A3940900DD703D /* SettingsReducer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B483FFEA24A391EB008A2B58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B483FFF424A391EB008A2B58 /* SettingsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B483FFF124A391EB008A2B58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B483FFE424A391EB008A2B58 /* Settings */;
+			targetProxy = B483FFF024A391EB008A2B58 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B483FFF724A391EB008A2B58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4314F7524A392DE0044619B /* Project.debug.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		B483FFF824A391EB008A2B58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4314F7624A392DE0044619B /* Project.release.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		B483FFFA24A391EB008A2B58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4314F7324A392DE0044619B /* Settings.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B483FFFB24A391EB008A2B58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4314F7024A392DE0044619B /* Settings.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				DEFINES_MODULE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		B483FFFD24A391EB008A2B58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4314F7224A392DE0044619B /* SettingsTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+			};
+			name = Debug;
+		};
+		B483FFFE24A391EB008A2B58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4314F7124A392DE0044619B /* SettingsTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B483FFDF24A391EB008A2B58 /* Build configuration list for PBXProject "Settings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B483FFF724A391EB008A2B58 /* Debug */,
+				B483FFF824A391EB008A2B58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B483FFF924A391EB008A2B58 /* Build configuration list for PBXNativeTarget "Settings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B483FFFA24A391EB008A2B58 /* Debug */,
+				B483FFFB24A391EB008A2B58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B483FFFC24A391EB008A2B58 /* Build configuration list for PBXNativeTarget "SettingsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B483FFFD24A391EB008A2B58 /* Debug */,
+				B483FFFE24A391EB008A2B58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B483FFDC24A391EB008A2B58 /* Project object */;
+}

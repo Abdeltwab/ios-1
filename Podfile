@@ -46,6 +46,7 @@ project 'Modules/Database/Database.xcodeproj'
 project 'Modules/OtherServices/OtherServices.xcodeproj'
 project 'Modules/CalendarService/CalendarService.xcodeproj'
 project 'Modules/CommonFeatures/CommonFeatures.xcodeproj'
+project 'Modules/Settings/Settings.xcodeproj'
 
 target :App do
     project 'App/App.xcodeproj'
@@ -168,6 +169,18 @@ target :CommonFeatures do
   rxdatasources
 
   target :CommonFeaturesTests do
+    rxtests
+  end
+end
+
+target :Settings do
+  use_frameworks!
+  project 'Modules/Settings/Settings.xcodeproj'
+  rxswift
+  rxcocoa
+  rxdatasources
+
+  target :SettingsTests do
     rxtests
   end
 end

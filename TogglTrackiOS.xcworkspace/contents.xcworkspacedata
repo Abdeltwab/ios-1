@@ -28,6 +28,9 @@
          <FileRef
             location = "group:Modules/Calendar/Calendar.xcodeproj">
          </FileRef>
+         <FileRef
+            location = "group:Modules/Settings/Settings.xcodeproj">
+         </FileRef>
       </Group>
       <Group
          location = "container:"
