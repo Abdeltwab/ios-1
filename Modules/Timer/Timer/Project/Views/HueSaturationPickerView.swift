@@ -8,7 +8,7 @@ class HueSaturationPickerView: UIControl {
 
     private let outerCircleDiameter: CGFloat = 32
     private var outerCircleRadius: CGFloat { outerCircleDiameter / 2 }
-    private let outerCircleColor = UIColor.white
+    private let outerCircleColor = UIColor.white.projectColor
 
     private static let defautlColor = UIColor(hex: "3178be").projectColor
     public var hue: CGFloat = defautlColor.hsb.hue
@@ -81,13 +81,13 @@ class HueSaturationPickerView: UIControl {
     private func drawRainbowBackground(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
 
-        let red = UIColor.red
-        let yellow = UIColor.yellow
-        let green = UIColor.green
-        let cyan = UIColor.cyan
-        let blue = UIColor.blue
-        let magenta = UIColor.magenta
-        let borderColor = UIColor(hex: "CECECE")
+        let red = UIColor.red.projectColor
+        let yellow = UIColor.yellow.projectColor
+        let green = UIColor.green.projectColor
+        let cyan = UIColor.cyan.projectColor
+        let blue = UIColor.blue.projectColor
+        let magenta = UIColor.magenta.projectColor
+        let borderColor = UIColor(hex: "CECECE").projectColor
 
         let step: CGFloat = 1/6
         let locations: [CGFloat] = [0.0, step * 1, step * 2, step * 3, step * 4, step * 5, 1.0]
@@ -125,7 +125,7 @@ class HueSaturationPickerView: UIControl {
         let context = UIGraphicsGetCurrentContext()!
 
         let shadow = NSShadow()
-        shadow.shadowColor = UIColor.black.withAlphaComponent(0.3)
+        shadow.shadowColor = UIColor.black.withAlphaComponent(0.3).projectColor
         shadow.shadowOffset = CGSize(width: 0, height: 1)
         shadow.shadowBlurRadius = 3
 
@@ -144,7 +144,7 @@ class HueSaturationPickerView: UIControl {
     }
 
     private func drawDarkOverlay(rect: CGRect) {
-        let color = UIColor.black.withAlphaComponent(_value)
+        let color = UIColor.black.withAlphaComponent(_value).projectColor
 
         let opacityOverlayPath = UIBezierPath(roundedRect: rect, cornerRadius: 8)
         color.setFill()
