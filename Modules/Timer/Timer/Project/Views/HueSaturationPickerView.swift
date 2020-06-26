@@ -14,6 +14,9 @@ class HueSaturationPickerView: UIControl {
     public var hue: CGFloat = defaultColor.hsb.hue
     public var saturation: CGFloat = defaultColor.hsb.saturation
 
+    private var tapGesture = UITapGestureRecognizer()
+    private var panGesture = UIPanGestureRecognizer()
+
     private var _value: CGFloat = 0
     public var value: Double {
         get {
@@ -29,19 +32,33 @@ class HueSaturationPickerView: UIControl {
         UIColor(hue: hue, saturation: saturation, brightness: complement(_value), alpha: 1).projectColor
     }
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupGestures()
+    }
 
-        guard let touch = touches.first else { return }
-        let point = touch.location(in: self)
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupGestures()
+    }
+
+    func setupGestures() {
+        tapGesture.addTarget(self, action: #selector(self.handleTap(_:)))
+        tapGesture.delegate = self
+        self.addGestureRecognizer(tapGesture)
+
+        panGesture.addTarget(self, action: #selector(self.handleTap(_:)))
+        panGesture.delegate = self
+        self.addGestureRecognizer(panGesture)
+    }
+
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        let point = gesture.location(in: self)
         updateLocation(point)
     }
 
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesMoved(touches, with: event)
-
-        guard let touch = touches.first else { return }
-        let point = touch.location(in: self)
+    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+        let point = gesture.translation(in: self)
         updateLocation(point)
     }
 
@@ -151,4 +168,22 @@ class HueSaturationPickerView: UIControl {
         opacityOverlayPath.fill()
     }
     // swiftlint:enable identifier_name force_cast line_length no_ui_colors
+}
+
+extension HueSaturationPickerView: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer == self.tapGesture && otherGestureRecognizer != panGesture
+        || gestureRecognizer == self.panGesture && otherGestureRecognizer != tapGesture {
+            return true
+        }
+        return false
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer == self.tapGesture && otherGestureRecognizer == self.panGesture {
+            return true
+        }
+        return false
+    }
 }
