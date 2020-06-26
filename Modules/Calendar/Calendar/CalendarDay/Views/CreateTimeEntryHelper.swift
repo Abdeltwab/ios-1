@@ -1,10 +1,7 @@
 import UIKit
 
-class CreateTimeEntryHelper: NSObject, UIGestureRecognizerDelegate {
+class CreateTimeEntryHelper: AutoScrollHelper, UIGestureRecognizerDelegate {
 
-    private unowned var collectionView: UICollectionView!
-    private unowned var dataSource: CalendarDayCollectionViewDataSource!
-    private unowned var layout: CalendarDayCollectionViewLayout!
     private unowned var store: CalendarDayStore!
 
     private var gestureRecognizer: UILongPressGestureRecognizer!
@@ -14,11 +11,7 @@ class CreateTimeEntryHelper: NSObject, UIGestureRecognizerDelegate {
          layout: CalendarDayCollectionViewLayout,
          store: CalendarDayStore
     ) {
-        super.init()
-
-        self.collectionView = collectionView
-        self.dataSource = dataSource
-        self.layout = layout
+        super.init(collectionView: collectionView, dataSource: dataSource, layout: layout)
         self.store = store
 
         self.gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(onGesture(_:)))
@@ -48,9 +41,29 @@ class CreateTimeEntryHelper: NSObject, UIGestureRecognizerDelegate {
         case .began:
             store.dispatch(.emptyPositionLongPressed(timeInterval))
         case .changed:
-            store.dispatch(.timeEntryDragged(timeInterval))
+            gestureChanged(at: point)
         default:
-            break
+            firstPoint = nil
+            previousPoint = nil
+            currentPoint = nil
+            stopAutoScroll()
         }
+    }
+
+    private func gestureChanged(at point: CGPoint) {
+        let timeInterval = layout.timeInterval(at: point)
+        currentPoint = point
+        if isScrollingUp && point.y < topAutoScrollLine {
+            startAutoScrollUp()
+        } else if isScrollingDown && point.y > bottomAutoScrollLine {
+            startAutoScrollDown()
+        } else {
+            stopAutoScroll()
+        }
+        store.dispatch(.timeEntryDragged(timeInterval))
+    }
+
+    override func update(point: CGPoint) {
+        self.gestureChanged(at: point)
     }
 }

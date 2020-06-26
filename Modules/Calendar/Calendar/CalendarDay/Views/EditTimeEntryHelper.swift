@@ -49,6 +49,9 @@ class EditTimeEntryHelper: AutoScrollHelper, UIGestureRecognizerDelegate {
             gestureChanged(at: point)
         default:
             target = nil
+            firstPoint = nil
+            previousPoint = nil
+            currentPoint = nil
             stopAutoScroll()
         }
     }
@@ -68,23 +71,15 @@ class EditTimeEntryHelper: AutoScrollHelper, UIGestureRecognizerDelegate {
     }
 
     private func gestureChanged(at point: CGPoint) {
+        guard target != nil else { return }
         currentPoint = point
-        if isScrollingUp {
-            if point.y > topAutoScrollLine {
-                startAutoScrollUp(gestureChanged(at:))
-            } else {
-                stopAutoScroll()
-            }
-        } else if isScrollingDown {
-            if point.y < bottomAutoScrollLine {
-                startAutoScrollDown(gestureChanged(at:))
-            } else {
-                stopAutoScroll()
-            }
+        if isScrollingUp && point.y < topAutoScrollLine {
+            startAutoScrollUp()
+        } else if isScrollingDown && point.y > bottomAutoScrollLine {
+            startAutoScrollDown()
         } else {
             stopAutoScroll()
         }
-
         dispathDragActions(at: point)
     }
 

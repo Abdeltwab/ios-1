@@ -191,6 +191,13 @@ class CalendarDayCollectionViewLayout: UICollectionViewLayout {
         }
     }
 
+    override func prepare(forCollectionViewUpdates updateItems: [UICollectionViewUpdateItem]) {
+        updateItems.map({ $0.indexPathBeforeUpdate }).forEach { indexPathToInvalidate in
+            guard let indexPathToInvalidate = indexPathToInvalidate else { return }
+            itemLayoutAttributes.removeValue(forKey: indexPathToInvalidate)
+        }
+    }
+
     // swiftlint:disable line_length
     // swiftlint:disable identifier_name
     private func frame(for calendarItem: CalendarItem) -> CGRect {

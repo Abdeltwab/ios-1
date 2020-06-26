@@ -9,7 +9,8 @@ class AutoScrollHelper: NSObject {
     private var displayLink: CADisplayLink?
 
     private var autoScrollDistance: CGFloat!
-    private let autoScrollZoneHeight: CGFloat = 50
+    private let topAutoScrollZoneHeight: CGFloat = 50
+    private let bottomAutoScrollZoneHeight: CGFloat = 288
     private let autoScrollsPerSecond = 8
 
     // MARK: Internal state
@@ -27,16 +28,16 @@ class AutoScrollHelper: NSObject {
     // MARK: Helpers
     private var shouldStopAutoScrollUp: Bool { isAutoScrollingUp && collectionView.isAtTop }
     private var shouldStopAutoScrollDown: Bool { isAutoScrollingDown && collectionView.isAtBottom }
-    var topAutoScrollLine: CGFloat { collectionView.contentOffset.y + autoScrollZoneHeight }
-    var bottomAutoScrollLine: CGFloat { collectionView.contentOffset.y + collectionView.frame.height - autoScrollZoneHeight }
+    var topAutoScrollLine: CGFloat { collectionView.contentOffset.y + topAutoScrollZoneHeight }
+    var bottomAutoScrollLine: CGFloat { collectionView.contentOffset.y + collectionView.frame.height - bottomAutoScrollZoneHeight }
 
     var isScrollingUp: Bool {
         guard let currentPoint = currentPoint, let previousPoint = previousPoint else { return false }
-        return currentPoint.y < previousPoint.y
+        return currentPoint.y <= previousPoint.y
     }
     var isScrollingDown: Bool {
         guard let currentPoint = currentPoint, let previousPoint = previousPoint else { return false }
-        return currentPoint.y > previousPoint.y
+        return currentPoint.y >= previousPoint.y
     }
 
     init(collectionView: UICollectionView, dataSource: CalendarDayCollectionViewDataSource, layout: CalendarDayCollectionViewLayout) {
@@ -47,7 +48,7 @@ class AutoScrollHelper: NSObject {
         self.autoScrollDistance = self.layout.hourHeight / 4
     }
 
-    func startAutoScrollUp(_ update: @escaping (CGPoint) -> Void) {
+    func startAutoScrollUp() {
         guard !isAutoScrollingUp else { return }
         isAutoScrollingUp = true
         isAutoScrollingDown = false
@@ -58,7 +59,7 @@ class AutoScrollHelper: NSObject {
         self.displayLink?.add(to: .main, forMode: .default)
     }
 
-    func startAutoScrollDown(_ update: @escaping (CGPoint) -> Void) {
+    func startAutoScrollDown() {
         guard !isAutoScrollingDown else { return }
         isAutoScrollingUp = false
         isAutoScrollingDown = true
